@@ -14,7 +14,7 @@
 
 ### Acknowledgment | <mark>鸣谢</mark>
 
-### Foreword | <mark>前言</mark>
+### Foreword | <mark>序言</mark>
 
 ### A Thought Leader's Perspective: Power and Responsibility | <mark>思想领袖的观点：权力与责任</mark>
 

@@ -4,7 +4,7 @@
 
 In simple terms, an **AI agent** is a system designed to perceive its environment and take actions to achieve a specific goal. It's an evolution from a standard Large Language Model (LLM), enhanced with the abilities to plan, use tools, and interact with its surroundings. Think of an Agentic AI as a smart assistant that learns on the job. It follows a simple, five-step loop to get things done (see Fig.1):
 
-<mark>简单来说，**AI 智能体**是一个旨在感知其环境并采取行动以实现特定目标的系统。它是从标准大语言模型（LLM）的进化，增强了规划、使用工具和与周围环境交互的能力。将智能体 AI 想象成一个在工作中学习的智能助手。它遵循一个简单的五步循环来完成任务（见图 1）：</mark>
+<mark>简单来说，<strong>AI 智能体</strong>是一个能够感知环境并采取行动以实现特定目标的系统。它是标准大语言模型（LLM）的演进版本，增强了规划、工具使用和环境交互能力。可以将智能体 AI 想象成一个在工作中学习的智能助手，它遵循一个简单的五步循环来完成任务（见图 1）：</mark>
 
 1. **Get the Mission:** You give it a goal, like "organize my schedule."
 
@@ -12,19 +12,19 @@ In simple terms, an **AI agent** is a system designed to perceive its environmen
 
 2. **Scan the Scene:** It gathers all the necessary information—reading emails, checking calendars, and accessing contacts—to understand what's happening.
 
-2. <mark><strong>扫描环境：</strong>它收集所有必要的信息——阅读电子邮件、查看日历和访问联系人——以了解正在发生的情况。</mark>
+2. <mark><strong>扫描环境：</strong>收集所有必要信息——阅读邮件、查看日历、访问联系人——以了解当前状况。</mark>
 
 3. **Think It Through:** It devises a plan of action by considering the optimal approach to achieve the goal.
 
-3. <mark><strong>深度思考：</strong>它通过考虑实现目标的最优方法来制定行动计划。</mark>
+3. <mark><strong>深度思考：</strong>通过权衡实现目标的最优方法来制定行动计划。</mark>
 
 4. **Take Action:** It executes the plan by sending invitations, scheduling meetings, and updating your calendar.
 
-4. <mark><strong>采取行动：</strong>它通过发送邀请、安排会议和更新你的日历来执行计划。</mark>
+4. <mark><strong>采取行动：</strong>通过发送邀请、安排会议、更新日历来执行计划。</mark>
 
 5. **Learn and Get Better:** It observes successful outcomes and adapts accordingly. For example, if a meeting is rescheduled, the system learns from this event to enhance its future performance.
 
-5. <mark><strong>学习并改进：</strong>它观察成功的结果并相应地适应。例如，如果会议被重新安排，系统会从这个事件中学习，以提高其未来的表现。</mark>
+5. <mark><strong>学习并改进：</strong>观察成功结果并相应调整。例如，如果会议被重新安排，系统会从中学习以提升未来表现。</mark>
 
 ![AI Agent Five-Step Loop](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfxfjS5IHLrkJORnUGchFso6-knfZFKG4bkytsFl1Yh9jf-1SLc9iHZGpSa0VF8ppx2qc7z5bhVXmdKnuvoCDuEr-3hGmFQciP7mT4YRlqpdnDJ8YCBjPd4ynBRWIPSWQ?key=x3M3vSiJlWTAiO_iRgvijg)
 
@@ -38,7 +38,7 @@ Agents are becoming increasingly popular at a stunning pace. According to recent
 
 In just two years, the AI paradigm has shifted dramatically, moving from simple automation to sophisticated, autonomous systems (see Fig. 2). Initially, workflows relied on basic prompts and triggers to process data with LLMs. This evolved with Retrieval-Augmented Generation (RAG), which enhanced reliability by grounding models on factual information. We then saw the development of individual AI Agents capable of using various tools. Today, we are entering the era of Agentic AI, where a team of specialized agents works in concert to achieve complex goals, marking a significant leap in AI's collaborative power.
 
-<mark>仅仅两年时间，AI 范式发生了戏剧性的转变，从简单的自动化转向复杂的自主系统（见图 2）。最初，工作流依赖基本提示和触发器来使用 LLM 处理数据。随着检索增强生成（RAG）的发展，这种方式得到进化：RAG 通过基于事实信息来提高模型的可靠性。随后我们看到能够使用各种工具的单个 AI 智能体的发展。今天，我们正在进入智能体 AI 时代，专门化智能体团队协同工作以实现复杂目标，标志着 AI 协作能力的重大飞跃。</mark>
+<mark>仅仅两年时间，AI 范式就发生了戏剧性转变，从简单自动化转向复杂自主系统（见图 2）。最初，工作流依赖基本提示和触发器来用 LLM 处理数据。随着检索增强生成（RAG）的出现，这种方式得以进化：RAG 通过锚定事实信息来提高模型可靠性。随后我们看到了能够使用各种工具的单体 AI 智能体的发展。今天，我们正进入智能体 AI 时代，专业化智能体团队协同工作以实现复杂目标，标志着 AI 协作能力的重大飞跃。</mark>
 
 ![AI Evolution Timeline](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqdjZz18XZjLdDMSbhRoTR3FEVwsYvhcENDaO-6XqhD8ycqNGUPliRRzSn7SS_QdrBi2_BUoUXyHYaB7X94BEUfWwecfGfM2SphmmuAHIhHh2FtP-RofOW1YaU3y_ccw?key=x3M3vSiJlWTAiO_iRgvijg)
 
@@ -48,11 +48,11 @@ In just two years, the AI paradigm has shifted dramatically, moving from simple 
 
 The intent of this book is to discuss the design patterns of how specialized agents can work in concert and collaborate to achieve complex goals, and you will see one paradigm of collaboration and interaction in each chapter.
 
-<mark>本书的目的是讨论专门化智能体如何协同工作与协作以实现复杂目标的设计模式，你将在每章中看到一种协作与交互的范式。</mark>
+<mark>本书旨在讨论专业化智能体如何协同工作以实现复杂目标的设计模式，每章都将展示一种协作与交互的范式。</mark>
 
 Before doing that, let's examine examples that span the range of agent complexity (see Fig. 3).
 
-<mark>在此之前，让我们研究跨越智能体复杂性范围的示例（见图 3）。</mark>
+<mark>在此之前，让我们先看看跨越智能体复杂性谱的一些示例（见图 3）。</mark>
 
 ---
 
@@ -64,15 +64,15 @@ While an LLM is not an agent in itself, it can serve as the reasoning core of a 
 
 ---
 
-## Level 1: The Connected Problem-Solver | <mark>级别 1：互联问题解决者</mark>
+## Level 1: The Connected Problem-Solver | <mark>级别 1：联网问题解决者</mark>
 
 At this level, the LLM becomes a functional agent by connecting to and utilizing external tools. Its problem-solving is no longer limited to its pre-trained knowledge. Instead, it can execute a sequence of actions to gather and process information from sources like the internet (via search) or databases (via Retrieval Augmented Generation, or RAG). For detailed information, refer to Chapter 14.
 
-<mark>在这个级别，LLM 通过连接和利用外部工具成为功能性智能体。其问题解决不再局限于预训练知识。相反，它可以执行一系列行动来收集和处理来自互联网（通过搜索）或数据库（通过检索增强生成或 RAG）等来源的信息。详细信息请参阅第 14 章。</mark>
+<mark>在这个级别，LLM 通过连接和使用外部工具成为功能性智能体。其问题解决不再局限于预训练知识，而是可以执行一系列行动来收集和处理来自互联网（通过搜索）或数据库（通过检索增强生成，即 RAG）等来源的信息。详细信息请参阅第 14 章。</mark>
 
 For instance, to find new TV shows, the agent recognizes the need for current information, uses a search tool to find it, and then synthesizes the results. Crucially, it can also use specialized tools for higher accuracy, such as calling a financial API to get the live stock price for AAPL. This ability to interact with the outside world across multiple steps is the core capability of a Level 1 agent.
 
-<mark>例如，为了寻找新的电视节目，智能体识别到需要当前信息，使用搜索工具来找到它，然后综合结果。关键的是，它还可以使用专门的工具来提高准确性，比如调用金融 API 来获取 AAPL 的实时股价。这种在多个步骤中与外部世界交互的能力，是级别 1 智能体的核心能力。</mark>
+<mark>例如，为了寻找新电视节目，智能体会识别到需要当前信息，使用搜索工具找到后再综合结果。关键是，它还能使用专门工具来提高准确性，比如调用金融 API 来获取 AAPL 的实时股价。这种跨多个步骤与外部世界交互的能力，正是级别 1 智能体的核心能力。</mark>
 
 ---
 
@@ -80,23 +80,23 @@ For instance, to find new TV shows, the agent recognizes the need for current in
 
 At this level, an agent's capabilities expand significantly, encompassing strategic planning, proactive assistance, and self-improvement, with prompt engineering and context engineering as core enabling skills.
 
-<mark>在这个级别，智能体的能力显著扩展，包括战略规划、主动协助和自我改进，其中提示工程和上下文工程是核心使能技能。</mark>
+<mark>在这个级别，智能体的能力显著扩展，涵盖战略规划、主动协助和自我改进，其中提示工程和上下文工程是核心赋能技能。</mark>
 
 First, the agent moves beyond single-tool use to tackle complex, multi-part problems through strategic problem-solving. As it executes a sequence of actions, it actively performs context engineering: the strategic process of selecting, packaging, and managing the most relevant information for each step. For example, to find a coffee shop between two locations, it first uses a mapping tool. It then engineers this output, curating a short, focused context—perhaps just a list of street names—to feed into a local search tool, preventing cognitive overload and ensuring the second step is efficient and accurate. To achieve maximum accuracy from an AI, it must be given a short, focused, and powerful context. Context engineering is the discipline that accomplishes this by strategically selecting, packaging, and managing the most critical information from all available sources. It effectively curates the model's limited attention to prevent overload and ensure high-quality, efficient performance on any given task. For detailed information, refer to the Appendix A.
 
-<mark>首先，智能体超越单一工具使用，通过战略问题解决来处理复杂的多部分问题。在执行一系列行动时，它主动执行上下文工程：为每个步骤选择、打包和管理最相关信息的战略过程。例如，为了在两个位置之间找到咖啡店，它首先使用映射工具。然后它对这个输出进行工程化，策划一个简短、聚焦的上下文——也许只是街道名称列表——输入到本地搜索工具中，防止认知过载并确保第二步高效准确。为了让 AI 达到最高准确性，必须为其提供简短、聚焦且有力的上下文。上下文工程正是通过战略性地从所有可用来源中选择、打包和管理最关键信息来实现这一目标。它有效地管理模型有限的注意力，防止过载并确保在任何给定任务上的高质量、高效性能。详细信息请参阅附录 A。</mark>
+<mark>首先，智能体超越单一工具使用，通过战略性问题解决来处理复杂的多部分问题。在执行一系列行动时，它会主动执行上下文工程：即为每个步骤选择、打包和管理最相关信息的战略过程。例如，为了在两个位置之间找到咖啡店，它先使用地图工具，然后对输出进行工程化，精选出简短聚焦的上下文——也许只是街道名称列表——输入到本地搜索工具中，这样既防止认知过载，又确保第二步高效准确。要让 AI 达到最高准确性，必须为其提供简短、聚焦且有力的上下文。上下文工程正是通过战略性地从所有可用来源中选择、打包和管理最关键信息来实现这一目标。它有效管理模型有限的注意力，防止过载并确保在任何给定任务上的高质量、高效表现。详细信息请参阅附录 A。</mark>
 
 This level leads to proactive and continuous operation. A travel assistant linked to your email demonstrates this by engineering the context from a verbose flight confirmation email; it selects only the key details (flight numbers, dates, locations) to package for subsequent tool calls to your calendar and a weather API.
 
-<mark>这个级别导致主动与连续的运行方式。连接到你电子邮件的旅行助手，通过从冗长的航班确认邮件中工程化上下文来演示这一点；它仅选择关键细节（航班号、日期、位置）进行打包，以便后续调用你的日历与天气 API。</mark>
+<mark>这个级别实现了主动且持续的运行方式。连接到你邮箱的旅行助手演示了这一点：它从冗长的航班确认邮件中进行上下文工程化，仅选择关键细节（航班号、日期、位置）进行打包，以便后续调用日历和天气 API。</mark>
 
 In specialized fields like software engineering, the agent manages an entire workflow by applying this discipline. When assigned a bug report, it reads the report and accesses the codebase, then strategically engineers these large sources of information into a potent, focused context that allows it to efficiently write, test, and submit the correct code patch.
 
-<mark>在软件工程等专业领域，智能体通过应用这一学科来管理整个工作流程。当分配到错误报告时，它读取报告并访问代码库，然后战略性地将这些大量信息源工程化为有力、聚焦的上下文，使其能够高效地编写、测试和提交正确的代码补丁。</mark>
+<mark>在软件工程等专业领域，智能体通过应用这一方法来管理整个工作流程。当被分配到错误报告时，它会读取报告并访问代码库，然后战略性地将这些大量信息源工程化为有力聚焦的上下文，使其能够高效编写、测试和提交正确的代码补丁。</mark>
 
 Finally, the agent achieves self-improvement by refining its own context engineering processes. When it asks for feedback on how a prompt could have been improved, it is learning how to better curate its initial inputs. This allows it to automatically improve how it packages information for future tasks, creating a powerful, automated feedback loop that increases its accuracy and efficiency over time. For detailed information, refer to Chapter 17.
 
-<mark>最后，智能体通过精化其自身的上下文工程过程来实现自我改进。当它询问如何改进提示的反馈时，它正在学习如何更好地策划其初始输入。这使它能够自动改进如何为未来任务打包信息，创建一个强大的、自动化的反馈循环，随时间增加其准确性和效率。详细信息请参阅第 17 章。</mark>
+<mark>最后，智能体通过精化自身的上下文工程过程来实现自我改进。当它询问如何改进提示的反馈时，它正在学习如何更好地策划初始输入。这使它能够自动改进为未来任务打包信息的方式，创建一个强大的自动化反馈循环，随时间不断提高准确性和效率。详细信息请参阅第 17 章。</mark>
 
 ![Agent Complexity Levels](https://lh7-rt.googleusercontent.com/docsz/AD_4nXf-9C5vJyI8RosgwJM_WtIZ0Jm3Mz89lXNAi1wrGdDNaGqnPzIqMVjHjwVxGSqZdFgb3hVftFyqAj5vIpGlow15KWQNkDRZLh5qPWt4WDwghjUr0IonaOQdOAqBz4WGdlY?key=x3M3vSiJlWTAiO_iRgvijg)
 
@@ -110,15 +110,15 @@ Finally, the agent achieves self-improvement by refining its own context enginee
 
 At Level 3, we see a significant paradigm shift in AI development, moving away from the pursuit of a single, all-powerful super-agent and towards the rise of sophisticated, collaborative multi-agent systems. In essence, this approach recognizes that complex challenges are often best solved not by a single generalist, but by a team of specialists working in concert. This model directly mirrors the structure of a human organization, where different departments are assigned specific roles and collaborate to tackle multi-faceted objectives. The collective strength of such a system lies in this division of labor and the synergy created through coordinated effort. For detailed information, refer to Chapter 7.
 
-<mark>在级别 3，我们看到 AI 开发中的重大范式转变，从追求单一的、全能的超级智能体转向复杂的协作多智能体系统的兴起。从本质上讲，这种方法认识到复杂挑战往往不是由单一的通才最好地解决，而是由协同工作的专家团队来解决。这种模式直接反映了人类组织的结构，其中不同的部门被分配特定的角色并协作处理多面向的目标。这样一个系统的集体力量在于这种分工和通过协调努力创造的协同效应。详细信息请参阅第 7 章。</mark>
+<mark>在级别 3，我们看到了 AI 开发中的重大范式转变：从追求单一的全能超级智能体，转向复杂协作多智能体系统的兴起。从本质上讲，这种方法认识到复杂挑战往往不是由单一通才最好解决，而是由协同工作的专家团队来解决。这种模式直接映射了人类组织的结构，其中不同部门被分配特定角色并协作处理多面向的目标。这样一个系统的集体力量在于分工和通过协调努力创造的协同效应。详细信息请参阅第 7 章。</mark>
 
 To bring this concept to life, consider the intricate workflow of launching a new product. Rather than one agent attempting to handle every aspect, a "Project Manager" agent could serve as the central coordinator. This manager would orchestrate the entire process by delegating tasks to other specialized agents: a "Market Research" agent to gather consumer data, a "Product Design" agent to develop concepts, and a "Marketing" agent to craft promotional materials. The key to their success would be the seamless communication and information sharing between them, ensuring all individual efforts align to achieve the collective goal.
 
-<mark>为了将这个概念付诸实践，不妨以推出新产品的复杂工作流程为例。与其让单个智能体尝试处理每个环节，不如由「项目经理」智能体担任中央协调者。该经理将通过把任务委派给其他专门智能体来编排整个过程：一个「市场研究」智能体收集消费者数据、一个「产品设计」智能体开发概念、一个「营销」智能体制作促销材料。成功的关键在于它们之间无缝的沟通与信息共享，确保所有个体努力一致，以实现集体目标。</mark>
+<mark>为了具象化这个概念，不妨以推出新产品的复杂工作流程为例。与其让单个智能体尝试处理每个环节，不如由「项目经理」智能体担任中央协调者。该经理通过把任务委派给其他专业智能体来编排整个过程：「市场研究」智能体收集消费者数据、「产品设计」智能体开发概念、「营销」智能体制作促销材料。成功的关键在于它们之间无缝的沟通和信息共享，确保所有个体努力协调一致以实现集体目标。</mark>
 
 While this vision of autonomous, team-based automation is already being developed, it's important to acknowledge the current hurdles. The effectiveness of such multi-agent systems is presently constrained by the reasoning limitations of LLMs they are using. Furthermore, their ability to genuinely learn from one another and improve as a cohesive unit is still in its early stages. Overcoming these technological bottlenecks is the critical next step, and doing so will unlock the profound promise of this level: the ability to automate entire business workflows from start to finish.
 
-<mark>虽然这种自主的、基于团队的自动化愿景已经在开发中，但重要的是要承认当前的障碍。这种多智能体系统的有效性目前受到它们使用的 LLM 推理限制的约束。此外，它们真正相互学习并作为一个有凝聚力的单位改进的能力仍处于早期阶段。克服这些技术瓶颈是关键的下一步，这样做将释放这个级别的深刻承诺：从头到尾自动化整个业务工作流程的能力。</mark>
+<mark>虽然这种基于团队的自主自动化愿景已经在开发中，但必须承认当前的障碍。这种多智能体系统的有效性目前受到所用 LLM 推理能力限制的约束。此外，它们真正相互学习并作为一个有凝聚力的整体来改进的能力仍处于早期阶段。克服这些技术瓶颈是关键的下一步，而这将释放出这个级别的巨大潜力：从头到尾自动化整个业务工作流程。</mark>
 
 ---
 

@@ -2,13 +2,17 @@
 
 ## A Hands-On Guide to Building Intelligent Systems | <mark>构建智能系统的实践指南</mark>
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 [![GitHub stars](https://img.shields.io/github/stars/ginobefun/agentic-design-patterns-cn)](https://github.com/ginobefun/agentic-design-patterns-cn/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/ginobefun/agentic-design-patterns-cn)](https://github.com/ginobefun/agentic-design-patterns-cn/network)
 
 **作者 (Author)**: [Antonio Gulli](https://www.linkedin.com/in/searchguy/)
-**译者 (Translator)**: [ginobefun](https://github.com/ginobefun)  
+
+**译者 (Translator)**: [ginobefun](https://github.com/ginobefun) 
+
 **原书链接 (Original Book)**: [Amazon](https://www.amazon.com/Agentic-Design-Patterns-Hands-Intelligent/dp/3032014018/)
+
+**原始文档链接 (Original Book Link)**: [Google Docs](https://docs.google.com/document/d/1rsaK53T3Lg5KoGwvf8ukOUvbELRtH-V0LnOIFDxBryE/preview?tab=t.0#heading=h.pxcur8v2qagu)
 
 ---
 
@@ -35,15 +39,17 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 **<mark>总页数：424 页</mark>** | **Total: 424 Pages**
 
 ### 前置内容 | Front Matter
+
 - [x] [致谢 | Dedication](01-Dedication.md)
 - [x] [鸣谢 | Acknowledgment](02-Acknowledgment.md)
-- [x] [前言 | Foreword](03-Foreword.md)
+- [x] [序言 | Foreword](03-Foreword.md)
 - [x] [思想领袖的观点：权力与责任 | A Thought Leader's Perspective: Power and Responsibility](04-Thought-Leader.md)
 - [x] [介绍 | Introduction](05-Introduction.md)
 - [x] [是什么让 AI 系统成为"智能体"？ | What makes an AI system an "agent"?](06-What-Makes-Agent.md)
 
 ### 第一部分 | Part One (103 页)
-- [x] [第一章：提示链 | Chapter 1: Prompt Chaining](07-Chapter-01-Prompt-Chaining.md) ([代码](https://colab.research.google.com/drive/15XCzDOvBhIQaZ__xkvruf5sP9OznAbK9))
+
+- [x] [第一章：提示链 | Chapter 1: Prompt Chaining](07-Chapter-01-Prompt-Chaining.md)
 - [x] [第二章：路由 | Chapter 2: Routing](08-Chapter-02-Routing.md)
 - [x] [第三章：并行化 | Chapter 3: Parallelization](09-Chapter-03-Parallelization.md)
 - [x] [第四章：反思 | Chapter 4: Reflection](10-Chapter-04-Reflection.md)
@@ -52,17 +58,20 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 - [x] [第七章：多智能体协作 | Chapter 7: Multi-Agent Collaboration](13-Chapter-07-Multi-Agent-Collaboration.md)
 
 ### 第二部分 | Part Two (61 页)
+
 - [ ] [第八章：内存管理 | Chapter 8: Memory Management](14-Chapter-08-Memory-Management.md)
 - [ ] [第九章：学习与适应 | Chapter 9: Learning and Adaptation](15-Chapter-09-Learning-and-Adaptation.md)
 - [ ] [第十章：模型上下文协议 (MCP) | Chapter 10: Model Context Protocol (MCP)](16-Chapter-10-Model-Context-Protocol.md)
 - [ ] [第十一章：目标设定与监控 | Chapter 11: Goal Setting and Monitoring](17-Chapter-11-Goal-Setting-and-Monitoring.md)
 
 ### 第三部分 | Part Three (34 页)
+
 - [ ] [第十二章：异常处理与恢复 | Chapter 12: Exception Handling and Recovery](18-Chapter-12-Exception-Handling-and-Recovery.md)
 - [ ] [第十三章：人在回路中 | Chapter 13: Human-in-the-Loop](19-Chapter-13-Human-in-the-Loop.md)
 - [ ] [第十四章：知识检索 (RAG) | Chapter 14: Knowledge Retrieval (RAG)](20-Chapter-14-Knowledge-Retrieval.md)
 
 ### 第四部分 | Part Four (114 页)
+
 - [ ] [第十五章：智能体间通信 (A2A) | Chapter 15: Inter-Agent Communication (A2A)](21-Chapter-15-Inter-Agent-Communication.md)
 - [ ] [第十六章：资源感知优化 | Chapter 16: Resource-Aware Optimization](22-Chapter-16-Resource-Aware-Optimization.md)
 - [ ] [第十七章：推理技术 | Chapter 17: Reasoning Techniques](23-Chapter-17-Reasoning-Techniques.md)
@@ -72,6 +81,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 - [ ] [第二十一章：探索与发现 | Chapter 21: Exploration and Discovery](27-Chapter-21-Exploration-and-Discovery.md)
 
 ### 附录 | Appendix (74 页)
+
 - [ ] [附录 A：高级提示技术 | Appendix A: Advanced Prompting Techniques](28-Appendix-A.md)
 - [ ] [附录 B：AI 智能体：从图形界面到现实世界环境 | Appendix B: AI Agentic: From GUI to Real world environment](29-Appendix-B.md)
 - [ ] [附录 C：智能体框架快速概览 | Appendix C: Quick overview of Agentic Frameworks](30-Appendix-C.md)
@@ -81,6 +91,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 - [ ] [附录 G：编程智能体 | Appendix G: Coding agents](34-Appendix-G.md)
 
 ### 结尾内容 | Back Matter
+
 - [ ] [结论 | Conclusion](35-Conclusion.md)
 - [ ] [术语表 | Glossary](36-Glossary.md)
 - [ ] [术语索引 | Index of Terms](37-Index.md)
@@ -92,6 +103,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 本书介绍了 21 个核心智能体设计模式，涵盖从基础到高级的完整技术栈：
 
 ### 🔧 核心模式 | Core Patterns
+
 1. **提示链 (Prompt Chaining)** - 连续提示序列引导复杂任务
 2. **路由 (Routing)** - 智能请求路由分发
 3. **并行化 (Parallelization)** - 多任务并行执行优化
@@ -101,17 +113,20 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 7. **多智能体 (Multi-Agent)** - 协同工作架构
 
 ### 🎯 高级模式 | Advanced Patterns
+
 8. **内存管理 (Memory Management)** - 短期和长期记忆管理
 9. **学习与适应 (Learning and Adaptation)** - 从经验中学习
 10. **模型上下文协议 (MCP)** - 标准化交互协议
 11. **目标设定与监控 (Goal Setting and Monitoring)** - 动态目标管理
 
 ### 🔗 集成模式 | Integration Patterns
+
 12. **异常处理与恢复 (Exception Handling and Recovery)** - 优雅错误处理
 13. **人在回路中 (Human-in-the-Loop)** - 人机协作决策
 14. **知识检索 (RAG)** - 检索增强生成技术
 
 ### 🏭 生产模式 | Production Patterns
+
 15. **智能体间通信 (A2A)** - 智能体通信协议
 16. **资源感知优化 (Resource-Aware Optimization)** - 资源优化管理
 17. **推理技术 (Reasoning Techniques)** - 增强推理能力
@@ -125,6 +140,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 ## 📖 如何使用本项目 | How to Use This Project
 
 ### 🎯 适合读者 | Target Audience
+
 - **AI 工程师** - 构建智能、可靠的 AI 系统
 - **软件架构师** - 设计智能体组件系统
 - **产品经理** - 了解智能体技术能力与局限
@@ -132,6 +148,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 - **学生** - 学习人工智能和智能体系统
 
 ### 📚 阅读建议 | Reading Tips
+
 1. **顺序阅读** - 建议按章节顺序，后续章节基于前面基础
 2. **动手实践** - 每章都有代码示例，建议实际运行
 3. **参考查阅** - 可作为设计模式参考手册使用
@@ -142,12 +159,14 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 ## 🛠️ 翻译规范 | Translation Standards
 
 ### 📝 格式规范
+
 - **高亮标记**: 中文内容使用 `<mark>文本</mark>` 黄色高亮
 - **双语对照**: 英文段落后紧跟中文翻译
 - **术语处理**: 重要术语保留英文，括号注明中文
 - **空格规则**: 中英文、数字间添加空格
 
 ### 🎯 质量标准
+
 - **准确性**: 100% 忠实原文含义
 - **流畅性**: 符合中文表达习惯
 - **专业性**: 保持技术文档严谨性
@@ -162,12 +181,14 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 欢迎社区贡献！你可以通过以下方式参与：
 
 ### 🔍 如何贡献
+
 1. **错误报告** - 发现翻译错误或格式问题
 2. **翻译改进** - 提供更优的翻译建议
 3. **章节翻译** - 参与未完成章节的翻译
 4. **校对审阅** - 帮助校对已翻译章节
 
 ### 📋 贡献步骤
+
 1. Fork 本仓库
 2. 创建特性分支 (`git checkout -b feature/your-contribution`)
 3. 提交更改 (`git commit -m 'Add: your contribution'`)
@@ -179,15 +200,20 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 ## 📄 版权信息 | Copyright
 
 ### 📖 原书版权
+
 - **作者**: Antonio Gulli
 - **出版社**: Springer
 - **版权**: 原书版权归作者和出版社所有
 - **公益性质**: 原书所有版税将捐赠给救助儿童会 (Save the Children)
 
 ### 🌏 翻译版权
-- **翻译**: 本翻译项目基于 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 协议开源
+
+- **翻译**: 本翻译项目基于 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) 协议开源
 - **目的**: 仅用于学习交流，促进中文 AI 社区发展
-- **商用**: 如需商业使用，请联系原书版权方
+- **使用限制**:
+  - ✅ 允许：自由复制、分发、展示和演绎作品（需署名译者）
+  - ❌ 禁止：任何形式的商业使用
+  - 📧 商业合作：如需商业使用，请联系译者和原书版权方
 
 ---
 
@@ -217,14 +243,6 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 | 🚧 进行中 | 0 | 0 | 0% |
 | ⏳ 待翻译 | 24 | ~321 | 75% |
 | **总计** | **37** | **424** | **25%** |
-
-### 🎯 下一阶段计划 | Next Phase Plans
-
-#### 第二部分目标 (预计完成时间：2025-01-15)
-- [ ] 第八章：内存管理 (Memory Management)
-- [ ] 第九章：学习与适应 (Learning and Adaptation) 
-- [ ] 第十章：模型上下文协议 (MCP)
-- [ ] 第十一章：目标设定与监控 (Goal Setting and Monitoring)
 
 ---
 

@@ -1,7 +1,5 @@
 # Dedication | <mark>致谢</mark>
 
----
-
 To my son, Bruno,
 
 who at two years old, brought a new and brilliant light into my life. As I explore the systems that will define our tomorrow, it is the world you will inherit that is foremost in my thoughts.
