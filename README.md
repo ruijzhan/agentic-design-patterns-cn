@@ -47,9 +47,9 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 - [x] [第二章：路由 | Chapter 2: Routing](08-Chapter-02-Routing.md)
 - [x] [第三章：并行化 | Chapter 3: Parallelization](09-Chapter-03-Parallelization.md)
 - [x] [第四章：反思 | Chapter 4: Reflection](10-Chapter-04-Reflection.md)
-- [ ] [第五章：工具使用 | Chapter 5: Tool Use](11-Chapter-05-Tool-Use.md)
-- [ ] [第六章：规划 | Chapter 6: Planning](12-Chapter-06-Planning.md)
-- [ ] [第七章：多智能体 | Chapter 7: Multi-Agent](13-Chapter-07-Multi-Agent.md)
+- [x] [第五章：工具使用 | Chapter 5: Tool Use](11-Chapter-05-Tool-Use.md)
+- [x] [第六章：规划 | Chapter 6: Planning](12-Chapter-06-Planning.md)
+- [x] [第七章：多智能体 | Chapter 7: Multi-Agent](13-Chapter-07-Multi-Agent.md)
 
 ### 第二部分 | Part Two (61 页)
 - [ ] [第八章：内存管理 | Chapter 8: Memory Management](14-Chapter-08-Memory-Management.md)
