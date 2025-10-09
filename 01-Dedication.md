@@ -2,8 +2,6 @@
 
 ---
 
-## English | <mark>英文</mark>
-
 To my son, Bruno,
 
 who at two years old, brought a new and brilliant light into my life. As I explore the systems that will define our tomorrow, it is the world you will inherit that is foremost in my thoughts.
@@ -18,11 +16,9 @@ With all my love.
 
 ---
 
-## Chinese | <mark>中文</mark>
-
 <mark>致我的儿子布鲁诺，</mark>
 
-<mark>两岁的你为我的生活带来了全新而灿烂的光芒。当我探索那些将定义我们明天的系统时，你将继承的世界始终是我思考的重点。</mark>
+<mark>两岁的你为我的生活带来了全新而灿烂的光芒。当我探索那些将定义我们明天的系统时，你将步入的世界始终是我思考的重点。</mark>
 
 <mark>致我的儿子莱昂纳多和洛伦佐，以及我的女儿奥罗拉，</mark>
 

@@ -2,7 +2,7 @@
 
 ## A Hands-On Guide to Building Intelligent Systems | <mark>构建智能系统的实践指南</mark>
 
-*Antonio Gulli*
+[Antonio Gulli](https://www.linkedin.com/in/searchguy/)
 
 ---
 
