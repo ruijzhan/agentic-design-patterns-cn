@@ -185,15 +185,15 @@ The Deep Research API is useful because it automates what would otherwise be hou
 
 - **Structured, Cited Output:** It produces well-organized reports with inline citations linked to source metadata, ensuring claims are verifiable and data-backed.
 
-<mark>- **结构化、有引用的输出：** 它生成组织良好的报告，带有链接到来源元数据的内联引用，确保声明可验证且有数据支撑。</mark>
+- <mark><strong>结构化、有引用的输出：</strong>它生成组织良好的报告，带有链接到来源元数据的内联引用，确保声明可验证且有数据支撑。</mark>
 
 - **Transparency:** Unlike the abstracted process in ChatGPT, the API exposes all intermediate steps, including the agent's reasoning, the specific web search queries it executed, and any code it ran. This allows for detailed debugging, analysis, and a deeper understanding of how the final answer was constructed.
 
-<mark>- **透明度：** 与 ChatGPT 中的抽象过程不同，API 暴露所有中间步骤，包括智能体的推理、它执行的具体网络搜索查询以及运行的任何代码。这允许详细的调试、分析和对最终答案如何构建的更深理解。</mark>
+- <mark><strong>透明度：</strong>与 ChatGPT 中的抽象过程不同，API 暴露所有中间步骤，包括智能体的推理、它执行的具体网络搜索查询以及运行的任何代码。这允许详细的调试、分析和对最终答案如何构建的更深理解。</mark>
 
 - **Extensibility:** It supports the Model Context Protocol (MCP), enabling developers to connect the agent to private knowledge bases and internal data sources, blending public web research with proprietary information.
 
-<mark>- **可扩展性：** 它支持模型上下文协议（MCP），使开发者能够将智能体连接到私有知识库和内部数据源，将公共网络研究与专有信息结合。</mark>
+- <mark><strong>可扩展性：</strong>它支持模型上下文协议（MCP），使开发者能够将智能体连接到私有知识库和内部数据源，将公共网络研究与专有信息结合。</mark>
 
 To use the API, you send a request to the client.responses.create endpoint, specifying a model, an input prompt, and the tools the agent can use. The input typically includes a system_message that defines the agent's persona and desired output format, along with the user_query. You must also include the web_search_preview tool and can optionally add others like code_interpreter or custom MCP tools (see Chapter 10) for internal data.
 
@@ -324,23 +324,23 @@ Subsequently, it attempts to access and display inline citations and metadata fr
 
 - Planning enables agents to break down complex goals into actionable, sequential steps.
 
-<mark>- 规划使智能体能够将复杂目标分解为可操作的连续步骤。</mark>
+- <mark>规划使智能体能够将复杂目标分解为可操作的连续步骤。</mark>
 
 - It is essential for handling multi-step tasks, workflow automation, and navigating complex environments.
 
-<mark>- 它对于处理多步骤任务、工作流程自动化和导航复杂环境至关重要。</mark>
+- <mark>它对于处理多步骤任务、工作流程自动化和导航复杂环境至关重要。</mark>
 
 - LLMs can perform planning by generating step-by-step approaches based on task descriptions.
 
-<mark>- LLM 可以通过基于任务描述生成逐步方法来执行规划。</mark>
+- <mark>LLM 可以通过基于任务描述生成逐步方法来执行规划。</mark>
 
 - Explicitly prompting or designing tasks to require planning steps encourages this behavior in agent frameworks.
 
-<mark>- 明确提示或设计需要规划步骤的任务鼓励智能体框架中的这种行为。</mark>
+- <mark>明确提示或设计需要规划步骤的任务鼓励智能体框架中的这种行为。</mark>
 
 - Google Deep Research is an agent analyzing on our behalf sources obtained using Google Search as a tool. It reflects, plans, and executes.
 
-<mark>- Google Deep Research 是一个代表我们分析使用 Google Search 作为工具获得的来源的智能体。它反思、规划和执行。</mark>
+- <mark>Google Deep Research 是一个代表我们分析使用 Google Search 作为工具获得的来源的智能体。它反思、规划和执行。</mark>
 
 ---
 

@@ -31,27 +31,27 @@ Collaboration can take various forms:
 
 - **Sequential Handoffs:** One agent completes a task and passes its output to another agent for the next step in a pipeline (similar to the Planning pattern, but explicitly involving different agents).
 
-<mark>- **顺序交接：** 一个智能体完成任务并将其输出传递给另一个智能体进行管道中的下一步（类似于规划模式，但明确涉及不同的智能体）。</mark>
+- <mark><strong>顺序交接：</strong>一个智能体完成任务并将其输出传递给另一个智能体进行管道中的下一步（类似于规划模式，但明确涉及不同的智能体）。</mark>
 
 - **Parallel Processing:** Multiple agents work on different parts of a problem simultaneously, and their results are later combined.
 
-<mark>- **并行处理：** 多个智能体同时处理问题的不同部分，稍后将它们的结果合并。</mark>
+- <mark><strong>并行处理：</strong>多个智能体同时处理问题的不同部分，稍后将它们的结果合并。</mark>
 
 - **Debate and Consensus:** Agents with varied perspectives and information sources engage in discussions to evaluate options, ultimately reaching a consensus or a more informed decision.
 
-<mark>- **辩论和共识：** 具有不同观点和信息来源的智能体参与讨论以评估选项，最终达成共识或做出更明智的决策。</mark>
+- <mark><strong>辩论和共识：</strong>具有不同观点和信息来源的智能体参与讨论以评估选项，最终达成共识或做出更明智的决策。</mark>
 
 - **Hierarchical Structures:** A manager agent might delegate tasks to worker agents dynamically based on their tool access or plugin capabilities and synthesize their results.
 
-<mark>- **层次结构：** 管理智能体可能根据工作智能体的工具访问或插件能力动态委托任务，并综合它们的结果。</mark>
+- <mark><strong>层次结构：</strong>管理智能体可能根据工作智能体的工具访问或插件能力动态委托任务，并综合它们的结果。</mark>
 
 - **Expert Teams:** Agents with specialized knowledge in different domains (e.g., a researcher, a writer, an editor) collaborate to produce a complex output.
 
-<mark>- **专家团队：** 在不同领域具有专业知识的智能体（如研究员、作家、编辑）协作产生复杂输出。</mark>
+- <mark><strong>专家团队：</strong>在不同领域具有专业知识的智能体（如研究员、作家、编辑）协作产生复杂输出。</mark>
 
 - **Critic-Reviewer:** Agents create initial outputs such as plans, drafts, or answers. A second group of agents then critically assesses this output for adherence to policies, security, compliance, correctness, quality, and alignment with organizational objectives. The original creator or a final agent revises the output based on this feedback.
 
-<mark>- **批评-审查者：** 智能体创建初始输出，如计划、草稿或答案。第二组智能体然后对这些输出进行批判性评估，检查其是否符合政策、安全性、合规性、正确性、质量和与组织目标的一致性。原始创建者或最终智能体基于此反馈修订输出。</mark>
+- <mark><strong>批评-审查者：</strong>智能体创建初始输出，如计划、草稿或答案。第二组智能体然后对这些输出进行批判性评估，检查其是否符合政策、安全性、合规性、正确性、质量和与组织目标的一致性。原始创建者或最终智能体基于此反馈修订输出。</mark>
 
 ![Multi-Agent System Example](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdaZcGTrfoFGQKmHUqUnx39vNKG0T_jLeRuEAyWHupi7uJlMmT5spXI18bgwSIhtDAlFTdLIaQhQ8A9KCLY5tkt4Ydhj1SAvYBTh763Lwwd5aieKj4Vym0ZcB-I8s-E6Q?key=z8HBTGaq-EZ5Ku8evSUUOg)
 
@@ -69,27 +69,27 @@ Multi-Agent Collaboration is a powerful pattern applicable across numerous domai
 
 - **Complex Research and Analysis:** A team of agents could collaborate on a research project. One agent might specialize in searching academic databases, another in summarizing findings, a third in identifying trends, and a fourth in synthesizing the information into a report.
 
-<mark>- **复杂研究和分析：** 智能体团队可以协作研究项目。一个智能体可能专门搜索学术数据库，另一个总结发现，第三个识别趋势，第四个将信息综合成报告。</mark>
+- <mark><strong>复杂研究和分析：</strong>智能体团队可以协作研究项目。一个智能体可能专门搜索学术数据库，另一个总结发现，第三个识别趋势，第四个将信息综合成报告。</mark>
 
 - **Software Development:** Imagine agents collaborating on building software. One agent could be a requirements analyst, another a code generator, a third a tester, and a fourth a documentation writer.
 
-<mark>- **软件开发：** 想象智能体协作构建软件。一个智能体可以是需求分析师，另一个是代码生成器，第三个是测试员，第四个是文档编写者。</mark>
+- <mark><strong>软件开发：</strong>想象智能体协作构建软件。一个智能体可以是需求分析师，另一个是代码生成器，第三个是测试员，第四个是文档编写者。</mark>
 
 - **Creative Content Generation:** Creating a marketing campaign could involve a market research agent, a copywriter agent, a graphic design agent (using image generation tools), and a social media scheduling agent, all working together.
 
-<mark>- **创意内容生成：** 创建营销活动可能涉及市场研究智能体、文案智能体、图形设计智能体（使用图像生成工具）和社交媒体调度智能体，所有这些都协同工作。</mark>
+- <mark><strong>创意内容生成：</strong>创建营销活动可能涉及市场研究智能体、文案智能体、图形设计智能体（使用图像生成工具）和社交媒体调度智能体，所有这些都协同工作。</mark>
 
 - **Financial Analysis:** A multi-agent system could analyze financial markets. Agents might specialize in fetching stock data, analyzing news sentiment, performing technical analysis, and generating investment recommendations.
 
-<mark>- **金融分析：** 多智能体系统可以分析金融市场。智能体可能专门获取股票数据、分析新闻情绪、执行技术分析和生成投资建议。</mark>
+- <mark><strong>金融分析：</strong>多智能体系统可以分析金融市场。智能体可能专门获取股票数据、分析新闻情绪、执行技术分析和生成投资建议。</mark>
 
 - **Customer Support Escalation:** A front-line support agent could handle initial queries, escalating complex issues to a specialist agent when needed.
 
-<mark>- **客户支持升级：** 一线支持智能体可以处理初始查询，在需要时将复杂问题升级给专家智能体。</mark>
+- <mark><strong>客户支持升级：</strong>一线支持智能体可以处理初始查询，在需要时将复杂问题升级给专家智能体。</mark>
 
 - **Network Analysis & Remediation:** Multiple agents can collaborate to triage and remediate issues, suggesting optimal actions while integrating with traditional machine learning models.
 
-<mark>- **网络分析和修复：** 多个智能体可以协作分类和修复问题，建议最佳行动，同时与传统机器学习模型集成。</mark>
+- <mark><strong>网络分析和修复：</strong>多个智能体可以协作分类和修复问题，建议最佳行动，同时与传统机器学习模型集成。</mark>
 
 ---
 
@@ -103,27 +103,27 @@ Understanding how agents interact is fundamental to designing effective systems.
 
 1. **Single Agent:** Operates autonomously without interaction with other entities.
 
-<mark>1. **单智能体：** 自主运行，不与其他实体交互。</mark>
+1. <mark><strong>单智能体：</strong>自主运行，不与其他实体交互。</mark>
 
 2. **Network:** Multiple agents interact directly in a decentralized fashion.
 
-<mark>2. **网络：** 多个智能体以去中心化方式直接交互。</mark>
+2. <mark><strong>网络：</strong>多个智能体以去中心化方式直接交互。</mark>
 
 3. **Supervisor:** A dedicated supervisor agent oversees subordinate agents.
 
-<mark>3. **监督者：** 专用的监督者智能体监督下属智能体。</mark>
+3. <mark><strong>监督者：</strong>专用的监督者智能体监督下属智能体。</mark>
 
 4. **Supervisor as a Tool:** The supervisor provides resources and guidance rather than direct control.
 
-<mark>4. **监督者作为工具：** 监督者提供资源和指导而非直接控制。</mark>
+4. <mark><strong>监督者作为工具：</strong>监督者提供资源和指导而非直接控制。</mark>
 
 5. **Hierarchical:** Multi-layered organizational structure with multiple supervision levels.
 
-<mark>5. **层次化：** 具有多个监督层级的多层组织结构。</mark>
+5. <mark><strong>层次化：</strong>具有多个监督层级的多层组织结构。</mark>
 
 6. **Custom:** Unique structures tailored to specific requirements.
 
-<mark>6. **自定义：** 为特定需求定制的独特结构。</mark>
+6. <mark><strong>自定义：</strong>为特定需求定制的独特结构。</mark>
 
 ![Agent Communication Models](https://lh7-rt.googleusercontent.com/docsz/AD_4nXd20RN-iV64P6hWjh-nm6FNm7O95DZF-0ZpSIm542_6JRcQIDic_u4Xpy24CEIyp79XwIRT5kI88CezERNBpzG09CJbLeP3hRfOUAKuNlARYC8x2OIFUuR6HT3ZijI0WjE?key=z8HBTGaq-EZ5Ku8evSUUOg)
 
@@ -244,19 +244,19 @@ This code demonstrates multi-agent collaboration using CrewAI, where two special
 
 - Multi-agent collaboration involves multiple agents working together to achieve a common goal.
 
-<mark>- 多智能体协作涉及多个智能体协同工作以实现共同目标。</mark>
+- <mark>多智能体协作涉及多个智能体协同工作以实现共同目标。</mark>
 
 - This pattern leverages specialized roles, distributed tasks, and inter-agent communication.
 
-<mark>- 此模式利用专业化角色、分布式任务和智能体间通信。</mark>
+- <mark>此模式利用专业化角色、分布式任务和智能体间通信。</mark>
 
 - Collaboration can take forms like sequential handoffs, parallel processing, debate, or hierarchical structures.
 
-<mark>- 协作可以采取顺序交接、并行处理、辩论或层次结构等形式。</mark>
+- <mark>协作可以采取顺序交接、并行处理、辩论或层次结构等形式。</mark>
 
 - This pattern is ideal for complex problems requiring diverse expertise or multiple distinct stages.
 
-<mark>- 此模式非常适合需要多样化专业知识或多个不同阶段的复杂问题。</mark>
+- <mark>此模式非常适合需要多样化专业知识或多个不同阶段的复杂问题。</mark>
 
 ---
 
