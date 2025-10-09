@@ -84,7 +84,7 @@ At this level, an agent's capabilities expand significantly, encompassing strate
 
 First, the agent moves beyond single-tool use to tackle complex, multi-part problems through strategic problem-solving. As it executes a sequence of actions, it actively performs context engineering: the strategic process of selecting, packaging, and managing the most relevant information for each step. For example, to find a coffee shop between two locations, it first uses a mapping tool. It then engineers this output, curating a short, focused context—perhaps just a list of street names—to feed into a local search tool, preventing cognitive overload and ensuring the second step is efficient and accurate. To achieve maximum accuracy from an AI, it must be given a short, focused, and powerful context. Context engineering is the discipline that accomplishes this by strategically selecting, packaging, and managing the most critical information from all available sources. It effectively curates the model's limited attention to prevent overload and ensure high-quality, efficient performance on any given task. For detailed information, refer to the Appendix A.
 
-<mark>首先，智能体超越单一工具使用，通过战略问题解决来处理复杂的多部分问题。在执行一系列行动时，它主动执行上下文工程：为每个步骤选择、打包和管理最相关信息的战略过程。例如，为了在两个位置之间找到咖啡店，它首先使用映射工具。然后它对这个输出进行工程化，策划一个简短、聚焦的上下文——也许只是街道名称列表——输入到本地搜索工具中，防止认知过载并确保第二步高效准确。为了从 AI 获得最高准确性，必须给它一个简短、聚焦和强大的上下文。上下文工程是通过战略性地从所有可用来源中选择、打包和管理最关键信息来实现这一目标的学科。它有效地管理模型有限的注意力，防止过载并确保在任何给定任务上的高质量、高效性能。详细信息请参阅附录 A。</mark>
+<mark>首先，智能体超越单一工具使用，通过战略问题解决来处理复杂的多部分问题。在执行一系列行动时，它主动执行上下文工程：为每个步骤选择、打包和管理最相关信息的战略过程。例如，为了在两个位置之间找到咖啡店，它首先使用映射工具。然后它对这个输出进行工程化，策划一个简短、聚焦的上下文——也许只是街道名称列表——输入到本地搜索工具中，防止认知过载并确保第二步高效准确。为了让 AI 达到最高准确性，必须为其提供简短、聚焦且有力的上下文。上下文工程正是通过战略性地从所有可用来源中选择、打包和管理最关键信息来实现这一目标。它有效地管理模型有限的注意力，防止过载并确保在任何给定任务上的高质量、高效性能。详细信息请参阅附录 A。</mark>
 
 This level leads to proactive and continuous operation. A travel assistant linked to your email demonstrates this by engineering the context from a verbose flight confirmation email; it selects only the key details (flight numbers, dates, locations) to package for subsequent tool calls to your calendar and a weather API.
 
@@ -92,7 +92,7 @@ This level leads to proactive and continuous operation. A travel assistant linke
 
 In specialized fields like software engineering, the agent manages an entire workflow by applying this discipline. When assigned a bug report, it reads the report and accesses the codebase, then strategically engineers these large sources of information into a potent, focused context that allows it to efficiently write, test, and submit the correct code patch.
 
-<mark>在软件工程等专业领域，智能体通过应用这一学科来管理整个工作流程。当分配到错误报告时，它读取报告并访问代码库，然后战略性地将这些大量信息源工程化为强大、聚焦的上下文，使其能够高效地编写、测试和提交正确的代码补丁。</mark>
+<mark>在软件工程等专业领域，智能体通过应用这一学科来管理整个工作流程。当分配到错误报告时，它读取报告并访问代码库，然后战略性地将这些大量信息源工程化为有力、聚焦的上下文，使其能够高效地编写、测试和提交正确的代码补丁。</mark>
 
 Finally, the agent achieves self-improvement by refining its own context engineering processes. When it asks for feedback on how a prompt could have been improved, it is learning how to better curate its initial inputs. This allows it to automatically improve how it packages information for future tasks, creating a powerful, automated feedback loop that increases its accuracy and efficiency over time. For detailed information, refer to Chapter 17.
 
@@ -182,7 +182,7 @@ This system would be a dynamic entity, not a single agent. It would have the abi
 
 For instance, an entrepreneur would simply declare the intent: "Launch a successful e-commerce business selling artisanal coffee." The system, without further programming, would spring into action. It might initially spawn a "Market Research" agent and a "Branding" agent. Based on the initial findings, it could decide to remove the branding agent and spawn three new specialized agents: a "Logo Design" agent, a "Webstore Platform" agent, and a "Supply Chain" agent. It would constantly tune their internal prompts for better performance. If the webstore agent becomes a bottleneck, the system might duplicate it into three parallel agents to work on different parts of the site, effectively re-architecting its own structure on the fly to best achieve the declared goal.
 
-<mark>例如，企业家将简单地声明意图："启动一个成功的手工咖啡电子商务业务。"系统在没有进一步编程的情况下，将立即采取行动。它可能最初生成一个"市场研究"智能体和一个"品牌"智能体。基于初始发现，它可能决定移除品牌智能体并生成三个新的专门智能体：一个"标志设计"智能体、一个"网店平台"智能体和一个"供应链"智能体。它会不断调整它们的内部提示以获得更好的性能。如果网店智能体成为瓶颈，系统可能将其复制为三个并行智能体来处理网站的不同部分，有效地动态重新架构其自身结构以最好地实现声明的目标。</mark>
+<mark>例如，企业家将简单地声明意图："启动一个成功的手工咖啡电子商务业务。"系统在没有进一步编程的情况下，将立即采取行动。它可能最初生成一个"市场研究"智能体和一个"品牌"智能体。基于初始发现，它可能决定移除品牌智能体并生成三个新的专门智能体：一个"标志设计"智能体、一个"网店平台"智能体和一个"供应链"智能体。它会不断调整它们的内部提示以获得更好的性能。如果网店智能体成为瓶颈，系统可能将其复制为三个并行智能体来处理网站的不同部分，动态地重新架构其自身结构以最好地实现声明的目标。</mark>
 
 ---
 

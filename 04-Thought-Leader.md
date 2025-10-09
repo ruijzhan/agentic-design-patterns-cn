@@ -8,7 +8,7 @@ Of all the technology cycles I've witnessed over the past four decades—from th
 
 about the engine—the breathtaking, almost vertical ascent of Large Language Models (LLMs)—the next era will be about the car we build around it. It will be about the frameworks that harness this raw power, transforming it from a generator of plausible text into a true agent of action.
 
-<mark>关于引擎——大语言模型 (LLM) 令人叹为观止、几乎垂直的上升——那么下一个时代将是关于我们围绕它构建的汽车。它将关于驾驭这种原始力量的框架，将其从一个看似合理的文本生成器转变为真正的行动智能体。</mark>
+<mark>关于引擎——大语言模型 (LLM) 令人叹为观止、几乎垂直的上升——那么下一个时代将是关于我们围绕它构建的汽车。它将是关于驾驭这种原始力量的框架，将其从一个看似合理的文本生成器转变为真正的行动智能体。</mark>
 
 I admit, I began as a skeptic. Plausibility, I've found, is often inversely proportional to one's own knowledge of a subject. Early models, for all their fluency, felt like they were operating with a kind of impostor syndrome, optimized for credibility over correctness. But then came the inflection point, a step-change brought about by a new class of "reasoning" models. Suddenly, we weren't just conversing with a statistical machine that predicted the next word in a sequence;
 
@@ -20,11 +20,11 @@ we were getting a peek into a nascent form of cognition.
 
 The first time I experimented with one of the new agentic coding tools, I felt that familiar spark of magic. I tasked it with a personal project I'd never found the time for: migrating a charity website from a simple web builder to a proper, modern CI/CD environment. For the next twenty minutes, it went to work, asking clarifying questions, requesting credentials, and providing status updates. It felt less like using a tool and more like collaborating with a junior developer. When it presented me with a fully deployable package, complete with impeccable documentation and unit tests, I was floored.
 
-<mark>我第一次试验其中一个新的智能体编程工具时，感受到了那种熟悉的魔法火花。我给它安排了一个我一直没有时间做的个人项目：将一个慈善网站从简单的网站构建器迁移到适当的现代 CI/CD 环境。在接下来的二十分钟里，它开始工作，询问澄清问题，请求凭据，并提供状态更新。感觉不像是在使用工具，更像是与一个初级开发者合作。当它向我展示一个完全可部署的包时，包括无可挑剔的文档和单元测试，我震惊了。</mark>
+<mark>当我第一次尝试这些新的智能体编程工具之一时，感受到了那种熟悉的魔法火花。我给它安排了一个我一直没有时间做的个人项目：将一个慈善网站从简单的网站构建器迁移到适当的现代 CI/CD 环境。在接下来的二十分钟里，它开始工作，询问澄清问题，请求凭据，并提供状态更新。感觉不像是在使用工具，更像是与一个初级开发者合作。当它向我展示一个完全可部署的包时，包括无可挑剔的文档和单元测试，我震惊了。</mark>
 
 Of course, it wasn't perfect. It made mistakes. It got stuck. It required my supervision and, crucially, my judgment to steer it back on course. The experience drove home a lesson I've learned the hard way over a long career: you cannot afford to trust blindly. Yet, the process was fascinating. Peeking into its "chain of thought" was like watching a mind at work—messy, non-linear, full of starts, stops, and self-corrections, not unlike our own human reasoning. It wasn't a straight line; it was a random walk toward a solution. Here was the kernel of something new: not just an intelligence that could generate content, but one that could generate a *plan*.
 
-<mark>当然，它并不完美。它犯错误。它会卡住。它需要我的监督，关键是需要我的判断来将其重新引导到正确的道路上。这个经验让我深刻理解了一个在漫长职业生涯中艰难学到的教训：你不能盲目信任。然而，这个过程令人着迷。窥视其"思维链"就像观察一个思维在工作——混乱、非线性、充满开始、停止和自我纠正，与我们自己的人类推理没有什么不同。这不是一条直线；这是朝向解决方案的随机游走。这里是新事物的核心：不仅仅是一个可以生成内容的智能，而是一个可以生成*计划*的智能。</mark>
+<mark>当然，它并不完美。它犯错误。它会卡住。它需要我的监督，关键是需要我的判断来将其重新引导到正确的道路上。这次经历让我深刻理解了一个在漫长职业生涯中艰难学到的教训：你不能盲目信任。然而，这个过程令人着迷。窥视其"思维链"就像观察一个思维在工作——混乱、非线性、充满开始、停止和自我纠正，与我们自己的人类推理没有什么不同。这不是一条直线；这是朝向解决方案的随机游走。这里是新事物的核心：不仅仅是一个可以生成内容的智能，而是一个可以生成*计划*的智能。</mark>
 
 This is the promise of agentic frameworks. It's the difference between a static subway map and a dynamic GPS that reroutes you in real-time. A classic rules-based automaton follows a fixed path; when it encounters an unexpected obstacle, it breaks. An AI agent, powered by a reasoning model, has the potential to observe, adapt, and find another way. It possesses a form of digital common sense that allows it to navigate the countless edge cases of reality. It represents a shift from simply telling a computer *what* to do, to explaining *why* we need something done and trusting it to figure out the *how*.
 

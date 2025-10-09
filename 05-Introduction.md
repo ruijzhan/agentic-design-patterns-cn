@@ -18,7 +18,7 @@ Think of building intelligent systems as creating a complex work of art or engin
 
 Building effectively on this agentic canvas demands more than just throwing components together. It requires understanding proven techniques – **patterns** – that address common challenges in designing and implementing agent behavior. Just as architectural patterns guide the construction of a building, or design patterns structure software, agentic design patterns provide reusable solutions for the recurring problems you'll face when bringing intelligent agents to life on your chosen canvas.
 
-<mark>在这个智能体画布上有效构建需要的不仅仅是将组件简单拼凑在一起。它需要理解经过验证的技术——**模式 (Pattern)**——来解决设计和实现智能体行为时的常见挑战。就像建筑模式指导建筑的构建，或设计模式构建软件一样，智能体设计模式为您在选定的画布上赋予智能体生命时面临的重复问题提供可重用的解决方案。</mark>
+<mark>在这个智能体画布上有效构建需要的不仅仅是将组件简单拼凑在一起。它需要理解经过验证的技术——**模式 (Pattern)**——来解决设计和实现智能体行为时的常见挑战。就像建筑模式指导建筑的构建，或设计模式构建软件一样，智能体设计模式 (Agentic Design Pattern) 为您在选定的画布上赋予智能体生命时面临的重复问题提供可重用的解决方案。</mark>
 
 ---
 
