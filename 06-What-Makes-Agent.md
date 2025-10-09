@@ -1,14 +1,14 @@
-# What makes an AI system an Agent? | <mark>是什么让 AI 系统成为"智能体"？</mark>
+# What makes an AI system an Agent? | <mark>是什么让 AI 系统成为「智能体」？</mark>
 
 ---
 
 In simple terms, an **AI agent** is a system designed to perceive its environment and take actions to achieve a specific goal. It's an evolution from a standard Large Language Model (LLM), enhanced with the abilities to plan, use tools, and interact with its surroundings. Think of an Agentic AI as a smart assistant that learns on the job. It follows a simple, five-step loop to get things done (see Fig.1):
 
-<mark>简单来说，**AI 智能体**是一个旨在感知其环境并采取行动以实现特定目标的系统。它是从标准大语言模型 (LLM) 的进化，增强了规划、使用工具和与周围环境交互的能力。将智能体 AI 想象成一个在工作中学习的智能助手。它遵循一个简单的五步循环来完成任务（见图 1）：</mark>
+<mark>简单来说，**AI 智能体**是一个旨在感知其环境并采取行动以实现特定目标的系统。它是从标准大语言模型（LLM）的进化，增强了规划、使用工具和与周围环境交互的能力。将智能体 AI 想象成一个在工作中学习的智能助手。它遵循一个简单的五步循环来完成任务（见图 1）：</mark>
 
 1. **Get the Mission:** You give it a goal, like "organize my schedule."
 
-<mark>1. **获取任务：**你给它一个目标，比如"整理我的日程安排。"</mark>
+<mark>1. **获取任务：**你给它一个目标，比如「整理我的日程安排」。</mark>
 
 2. **Scan the Scene:** It gathers all the necessary information—reading emails, checking calendars, and accessing contacts—to understand what's happening.
 
@@ -20,7 +20,7 @@ In simple terms, an **AI agent** is a system designed to perceive its environmen
 
 4. **Take Action:** It executes the plan by sending invitations, scheduling meetings, and updating your calendar.
 
-<mark>4. **采取行动：**它通过发送邀请、安排会议和更新您的日历来执行计划。</mark>
+<mark>4. **采取行动：**它通过发送邀请、安排会议和更新你的日历来执行计划。</mark>
 
 5. **Learn and Get Better:** It observes successful outcomes and adapts accordingly. For example, if a meeting is rescheduled, the system learns from this event to enhance its future performance.
 
@@ -38,7 +38,7 @@ Agents are becoming increasingly popular at a stunning pace. According to recent
 
 In just two years, the AI paradigm has shifted dramatically, moving from simple automation to sophisticated, autonomous systems (see Fig. 2). Initially, workflows relied on basic prompts and triggers to process data with LLMs. This evolved with Retrieval-Augmented Generation (RAG), which enhanced reliability by grounding models on factual information. We then saw the development of individual AI Agents capable of using various tools. Today, we are entering the era of Agentic AI, where a team of specialized agents works in concert to achieve complex goals, marking a significant leap in AI's collaborative power.
 
-<mark>仅仅两年时间，AI 范式发生了戏剧性的转变，从简单的自动化转向复杂的自主系统（见图 2）。最初，工作流依赖基本提示和触发器来使用 LLM 处理数据。随着检索增强生成 (RAG) 的发展，这种方式得到了进化，RAG 通过基于事实信息来提高模型的可靠性。然后我们看到了能够使用各种工具的单个 AI 智能体的发展。今天，我们正在进入智能体 AI 时代，专门化智能体团队协同工作以实现复杂目标，标志着 AI 协作能力的重大飞跃。</mark>
+<mark>仅仅两年时间，AI 范式发生了戏剧性的转变，从简单的自动化转向复杂的自主系统（见图 2）。最初，工作流依赖基本提示和触发器来使用 LLM 处理数据。随着检索增强生成（RAG）的发展，这种方式得到进化：RAG 通过基于事实信息来提高模型的可靠性。随后我们看到能够使用各种工具的单个 AI 智能体的发展。今天，我们正在进入智能体 AI 时代，专门化智能体团队协同工作以实现复杂目标，标志着 AI 协作能力的重大飞跃。</mark>
 
 ![AI Evolution Timeline](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqdjZz18XZjLdDMSbhRoTR3FEVwsYvhcENDaO-6XqhD8ycqNGUPliRRzSn7SS_QdrBi2_BUoUXyHYaB7X94BEUfWwecfGfM2SphmmuAHIhHh2FtP-RofOW1YaU3y_ccw?key=x3M3vSiJlWTAiO_iRgvijg)
 
@@ -48,7 +48,7 @@ In just two years, the AI paradigm has shifted dramatically, moving from simple 
 
 The intent of this book is to discuss the design patterns of how specialized agents can work in concert and collaborate to achieve complex goals, and you will see one paradigm of collaboration and interaction in each chapter.
 
-<mark>本书的目的是讨论专门化智能体如何协同工作和协作以实现复杂目标的设计模式，您将在每章中看到一种协作和交互的范式。</mark>
+<mark>本书的目的是讨论专门化智能体如何协同工作与协作以实现复杂目标的设计模式，你将在每章中看到一种协作与交互的范式。</mark>
 
 Before doing that, let's examine examples that span the range of agent complexity (see Fig. 3).
 
@@ -60,7 +60,7 @@ Before doing that, let's examine examples that span the range of agent complexit
 
 While an LLM is not an agent in itself, it can serve as the reasoning core of a basic agentic system. In a 'Level 0' configuration, the LLM operates without tools, memory, or environment interaction, responding solely based on its pretrained knowledge. Its strength lies in leveraging its extensive training data to explain established concepts. The trade-off for this powerful internal reasoning is a complete lack of current-event awareness. For instance, it would be unable to name the 2025 Oscar winner for "Best Picture" if that information is outside its pre-trained knowledge.
 
-<mark>虽然 LLM 本身不是智能体，但它可以作为基本智能体系统的推理核心。在"级别 0"配置中，LLM 在没有工具、记忆或环境交互的情况下运行，仅基于其预训练知识进行响应。它的优势在于利用其广泛的训练数据来解释既定概念。这种强大内部推理的代价是完全缺乏对时事的感知。例如，如果这些信息在其预训练知识之外，它将无法说出 2025 年奥斯卡"最佳影片"获得者。</mark>
+<mark>虽然 LLM 本身不是智能体，但它可以作为基本智能体系统的推理核心。在「级别 0」配置中，LLM 在没有工具、记忆或环境交互的情况下运行，仅基于其预训练知识进行响应。它的优势在于利用其广泛的训练数据来解释既定概念。这种强大内部推理的代价是完全缺乏对时事的感知。例如，如果这些信息在其预训练知识之外，它将无法说出 2025 年奥斯卡「最佳影片」获得者。</mark>
 
 ---
 
@@ -72,7 +72,7 @@ At this level, the LLM becomes a functional agent by connecting to and utilizing
 
 For instance, to find new TV shows, the agent recognizes the need for current information, uses a search tool to find it, and then synthesizes the results. Crucially, it can also use specialized tools for higher accuracy, such as calling a financial API to get the live stock price for AAPL. This ability to interact with the outside world across multiple steps is the core capability of a Level 1 agent.
 
-<mark>例如，为了寻找新的电视节目，智能体识别到需要当前信息，使用搜索工具来找到它，然后综合结果。关键的是，它还可以使用专门的工具来提高准确性，比如调用金融 API 来获取 AAPL 的实时股价。这种在多个步骤中与外部世界交互的能力是级别 1 智能体的核心能力。</mark>
+<mark>例如，为了寻找新的电视节目，智能体识别到需要当前信息，使用搜索工具来找到它，然后综合结果。关键的是，它还可以使用专门的工具来提高准确性，比如调用金融 API 来获取 AAPL 的实时股价。这种在多个步骤中与外部世界交互的能力，是级别 1 智能体的核心能力。</mark>
 
 ---
 
@@ -88,7 +88,7 @@ First, the agent moves beyond single-tool use to tackle complex, multi-part prob
 
 This level leads to proactive and continuous operation. A travel assistant linked to your email demonstrates this by engineering the context from a verbose flight confirmation email; it selects only the key details (flight numbers, dates, locations) to package for subsequent tool calls to your calendar and a weather API.
 
-<mark>这个级别导致主动和连续操作。连接到您电子邮件的旅行助手通过从冗长的航班确认电子邮件中工程化上下文来演示这一点；它仅选择关键细节（航班号、日期、位置）来打包，以便后续调用您的日历和天气 API。</mark>
+<mark>这个级别导致主动与连续的运行方式。连接到你电子邮件的旅行助手，通过从冗长的航班确认邮件中工程化上下文来演示这一点；它仅选择关键细节（航班号、日期、位置）进行打包，以便后续调用你的日历与天气 API。</mark>
 
 In specialized fields like software engineering, the agent manages an entire workflow by applying this discipline. When assigned a bug report, it reads the report and accesses the codebase, then strategically engineers these large sources of information into a potent, focused context that allows it to efficiently write, test, and submit the correct code patch.
 
@@ -114,7 +114,7 @@ At Level 3, we see a significant paradigm shift in AI development, moving away f
 
 To bring this concept to life, consider the intricate workflow of launching a new product. Rather than one agent attempting to handle every aspect, a "Project Manager" agent could serve as the central coordinator. This manager would orchestrate the entire process by delegating tasks to other specialized agents: a "Market Research" agent to gather consumer data, a "Product Design" agent to develop concepts, and a "Marketing" agent to craft promotional materials. The key to their success would be the seamless communication and information sharing between them, ensuring all individual efforts align to achieve the collective goal.
 
-<mark>为了将这个概念付诸实践，考虑推出新产品的复杂工作流程。与其让一个智能体试图处理每个方面，不如让"项目经理"智能体作为中央协调者。这个经理将通过将任务委派给其他专门的智能体来编排整个过程：一个"市场研究"智能体收集消费者数据，一个"产品设计"智能体开发概念，一个"营销"智能体制作促销材料。它们成功的关键是它们之间无缝的沟通和信息共享，确保所有个体努力一致以实现集体目标。</mark>
+<mark>为了将这个概念付诸实践，不妨以推出新产品的复杂工作流程为例。与其让单个智能体尝试处理每个环节，不如由「项目经理」智能体担任中央协调者。该经理将通过把任务委派给其他专门智能体来编排整个过程：一个「市场研究」智能体收集消费者数据、一个「产品设计」智能体开发概念、一个「营销」智能体制作促销材料。成功的关键在于它们之间无缝的沟通与信息共享，确保所有个体努力一致，以实现集体目标。</mark>
 
 While this vision of autonomous, team-based automation is already being developed, it's important to acknowledge the current hurdles. The effectiveness of such multi-agent systems is presently constrained by the reasoning limitations of LLMs they are using. Furthermore, their ability to genuinely learn from one another and improve as a cohesive unit is still in its early stages. Overcoming these technological bottlenecks is the critical next step, and doing so will unlock the profound promise of this level: the ability to automate entire business workflows from start to finish.
 
@@ -132,17 +132,17 @@ AI agent development is progressing at an unprecedented pace across domains such
 
 The first hypothesis is that AI agents will evolve from narrow specialists into true generalists capable of managing complex, ambiguous, and long-term goals with high reliability. For instance, you could give an agent a simple prompt like, "Plan my company's offsite retreat for 30 people in Lisbon next quarter." The agent would then manage the entire project for weeks, handling everything from budget approvals and flight negotiations to venue selection and creating a detailed itinerary from employee feedback, all while providing regular updates. Achieving this level of autonomy will require fundamental breakthroughs in AI reasoning, memory, and near-perfect reliability. An alternative, yet not mutually exclusive, approach is the rise of Small Language Models (SLMs). This "Lego-like" concept involves composing systems from small, specialized expert agents rather than scaling up a single monolithic model. This method promises systems that are cheaper, faster to debug, and easier to deploy. Ultimately, the development of large generalist models and the composition of smaller specialized ones are both plausible paths forward, and they could even complement each other.
 
-<mark>第一个假设是 AI 智能体将从狭窄的专家发展为能够高可靠性地管理复杂、模糊和长期目标的真正通才。例如，您可以给智能体一个简单的提示，如"为下个季度在里斯本为 30 人规划我们公司的异地团建活动。"智能体随后将管理整个项目数周，处理从预算审批和航班谈判到场地选择，以及根据员工反馈创建详细行程的所有事情，同时提供定期更新。实现这种自主水平将需要在 AI 推理、记忆和近乎完美可靠性方面的根本性突破。一个替代但并非互斥的方法是小语言模型 (SLM) 的兴起。这种"乐高式"概念涉及从小型、专门的专家智能体组合系统，而不是扩大单一整体模型。这种方法承诺提供更便宜、更快调试和更易部署的系统。最终，大型通才模型的开发和较小专门模型的组合都是可行的前进道路，它们甚至可以相互补充。</mark>
+<mark>第一个假设是，AI 智能体将从狭窄的专家，发展为能够高可靠性地管理复杂、模糊与长期目标的真正通才。例如，你可以给智能体一个简单的提示，如「为下个季度在里斯本为 30 人规划我们公司的异地团建活动」。智能体随后将管理整个项目数周，处理从预算审批与航班谈判到场地选择，以及依据员工反馈创建详细行程等全部事项，并持续提供更新。实现这种自主水平将需要在 AI 推理、记忆与近乎完美可靠性方面取得根本性突破。另一条并非互斥的路径，是小语言模型（SLM）的兴起。这种「乐高式」理念，是由小型且专门的专家智能体组合系统，而非一味扩展单一的整体模型。此法有望带来更低成本、更快调试与更易部署的系统。最终，大型通才模型的演进与更小专门模型的组合，都是可行的前进道路，甚至能够相辅相成。</mark>
 
 ### Hypothesis 2: Deep Personalization and Proactive Goal Discovery | <mark>假设 2：深度个性化和主动目标发现</mark>
 
 The second hypothesis posits that agents will become deeply personalised and proactive partners. We are witnessing the emergence of a new class of agent: the proactive partner. By learning from your unique patterns and goals, these systems are beginning to shift from just following orders to anticipating your needs. AI systems operate as agents when they move beyond simply responding to chats or instructions. They initiate and execute tasks on behalf of the user, actively collaborating in the process. This moves beyond simple task execution into the realm of proactive goal discovery.
 
-<mark>第二个假设认为智能体将成为深度个性化和主动的合作伙伴。我们正在见证一个新类别智能体的出现：主动合作伙伴。通过学习您独特的模式和目标，这些系统开始从仅仅遵循命令转向预测您的需求。当 AI 系统超越简单地响应聊天或指令时，它们就作为智能体运行。它们代表用户发起和执行任务，在过程中积极协作。这超越了简单的任务执行，进入主动目标发现的领域。</mark>
+<mark>第二个假设认为智能体将成为深度个性化且主动的合作伙伴。我们正在见证一个新类别智能体的出现：主动合作伙伴。通过学习你独特的模式与目标，这些系统开始从仅仅遵循命令，转向预测你的需求。当 AI 系统超越简单地响应聊天或指令时，它们就以智能体的方式运行。它们代表用户发起并执行任务，在过程中积极协作。这超越了简单的任务执行，进入主动目标发现的领域。</mark>
 
 For instance, if you're exploring sustainable energy, the agent might identify your latent goal and proactively support it by suggesting courses or summarizing research. While these systems are still developing, their trajectory is clear. They will become increasingly proactive, learning to take initiative on your behalf when highly confident that the action will be helpful. Ultimately, the agent becomes an indispensable ally, helping you discover and achieve ambitions you have yet to fully articulate.
 
-<mark>例如，如果您正在探索可持续能源，智能体可能会识别您的潜在目标并通过建议课程或总结研究来主动支持它。虽然这些系统仍在发展中，但它们的轨迹很清楚。它们将变得越来越主动，当高度确信该行动将有帮助时，学会代表您采取主动。最终，智能体成为不可或缺的盟友，帮助您发现和实现您尚未完全阐明的抱负。</mark>
+<mark>例如，如果你正在探索可持续能源，智能体可能会识别你的潜在目标，并通过建议课程或总结研究来主动支持它。虽然这些系统仍在发展中，但它们的轨迹很清楚。它们将变得越来越主动，并在高度确信该行动将有帮助时，学会代表你采取行动。最终，智能体将成为不可或缺的盟友，帮助你发现并实现你尚未完全阐明的抱负。</mark>
 
 ![Future Agent Hypotheses](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeEML8n7ITjKYHbdYpIlud4Z5tyVxO1CNwaSzTPuTZhkbddy6fMO8rARp_RnFg99v9d4GmKXw-7iZcFHsPUiP8uUPjxXUUAOWFa-2AHz96YHhvSVbk_HuoC44Zx9Iu1plk?key=x3M3vSiJlWTAiO_iRgvijg)
 
@@ -154,13 +154,13 @@ For instance, if you're exploring sustainable energy, the agent might identify y
 
 This hypothesis foresees agents breaking free from their purely digital confines to operate in the physical world. By integrating agentic AI with robotics, we will see the rise of "embodied agents." Instead of just booking a handyman, you might ask your home agent to fix a leaky tap. The agent would use its vision sensors to perceive the problem, access a library of plumbing knowledge to formulate a plan, and then control its robotic manipulators with precision to perform the repair. This would represent a monumental step, bridging the gap between digital intelligence and physical action, and transforming everything from manufacturing and logistics to elder care and home maintenance.
 
-<mark>这个假设预见智能体突破其纯数字界限在物理世界中运作。通过将智能体 AI 与机器人技术集成，我们将看到"具身智能体"的兴起。与其只是预约修理工，您可能会要求您的家庭智能体修复漏水的水龙头。智能体将使用其视觉传感器来感知问题，访问管道知识库来制定计划，然后精确控制其机器人操作器来执行修复。这将代表一个里程碑式的步骤，弥合数字智能和物理行动之间的差距，并转变从制造和物流到老年护理和家庭维护的一切。</mark>
+<mark>这个假设预见智能体突破其纯数字边界，在物理世界中运作。通过将智能体 AI 与机器人技术集成，我们将看到「具身智能体」的兴起。与其只是预约修理工，你可能会要求你的家庭智能体修复漏水的水龙头。智能体将使用其视觉传感器来感知问题，访问管道知识库来制定计划，然后精确控制其机器人执行器来完成修复。这将代表一个里程碑式步骤，弥合数字智能与物理行动之间的差距，并转变从制造与物流到老年护理与家庭维护的一切。</mark>
 
 ### Hypothesis 4: The Agent-Driven Economy | <mark>假设 4：智能体驱动的经济</mark>
 
 The fourth hypothesis is that highly autonomous agents will become active participants in the economy, creating new markets and business models. We could see agents acting as independent economic entities, tasked with maximising a specific outcome, such as profit. An entrepreneur could launch an agent to run an entire e-commerce business. The agent would identify trending products by analysing social media, generate marketing copy and visuals, manage supply chain logistics by interacting with other automated systems, and dynamically adjust pricing based on real-time demand. This shift would create a new, hyper-efficient "agent economy" operating at a speed and scale impossible for humans to manage directly.
 
-<mark>第四个假设是高度自主的智能体将成为经济中的积极参与者，创造新的市场和商业模式。我们可能会看到智能体作为独立的经济实体，负责最大化特定结果，比如利润。企业家可以启动一个智能体来运营整个电子商务业务。智能体将通过分析社交媒体识别热门产品，生成营销文案和视觉内容，通过与其他自动化系统交互管理供应链物流，并基于实时需求动态调整定价。这种转变将创造一个新的、超高效的"智能体经济"，以人类无法直接管理的速度和规模运行。</mark>
+<mark>第四个假设是，高度自主的智能体将成为经济中的积极参与者，创造新的市场与商业模式。我们可能会看到智能体作为独立的经济实体，负责最大化特定结果（如利润）。企业家可以启动一个智能体来运营整个电子商务业务。智能体将通过分析社交媒体识别热门产品，生成营销文案与视觉内容，通过与其他自动化系统交互管理供应链物流，并基于实时需求动态调整定价。这种转变将催生全新的、超高效的「智能体经济」，以超越人类直接管理的速度与规模运行。</mark>
 
 ### Hypothesis 5: The Goal-Driven, Metamorphic Multi-Agent System | <mark>假设 5：目标驱动的变形多智能体系统</mark>
 
@@ -182,7 +182,7 @@ This system would be a dynamic entity, not a single agent. It would have the abi
 
 For instance, an entrepreneur would simply declare the intent: "Launch a successful e-commerce business selling artisanal coffee." The system, without further programming, would spring into action. It might initially spawn a "Market Research" agent and a "Branding" agent. Based on the initial findings, it could decide to remove the branding agent and spawn three new specialized agents: a "Logo Design" agent, a "Webstore Platform" agent, and a "Supply Chain" agent. It would constantly tune their internal prompts for better performance. If the webstore agent becomes a bottleneck, the system might duplicate it into three parallel agents to work on different parts of the site, effectively re-architecting its own structure on the fly to best achieve the declared goal.
 
-<mark>例如，企业家将简单地声明意图："启动一个成功的手工咖啡电子商务业务。"系统在没有进一步编程的情况下，将立即采取行动。它可能最初生成一个"市场研究"智能体和一个"品牌"智能体。基于初始发现，它可能决定移除品牌智能体并生成三个新的专门智能体：一个"标志设计"智能体、一个"网店平台"智能体和一个"供应链"智能体。它会不断调整它们的内部提示以获得更好的性能。如果网店智能体成为瓶颈，系统可能将其复制为三个并行智能体来处理网站的不同部分，动态地重新架构其自身结构以最好地实现声明的目标。</mark>
+<mark>例如，企业家将简单地声明意图：「启动一个成功的手工咖啡电子商务业务」。系统在没有进一步编程的情况下将立即采取行动。它可能最初生成一个「市场研究」智能体和一个「品牌」智能体。基于初始发现，它可能决定移除品牌智能体，并生成三个新的专门智能体：一个「标志设计」智能体、一个「网店平台」智能体和一个「供应链」智能体。它会不断调整它们的内部提示以获得更好性能。如果网店智能体成为瓶颈，系统可能将其复制为三个并行智能体来处理网站的不同部分，动态地重构其自身结构，以更好地实现声明的目标。</mark>
 
 ---
 
@@ -190,7 +190,7 @@ For instance, an entrepreneur would simply declare the intent: "Launch a success
 
 In essence, an AI agent represents a significant leap from traditional models, functioning as an autonomous system that perceives, plans, and acts to achieve specific goals. The evolution of this technology is advancing from single, tool-using agents to complex, collaborative multi-agent systems that tackle multifaceted objectives. Future hypotheses predict the emergence of generalist, personalized, and even physically embodied agents that will become active participants in the economy. This ongoing development signals a major paradigm shift towards self-improving, goal-driven systems poised to automate entire workflows and fundamentally redefine our relationship with technology.
 
-<mark>从本质上讲，AI 智能体代表从传统模型的重大飞跃，作为感知、规划和行动以实现特定目标的自主系统运行。这项技术的发展正在从单一的、使用工具的智能体推进到处理多面向目标的复杂协作多智能体系统。未来假设预测通才、个性化，甚至物理具身智能体的出现，它们将成为经济中的积极参与者。这种持续发展标志着向自我改进、目标驱动系统的重大范式转变，这些系统准备自动化整个工作流程并从根本上重新定义我们与技术的关系。</mark>
+<mark>从本质上讲，AI 智能体代表着相较于传统模型的重大飞跃：它作为能够感知、规划与行动以实现特定目标的自主系统运行。这项技术正从单一、依赖工具的智能体，演进为能够处理多元目标的复杂协作式多智能体系统。前瞻性设想预示通才、个性化，甚至物理具身的智能体将出现，并成为经济中的积极参与者。这一持续演进标志着向自我改进、目标驱动系统的重大范式转变：这些系统正准备自动化完整工作流程，并从根本上重塑我们与技术的关系。</mark>
 
 ---
 

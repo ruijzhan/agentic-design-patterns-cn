@@ -6,19 +6,19 @@
 
 Welcome to "Agentic Design Patterns: A Hands-On Guide to Building Intelligent Systems." As we look across the landscape of modern artificial intelligence, we see a clear evolution from simple, reactive programs to sophisticated, autonomous entities capable of understanding context, making decisions, and interacting dynamically with their environment and other systems. These are the intelligent agents and the agentic systems they comprise.
 
-<mark>欢迎阅读《智能体设计模式：构建智能系统的实践指南》。当我们纵观现代人工智能的发展图景时，可以清楚地看到从简单的反应式程序向复杂、自主的实体的演进，这些实体能够理解上下文、做出决策，并与其环境和其他系统进行动态交互。这些就是智能体 (Intelligent Agent) 以及它们构成的智能体系统 (Agentic System)。</mark>
+<mark>欢迎阅读《智能体设计模式：构建智能系统的实践指南》。当我们纵观现代人工智能的发展图景时，可以清楚地看到从简单的反应式程序向复杂、自主的实体的演进，这些实体能够理解上下文、做出决策，并与其环境和其他系统进行动态交互。这些就是智能体（Intelligent Agent）以及它们构成的智能体系统（Agentic System）。</mark>
 
 The advent of powerful large language models (LLMs) has provided unprecedented capabilities for understanding and generating human-like content such as text and media, serving as the cognitive engine for many of these agents. However, orchestrating these capabilities into systems that can reliably achieve complex goals requires more than just a powerful model. It requires structure, design, and a thoughtful approach to how the agent perceives, plans, acts, and interacts.
 
-<mark>强大的大语言模型 (LLM) 的出现为理解和生成类人内容（如文本和媒体）提供了前所未有的能力，成为许多智能体的认知引擎。然而，将这些能力协调成能够可靠实现复杂目标的系统需要的不仅仅是一个强大的模型。它需要结构、设计，以及对智能体如何感知、规划、行动和交互的深思熟虑的方法。</mark>
+<mark>强大的大语言模型（LLM）的出现为理解和生成类人内容（如文本和媒体）提供了前所未有的能力，成为许多智能体的认知引擎。然而，将这些能力协调成能够可靠实现复杂目标的系统需要的不仅仅是一个强大的模型。它需要结构、设计，以及对智能体如何感知、规划、行动和交互的深思熟虑的方法。</mark>
 
 Think of building intelligent systems as creating a complex work of art or engineering on a canvas. This canvas isn't a blank visual space, but rather the underlying infrastructure and frameworks that provide the environment and tools for your agents to exist and operate. It's the foundation upon which you'll build your intelligent application, managing state, communication, tool access, and the flow of logic.
 
-<mark>将构建智能系统想象成在画布上创作复杂的艺术作品或工程项目。这个画布不是空白的视觉空间，而是为您的智能体提供存在和运作环境和工具的底层基础设施和框架。它是您构建智能应用程序的基础，管理状态、通信、工具访问和逻辑流程。</mark>
+<mark>将构建智能系统想象成在画布上创作复杂的艺术作品或工程项目。这个画布不是空白的视觉空间，而是为您的智能体提供存在与运作所需的环境与工具的底层基础设施与框架。它是您构建智能应用程序的基础，管理状态、通信、工具访问和逻辑流程。</mark>
 
 Building effectively on this agentic canvas demands more than just throwing components together. It requires understanding proven techniques – **patterns** – that address common challenges in designing and implementing agent behavior. Just as architectural patterns guide the construction of a building, or design patterns structure software, agentic design patterns provide reusable solutions for the recurring problems you'll face when bringing intelligent agents to life on your chosen canvas.
 
-<mark>在这个智能体画布上有效构建需要的不仅仅是将组件简单拼凑在一起。它需要理解经过验证的技术——**模式 (Pattern)**——来解决设计和实现智能体行为时的常见挑战。就像建筑模式指导建筑的构建，或设计模式构建软件一样，智能体设计模式 (Agentic Design Pattern) 为您在选定的画布上赋予智能体生命时面临的重复问题提供可重用的解决方案。</mark>
+<mark>在这个智能体画布上有效构建需要的不仅仅是将组件简单拼凑在一起。它需要理解经过验证的技术——**模式（Pattern）**——来解决设计和实现智能体行为时的常见挑战。就如建筑模式指导建筑的构建，或设计模式规范软件结构一样，智能体设计模式（Agentic Design Pattern）为您在选定的画布上赋予智能体生命时面临的重复问题提供可重用的解决方案。</mark>
 
 ---
 
@@ -78,7 +78,7 @@ The book is organized chapter by chapter, with each chapter delving into a singl
 
 - A **Hands-On Code Example** offering practical, runnable code that demonstrates the pattern's implementation using prominent agent development frameworks. This is where you'll see how to apply the pattern within the context of a technical canvas.
 
-<mark>- **实践代码示例**，提供使用著名智能体开发框架演示模式实现的实用、可运行代码。这是您将看到如何在技术画布环境中应用模式的地方。</mark>
+<mark>- **实践代码示例**，提供使用著名智能体开发框架演示模式实现的实用、可运行代码。您将在此看到如何在技术画布环境中应用模式。</mark>
 
 - **Key Takeaways** summarizing the most crucial points for quick review.
 
@@ -94,15 +94,15 @@ While the chapters are ordered to build concepts progressively, feel free to use
 
 A great question I hear is, 'With AI changing so fast, why write a book that could be quickly outdated?' My motivation was actually the opposite. It's precisely because things are moving so quickly that we need to step back and identify the underlying principles that are solidifying. Patterns like RAG, Reflection, Routing, Memory and the others I discuss, are becoming fundamental building blocks. This book is an invitation to reflect on these core ideas, which provide the foundation we need to build upon. Humans need these reflection moments on foundation patterns.
 
-<mark>我经常听到一个很好的问题，"随着 AI 变化如此之快，为什么要写一本可能很快就过时的书？"我的动机实际上相反。正是因为事物发展如此迅速，我们需要退一步，识别正在固化的底层原则。我讨论的 RAG、反思、路由、记忆等模式正在成为基本构建块。这本书是对这些核心思想的反思邀请，这些思想为我们需要构建的基础提供了支撑。人类需要这些对基础模式的反思时刻。</mark>
+<mark>我经常听到一个很好的问题：「随着 AI 变化如此之快，为什么要写一本可能很快就过时的书？」我的动机实际上相反。正是因为事物发展如此迅速，我们需要退一步，识别正在固化的底层原则。我讨论的 RAG、反思、路由、记忆等模式正在成为基本构建块。这本书邀请我们反思这些核心思想，它们为我们需要构建的基础提供支撑。我们需要这些对基础模式的反思时刻。</mark>
 
 ---
 
-## Introduction to the Frameworks Used | <mark>使用框架介绍</mark>
+## Introduction to the Frameworks Used | <mark>所用框架简介</mark>
 
 To provide a tangible "canvas" for our code examples (see also Appendix), we will primarily utilize three prominent agent development frameworks. **LangChain**, along with its stateful extension **LangGraph**, provides a flexible way to chain together language models and other components, offering a robust canvas for building complex sequences and graphs of operations. **Crew AI** provides a structured framework specifically designed for orchestrating multiple AI agents, roles, and tasks, acting as a canvas particularly well-suited for collaborative agent systems. The **Google Agent Developer Kit (Google ADK)** offers tools and components for building, evaluating, and deploying agents, providing another valuable canvas, often integrated with Google's AI infrastructure.
 
-<mark>为了为我们的代码示例提供有形的"画布"（另见附录），我们将主要使用三个著名的智能体开发框架。**LangChain**，连同其有状态扩展 **LangGraph**，提供了一种灵活的方式来链接语言模型和其他组件，为构建复杂的操作序列和图提供了强大的画布。**Crew AI** 提供了一个专门为编排多个 AI 智能体、角色和任务而设计的结构化框架，充当特别适合协作智能体系统的画布。**Google 智能体开发工具包 (Google ADK)** 提供了用于构建、评估和部署智能体的工具和组件，提供了另一个有价值的画布，通常与 Google 的 AI 基础设施集成。</mark>
+<mark>为了为我们的代码示例提供有形的「画布」（另见附录），我们将主要使用三个著名的智能体开发框架。**LangChain** 连同其有状态扩展 **LangGraph**，提供了一种灵活的方式来链接语言模型与其他组件，为构建复杂的操作序列与图提供强大的画布。**Crew AI** 提供了一个专为编排多个 AI 智能体、角色与任务而设计的结构化框架，充当特别适合协作智能体系统的画布。**Google Agent Developer Kit（Google ADK）** 提供了用于构建、评估与部署智能体的工具与组件，提供另一个有价值的画布，常与 Google 的 AI 基础设施集成。</mark>
 
 These frameworks represent different facets of the agent development canvas, each with its strengths. By showing examples across these tools, you will gain a broader understanding of how the patterns can be applied regardless of the specific technical environment you choose for your agentic systems. The examples are designed to clearly illustrate the pattern's core logic and its implementation on the framework's canvas, focusing on clarity and practicality.
 

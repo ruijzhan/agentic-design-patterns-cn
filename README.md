@@ -43,8 +43,8 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 - [x] [是什么让 AI 系统成为"智能体"？ | What makes an AI system an "agent"?](06-What-Makes-Agent.md)
 
 ### 第一部分 | Part One (103 页)
-- [ ] [第一章：提示链 | Chapter 1: Prompt Chaining](07-Chapter-01.md) ([代码](https://colab.research.google.com/drive/15XCzDOvBhIQaZ__xkvruf5sP9OznAbK9))
-- [ ] [第二章：路由 | Chapter 2: Routing](08-Chapter-02.md) 
+- [x] [第一章：提示链 | Chapter 1: Prompt Chaining](07-Chapter-01.md) ([代码](https://colab.research.google.com/drive/15XCzDOvBhIQaZ__xkvruf5sP9OznAbK9))
+- [x] [第二章：路由 | Chapter 2: Routing](08-Chapter-02.md)
 - [ ] [第三章：并行化 | Chapter 3: Parallelization](09-Chapter-03.md)
 - [ ] [第四章：反思 | Chapter 4: Reflection](10-Chapter-04.md)
 - [ ] [第五章：工具使用 | Chapter 5: Tool Use](11-Chapter-05.md)
