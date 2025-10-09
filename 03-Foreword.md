@@ -25,7 +25,7 @@ I am thrilled to see this book in the hands of the developer community. The patt
 **Saurabh Tiwary**  
 **VP & General Manager, CloudAI @ Google**
 
-<mark>**Saurabh Tiwary**</mark>  
-<mark>**Google CloudAI 副总裁兼总经理**</mark>
+<mark><strong>Saurabh Tiwary</strong></mark>  
+<mark><strong>Google CloudAI 副总裁兼总经理</strong></mark>
 
 ---

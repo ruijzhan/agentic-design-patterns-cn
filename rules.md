@@ -107,16 +107,22 @@
 ## File Naming Convention | 文件命名规范
 
 ```
-00-Table-of-Contents.md     # 目录
-01-Dedication.md           # 致谢
-02-Acknowledgment.md       # 鸣谢
-03-Foreword.md            # 前言
-04-Thought-Leader.md      # 思想领袖观点
-05-Introduction.md        # 介绍
-06-What-Makes-Agent.md    # 什么是智能体
-07-Chapter-01.md          # 第一章
+00-Table-of-Contents.md                    # 目录
+01-Dedication.md                          # 致谢
+02-Acknowledgment.md                      # 鸣谢
+03-Foreword.md                           # 前言
+04-Thought-Leader.md                     # 思想领袖观点
+05-Introduction.md                       # 介绍
+06-What-Makes-Agent.md                   # 什么是智能体
+07-Chapter-01-Prompt-Chaining.md        # 第一章：提示链
+08-Chapter-02-Routing.md                 # 第二章：路由
+09-Chapter-03-Parallelization.md        # 第三章：并行化
+10-Chapter-04-Reflection.md              # 第四章：反思
+11-Chapter-05-Tool-Use.md                # 第五章：工具使用
+12-Chapter-06-Planning.md                # 第六章：规划
+13-Chapter-07-Multi-Agent-Collaboration.md # 第七章：多智能体协作
 ...
-rules.md                  # 本规则文档
+rules.md                                 # 本规则文档
 ```
 
 ## Git Workflow | Git 工作流程

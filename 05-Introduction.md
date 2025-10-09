@@ -70,23 +70,23 @@ The book is organized chapter by chapter, with each chapter delving into a singl
 
 - A detailed **Pattern Overview** providing a clear explanation of the pattern and its role in agentic design.
 
-<mark>- 详细的**模式概述**，清楚地解释模式及其在智能体设计中的作用。</mark>
+- <mark>详细的<strong>模式概述</strong>，清楚地解释模式及其在智能体设计中的作用。</mark>
 
 - A section on **Practical Applications & Use Cases** illustrating real-world scenarios where the pattern is invaluable and the benefits it brings.
 
-<mark>- 关于**实际应用和用例**的部分，说明模式非常有价值的现实场景以及它带来的好处。</mark>
+- <mark>关于<strong>实际应用和用例</strong>的部分，说明模式非常有价值的现实场景以及它带来的好处。</mark>
 
 - A **Hands-On Code Example** offering practical, runnable code that demonstrates the pattern's implementation using prominent agent development frameworks. This is where you'll see how to apply the pattern within the context of a technical canvas.
 
-<mark>- **实践代码示例**，提供使用著名智能体开发框架演示模式实现的实用、可运行代码。您将在此看到如何在技术画布环境中应用模式。</mark>
+- <mark><strong>实践代码示例</strong>，提供使用著名智能体开发框架演示模式实现的实用、可运行代码。您将在此看到如何在技术画布环境中应用模式。</mark>
 
 - **Key Takeaways** summarizing the most crucial points for quick review.
 
-<mark>- **关键要点**，总结最重要的点以便快速回顾。</mark>
+- <mark><strong>关键要点</strong>，总结最重要的点以便快速回顾。</mark>
 
 - **References** for further exploration, providing resources for deeper learning on the pattern and related concepts.
 
-<mark>- 供进一步探索的**参考资料**，为模式和相关概念的深入学习提供资源。</mark>
+- <mark>供进一步探索的<strong>参考资料</strong>，为模式和相关概念的深入学习提供资源。</mark>
 
 While the chapters are ordered to build concepts progressively, feel free to use the book as a reference, jumping to chapters that address specific challenges you face in your own agent development projects. The appendices provide a comprehensive look at advanced prompting techniques, principles for applying AI agents in real-world environments, and an overview of essential agentic frameworks. To complement this, practical online-only tutorials are included, offering step-by-step guidance on building agents with specific platforms like AgentSpace and for the command-line interface. The emphasis throughout is on practical application; we strongly encourage you to run the code examples, experiment with them, and adapt them to build your own intelligent systems on your chosen canvas.
 

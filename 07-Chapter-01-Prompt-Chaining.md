@@ -22,27 +22,27 @@ Furthermore, prompt chaining is not just about breaking down problems; it also e
 
 **Limitations of single prompts:** For multifaceted tasks, using a single, complex prompt for an LLM can be inefficient, causing the model to struggle with constraints and instructions, potentially leading to instruction neglect where parts of the prompt are overlooked, contextual drift where the model loses track of the initial context, error propagation where early errors amplify, prompts which require a longer context window where the model gets insufficient information to respond back and hallucination where the cognitive load increases the chance of incorrect information.
 
-<mark>**单一提示的局限性：**对于多面任务，对 LLM 使用单一、复杂提示可能效率低下，导致模型在约束和指令方面遇到困难，可能导致指令忽视（提示的部分被忽略）、上下文漂移（模型失去初始上下文的轨迹）、错误传播（早期错误被放大）、需要更长上下文窗口的提示（模型获得不足的信息来响应）以及幻觉（认知负载增加了错误信息的机会）。</mark>
+<mark><strong>单一提示的局限性：</strong>对于多面任务，对 LLM 使用单一、复杂提示可能效率低下，导致模型在约束和指令方面遇到困难，可能导致指令忽视（提示的部分被忽略）、上下文漂移（模型失去初始上下文的轨迹）、错误传播（早期错误被放大）、需要更长上下文窗口的提示（模型获得不足的信息来响应）以及幻觉（认知负载增加了错误信息的机会）。</mark>
 
 **Enhanced Reliability Through Sequential Decomposition:** Prompt chaining addresses these challenges by breaking the complex task into a focused, sequential workflow, which significantly improves reliability and control. Given the example above, a pipeline or chained approach can be described as follows:
 
-<mark>**通过顺序分解增强可靠性：**提示链通过将复杂任务分解为聚焦且顺序的工作流来应对这些挑战，从而显著提升可靠性与可控性。基于上述示例，管道或链式方法可描述如下：</mark>
+<mark><strong>通过顺序分解增强可靠性：</strong>提示链通过将复杂任务分解为聚焦且顺序的工作流来应对这些挑战，从而显著提升可靠性与可控性。基于上述示例，管道或链式方法可描述如下：</mark>
 
 1. Initial Prompt (Summarization): "Summarize the key findings of the following market research report: [text]." The model's sole focus is summarization, increasing the accuracy of this initial step.
 
-<mark>1. 初始提示（总结）：「总结以下市场研究报告的关键发现：[文本]」。模型的唯一焦点是总结，从而提升该初始步骤的准确性。</mark>
+1. <mark>初始提示（总结）：「总结以下市场研究报告的关键发现：[文本]」。模型的唯一焦点是总结，从而提升该初始步骤的准确性。</mark>
 
 2. Second Prompt (Trend Identification): "Using the summary, identify the top three emerging trends and extract the specific data points that support each trend: [output from step 1]." This prompt is now more constrained and builds directly upon a validated output.
 
-<mark>2. 第二个提示（趋势识别）：「基于上述总结，识别三大新兴趋势，并提取支持每一趋势的具体数据点：[步骤 1 的输出]」。该提示更为收敛，并直接建立在已验证的输出之上。</mark>
+2. <mark>第二个提示（趋势识别）：「基于上述总结，识别三大新兴趋势，并提取支持每一趋势的具体数据点：[步骤 1 的输出]」。该提示更为收敛，并直接建立在已验证的输出之上。</mark>
 
 3. Third Prompt (Email Composition): "Draft a concise email to the marketing team that outlines the following trends and their supporting data: [output from step 2]."
 
-<mark>3. 第三个提示（电子邮件撰写）：「起草一封简洁邮件给营销团队，概述以下趋势及其支撑数据：[步骤 2 的输出]」。</mark>
+3. <mark>第三个提示（电子邮件撰写）：「起草一封简洁邮件给营销团队，概述以下趋势及其支撑数据：[步骤 2 的输出]」。</mark>
 
 **The Role of Structured Output:** The reliability of a prompt chain is highly dependent on the integrity of the data passed between steps. If the output of one prompt is ambiguous or poorly formatted, the subsequent prompt may fail due to faulty input. To mitigate this, specifying a structured output format, such as JSON or XML, is crucial.
 
-<mark>**结构化输出的作用：**提示链的可靠性高度依赖步骤间传递数据的完整性。若某一步的输出含糊或格式欠佳，后续提示可能因输入不当而失败。为减轻此风险，应指定结构化输出格式（如 JSON 或 XML）。</mark>
+<mark><strong>结构化输出的作用：</strong>提示链的可靠性高度依赖步骤间传递数据的完整性。若某一步的输出含糊或格式欠佳，后续提示可能因输入不当而失败。为减轻此风险，应指定结构化输出格式（如 JSON 或 XML）。</mark>
 
 For example, the output from the trend identification step could be formatted as a JSON object:
 
@@ -71,7 +71,7 @@ This structured format ensures that the data is machine-readable and can be prec
 
 **Fig.1:** Context Engineering is the discipline of building a rich, comprehensive informational environment for an AI, as the quality of this context is a primary factor in enabling advanced Agentic performance.
 
-<mark>**图 1：**上下文工程，是为 AI 构建丰富且全面的信息环境的方法论；该环境的质量，是实现高级智能体性能的关键因素。</mark>
+<mark><strong>图 1：</strong>上下文工程，是为 AI 构建丰富且全面的信息环境的方法论；该环境的质量，是实现高级智能体性能的关键因素。</mark>
 
 ---
 
@@ -167,7 +167,7 @@ This code demonstrates how to use LangChain to process text through a two-stage 
 
 **Fig. 2:** Prompt Chaining Pattern: Agents receive a series of prompts from the user, with the output of each agent serving as the input for the next in the chain.
 
-<mark>**图 2：**提示链模式：智能体从用户接收一系列提示，每个智能体的输出作为链中下一个的输入。</mark>
+<mark><strong>图 2：</strong>提示链模式：智能体从用户接收一系列提示，每个智能体的输出作为链中下一个的输入。</mark>
 
 ---
 
@@ -175,15 +175,15 @@ This code demonstrates how to use LangChain to process text through a two-stage 
 
 **What:** Complex tasks often overwhelm LLMs when handled within a single prompt, leading to significant performance issues. The cognitive load on the model increases the likelihood of errors such as overlooking instructions, losing context, and generating incorrect information.
 
-<mark>**什么：**复杂任务在单个提示中处理时经常使 LLM 不堪重负，导致显著的性能问题。模型的认知负载增加了错误的可能性，如忽略指令、失去上下文和生成错误信息。</mark>
+<mark><strong>什么：</strong>复杂任务在单个提示中处理时经常使 LLM 不堪重负，导致显著的性能问题。模型的认知负载增加了错误的可能性，如忽略指令、失去上下文和生成错误信息。</mark>
 
 **Why:** Prompt chaining provides a standardized solution by breaking down a complex problem into a sequence of smaller, interconnected sub-tasks. Each step uses a focused prompt to perform a specific operation, significantly improving reliability and control.
 
-<mark>**为什么：**提示链通过将复杂问题分解为一系列更小、相互关联的子任务来提供标准化解决方案。每个步骤使用聚焦的提示执行特定操作，显著提高可靠性和控制。</mark>
+<mark><strong>为什么：</strong>提示链通过将复杂问题分解为一系列更小、相互关联的子任务来提供标准化解决方案。每个步骤使用聚焦的提示执行特定操作，显著提高可靠性和控制。</mark>
 
 **Rule of thumb:** Use this pattern when a task is too complex for a single prompt, involves multiple distinct processing stages, requires interaction with external tools between steps, or when building agentic systems that need to perform multi-step reasoning and maintain state.
 
-<mark>**经验法则：**当任务对单个提示过于复杂、涉及多个不同的处理阶段、需要在步骤间与外部工具交互，或构建需要执行多步推理和维持状态的智能体系统时，使用此模式。</mark>
+<mark><strong>经验法则：</strong>当任务对单个提示过于复杂、涉及多个不同的处理阶段、需要在步骤间与外部工具交互，或构建需要执行多步推理和维持状态的智能体系统时，使用此模式。</mark>
 
 ---
 
@@ -191,19 +191,19 @@ This code demonstrates how to use LangChain to process text through a two-stage 
 
 - Prompt Chaining breaks down complex tasks into a sequence of smaller, focused steps. This is occasionally known as the Pipeline pattern.
 
-<mark>- 提示链将复杂任务分解为更小且聚焦的步骤；有时也称为「管道模式」。</mark>
+- <mark>提示链将复杂任务分解为更小且聚焦的步骤；有时也称为「管道模式」。</mark>
 
 - Each step in a chain involves an LLM call or processing logic, using the output of the previous step as input.
 
-<mark>- 链中每一步涉及 LLM 调用或处理逻辑，并把前一步的输出作为输入。</mark>
+- <mark>链中每一步涉及 LLM 调用或处理逻辑，并把前一步的输出作为输入。</mark>
 
 - This pattern improves the reliability and manageability of complex interactions with language models.
 
-<mark>- 该模式提高了与语言模型复杂交互的可靠性与可管理性。</mark>
+- <mark>该模式提高了与语言模型复杂交互的可靠性与可管理性。</mark>
 
 - Frameworks like LangChain/LangGraph, and Google ADK provide robust tools to define, manage, and execute these multi-step sequences.
 
-<mark>- LangChain/LangGraph 与 Google ADK 等框架，提供强大工具以定义、管理并执行这些多步序列。</mark>
+- <mark>LangChain/LangGraph 与 Google ADK 等框架，提供强大工具以定义、管理并执行这些多步序列。</mark>
 
 ---
 

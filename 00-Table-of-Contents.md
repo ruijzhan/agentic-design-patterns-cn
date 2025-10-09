@@ -163,4 +163,4 @@ https://www.amazon.com/Agentic-Design-Patterns-Hands-Intelligent/dp/3032014018/
 
 **Antonio Gulli** <mark>是一位在人工智能领域享有盛誉的专家与思想领袖。</mark>
 
-*<mark>本书的所有版税将捐赠给救助儿童会 (Save the Children)。</mark>*
+<mark><em>本书的所有版税将捐赠给救助儿童会 (Save the Children)。</em></mark>

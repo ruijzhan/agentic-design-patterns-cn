@@ -62,6 +62,6 @@ This project truly would not have been possible without you. All the credit goes
 
 *All my royalties are donated to Save the Children.*
 
-*<mark>我的所有版税都捐赠给救助儿童会。</mark>*
+<mark><em>我的所有版税都捐赠给救助儿童会。</em></mark>
 
 ---

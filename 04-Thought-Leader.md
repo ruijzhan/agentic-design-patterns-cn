@@ -60,6 +60,6 @@ Enjoy the journey.
 
 **Marco Argenti, CIO, Goldman Sachs**
 
-<mark>**Marco Argenti，高盛首席信息官（CIO）**</mark>
+<mark><strong>Marco Argenti，高盛首席信息官（CIO）</strong></mark>
 
 ---

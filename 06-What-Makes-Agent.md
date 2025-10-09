@@ -8,29 +8,29 @@ In simple terms, an **AI agent** is a system designed to perceive its environmen
 
 1. **Get the Mission:** You give it a goal, like "organize my schedule."
 
-<mark>1. **获取任务：**你给它一个目标，比如「整理我的日程安排」。</mark>
+1. <mark><strong>获取任务：</strong>你给它一个目标，比如「整理我的日程安排」。</mark>
 
 2. **Scan the Scene:** It gathers all the necessary information—reading emails, checking calendars, and accessing contacts—to understand what's happening.
 
-<mark>2. **扫描环境：**它收集所有必要的信息——阅读电子邮件、查看日历和访问联系人——以了解正在发生的情况。</mark>
+2. <mark><strong>扫描环境：</strong>它收集所有必要的信息——阅读电子邮件、查看日历和访问联系人——以了解正在发生的情况。</mark>
 
 3. **Think It Through:** It devises a plan of action by considering the optimal approach to achieve the goal.
 
-<mark>3. **深度思考：**它通过考虑实现目标的最优方法来制定行动计划。</mark>
+3. <mark><strong>深度思考：</strong>它通过考虑实现目标的最优方法来制定行动计划。</mark>
 
 4. **Take Action:** It executes the plan by sending invitations, scheduling meetings, and updating your calendar.
 
-<mark>4. **采取行动：**它通过发送邀请、安排会议和更新你的日历来执行计划。</mark>
+4. <mark><strong>采取行动：</strong>它通过发送邀请、安排会议和更新你的日历来执行计划。</mark>
 
 5. **Learn and Get Better:** It observes successful outcomes and adapts accordingly. For example, if a meeting is rescheduled, the system learns from this event to enhance its future performance.
 
-<mark>5. **学习并改进：**它观察成功的结果并相应地适应。例如，如果会议被重新安排，系统会从这个事件中学习，以提高其未来的表现。</mark>
+5. <mark><strong>学习并改进：</strong>它观察成功的结果并相应地适应。例如，如果会议被重新安排，系统会从这个事件中学习，以提高其未来的表现。</mark>
 
 ![AI Agent Five-Step Loop](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfxfjS5IHLrkJORnUGchFso6-knfZFKG4bkytsFl1Yh9jf-1SLc9iHZGpSa0VF8ppx2qc7z5bhVXmdKnuvoCDuEr-3hGmFQciP7mT4YRlqpdnDJ8YCBjPd4ynBRWIPSWQ?key=x3M3vSiJlWTAiO_iRgvijg)
 
 **Fig.1:** Agentic AI functions as an intelligent assistant, continuously learning through experience. It operates via a straightforward five-step loop to accomplish tasks.
 
-<mark>**图 1：**智能体 AI 作为一个智能助手运作，通过经验持续学习。它通过一个简单的五步循环来完成任务。</mark>
+<mark><strong>图 1：</strong>智能体 AI 作为一个智能助手运作，通过经验持续学习。它通过一个简单的五步循环来完成任务。</mark>
 
 Agents are becoming increasingly popular at a stunning pace. According to recent studies, a majority of large IT companies are actively using these agents, and a fifth of them just started within the past year. The financial markets are also taking notice. By the end of 2024, AI agent startups had raised more than $2 billion, and the market was valued at $5.2 billion. It's expected to explode to nearly $200 billion in value by 2034. In short, all signs point to AI agents playing a massive role in our future economy.
 
@@ -44,7 +44,7 @@ In just two years, the AI paradigm has shifted dramatically, moving from simple 
 
 **Fig 2.:** Transitioning from LLMs to RAG, then to Agentic RAG, and finally to Agentic AI.
 
-<mark>**图 2：**从 LLM 到 RAG，再到智能体 RAG，最后到智能体 AI 的转变。</mark>
+<mark><strong>图 2：</strong>从 LLM 到 RAG，再到智能体 RAG，最后到智能体 AI 的转变。</mark>
 
 The intent of this book is to discuss the design patterns of how specialized agents can work in concert and collaborate to achieve complex goals, and you will see one paradigm of collaboration and interaction in each chapter.
 
@@ -102,7 +102,7 @@ Finally, the agent achieves self-improvement by refining its own context enginee
 
 **Fig. 3:** Various instances demonstrating the spectrum of agent complexity.
 
-<mark>**图 3：**演示智能体复杂性谱的各种实例。</mark>
+<mark><strong>图 3：</strong>演示智能体复杂性谱的各种实例。</mark>
 
 ---
 
@@ -148,7 +148,7 @@ For instance, if you're exploring sustainable energy, the agent might identify y
 
 **Fig. 4:** Five hypotheses about the future of agents
 
-<mark>**图 4：**关于智能体未来的五个假设</mark>
+<mark><strong>图 4：</strong>关于智能体未来的五个假设</mark>
 
 ### Hypothesis 3: Embodiment and Physical World Interaction | <mark>假设 3：具身化和物理世界交互</mark>
 
@@ -174,11 +174,11 @@ This system would be a dynamic entity, not a single agent. It would have the abi
 
 - **Architectural Modification:** At the deepest level, individual agents can rewrite their own source code and re-architect their internal structures for higher efficiency, as in the original hypothesis.
 
-<mark>- **架构修改：**在最深层次，个体智能体可以重写它们自己的源代码并重新架构它们的内部结构以获得更高效率，如原始假设中所述。</mark>
+- <mark><strong>架构修改：</strong>在最深层次，个体智能体可以重写它们自己的源代码并重新架构它们的内部结构以获得更高效率，如原始假设中所述。</mark>
 
 - **Instructional Modification:** At a higher level, the system continuously performs automatic prompt engineering and context engineering. It refines the instructions and information given to each agent, ensuring they are operating with optimal guidance without any human intervention.
 
-<mark>- **指令修改：**在更高层次，系统持续执行自动提示工程和上下文工程。它改进给予每个智能体的指令和信息，确保它们在没有任何人工干预的情况下以最优指导运行。</mark>
+- <mark><strong>指令修改：</strong>在更高层次，系统持续执行自动提示工程和上下文工程。它改进给予每个智能体的指令和信息，确保它们在没有任何人工干预的情况下以最优指导运行。</mark>
 
 For instance, an entrepreneur would simply declare the intent: "Launch a successful e-commerce business selling artisanal coffee." The system, without further programming, would spring into action. It might initially spawn a "Market Research" agent and a "Branding" agent. Based on the initial findings, it could decide to remove the branding agent and spawn three new specialized agents: a "Logo Design" agent, a "Webstore Platform" agent, and a "Supply Chain" agent. It would constantly tune their internal prompts for better performance. If the webstore agent becomes a bottleneck, the system might duplicate it into three parallel agents to work on different parts of the site, effectively re-architecting its own structure on the fly to best achieve the declared goal.
 
@@ -198,14 +198,14 @@ In essence, an AI agent represents a significant leap from traditional models, f
 
 1. Cloudera, Inc. (April 2025), 96% of enterprises are increasing their use of AI agents. [https://www.cloudera.com/about/news-and-blogs/press-releases/2025-04-16-96-percent-of-enterprises-are-expanding-use-of-ai-agents-according-to-latest-data-from-cloudera.html](https://www.cloudera.com/about/news-and-blogs/press-releases/2025-04-16-96-percent-of-enterprises-are-expanding-use-of-ai-agents-according-to-latest-data-from-cloudera.html)
 
-<mark>1. Cloudera, Inc.（2025 年 4 月），96% 的企业正在增加对 AI 智能体的使用。</mark>
+1. <mark>Cloudera, Inc.（2025 年 4 月），96% 的企业正在增加对 AI 智能体的使用。</mark>
 
 2. Autonomous generative AI agents: [https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2025/autonomous-generative-ai-agents-still-under-development.html](https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2025/autonomous-generative-ai-agents-still-under-development.html)
 
-<mark>2. 自主生成式 AI 智能体：</mark>
+2. <mark>自主生成式 AI 智能体：</mark>
 
 3. Market.us. Global Agentic AI Market Size, Trends and Forecast 2025–2034. [https://market.us/report/agentic-ai-market/](https://market.us/report/agentic-ai-market/)
 
-<mark>3. Market.us. 全球智能体 AI 市场规模、趋势和 2025-2034 年预测。</mark>
+3. <mark>Market.us. 全球智能体 AI 市场规模、趋势和 2025-2034 年预测。</mark>
 
 ---

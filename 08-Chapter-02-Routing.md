@@ -18,11 +18,11 @@ For instance, an agent designed for customer inquiries, when equipped with a rou
 
 1. Analyze the user's query.
 
-<mark>1. 分析用户的查询。</mark>
+1. <mark>分析用户的查询。</mark>
 
 2. **Route** the query based on its *intent*:
 
-<mark>2. **路由**基于其*意图*的查询：</mark>
+2. <mark><strong>路由</strong>基于其<em>意图</em>的查询：</mark>
 
    - If the intent is "check order status", route to a sub-agent or tool chain that interacts with the order database.
 
@@ -48,19 +48,19 @@ The core component of the Routing pattern is a mechanism that performs the evalu
 
 **LLM-based Routing:** The language model itself can be prompted to analyze the input and output a specific identifier or instruction that indicates the next step or destination. For example, a prompt might ask the LLM to "Analyze the following user query and output only the category: 'Order Status', 'Product Info', 'Technical Support', or 'Other'." The agentic system then reads this output and directs the workflow accordingly.
 
-<mark>**基于 LLM 的路由：**可通过提示让语言模型分析输入，并输出指示下一步或目标的标识或指令。例如，可提示 LLM：「分析以下用户查询，并仅输出类别：『订单状态』、『产品信息』、『技术支持』或『其他』。」随后，智能体系统读取该输出并相应引导工作流。</mark>
+<mark><strong>基于 LLM 的路由：</strong>可通过提示让语言模型分析输入，并输出指示下一步或目标的标识或指令。例如，可提示 LLM：「分析以下用户查询，并仅输出类别：『订单状态』、『产品信息』、『技术支持』或『其他』。」随后，智能体系统读取该输出并相应引导工作流。</mark>
 
 **Embedding-based Routing:** The input query can be converted into a vector embedding (see RAG, Chapter 14). This embedding is then compared to embeddings representing different routes or capabilities. The query is routed to the route whose embedding is most similar. This is useful for semantic routing, where the decision is based on the meaning of the input rather than just keywords.
 
-<mark>**基于嵌入的路由：**输入查询可以转换为向量嵌入（参见 RAG，第 14 章）。然后将此嵌入与代表不同路线或能力的嵌入进行比较。查询被路由到嵌入最相似的路线。这对语义路由很有用，其中决策基于输入的含义而不仅仅是关键字。</mark>
+<mark><strong>基于嵌入的路由：</strong>输入查询可以转换为向量嵌入（参见 RAG，第 14 章）。然后将此嵌入与代表不同路线或能力的嵌入进行比较。查询被路由到嵌入最相似的路线。这对语义路由很有用，其中决策基于输入的含义而不仅仅是关键字。</mark>
 
 **Rule-based Routing:** This involves using predefined rules or logic (e.g., if-else statements, switch cases) based on keywords, patterns, or structured data extracted from the input. This can be faster and more deterministic than LLM-based routing, but is less flexible for handling nuanced or novel inputs.
 
-<mark>**基于规则的路由：**这涉及使用基于关键字、模式或从输入提取的结构化数据的预定义规则或逻辑（如 if-else 语句、switch 情况）。这可以比基于 LLM 的路由更快、更确定，但在处理细致入微或新颖输入方面灵活性较差。</mark>
+<mark><strong>基于规则的路由：</strong>这涉及使用基于关键字、模式或从输入提取的结构化数据的预定义规则或逻辑（如 if-else 语句、switch 情况）。这可以比基于 LLM 的路由更快、更确定，但在处理细致入微或新颖输入方面灵活性较差。</mark>
 
 **Machine Learning Model-Based Routing:** It employs a discriminative model, such as a classifier, that has been specifically trained on a small corpus of labeled data to perform a routing task. While it shares conceptual similarities with embedding-based methods, its key characteristic is the supervised fine-tuning process, which adjusts the model's parameters to create a specialized routing function.
 
-<mark>**基于机器学习模型的路由：**它采用判别模型（如分类器），专门在标记数据的小型语料库上训练以执行路由任务。虽然它与基于嵌入的方法在概念上相似，但其关键特征是监督微调过程，该过程调整模型参数以创建专门的路由功能。</mark>
+<mark><strong>基于机器学习模型的路由：</strong>它采用判别模型（如分类器），专门在标记数据的小型语料库上训练以执行路由任务。虽然它与基于嵌入的方法在概念上相似，但其关键特征是监督微调过程，该过程调整模型参数以创建专门的路由功能。</mark>
 
 ---
 
@@ -355,7 +355,7 @@ This script demonstrates the Google ADK approach to routing, where a Coordinator
 
 **Fig.1:** Router pattern, using an LLM as a Router
 
-<mark>**图 1：**路由器模式：使用 LLM 作为路由器。</mark>
+<mark><strong>图 1：</strong>路由器模式：使用 LLM 作为路由器。</mark>
 
 ---
 
@@ -363,15 +363,15 @@ This script demonstrates the Google ADK approach to routing, where a Coordinator
 
 **What:** Agentic systems must often respond to a wide variety of inputs and situations that cannot be handled by a single, linear process. A simple sequential workflow lacks the ability to make decisions based on context. Without a mechanism to choose the correct tool or sub-process for a specific task, the system remains rigid and non-adaptive.
 
-<mark>**什么：**智能体系统往往需要应对多样输入与情境，无法由单一线性流程覆盖。简单的顺序工作流缺乏基于上下文的决策能力；若无选择适当工具或子流程的机制，系统将保持僵化且缺乏适应性。</mark>
+<mark><strong>什么：</strong>智能体系统往往需要应对多样输入与情境，无法由单一线性流程覆盖。简单的顺序工作流缺乏基于上下文的决策能力；若无选择适当工具或子流程的机制，系统将保持僵化且缺乏适应性。</mark>
 
 **Why:** The Routing pattern provides a standardized solution by introducing conditional logic into an agent's operational framework. It enables the system to first analyze an incoming query to determine its intent or nature. Based on this analysis, the agent dynamically directs the flow of control to the most appropriate specialized tool, function, or sub-agent.
 
-<mark>**为什么：**路由模式通过在智能体的操作框架中引入条件逻辑，提供标准化解法。系统先分析传入查询以确定其意图或性质；在此基础上，智能体将控制流动态引导至最合适的专门工具、功能或子智能体。</mark>
+<mark><strong>为什么：</strong>路由模式通过在智能体的操作框架中引入条件逻辑，提供标准化解法。系统先分析传入查询以确定其意图或性质；在此基础上，智能体将控制流动态引导至最合适的专门工具、功能或子智能体。</mark>
 
 **Rule of Thumb:** Use the Routing pattern when an agent must decide between multiple distinct workflows, tools, or sub-agents based on the user's input or the current state. It is essential for applications that need to triage or classify incoming requests to handle different types of tasks.
 
-<mark>**经验法则：**当智能体必须基于用户输入或当前状态在多个不同的工作流、工具或子智能体之间做决定时，使用路由模式。对于需要对传入请求进行分类或分流以处理不同类型任务的应用程序来说，这是必不可少的。</mark>
+<mark><strong>经验法则：</strong>当智能体必须基于用户输入或当前状态在多个不同的工作流、工具或子智能体之间做决定时，使用路由模式。对于需要对传入请求进行分类或分流以处理不同类型任务的应用程序来说，这是必不可少的。</mark>
 
 ---
 
@@ -379,19 +379,19 @@ This script demonstrates the Google ADK approach to routing, where a Coordinator
 
 - Routing enables agents to make dynamic decisions about the next step in a workflow based on conditions.
 
-<mark>- 路由使智能体能够基于条件对工作流中的下一步做出动态决策。</mark>
+- <mark>路由使智能体能够基于条件对工作流中的下一步做出动态决策。</mark>
 
 - It allows agents to handle diverse inputs and adapt their behavior, moving beyond linear execution.
 
-<mark>- 它使智能体能处理多样化输入并自适应地调整行为，突破线性执行。</mark>
+- <mark>它使智能体能处理多样化输入并自适应地调整行为，突破线性执行。</mark>
 
 - Routing logic can be implemented using LLMs, rule-based systems, or embedding similarity.
 
-<mark>- 路由逻辑可用 LLM、规则系统或嵌入相似性实现。</mark>
+- <mark>路由逻辑可用 LLM、规则系统或嵌入相似性实现。</mark>
 
 - Frameworks like LangGraph and Google ADK provide structured ways to define and manage routing within agent workflows, albeit with different architectural approaches.
 
-<mark>- LangGraph 与 Google ADK 等框架提供结构化方式来定义与管理智能体工作流中的路由（架构取径虽异）。</mark>
+- <mark>LangGraph 与 Google ADK 等框架提供结构化方式来定义与管理智能体工作流中的路由（架构取径虽异）。</mark>
 
 ---
 
