@@ -38,9 +38,9 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 - [x] [致谢 | Dedication](01-Dedication.md)
 - [x] [鸣谢 | Acknowledgment](02-Acknowledgment.md)
 - [x] [前言 | Foreword](03-Foreword.md)
-- [ ] [思想领袖的观点：权力与责任 | A Thought Leader's Perspective: Power and Responsibility](04-Thought-Leader.md)
-- [ ] [介绍 | Introduction](05-Introduction.md)
-- [ ] [是什么让 AI 系统成为"智能体"？ | What makes an AI system an "agent"?](06-What-Makes-Agent.md)
+- [x] [思想领袖的观点：权力与责任 | A Thought Leader's Perspective: Power and Responsibility](04-Thought-Leader.md)
+- [x] [介绍 | Introduction](05-Introduction.md)
+- [x] [是什么让 AI 系统成为"智能体"？ | What makes an AI system an "agent"?](06-What-Makes-Agent.md)
 
 ### 第一部分 | Part One (103 页)
 - [ ] [第一章：提示链 | Chapter 1: Prompt Chaining](07-Chapter-01.md) ([代码](https://colab.research.google.com/drive/15XCzDOvBhIQaZ__xkvruf5sP9OznAbK9))
