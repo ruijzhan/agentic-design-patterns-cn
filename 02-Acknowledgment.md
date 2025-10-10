@@ -10,7 +10,7 @@ First and foremost, I thank Google for adhering to its mission, empowering Googl
 
 I am grateful to the Office of the CTO for giving me the opportunity to explore new areas, for adhering to its mission of "practical magic," and for its capacity to adapt to new emerging opportunities.
 
-<mark>感谢首席技术官办公室给予我探索新领域的机会，始终秉持其「实用魔法」的使命，并能敏捷把握新涌现的机遇。</mark>
+<mark>感谢 CTO 办公室给予我探索新领域的机会，始终秉持其「实用魔法」的使命，并能敏捷把握新涌现的机遇。</mark>
 
 I would like to extend my heartfelt thanks to Will Grannis, our VP, for the trust he puts in people and for being a servant leader. To John Abel, my manager, for encouraging me to pursue my activities and for always providing great guidance with his British acumen. I extend my gratitude to Antoine Larmanjat for our work on LLMs in code, Hann Hann Wang for agent discussions, and Yingchao Huang for time series insights. Thanks to Ashwin Ram for leadership, Massy Mascaro for inspiring work, Jennifer Bennett for technical expertise, Brett Slatkin for engineering, and Eric Schen for stimulating discussions. The OCTO team, especially Scott Penberthy, deserves recognition. Finally, deep appreciation to Patricia Florissi for her inspiring vision of Agents' societal impact.
 
@@ -63,5 +63,3 @@ This project truly would not have been possible without you. All the credit goes
 *All my royalties are donated to Save the Children.*
 
 <mark><em>我的所有版税均捐赠给救助儿童会。</em></mark>
-
----
