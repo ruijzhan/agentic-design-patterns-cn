@@ -172,7 +172,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 - **专业性**: 保持技术文档严谨性
 - **一致性**: 术语翻译前后统一
 
-详细翻译规范请参考 [rules.md](rules.md) 文档。
+详细翻译规范请参考 [rules.md](/rules/rules.md) 文档。
 
 ---
 
@@ -234,8 +234,8 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
   - ✅ 完成致谢、鸣谢和前言章节翻译
   - ✅ 完成思想领袖观点章节翻译 (Marco Argenti/Goldman Sachs)
   - ✅ 完成介绍和智能体定义章节翻译
-  - ✅ 完成第一部分全部 7 章翻译 (提示链、路由、并行化、反思、工具使用、规划、多智能体协作)
-  - ✅ 建立翻译规范和质量标准 ([rules.md](rules.md))
+  - ✅ 完成第一部分全部 7 章 AI 翻译 (提示链、路由、并行化、反思、工具使用、规划、多智能体协作)
+  - ✅ 建立翻译规范和质量标准 ([rules.md](rules/rules.md))
   - ✅ 实现 GitHub 兼容的高亮格式 (`<mark>` 标签)
   - ✅ 创建专业 README 文档
   - ✅ 更新文件命名规范 (两位数前缀系统)
