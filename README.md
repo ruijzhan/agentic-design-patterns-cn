@@ -43,7 +43,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 - [x] [献辞 | Dedication](01-Dedication.md)
 - [x] [致谢 | Acknowledgment](02-Acknowledgment.md)
 - [x] [序言 | Foreword](03-Foreword.md)
-- [x] [思想领袖的观点：权力与责任 | A Thought Leader's Perspective: Power and Responsibility](04-Thought-Leader.md)
+- [x] [思想领袖的洞见：权力与责任 | A Thought Leader's Perspective: Power and Responsibility](04-Thought-Leader.md)
 - [x] [介绍 | Introduction](05-Introduction.md)
 - [x] [是什么让 AI 系统成为"智能体"？ | What makes an AI system an "agent"?](06-What-Makes-Agent.md)
 

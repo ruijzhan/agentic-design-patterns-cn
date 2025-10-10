@@ -60,6 +60,8 @@ This project truly would not have been possible without you. All the credit goes
 
 <mark>若无诸位，此项目无从完成。所有功劳归你们，所有错误在我。</mark>
 
+---
+
 *All my royalties are donated to Save the Children.*
 
 <mark><em>我的所有版税均捐赠给救助儿童会。</em></mark>

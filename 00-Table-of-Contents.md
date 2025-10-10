@@ -123,6 +123,7 @@ Pre Print | <mark>预印本</mark>
 https://www.amazon.com/Agentic-Design-Patterns-Hands-Intelligent/dp/3032014018/
 
 ---
+
 All my royalties will be donated to Save the Children.
 
 <mark>本书的所有版税将捐赠给救助儿童会（Save the Children）。</mark>
