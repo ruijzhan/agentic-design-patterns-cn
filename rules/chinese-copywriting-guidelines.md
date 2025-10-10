@@ -10,15 +10,15 @@ Welcome to "Agentic Design Patterns: A Hands-On Guide to Building Intelligent Sy
 
 The advent of powerful large language models (LLMs) has provided unprecedented capabilities for understanding and generating human-like content such as text and media, serving as the cognitive engine for many of these agents. However, orchestrating these capabilities into systems that can reliably achieve complex goals requires more than just a powerful model. It requires structure, design, and a thoughtful approach to how the agent perceives, plans, acts, and interacts.
 
-<mark>大语言模型的出现带来了前所未有的能力，能够理解并生成类人内容（如文本与多媒体），成为众多智能体的认知引擎。然而，要把这些能力编排成能够可靠达成复杂目标的系统，仅有强大的模型还不够；还需要结构化的设计，以及对智能体如何感知、规划、行动与交互的深思熟虑。</mark>
+<mark>大语言模型的出现带来了前所未有的能力，能够理解并生成类人内容（如文本与多媒体），成为众多智能体的认知引擎。然而，要把这些能力编排成可可靠达成复杂目标的系统，仅有强大的模型还不够；还需要结构化的设计，以及对智能体如何感知、规划、行动与交互的深思熟虑。</mark>
 
 Think of building intelligent systems as creating a complex work of art or engineering on a canvas. This canvas isn't a blank visual space, but rather the underlying infrastructure and frameworks that provide the environment and tools for your agents to exist and operate. It's the foundation upon which you'll build your intelligent application, managing state, communication, tool access, and the flow of logic.
 
-<mark>不妨把构建智能系统理解为在一套「技术底座」上搭建工程：这里的“底座”并非可视化空间，而是为智能体提供生存与运行环境的底层基础设施与框架。它是构建智能应用的基石，承担状态管理、通信、工具接入与逻辑流转。</mark>
+<mark>不妨将构建智能系统想象为在一块「画布」上创作：这块画布并非空白的可视空间，而是为智能体提供生存与运行环境的底层基础设施与框架。它是构建智能应用的基石，承担状态管理、通信、工具接入与逻辑流转。</mark>
 
 Building effectively on this agentic canvas demands more than just throwing components together. It requires understanding proven techniques – **patterns** – that address common challenges in designing and implementing agent behavior. Just as architectural patterns guide the construction of a building, or design patterns structure software, agentic design patterns provide reusable solutions for the recurring problems you'll face when bringing intelligent agents to life on your chosen canvas.
 
-<mark>要在这套智能体「技术底座」上有效构建，远不止把组件简单拼在一起；你需要理解那些行之有效的技术——也就是<strong>模式（Pattern）</strong>——以应对智能体行为设计与实现中的常见难题。正如建筑模式指导施工、设计模式塑造软件架构，智能体设计模式也为你在这一底座上反复遇到的问题提供可复用的解法。</mark>
+<mark>要在这块智能体「画布」上有效构建，远不止把组件简单拼在一起；你需要理解那些行之有效的技术——也就是<strong>模式（Pattern）</strong>——以应对智能体行为设计与实现中的常见难题。正如建筑模式指导施工、设计模式塑造软件架构，智能体设计模式也为你在这块画布上反复遇到的问题提供可复用的解法。</mark>
 
 ---
 
@@ -30,7 +30,7 @@ At its core, an agentic system is a computational entity designed to perceive it
 
 Imagine you need a system to manage customer inquiries. A traditional system might follow a fixed script. An agentic system, however, could perceive the nuances of a customer's query, access knowledge bases, interact with other internal systems (like order management), potentially ask clarifying questions, and proactively resolve the issue, perhaps even anticipating future needs. These agents operate on the canvas of your application's infrastructure, utilizing the services and data available to them.
 
-<mark>设想你需要一个系统来处理客户咨询。传统系统也许照本宣科地执行脚本；而智能体系统能够洞察咨询的细微差别，访问知识库，与其他内部系统（如订单管理）交互，并在必要时提出澄清问题，主动解决问题，甚至预判后续需求。这些智能体运行在你的应用基础设施「技术底座」之上，善用触手可及的服务与数据。</mark>
+<mark>设想你需要一个系统来处理客户咨询。传统系统也许照本宣科地执行脚本；而智能体系统能够洞察咨询的细微差别，访问知识库，与其他内部系统（如订单管理）交互，并在必要时提出澄清问题，主动解决问题，甚至预判后续需求。这些智能体运行在你的应用基础设施「画布」之上，善用触手可及的服务与数据。</mark>
 
 Agentic systems are often characterized by features like **autonomy**, allowing them to act without constant human oversight; **proactiveness**, initiating actions towards their goals; and **reactiveness**, responding effectively to changes in their environment. They are fundamentally **goal-oriented**, constantly working towards objectives. A critical capability is **tool use**, enabling them to interact with external APIs, databases, or services – effectively reaching out beyond their immediate canvas. They possess **memory**, retain information across interactions, and can engage in **communication** with users, other systems, or even other agents operating on the same or connected canvases.
 
@@ -46,7 +46,7 @@ Effectively realizing these characteristics introduces significant complexity. H
 
 This complexity is precisely why agentic design patterns are indispensable. They are not rigid rules, but rather battle-tested templates or blueprints that offer proven approaches to standard design and implementation challenges in the agentic domain. By recognizing and applying these design patterns, you gain access to solutions that enhance the structure, maintainability, reliability, and efficiency of the agents you build on your canvas.
 
-<mark>复杂性正是智能体设计模式不可或缺的原因。它们不是刻板的教条，而是经受实战考验的模板与蓝图，为智能体领域的通用设计与实现难题提供可靠路径。识别并应用这些模式，能显著提升你在这一底座上构建的智能体之结构性、可维护性、可靠性与效率。</mark>
+<mark>复杂性正是智能体设计模式不可或缺的原因。它们不是刻板的教条，而是经受实战考验的模板与蓝图，为智能体领域的通用设计与实现难题提供可靠路径。识别并应用这些模式，能显著提升你在画布上构建的智能体之结构性、可维护性、可靠性与效率。</mark>
 
 Using design patterns helps you avoid reinventing fundamental solutions for tasks like managing conversational flow, integrating external capabilities, or coordinating multiple agent actions. They provide a common language and structure that makes your agent's logic clearer and easier for others (and yourself in the future) to understand and maintain. Implementing patterns designed for error handling or state management directly contributes to building more robust and reliable systems. Leveraging these established approaches accelerates your development process, allowing you to focus on the unique aspects of your application rather than the foundational mechanics of agent behavior.
 
@@ -54,7 +54,7 @@ Using design patterns helps you avoid reinventing fundamental solutions for task
 
 This book extracts 21 key design patterns that represent fundamental building blocks and techniques for constructing sophisticated agents on various technical canvases. Understanding and applying these patterns will significantly elevate your ability to design and implement intelligent systems effectively.
 
-<mark>本书提炼出 21 个关键设计模式，构成了在不同「技术底座」上构建复杂智能体的基本积木与方法。理解并运用这些模式，将显著提升你设计与实现智能系统的能力。</mark>
+<mark>本书提炼出 21 个关键设计模式，构成了在不同技术「画布」上构建复杂智能体的基本积木与方法。理解并运用这些模式，将显著提升你设计与实现智能系统的能力。</mark>
 
 ---
 
@@ -78,7 +78,7 @@ The book is organized chapter by chapter, with each chapter delving into a singl
 
 - A **Hands-On Code Example** offering practical, runnable code that demonstrates the pattern's implementation using prominent agent development frameworks. This is where you'll see how to apply the pattern within the context of a technical canvas.
 
-- <mark><strong>实践代码示例</strong>：用主流智能体开发框架给出可运行示例，在具体「技术底座」中演示如何应用该模式。</mark>
+- <mark><strong>实践代码示例</strong>：用主流智能体开发框架给出可运行示例，在具体技术「画布」中演示如何应用该模式。</mark>
 
 - **Key Takeaways** summarizing the most crucial points for quick review.
 
@@ -90,7 +90,7 @@ The book is organized chapter by chapter, with each chapter delving into a singl
 
 While the chapters are ordered to build concepts progressively, feel free to use the book as a reference, jumping to chapters that address specific challenges you face in your own agent development projects. The appendices provide a comprehensive look at advanced prompting techniques, principles for applying AI agents in real-world environments, and an overview of essential agentic frameworks. To complement this, practical online-only tutorials are included, offering step-by-step guidance on building agents with specific platforms like AgentSpace and for the command-line interface. The emphasis throughout is on practical application; we strongly encourage you to run the code examples, experiment with them, and adapt them to build your own intelligent systems on your chosen canvas.
 
-<mark>虽然章节循序铺陈、层层递进，但你也可以将其当作参考手册，直达与你当前挑战相关的章节。附录囊括高级提示技巧、在真实环境中应用 AI 智能体的原则，以及主流智能体框架的概览。为便于上手，还配有仅在线提供的实操教程，手把手演示如何在特定平台（如 AgentSpace）与命令行界面上构建智能体。全书强调「可操作性」：我们鼓励你运行示例、尽情试验，并按需调整，在你选定的「技术底座」上搭建自己的智能系统。</mark>
+<mark>虽然章节循序铺陈、层层递进，但你也可以将其当作参考手册，直达与你当前挑战相关的章节。附录囊括高级提示技巧、在真实环境中应用 AI 智能体的原则，以及主流智能体框架的概览。为便于上手，还配有仅在线提供的实操教程，手把手演示如何在特定平台（如 AgentSpace）与命令行界面上构建智能体。全书强调「可操作性」：我们鼓励你运行示例、尽情试验，并按需调整，在你选择的「画布」上搭建自己的智能系统。</mark>
 
 A great question I hear is, 'With AI changing so fast, why write a book that could be quickly outdated?' My motivation was actually the opposite. It's precisely because things are moving so quickly that we need to step back and identify the underlying principles that are solidifying. Patterns like RAG, Reflection, Routing, Memory and the others I discuss, are becoming fundamental building blocks. This book is an invitation to reflect on these core ideas, which provide the foundation we need to build upon. Humans need these reflection moments on foundation patterns.
 
@@ -102,14 +102,126 @@ A great question I hear is, 'With AI changing so fast, why write a book that cou
 
 To provide a tangible "canvas" for our code examples (see also Appendix), we will primarily utilize three prominent agent development frameworks. **LangChain**, along with its stateful extension **LangGraph**, provides a flexible way to chain together language models and other components, offering a robust canvas for building complex sequences and graphs of operations. **Crew AI** provides a structured framework specifically designed for orchestrating multiple AI agents, roles, and tasks, acting as a canvas particularly well-suited for collaborative agent systems. The **Google Agent Developer Kit (Google ADK)** offers tools and components for building, evaluating, and deploying agents, providing another valuable canvas, often integrated with Google's AI infrastructure.
 
-<mark>为了给代码示例提供具体的「承载底座」（亦可参阅附录），本书主要采用三类代表性智能体开发框架。<strong>LangChain</strong> 与其有状态扩展 <strong>LangGraph</strong>，可灵活串联语言模型与各类组件，适于构建复杂的序列与有向图；<strong>Crew AI</strong> 提供专为多智能体、角色与任务编排而设的结构化框架，尤其适合协作型系统；<strong>Google Agent Developer Kit（Google ADK）</strong> 则提供构建、评估与部署智能体的工具与部件，常与 Google 的 AI 基础设施协同作为另一类「技术底座」。</mark>
+<mark>为了给代码示例提供具体的「画布」（亦可参阅附录），本书主要采用三类代表性智能体开发框架。<strong>LangChain</strong> 与其有状态扩展 <strong>LangGraph</strong>，可灵活串联语言模型与各类组件，适于构建复杂的序列与有向图；<strong>Crew AI</strong> 提供专为多智能体、角色与任务编排而设的结构化框架，尤其适合协作型系统；<strong>Google Agent Developer Kit (Google ADK)</strong> 则提供构建、评估与部署智能体的工具与部件，常与 Google 的 AI 基础设施协同作为另一块「画布」。</mark>
 
 These frameworks represent different facets of the agent development canvas, each with its strengths. By showing examples across these tools, you will gain a broader understanding of how the patterns can be applied regardless of the specific technical environment you choose for your agentic systems. The examples are designed to clearly illustrate the pattern's core logic and its implementation on the framework's canvas, focusing on clarity and practicality.
 
-<mark>这些框架呈现了智能体开发「技术底座」的不同切面，各有所长。跨工具对照示例，有助于你理解模式如何在不同技术语境中落地。示例专注呈现模式的核心逻辑与在框架上的实现，强调清晰与实用。</mark>
+<mark>这些框架呈现了智能体开发「画布」的不同切面，各有所长。跨工具对照示例，有助于你理解模式如何在不同技术语境中落地。示例专注呈现模式的核心逻辑与在框架上的实现，强调清晰与实用。</mark>
 
 By the end of this book, you will not only understand the fundamental concepts behind 21 essential agentic patterns but also possess the practical knowledge and code examples to apply them effectively, enabling you to build more intelligent, capable, and autonomous systems on your chosen development canvas. Let's begin this hands-on journey!
 
-<mark>通读全书后，你不仅将理解 21 种关键智能体设计模式的基本理念，还将收获足以落地的实践知识与代码示例，助你在所选「技术底座」上高效应用这些模式，构建更智能、更强大、更具自主性的系统。让我们开始这段动手之旅！</mark>
+<mark>通读全书后，你不仅将理解 21 种关键智能体设计模式的基本理念，还将收获足以落地的实践知识与代码示例，助你在所选「画布」上高效应用这些模式，构建更智能、更强大、更具自主性的系统。让我们开始这段动手之旅！</mark>
 
 ---
+
+错误：
+
+> 嗨！你知道嘛？今天前台的小妹跟我说 "喵" 了哎！
+>
+> 嗨！你知道嘛？今天前台的小妹跟我说"喵"了哎！
+>
+> 核磁共振成像 (NMRI) 是什么原理都不知道？JFGI!
+>
+> 核磁共振成像 (NMRI) 是什么原理都不知道？JFGI!
+
+例外：中文句子内夹有英文书籍名、报刊名时，不应借用中文书名号，应以英文斜体表示。
+
+### 数字使用半角字符
+
+正确：
+
+> 这个蛋糕只卖 1000 元。
+
+错误：
+
+> 这个蛋糕只卖 1000 元。
+
+例外：在设计稿、宣传海报中如出现极少量数字的情形时，为方便文字对齐，是可以使用全角数字的。
+
+### 遇到完整的英文整句、特殊名词，其内容使用半角标点
+
+正确：
+
+> 乔布斯那句话是怎么说的？「Stay hungry, stay foolish.」
+>
+> 推荐你阅读 _Hackers & Painters: Big Ideas from the Computer Age_，非常地有趣。
+
+错误：
+
+> 乔布斯那句话是怎么说的？「Stay hungry，stay foolish。」
+>
+> 推荐你阅读《Hackers＆Painters：Big Ideas from the Computer Age》，非常的有趣。
+
+## 名词
+
+### 专有名词使用正确的大小写
+
+大小写相关用法原属于英文书写范畴，不属于本 wiki 讨论内容，在这里只对部分易错用法进行简述。
+
+正确：
+
+> 使用 GitHub 登录
+>
+> 我们的客户有 GitHub、Foursquare、Microsoft Corporation、Google、Facebook, Inc.。
+
+错误：
+
+> 使用 github 登录
+>
+> 使用 GITHUB 登录
+>
+> 使用 Github 登录
+>
+> 使用 gitHub 登录
+>
+> 使用 g ｲんĤЦ8 登录
+>
+> 我们的客户有 github、foursquare、microsoft corporation、google、facebook, inc.。
+>
+> 我们的客户有 GITHUB、FOURSQUARE、MICROSOFT CORPORATION、GOOGLE、FACEBOOK, INC.。
+>
+> 我们的客户有 Github、FourSquare、MicroSoft Corporation、Google、FaceBook, Inc.。
+>
+> 我们的客户有 gitHub、fourSquare、microSoft Corporation、google、faceBook, Inc.。
+>
+> 我们的客户有 g ｲんĤЦ8、ｷ ouЯƧqu ﾑгє、๓เςг๏ร๏Ŧt ς๏гק๏гคtเ๏ภn、900913、ƒ4 ᄃëв๏๏к, IПᄃ.。
+
+注意：当网页中需要配合整体视觉风格而出现全部大写／小写的情形，HTML 中请使用标淮的大小写规范进行书写；并通过 `text-transform: uppercase;`／`text-transform: lowercase;` 对表现形式进行定义。
+
+### 不要使用不地道的缩写
+
+正确：
+
+> 我们需要一位熟悉 TypeScript、HTML5，至少理解一种框架（如 React、Next.js）的前端开发者。
+
+错误：
+
+> 我们需要一位熟悉 Ts、h5，至少理解一种框架（如 RJS、nextjs）的 FED。
+
+## 争议
+
+以下用法略带有个人色彩，即：无论是否遵循下述规则，从语法的角度来讲都是**正确**的。
+
+### 链接之间增加空格
+
+用法：
+
+> 请 [提交一个 issue](#) 并分配给相关同事。
+>
+> 访问我们网站的最新动态，请 [点击这里](#) 进行订阅！
+
+对比用法：
+
+> 请[提交一个 issue](#)并分配给相关同事。
+>
+> 访问我们网站的最新动态，请[点击这里](#)进行订阅！
+
+### 简体中文使用直角引号
+
+用法：
+
+> 「老师，『有条不紊』的『紊』是什么意思？」
+
+对比用法：
+
+> “老师，‘有条不紊’的‘紊’是什么意思？”

@@ -10,9 +10,9 @@
 
 **<mark>总页数：424 页</mark>**
 
-### Dedication | <mark>致谢</mark>
+### Dedication | <mark>献辞</mark>
 
-### Acknowledgment | <mark>鸣谢</mark>
+### Acknowledgment | <mark>致谢</mark>
 
 ### Foreword | <mark>序言</mark>
 
@@ -50,7 +50,7 @@
 
 9. **Chapter 9: Learning and Adaptation | <mark>第九章：学习与适应</mark>**  
 
-10. **Chapter 10: Model Context Protocol (MCP) | <mark>第十章：模型上下文协议 (MCP)</mark>**  
+10. **Chapter 10: Model Context Protocol (MCP) | <mark>第十章：模型上下文协议（MCP）</mark>**  
 
 11. **Chapter 11: Goal Setting and Monitoring | <mark>第十一章：目标设定与监控</mark>**  
 
@@ -98,9 +98,9 @@
 
 24. **Appendix C - Quick overview of Agentic Frameworks | <mark>附录 C - 智能体框架快速概览</mark>**  
 
-25. **Appendix D - Building an Agent with AgentSpace (online only) | <mark>附录 D - 使用 AgentSpace 构建智能体（仅在线版本）</mark>**  
+25. **Appendix D - Building an Agent with AgentSpace (online only) | <mark>附录 D - 使用 AgentSpace 构建智能体（仅在线）</mark>**  
 
-26. **Appendix E - AI Agents on the CLI (online) | <mark>附录 E - 命令行中的 AI 智能体（在线版本）</mark>**  
+26. **Appendix E - AI Agents on the CLI (online) | <mark>附录 E - 命令行中的 AI 智能体（在线）</mark>**  
 
 27. **Appendix F - Under the Hood: An Inside Look at the Agents' Reasoning Engines | <mark>附录 F - 深入了解：智能体推理引擎内部机制</mark>**  
 
@@ -112,7 +112,7 @@
 
 ## Glossary | <mark>术语表</mark>
 
-## Index of Terms | <mark>术语索引（由 Gemini 生成，含推理步骤作为智能体示例）</mark>
+## Index of Terms | <mark>术语索引（由 Gemini 生成，含推理步骤示例）</mark>
 
 ## Online Contribution - Frequently Asked Questions: Agentic Design Patterns | <mark>在线贡献 - 常见问题：智能体设计模式</mark>
 
@@ -125,4 +125,4 @@ https://www.amazon.com/Agentic-Design-Patterns-Hands-Intelligent/dp/3032014018/
 ---
 All my royalties will be donated to Save the Children.
 
-<mark>本书的所有版税将捐赠给救助儿童会 (Save the Children)。</mark>
+<mark>本书的所有版税将捐赠给救助儿童会（Save the Children）。</mark>

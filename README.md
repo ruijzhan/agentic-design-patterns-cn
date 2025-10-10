@@ -40,8 +40,8 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 ### 前置内容 | Front Matter
 
-- [x] [致谢 | Dedication](01-Dedication.md)
-- [x] [鸣谢 | Acknowledgment](02-Acknowledgment.md)
+- [x] [献辞 | Dedication](01-Dedication.md)
+- [x] [致谢 | Acknowledgment](02-Acknowledgment.md)
 - [x] [序言 | Foreword](03-Foreword.md)
 - [x] [思想领袖的观点：权力与责任 | A Thought Leader's Perspective: Power and Responsibility](04-Thought-Leader.md)
 - [x] [介绍 | Introduction](05-Introduction.md)
