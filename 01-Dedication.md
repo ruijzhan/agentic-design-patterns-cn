@@ -18,7 +18,7 @@ With all my love.
 
 <mark>两岁的你，为我的生命注入了全新的光彩。每当我探寻那些将塑造未来的系统时，我首先想到的，都是你即将步进的世界。</mark>
 
-<mark>致我的儿子 Lorenzo，以及我的女儿 Aurora，</mark>
+<mark>致我的儿子 Leonardo 和 Lorenzo，以及我的女儿 Aurora，</mark>
 
 <mark>我为你们能成长为如今出色的自己，也为你们正建设的美好世界，深感自豪。</mark>
 

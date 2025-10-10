@@ -6,7 +6,7 @@ Of all the technology cycles I've witnessed over the past four decades—from th
 
 I admit, I began as a skeptic. Plausibility, I've found, is often inversely proportional to one's own knowledge of a subject. Early models, for all their fluency, felt like they were operating with a kind of impostor syndrome, optimized for credibility over correctness. But then came the inflection point, a step-change brought about by a new class of "reasoning" models. Suddenly, we weren't just conversing with a statistical machine that predicted the next word in a sequence; we were getting a peek into a nascent form of cognition.
 
-<mark>坦白说，我起初是怀疑的。我发现，一件事物的「貌似可信度」，往往与我们对该主题的了解程度成反比。早期的模型，尽管语言流畅，却仿佛患上了「冒名顶替综合征」，它们被优化的目标是追求可信度，而非正确性。然而，转折点随之而来——<strong>推理</strong>模型的出现，实现了一次质的飞跃。那一刻，我们对话的对象不再仅仅是那个预测词语的统计机器；我们所窥见的，是一种正在萌芽的全新认知。</mark>
+<mark>坦白说，我起初是怀疑的。我发现，一件事物的「貌似可信度」，往往与我们对该主题的了解程度成反比。早期的模型，尽管语言流畅，却仿佛患上了「冒名顶替综合征」，它们被优化的目标是追求可信度，而非正确性。然而，转折点随之而来——<strong>推理模型</strong>的出现，实现了一次质的飞跃。那一刻，我们对话的对象不再仅仅是那个预测词语的统计机器；我们所窥见的，是一种正在萌芽的全新认知。</mark>
 
 The first time I experimented with one of the new agentic coding tools, I felt that familiar spark of magic. I tasked it with a personal project I'd never found the time for: migrating a charity website from a simple web builder to a proper, modern CI/CD environment. For the next twenty minutes, it went to work, asking clarifying questions, requesting credentials, and providing status updates. It felt less like using a tool and more like collaborating with a junior developer. When it presented me with a fully deployable package, complete with impeccable documentation and unit tests, I was floored.
 
@@ -34,7 +34,7 @@ In an agentic world, these tenets take on new urgency. The hard truth is that yo
 
 Ultimately, this journey is not about replacing human ingenuity, but about augmenting it. It demands a new set of skills from all of us: the ability to explain a task with clarity, the wisdom to delegate, and the diligence to verify the quality of the output. It requires us to be humble, to acknowledge what we don't know, and to never stop learning. The pages that follow in this book offer a technical map for building these new frameworks. My hope is that you will use them not just to build what is possible, but to build what is right, what is robust, and what is responsible.
 
-<mark>归根结底，这段旅程并非要取代人类的智慧，而是要增强它。它要求我们所有人掌握一套新的技能：清晰解释任务的能力，明智授权的智慧，以及验证产出质量的勤勉。它要求我们保持谦逊，承认自己的未知，并永不停止学习。本书接下来的篇章给出搭建这些新框架的技术地图。愿各位不止于把可能之事做成，更能把正确、可靠且负责任的事做好”。</mark>
+<mark>归根结底，这段旅程并非要取代人类的智慧，而是要增强它。它要求我们所有人掌握一套新的技能：清晰解释任务的能力，明智授权的智慧，以及验证产出质量的勤勉。它要求我们保持谦逊，承认自己的未知，并永不停止学习。本书接下来的篇章给出搭建这些新框架的技术地图。愿各位不止于把可能之事做成，更能把正确、可靠且负责任的事做好。</mark>
 
 The world is asking every engineer to step up. I am confident we are ready for the challenge.
 
