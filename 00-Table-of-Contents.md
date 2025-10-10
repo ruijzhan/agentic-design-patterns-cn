@@ -8,7 +8,7 @@
 
 ## Table of Contents | <mark>目录</mark>
 
-**<mark>总页数：424 页</mark>**
+<mark><strong>总页数：424 页</strong></mark>
 
 ### Dedication | <mark>献辞</mark>
 
@@ -64,7 +64,7 @@
 
 13. **Chapter 13: Human-in-the-Loop | <mark>第十三章：人在回路中</mark>**  
 
-14. **Chapter 14: Knowledge Retrieval (RAG) | <mark>第十四章：知识检索 (RAG)</mark>**  
+14. **Chapter 14: Knowledge Retrieval (RAG) | <mark>第十四章：知识检索（RAG）</mark>**  
 
 ---
 
@@ -72,7 +72,7 @@
 
 **<mark>总计：114 页</mark>**
 
-15. **Chapter 15: Inter-Agent Communication (A2A) | <mark>第十五章：智能体间通信 (A2A)</mark>**  
+15. **Chapter 15: Inter-Agent Communication (A2A) | <mark>第十五章：智能体间通信（A2A）</mark>**  
 
 16. **Chapter 16: Resource-Aware Optimization | <mark>第十六章：资源感知优化</mark>**  
 
@@ -92,7 +92,7 @@
 
 **<mark>总计：74 页</mark>**
 
-22. **Appendix A: Advanced Prompting Techniques | <mark>附录 A：高级提示技术</mark>**  
+22. **Appendix A - Advanced Prompting Techniques | <mark>附录 A - 高级提示技术</mark>**  
 
 23. **Appendix B - AI Agentic: From GUI to Real world environment | <mark>附录 B - AI 智能体：从图形界面到现实世界环境</mark>**  
 

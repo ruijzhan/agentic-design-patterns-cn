@@ -62,7 +62,7 @@ This book extracts 21 key design patterns that represent fundamental building bl
 
 This book, "Agentic Design Patterns: A Hands-On Guide to Building Intelligent Systems," is crafted to be a practical and accessible resource. Its primary focus is on clearly explaining each agentic pattern and providing concrete, runnable code examples to demonstrate its implementation. Across 21 dedicated chapters, we will explore a diverse range of design patterns, from foundational concepts like structuring sequential operations (Prompt Chaining) and external interaction (Tool Use) to more advanced topics like collaborative work (Multi-Agent Collaboration) and self-improvement (Self-Correction).
 
-<mark>本书旨在成为一部实用且易读的参考。核心在于清晰讲解每一种智能体模式，并配以可运行的代码示例展示其实现。全书用 21 个专章覆盖多种设计模式：从结构化顺序操作（提示链）、外部交互（工具使用）等基础概念，到协同工作（多智能体协作）、自我改进（自我纠正）等进阶主题。</mark>
+<mark>本书旨在成为一部实用且易读的参考。核心在于清晰讲解每一种智能体模式，并配以可运行的代码示例展示其实现。全书用 21 个专章覆盖多种设计模式：从结构化顺序操作（提示链）、外部交互（工具使用）等基础概念，到协同工作（多智能体协作）、自我改进（反思）等进阶主题。</mark>
 
 The book is organized chapter by chapter, with each chapter delving into a single agentic pattern. Within each chapter, you will find:
 
