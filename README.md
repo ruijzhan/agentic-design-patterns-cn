@@ -50,12 +50,12 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 ### 第一部分 | Part One (103 页)
 
 - [x] [第一章：提示链 | Chapter 1: Prompt Chaining](07-Chapter-01-Prompt-Chaining.md)
-- [x] [第二章：路由 | Chapter 2: Routing](08-Chapter-02-Routing.md)
-- [x] [第三章：并行化 | Chapter 3: Parallelization](09-Chapter-03-Parallelization.md)
-- [x] [第四章：反思 | Chapter 4: Reflection](10-Chapter-04-Reflection.md)
-- [x] [第五章：工具使用 | Chapter 5: Tool Use](11-Chapter-05-Tool-Use.md)
-- [x] [第六章：规划 | Chapter 6: Planning](12-Chapter-06-Planning.md)
-- [x] [第七章：多智能体协作 | Chapter 7: Multi-Agent Collaboration](13-Chapter-07-Multi-Agent-Collaboration.md)
+- [ ] [第二章：路由 | Chapter 2: Routing](08-Chapter-02-Routing.md)
+- [ ] [第三章：并行化 | Chapter 3: Parallelization](09-Chapter-03-Parallelization.md)
+- [ ] [第四章：反思 | Chapter 4: Reflection](10-Chapter-04-Reflection.md)
+- [ ] [第五章：工具使用 | Chapter 5: Tool Use](11-Chapter-05-Tool-Use.md)
+- [ ] [第六章：规划 | Chapter 6: Planning](12-Chapter-06-Planning.md)
+- [ ] [第七章：多智能体协作 | Chapter 7: Multi-Agent Collaboration](13-Chapter-07-Multi-Agent-Collaboration.md)
 
 ### 第二部分 | Part Two (61 页)
 

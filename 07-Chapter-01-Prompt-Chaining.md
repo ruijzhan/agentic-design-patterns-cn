@@ -4,11 +4,11 @@
 
 Prompt chaining, sometimes referred to as Pipeline pattern, represents a powerful paradigm for handling intricate tasks when leveraging large language models (LLMs). Rather than expecting an LLM to solve a complex problem in a single, monolithic step, prompt chaining advocates for a divide-and-conquer strategy. The core idea is to break down the original, daunting problem into a sequence of smaller, more manageable sub-problems. Each sub-problem is addressed individually through a specifically designed prompt, and the output generated from one prompt is strategically fed as input into the subsequent prompt in the chain.
 
-<mark>提示链模式，也称为「管道模式」，是在利用大语言模型处理复杂任务时，一种极为强大的范式。它并不期望模型通过一个庞大而单一的步骤就解决一个复杂问题，而是倡导一种「分而治之」的策略。其核心思想在于，将一个最初令人望而生畏的难题，拆解为一系列更小、更易于管理的子问题。每一个子问题都通过一个专门设计的提示（Prompt）来独立解决，而上一个提示所生成的输出，将被策略性地作为输入，送入链条中的下一个提示 。</mark>
+<mark>提示链模式，也称为「管道模式」，是在利用大语言模型处理复杂任务时的一种强大范式。它并不期望模型通过一个庞大而单一的步骤就解决复杂问题，而是倡导「分而治之」的策略。其核心思想在于，将原本令人生畏的难题拆解为一系列更小、更易于管理的子问题。每一个子问题都通过一个专门设计的提示（Prompt）来独立解决，而上一个提示所生成的输出，将被策略性地作为输入，送入链条中的下一个提示。</mark>
 
 This sequential processing technique inherently introduces modularity and clarity into the interaction with LLMs. By decomposing a complex task, it becomes easier to understand and debug each individual step, making the overall process more robust and interpretable. Each step in the chain can be meticulously crafted and optimized to focus on a specific aspect of the larger problem, leading to more accurate and focused outputs.
 
-<mark>这种顺序处理的技术，天然地为我们与模型的交互引入了模块化和清晰性。通过分解复杂任务，每一个独立步骤都变得更易于理解和调试，从而使得整个流程更加稳健、更具可解释性。链条中的每一步都可以被精雕细琢和优化，以专注于解决宏大问题中的某一个特定方面，最终导向更精准、更聚焦的输出 。</mark>
+<mark>这种顺序处理的技术，天然地为我们与模型的交互引入了模块化和清晰性。通过分解复杂任务，每一个独立步骤都变得更易于理解和调试，从而使得整个流程更加稳健、更具可解释性。链条中的每一步都可以被精雕细琢和优化，专注于解决宏大问题中的某一个特定方面，最终带来更精准、更聚焦的输出。</mark>
 
 The output of one step acting as the input for the next is crucial. This passing of information establishes a dependency chain, hence the name, where the context and results of previous operations guide the subsequent processing. This allows the LLM to build on its previous work, refine its understanding, and progressively move closer to the desired solution.
 
@@ -20,7 +20,7 @@ Furthermore, prompt chaining is not just about breaking down problems; it also e
 
 **Limitations of single prompts:** For multifaceted tasks, using a single, complex prompt for an LLM can be inefficient, causing the model to struggle with constraints and instructions, potentially leading to instruction neglect where parts of the prompt are overlooked, contextual drift where the model loses track of the initial context, error propagation where early errors amplify, prompts which require a longer context window where the model gets insufficient information to respond back and hallucination where the cognitive load increases the chance of incorrect information. For example, a query asking to analyze a market research report, summarize findings, identify trends with data points, and draft an email risks failure as the model might summarize well but fail to extract data or draft an email properly.
 
-<mark><strong>单一提示的局限性：</strong>当任务包含多种子任务时，使用一个复杂的单一提示往往效率不高。模型可能难以同时满足多项约束和指示，从而出现以下问题：忽视提示中的部分指令、丢失最初的上下文、早期错误被放大、需要的上下文超出模型窗口导致信息不足，以及因认知负担加重而产生的幻觉。举个例子，如果我们试图用一条指令让模型一次性完成多项任务，比如分析市场报告、总结要点、识别趋势并草拟邮件，那么失败的风险就会很高。模型或许能给出一个不错的总结，但在提取精确数据或撰写得体邮件这类更细致的环节上，就很容易出错。</mark>
+<mark><strong>单一提示的局限性：</strong>当任务包含多种子任务时，使用一个复杂的单一提示往往效率不高。模型可能难以同时满足多项约束和指示，从而出现以下问题：忽视提示中的部分指令、丢失最初的上下文、早期错误被放大、需要的上下文超出模型窗口导致信息不足，以及因认知负担加重而产生幻觉。举个例子，如果我们试图用一条指令让模型一次性完成多项任务，比如分析市场报告、总结要点、识别趋势并草拟邮件，失败的风险就会很高。模型或许能给出不错的总结，但在提取精确数据或撰写得体邮件这类更细致的环节上，就很容易出错。</mark>
 
 **Enhanced Reliability Through Sequential Decomposition:** Prompt chaining addresses these challenges by breaking the complex task into a focused, sequential workflow, which significantly improves reliability and control. Given the example above, a pipeline or chained approach can be described as follows:
 
@@ -28,7 +28,7 @@ Furthermore, prompt chaining is not just about breaking down problems; it also e
 
 1. Initial Prompt (Summarization): "Summarize the key findings of the following market research report: [text]." The model's sole focus is summarization, increasing the accuracy of this initial step.
 
-   <mark>初始提示（总结）：“请总结以下市场研究报告的核心发现：[报告文本]。” 模型的唯一焦点是总结，这大大提高了第一步的准确性 。</mark>
+   <mark>初始提示（总结）："请总结以下市场研究报告的核心发现：[报告文本]。" 模型的唯一焦点是总结，这大大提高了第一步的准确性。</mark>
 
 2. Second Prompt (Trend Identification): "Using the summary, identify the top three emerging trends and extract the specific data points that support each trend: [output from step 1]." This prompt is now more constrained and builds directly upon a validated output.
 
@@ -40,7 +40,7 @@ Furthermore, prompt chaining is not just about breaking down problems; it also e
 
 This decomposition allows for more granular control over the process. Each step is simpler and less ambiguous, which reduces the cognitive load on the model and leads to a more accurate and reliable final output. This modularity is analogous to a computational pipeline where each function performs a specific operation before passing its result to the next. To ensure an accurate response for each specific task, the model can be assigned a distinct role at every stage. For example, in the given scenario, the initial prompt could be designated as "Market Analyst," the subsequent prompt as "Trade Analyst," and the third prompt as "Expert Documentation Writer," and so forth.
 
-<mark>这种分解让我们可以对过程进行更精细的控制。每一步都更简单、更明确，从而降低了模型的认知负荷，导向更准确、更可靠的最终输出。这种模块化，就如同一个计算流水线，其中每个函数在将结果传递给下一个函数之前，都执行一个特定的操作。为了确保每个特定任务的响应都精确无误，我们还可以在每个阶段为模型赋予一个独特的角色。例如，在上述场景中，初始提示可指定模型扮演「市场分析师」，后续提示可指定其为「行业分析师」，第三个提示则可指定其为「专业文档撰写人」等等 。</mark>
+<mark>这种分解让我们可以对过程进行更精细的控制。每一步都更简单、更明确，从而降低了模型的认知负荷，带来更准确、更可靠的最终输出。这种模块化，就如同一个计算流水线，其中每个函数在将结果传递给下一个函数之前，都执行一个特定的操作。为了确保每个特定任务的响应都精确无误，我们还可以在每个阶段为模型赋予一个独特的角色。例如，在上述场景中，初始提示可指定模型扮演「市场分析师」，后续提示可指定其为「行业分析师」，第三个提示则可指定其为「专业文档撰写人」等。</mark>
 
 **The Role of Structured Output:** The reliability of a prompt chain is highly dependent on the integrity of the data passed between steps. If the output of one prompt is ambiguous or poorly formatted, the subsequent prompt may fail due to faulty input. To mitigate this, specifying a structured output format, such as JSON or XML, is crucial.
 
@@ -99,11 +99,11 @@ Prompt chaining is a versatile pattern applicable in a wide range of scenarios w
 
 This methodology is applied in domains such as automated content analysis, the development of AI-driven research assistants, and complex report generation.
 
-<mark>此方法被广泛应用于自动化内容分析、AI驱动的研究助手开发以及复杂报告生成等领域。</mark>
+<mark>此方法被广泛应用于自动化内容分析、AI 驱动的研究助手开发以及复杂报告生成等领域。</mark>
 
 **2. Complex Query Answering:** Answering complex questions that require multiple steps of reasoning or information retrieval is a prime use case. For example, "What were the main causes of the stock market crash in 1929, and how did government policy respond?"
 
-<mark><strong>复杂问答：</strong>主要场景是回答需要多步推理或信息检索的复杂问题的情况。例如，“1929年股市崩盘的主要原因是什么？政府的应对政策又是什么？”</mark>
+<mark><strong>复杂问答：</strong>回答需要多步推理或信息检索的复杂问题是提示链的典型应用场景。例如，"1929 年股市崩盘的主要原因是什么？政府的应对政策又是什么？"</mark>
 
 - Prompt 1: Identify the core sub-questions in the user's query (causes of crash, government response).
 
@@ -131,7 +131,7 @@ For example, an automated research agent designed to generate a comprehensive re
 
 However, once the individual extractions are complete, the process becomes inherently sequential. The system must first collate the extracted data, then synthesize it into a coherent draft, and finally review and refine this draft to produce a final report. Each of these later stages is logically dependent on the successful completion of the preceding one. This is where prompt chaining is applied: the collated data serves as the input for the synthesis prompt, and the resulting synthesized text becomes the input for the final review prompt. Therefore, complex operations frequently combine parallel processing for independent data gathering with prompt chaining for the dependent steps of synthesis and refinement.
 
-<mark>然而，一旦各自的提取任务完成，整个流程就转变为顺序执行。系统必须先汇集整合所有提取的数据，再将其综合成一份逻辑连贯的初稿，最后对初稿进行审阅和润色，形成最终报告。后续的每一个阶段，都在逻辑上依赖于前一阶段的顺利完成，环环相扣。这正是提示链模式大显身手的时刻：汇集的数据成为后续综合步骤提示的输入，而综合生成的文本又成为最后审阅步骤的输入。因此，复杂的智能体工作流往往会将相互独立的数据采集做并行处理，并与相互依赖的整合与优化步骤结合为提示链。</mark>
+<mark>然而，一旦各自的提取任务完成，整个流程就转变为顺序执行。系统必须先汇集整合所有提取的数据，再将其综合成一份逻辑连贯的初稿，最后对初稿进行审阅和润色，形成最终报告。后续的每一个阶段，都在逻辑上依赖于前一阶段的顺利完成，环环相扣。这正是提示链模式大显身手的时刻：汇集的数据成为后续综合步骤的输入，而综合生成的文本又成为最后审阅步骤的输入。因此，复杂的智能体工作流往往会将相互独立的数据采集进行并行处理，并与相互依赖的整合与优化步骤结合为提示链。</mark>
 
 **3. Data Extraction and Transformation:** The conversion of unstructured text into a structured format is typically achieved through an iterative process, requiring sequential modifications to improve the accuracy and completeness of the output.
 
@@ -199,7 +199,7 @@ This methodology is employed for a range of natural language generation tasks, i
 
 **5. Conversational Agents with State:** Although comprehensive state management architectures employ methods more complex than sequential linking, prompt chaining provides a foundational mechanism for preserving conversational continuity. This technique maintains context by constructing each conversational turn as a new prompt that systematically incorporates information or extracted entities from preceding interactions in the dialogue sequence.
 
-<mark><strong>有状态的对话智能体：</strong>虽然要构建真正完善的状态管理架构，需要用到比顺序链接更复杂的方法，但提示链为维持对话的连续性提供了一种基础机制。该技术的诀窍在于，将对话中的每一轮都构建成一个新的提示，这个新提示会系统性地融入先前交互中所产生的信息或提取出的实体。</mark>
+<mark><strong>有状态的对话智能体：</strong>虽然要构建真正完善的状态管理架构需要用到比顺序链接更复杂的方法，但提示链为维持对话的连续性提供了一种基础机制。该技术的核心在于，将对话中的每一轮都构建成一个新的提示，这个新提示会系统性地融入先前交互中所产生的信息或提取出的实体。</mark>
 
 - Prompt 1: Process User Utterance 1, identify intent and key entities.
 
@@ -219,7 +219,7 @@ This methodology is employed for a range of natural language generation tasks, i
 
 This principle is fundamental to the development of conversational agents, enabling them to maintain context and coherence across extended, multi-turn dialogues. By preserving the conversational history, the system can understand and appropriately respond to user inputs that depend on previously exchanged information.
 
-<mark>这一原则对于开发对话智能体至关重要，使得智能体能够在漫长、多轮的对话中始终保持对上下文的理解以及逻辑的连贯性。通过保留对话历史，系统就能够理解并恰当地回应那些依赖于先前已交换信息的后续输入</mark>
+<mark>这一原则对于开发对话智能体至关重要，使得智能体能够在漫长、多轮的对话中始终保持对上下文的理解以及逻辑的连贯性。通过保留对话历史，系统就能够理解并恰当地回应那些依赖于先前已交换信息的后续输入。</mark>
 
 **6. Code Generation and Refinement:** The generation of functional code is typically a multi-stage process, requiring a problem to be decomposed into a sequence of discrete logical operations that are executed progressively
 
@@ -251,7 +251,7 @@ In applications such as AI-assisted software development, the utility of prompt 
 
 **7. Multimodal and multi-step reasoning:** Analyzing datasets with diverse modalities necessitates breaking down the problem into smaller, prompt-based tasks. For example, interpreting an image that contains a picture with embedded text, labels highlighting specific text segments, and tabular data explaining each label, requires such an approach.
 
-<mark><strong>多模态和多步推理：</strong>分析包含多种模态（如图像、文本、表格）的数据时，必须将问题分解为更小的、基于提示的任务。例如，要解读一张复杂的图像，其中不仅有图片和文本，还有对特定文本段的高亮，以及对采用表格来解释每个标签，就需要采用这样的方法。</mark>
+<mark><strong>多模态和多步推理：</strong>分析包含多种模态（如图像、文本、表格）的数据时，必须将问题分解为更小的、基于提示的任务。例如，要解读一张复杂的图像，其中不仅有图片和文本，还有对特定文本段的高亮标注，以及采用表格来解释每个标签的情况，就需要采用这样的方法。</mark>
 
 Prompt 1: Extract and comprehend the text from the user's image request.
 
@@ -271,7 +271,7 @@ Prompt 3: Interpret the gathered information using a table to determine the requ
 
 Implementing prompt chaining ranges from direct, sequential function calls within a script to the utilization of specialized frameworks designed to manage control flow, state, and component integration. Frameworks such as LangChain, LangGraph, Crew AI, and the Google Agent Development Kit (ADK) offer structured environments for constructing and executing these multi-step processes, which is particularly advantageous for complex architectures.
 
-<mark>实现提示链的方法有很多，从直接在脚本中依次调用函数，到利用专门的框架来管理控制流、状态和组件集成，形式不一。像 LangChain、LangGraph、Crew AI 以及谷歌智能体开发套件 (ADK) 这类框架，能为构建和执行多步流程提供结构化的环境，这对于复杂的系统架构尤其有益。</mark>
+<mark>实现提示链的方法有很多，从直接在脚本中依次调用函数，到利用专门的框架来管理控制流、状态和组件集成，形式不一。像 LangChain、LangGraph、Crew AI 以及谷歌智能体开发套件（ADK）这类框架，能为构建和执行多步流程提供结构化的环境，这对于复杂的系统架构尤其有益。</mark>
 
 For the purpose of demonstration, LangChain and LangGraph are suitable choices as their core APIs are explicitly designed for composing chains and graphs of operations. LangChain provides foundational abstractions for linear sequences, while LangGraph extends these capabilities to support stateful and cyclical computations, which are necessary for implementing more sophisticated agentic behaviors. This example will focus on a fundamental linear sequence.
 
@@ -291,7 +291,7 @@ pip install langchain langchain-community langchain-openai langgraph
 
 Note that langchain-openai can be substituted with the appropriate package for a different model provider. Subsequently, the execution environment must be configured with the necessary API credentials for the selected language model provider, such as OpenAI, Google Gemini, or Anthropic.
 
-<mark>请注意，langchain-openai 可以替换为其他模型提供商的相应库包。此外，你必须在运行环境中配置好所选语言模型（如 OpenAI, Google Gemini, 或 Anthropic）的 API 密钥。</mark>
+<mark>请注意，langchain-openai 可以替换为其他模型提供商的相应库包。此外，你必须在运行环境中配置好所选语言模型（如 OpenAI、Google Gemini 或 Anthropic）的 API 密钥。</mark>
 
 [Colab 代码链接](https://colab.research.google.com/drive/15XCzDOvBhIQaZ__xkvruf5sP9OznAbK9)
 
@@ -302,7 +302,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 # For better security, load environment variables from a .env file
-# 为了更好的安全性, 建议从 .env 文件加载环境变量
+# 为了更好的安全性，建议从 .env 文件加载环境变量
 # from dotenv import load_dotenv
 # load_dotenv()
 # Make sure your OPENAI_API_KEY is set in the .env file
@@ -355,7 +355,7 @@ print(final_result)
 
 This Python code demonstrates how to use the LangChain library to process text. It utilizes two separate prompts: one to extract technical specifications from an input string and another to format these specifications into a JSON object. The ChatOpenAI model is employed for language model interactions, and the StrOutputParser ensures the output is in a usable string format. The LangChain Expression Language (LCEL) is used to elegantly chain these prompts and the language model together. The first chain, extraction_chain, extracts the specifications. The full_chain then takes the output of the extraction and uses it as input for the transformation prompt. A sample input text describing a laptop is provided. The full_chain is invoked with this text, processing it through both steps. The final result, a JSON string containing the extracted and formatted specifications, is then printed.
 
-<mark>这段 Python 代码演示了如何使用 LangChain 库来处理文本。它利用了两个独立的提示：一个从输入字符串中提取技术规格，另一个将这些规格格式化为 JSON 对象。ChatOpenAI 模型被用来与语言模型进行交互。StrOutputParser 确保输出是可直接使用的字符串格式。LangChain 表达式语言 (LCEL)，也就是代码中的 | 符号，被用来优雅地将这些组件“链接”在一起。代码首先构建了一个 extraction_chain，负责提取规格。然后，full_chain 接收前一个链的输出，并将其作为输入传给负责转换格式的提示。最后，我们提供了一段描述笔记本电脑的示例文本，并通过 invoke 方法让 full_chain 按顺序执行这两个步骤，打印出最终提取并格式化好的 JSON 字符串。</mark>
+<mark>这段 Python 代码演示了如何使用 LangChain 库来处理文本。它利用了两个独立的提示：一个从输入字符串中提取技术规格，另一个将这些规格格式化为 JSON 对象。ChatOpenAI 模型被用来与语言模型进行交互，StrOutputParser 确保输出是可直接使用的字符串格式。LangChain 表达式语言（LCEL），也就是代码中的 | 符号，被用来优雅地将这些组件「链接」在一起。代码首先构建了一个 extraction_chain，负责提取规格。然后，full_chain 接收前一个链的输出，并将其作为输入传给负责转换格式的提示。最后，我们提供了一段描述笔记本电脑的示例文本，并通过 invoke 方法让 full_chain 按顺序执行这两个步骤，打印出最终提取并格式化好的 JSON 字符串。</mark>
 
 ---
 
@@ -363,13 +363,13 @@ This Python code demonstrates how to use the LangChain library to process text. 
 
 Context Engineering (see Fig.1) is the systematic discipline of designing, constructing, and delivering a complete informational environment to an AI model prior to token generation. This methodology asserts that the quality of a model's output is less dependent on the model's architecture itself and more on the richness of the context provided.
 
-<mark>上下文工程（Context Engineering，见图 1）是一门系统性的学科，它研究的是在 AI 模型生成词元 (Token) 之前，如何为其设计、构建并提供一个完整的信息环境。这一方法论主张，模型输出的质量，与其说取决于模型自身的架构，不如说更依赖于所提供上下文的丰富程度。</mark>
+<mark>上下文工程（Context Engineering，见图 1）是一门系统性的学科，它研究的是在 AI 模型生成词元（Token）之前，如何为其设计、构建并提供一个完整的信息环境。这一方法论主张，模型输出的质量与其说取决于模型自身的架构，不如说更依赖于所提供上下文的丰富程度。</mark>
 
 ![上下文工程](/images/chapter01_fig1.png)
 
 Fig.1: Context Engineering is the discipline of building a rich, comprehensive informational environment for an AI, as the quality of this context is a primary factor in enabling advanced Agentic performance.
 
-<mark>图 1：上下文工程是一门为 AI 构建丰富、全面信息环境的学科，因为高质量的上下文是实现高级智能体的首要因素。</mark>
+<mark>图 1：上下文工程是一门为 AI 构建丰富、全面信息环境的学科，因为高质量的上下文是实现高级智能体性能的首要因素。</mark>
 
 It represents a significant evolution from traditional prompt engineering, which focuses primarily on optimizing the phrasing of a user's immediate query. Context Engineering expands this scope to include several layers of information, such as the system prompt, which is a foundational set of instructions defining the AI's operational parameters—for instance, "You are a technical writer; your tone must be formal and precise." The context is further enriched with external data. This includes retrieved documents, where the AI actively fetches information from a knowledge base to inform its response, such as pulling technical specifications for a project. It also incorporates tool outputs, which are the results from the AI using an external API to obtain real-time data, like querying a calendar to determine a user's availability. This explicit data is combined with critical implicit data, such as user identity, interaction history, and environmental state. The core principle is that even advanced models underperform when provided with a limited or poorly constructed view of the operational environment.
 
@@ -380,7 +380,7 @@ It represents a significant evolution from traditional prompt engineering, which
 
 This practice, therefore, reframes the task from merely answering a question to building a comprehensive operational picture for the agent. For example, a context-engineered agent would not just respond to a query but would first integrate the user's calendar availability (a tool output), the professional relationship with an email's recipient (implicit data), and notes from previous meetings (retrieved documents). This allows the model to generate outputs that are highly relevant, personalized, and pragmatically useful. The "engineering" component involves creating robust pipelines to fetch and transform this data at runtime and establishing feedback loops to continually improve context quality.
 
-<mark>因此，这种实践将任务的重点从仅仅回答一个问题，重构为为智能体构建一幅全面的操作全貌。举例来说，一个经过上下文工程的智能体，不会只是简单地回应一个查询，而是会首先整合用户的空闲时间（工具输出）、与邮件接收者的职业关系（隐式数据）以及过往的会议纪要（检索到的文档）。这使得模型能够生成高度相关、个性化且具有实际价值的输出。「工程」二字，则体现在创建稳定的流水线，以便在运行时获取和转换这些数据，并建立反馈循环来持续提升上下文的质量。</mark>
+<mark>因此，这种实践将任务的重点从仅仅回答一个问题，重构为为智能体构建一幅全面的操作全貌。举例来说，一个经过上下文工程的智能体不会只是简单地回应查询，而是会首先整合用户的空闲时间（工具输出）、与邮件接收者的职业关系（隐式数据）以及过往的会议纪要（检索到的文档）。这使得模型能够生成高度相关、个性化且具有实际价值的输出。「工程」二字体现在创建稳定的流水线，以便在运行时获取和转换这些数据，并建立反馈循环来持续提升上下文的质量。</mark>
 
 To implement this, specialized tuning systems can be used to automate the improvement process at scale. For example, tools like Google's Vertex AI prompt optimizer can enhance model performance by systematically evaluating responses against a set of sample inputs and predefined evaluation metrics. This approach is effective for adapting prompts and system instructions across different models without requiring extensive manual rewriting. By providing such an optimizer with sample prompts, system instructions, and a template, it can programmatically refine the contextual inputs, offering a structured method for implementing the feedback loops required for sophisticated Context Engineering.
 
@@ -388,11 +388,11 @@ To implement this, specialized tuning systems can be used to automate the improv
 
 This structured approach is what differentiates a rudimentary AI tool from a more sophisticated and contextually-aware system. It treats the context itself as a primary component, placing critical importance on what the agent knows, when it knows it, and how it uses that information. The practice ensures the model has a well-rounded understanding of the user's intent, history, and current environment. Ultimately, Context Engineering is a crucial methodology for advancing stateless chatbots into highly capable, situationally-aware systems.
 
-<mark>正是这种结构化的方法，将一个基础的 AI 工具与一个更复杂、更具上下文感知能力的系统区分开来。它将上下文本身视为一个核心组件，极度重视智能体知道什么、何时知道以及如何使用这些信息。这一实践的核心，是确保模型能全面洞悉用户的意图、历史背景及其当前所处的环境。归根结底，上下文工程是将无状态的聊天机器人，提升为能力强大、具备情境感知能力系统的关键方法论。</mark>
+<mark>正是这种结构化的方法，将一个基础的 AI 工具与一个更复杂、更具上下文感知能力的系统区分开来。它将上下文本身视为一个核心组件，极度重视智能体知道什么、何时知道以及如何使用这些信息。这一实践的核心是确保模型能全面洞悉用户的意图、历史背景及其当前所处的环境。归根结底，上下文工程是将无状态的聊天机器人提升为能力强大、具备情境感知能力系统的关键方法论。</mark>
 
 ---
 
-## At a Glance | <mark>一览</mark>
+## At a Glance | <mark>要点速览</mark>
 
 **What:** Complex tasks often overwhelm LLMs when handled within a single prompt, leading to significant performance issues. The cognitive load on the model increases the likelihood of errors such as overlooking instructions, losing context, and generating incorrect information. A monolithic prompt struggles to manage multiple constraints and sequential reasoning steps effectively. This results in unreliable and inaccurate outputs, as the LLM fails to address all facets of the multifaceted request.
 
@@ -424,7 +424,7 @@ Here are some key takeaways:
 
 - Prompt Chaining breaks down complex tasks into a sequence of smaller, focused steps. This is occasionally known as the Pipeline pattern.
 
-   <mark>提示链将复杂任务分解为一系列更小、更聚焦的步骤，也被称为流水线模式 (Pipeline Pattern)</mark>
+   <mark>提示链将复杂任务分解为一系列更小、更聚焦的步骤，也被称为流水线模式（Pipeline Pattern）。</mark>
 
 - Each step in a chain involves an LLM call or processing logic, using the output of the previous step as input.
 
@@ -436,7 +436,7 @@ Here are some key takeaways:
 
 - Frameworks like LangChain/LangGraph, and Google ADK  provide robust tools to define, manage, and execute these multi-step sequences.
 
-- <mark>像 LangChain/LangGraph 和谷歌智能体开发套件 (ADK) 这类框架，为定义、管理和执行这些多步序列提供了强大的工具。</mark>
+- <mark>像 LangChain/LangGraph 和谷歌智能体开发套件（ADK）这类框架，为定义、管理和执行这些多步序列提供了强大的工具。</mark>
 
 ---
 
@@ -448,7 +448,7 @@ By deconstructing complex problems into a sequence of simpler, more manageable s
 <br/>
 <br/>
 
-<mark>作为一项基础性模式，它为开发能够进行多步推理、工具集成和状态管理的高级 AI 智能体铺平了道路。归根结底，掌握提示链是构建那些能够执行复杂工作流、能力远超单一提示的、强大的、具备上下文感知能力系统的关键所在。</mark>
+<mark>作为一项基础性模式，它为开发能够进行多步推理、工具集成和状态管理的高级 AI 智能体铺平了道路。归根结底，掌握提示链是构建那些能够执行复杂工作流、能力远超单一提示、具备上下文感知能力的强大系统的关键所在。</mark>
 
 ---
 
