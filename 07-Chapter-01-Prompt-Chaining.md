@@ -34,7 +34,7 @@ Furthermore, prompt chaining is not just about breaking down problems; it also e
 
 2. Second Prompt (Trend Identification): "Using the summary, identify the top three emerging trends and extract the specific data points that support each trend: [output from step 1]." This prompt is now more constrained and builds directly upon a validated output.
 
-   <mark>第二个提示（识别趋势）：“基于以上总结，请识别出三大新兴趋势，并提取支持每个趋势的具体数据点：[第一步的输出]。”这个提示的约束性更强，并且直接建立在一个经过验证的输出之上。</mark>
+   <mark>第二个提示（识别趋势）：“基于以上总结，请识别出三大新兴趋势，并提取支持每个趋势的具体数据：[第一步的输出]。”这个提示的约束性更强，并且直接建立在一个经过验证的输出之上。</mark>
 
 3. Third Prompt (Email Composition): "Draft a concise email to the marketing team that outlines the following trends and their supporting data: [output from step 2]."
 
@@ -119,7 +119,7 @@ This methodology is applied in domains such as automated content analysis, the d
 
 - Prompt 3: Research or retrieve information specifically about the government's policy response to the 1929 stock market crash.
 
-  <mark>提示 3: 研究或检索关于 1929 年股市崩盘的政策信息。</mark>
+  <mark>提示 3: 研究或检索关于 1929 年股市崩盘的政府对策信息。</mark>
 
 - Prompt 4: Synthesize the information from steps 2 and 3 into a coherent answer to the original query.
 
@@ -127,7 +127,7 @@ This methodology is applied in domains such as automated content analysis, the d
 
 This sequential processing methodology is integral to developing AI systems capable of multi-step inference and information synthesis. Such systems are required when a query cannot be answered from a single data point but instead necessitates a series of logical steps or the integration of information from diverse sources.
 
-<mark>这种顺序处理的方法是构建具备多步推理和信息整合能力的 AI 系统的关键。当一个问题无法仅凭单一数据点解决，而必须经过一系列逻辑步骤或整合多个信息源才能作答时，这种模式就显得尤为重要。</mark>
+<mark>这种顺序处理的方法是构建具备多步推理和信息整合能力的 AI 系统的关键。当一个问题无法仅凭单一信息解决，而必须经过一系列逻辑步骤或整合多个信息源才能作答时，这种模式就显得尤为重要。</mark>
 
 For example, an automated research agent designed to generate a comprehensive report on a specific topic executes a hybrid computational workflow. Initially, the system retrieves numerous relevant articles. The subsequent task of extracting key information from each article can be performed concurrently for each source. This stage is well-suited for parallel processing, where independent sub-tasks are run simultaneously to maximize efficiency.
 
@@ -145,7 +145,7 @@ However, once the individual extractions are complete, the process becomes inher
 
   <mark>提示 1: 尝试从发票中提取特定字段（如姓名、地址、金额）。</mark>
 
-Processing: Check if all required fields were extracted and if they meet format requirements.
+- Processing: Check if all required fields were extracted and if they meet format requirements.
 
   <mark>处理：检查是否提取了所有必需的字段，以及是否符合格式要求。</mark>
 
@@ -163,11 +163,11 @@ Processing: Check if all required fields were extracted and if they meet format 
 
 This sequential processing methodology is particularly applicable to data extraction and analysis from unstructured sources like forms, invoices, or emails. For example, solving complex Optical Character Recognition (OCR) problems, such as processing a PDF form, is more effectively handled through a decomposed, multi-step approach.
 
-<mark>这种顺序处理的方法论，尤其适用于从表单、发票或邮件等非结构化来源中进行数据提取与分析。例如，在对 PDF 进行 OCR 识别时，采用分解式的多步方法会远比单一请求更为有效。</mark>
+<mark>这种顺序处理的方法论，尤其适用于从表单、发票或邮件等非结构化来源中进行数据提取与分析。例如，在对 PDF 进行 OCR 识别时，采用分解式的多步方法会远比单次请求更为有效。</mark>
 
 Initially, a large language model is employed to perform the primary text extraction from the document image. Following this, the model processes the raw output to normalize the data, a step where it might convert numeric text, such as "one thousand and fifty," into its numerical equivalent, 1050. A significant challenge for LLMs is performing precise mathematical calculations. Therefore, in a subsequent step, the system can delegate any required arithmetic operations to an external calculator tool. The LLM identifies the necessary calculation, feeds the normalized numbers to the tool, and then incorporates the precise result. This chained sequence of text extraction, data normalization, and external tool use achieves a final, accurate result that is often difficult to obtain reliably from a single LLM query.
 
-<mark>首先，系统调用大语言模型从图像中提取文本。随后，模型处理这些原始输出进行数据规范化，比如将「一千零五十」这样的文本转换为数值 1050。由于精确数学计算对大语言模型来说是一项挑战，在后续步骤中，系统会将需要的算术运算交给外部计算器执行。模型负责识别需要的运算，将规范化后的数字传递给计算工具，然后将精确结果整合回来。通过文本提取、数据规范化、外部工具调用的链式流程，系统可获得精确结果——这是单次模型调用难以实现的。</mark>
+<mark>首先，系统调用大语言模型从图像中提取文本。随后，模型处理这些原始输出进行数据规范化，比如将「一千零五十」这样的文本转换为数值 1050。由于精确数学计算对大语言模型来说是一项挑战，在后续步骤中，系统会将需要的算术运算交给外部计算器执行。模型负责识别需要的运算，将规范化后的数字传递给计算工具，然后将精确结果整合回来。通过文本提取、数据规范化、外部工具调用的链式流程，系统可获得精确结果，这是单次模型调用难以实现的。</mark>
 
 **4. Content Generation Workflows:** The composition of complex content is a procedural task that is typically decomposed into distinct phases, including initial ideation, structural outlining, drafting, and subsequent revision.
 
@@ -235,7 +235,7 @@ This principle is fundamental to the development of conversational agents, enabl
 
 - Prompt 2: Write the initial code draft based on the outline.
 
-  <mark>提示 2: 基于大纲，撰写初始版本的代码。</mark>
+  <mark>提示 2: 基于大纲，编写初始版本的代码。</mark>
 
 - Prompt 3: Identify potential errors or areas for improvement in the code (perhaps using a static analysis tool or another LLM call).
 
@@ -251,7 +251,7 @@ This principle is fundamental to the development of conversational agents, enabl
 
 In applications such as AI-assisted software development, the utility of prompt chaining stems from its capacity to decompose complex coding tasks into a series of manageable sub-problems. This modular structure reduces the operational complexity for the large language model at each step. Critically, this approach also allows for the insertion of deterministic logic between model calls, enabling intermediate data processing, output validation, and conditional branching within the workflow. By this method, a single, multifaceted request that could otherwise lead to unreliable or incomplete results is converted into a structured sequence of operations managed by an underlying execution framework.
 
-<mark>在 AI 辅助软件开发等应用中，提示链的价值在于将复杂编码任务分解为一系列可管理的子问题，这种模块化结构降低了模型在每一步的执行复杂度。更重要的是，这种方法允许我们在两次模型调用之间插入确定性逻辑，从而在工作流中实现中间数据处理、输出验证和条件分支等功能。通过这种方式，一个原本可能导致不可靠或不完整结果的单一复杂请求，被转化为由底层执行框架管理的结构化操作序列。</mark>
+<mark>在 AI 辅助软件开发等应用中，提示链的价值在于将复杂编码任务分解为一系列可管理的子问题，这种模块化结构降低了模型在每一步的复杂度。更重要的是，这种方法允许我们在两次模型调用之间插入确定性逻辑，从而在工作流中实现中间数据处理、输出验证和条件分支等功能。通过这种方式，一个原本可能导致不可靠或不完整结果的单一复杂请求，被转化为由底层执行框架管理的结构化操作序列。</mark>
 
 **7. Multimodal and multi-step reasoning:** Analyzing datasets with diverse modalities necessitates breaking down the problem into smaller, prompt-based tasks. For example, interpreting an image that contains a picture with embedded text, labels highlighting specific text segments, and tabular data explaining each label, requires such an approach.
 
@@ -457,7 +457,7 @@ By deconstructing complex problems into a sequence of simpler, more manageable s
 
 1. LangChain Documentation on LCEL: [https://python.langchain.com/v0.2/docs/core_modules/expression_language/](https://python.langchain.com/v0.2/docs/core_modules/expression_language/)
 
-   <mark>关于 LangChain LCEL 的官方文档：[https://python.langchain.com/v0.2/docs/core_modules/expression_language/](https://python.langchain.com/v0.2/docs/core_modules/expression_language/)</mark>
+   <mark>LangChain LCEL 的官方文档：[https://python.langchain.com/v0.2/docs/core_modules/expression_language/](https://python.langchain.com/v0.2/docs/core_modules/expression_language/)</mark>
 
 2. LangGraph Documentation: [https://langchain-ai.github.io/langgraph/](https://langchain-ai.github.io/langgraph/)
 
