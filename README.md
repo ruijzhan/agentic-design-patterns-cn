@@ -154,6 +154,72 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 3. **参考查阅** - 可作为设计模式参考手册使用
 4. **社区参与** - 欢迎参与讨论和贡献
 
+### 💻 运行代码示例 | Running Code Examples
+
+本项目在 `codes/` 目录中提供了各章节的代码示例。以下是运行代码的步骤：
+
+#### 1. 环境准备 | Environment Setup
+
+```bash
+# 克隆仓库
+git clone https://github.com/ginobefun/agentic-design-patterns-cn.git
+cd agentic-design-patterns-cn
+
+# 创建虚拟环境（推荐）
+python3 -m venv venv
+source venv/bin/activate  # macOS/Linux
+# 或 Windows 系统: venv\Scripts\activate
+
+# 安装依赖（根据需要运行的代码示例安装相应依赖）
+pip install langchain langchain-community langchain-openai langgraph
+```
+
+#### 2. 配置 API 密钥 | Configure API Key
+
+创建 `.env` 文件并配置你的 API 密钥：
+
+```bash
+# 在项目根目录创建 .env 文件
+touch .env
+```
+
+在 `.env` 文件中添加以下内容：
+
+```env
+# OpenAI API 密钥
+OPENAI_API_KEY=your-openai-api-key-here
+
+# 或使用 OpenRouter（兼容 OpenAI API）
+OPENAI_API_KEY=your-openrouter-api-key-here
+OPENAI_API_BASE=https://openrouter.ai/api/v1
+```
+
+#### 3. 运行代码 | Run Code
+
+```bash
+# 确保虚拟环境已激活
+source venv/bin/activate
+
+# 运行第一章示例：提示链
+python codes/Chapter-01-Prompt-Chaining-Example.py
+
+# 运行其他章节的代码示例（待添加）
+# python codes/Chapter-XX-Example.py
+```
+
+#### 4. 在线运行 | Run Online
+
+每个代码示例文件中都包含了 Google Colab 链接，可以直接在线运行，无需本地配置：
+
+- 📔 [第一章：提示链示例 - Colab](https://colab.research.google.com/drive/15XCzDOvBhIQaZ__xkvruf5sP9OznAbK9)
+
+#### 注意事项 | Notes
+
+- 🔑 **API 密钥安全**: 切勿将包含真实 API 密钥的 `.env` 文件提交到版本控制系统
+- 💰 **API 费用**: 运行代码会产生 API 调用费用，请注意使用量
+- 🌐 **网络连接**: 代码需要网络连接才能访问 LLM API 服务
+- 🔄 **兼容性**: 代码示例支持 OpenAI API 和兼容 OpenAI API 的服务（如 OpenRouter）
+
 ---
 
 ## 🛠️ 翻译规范 | Translation Standards
