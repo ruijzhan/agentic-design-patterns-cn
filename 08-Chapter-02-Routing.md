@@ -4,9 +4,7 @@
 
 While sequential processing via prompt chaining is a foundational technique for executing deterministic, linear workflows with language models, its applicability is limited in scenarios requiring adaptive responses. Real-world agentic systems must often arbitrate between multiple potential actions based on contingent factors, such as the state of the environment, user input, or the outcome of a preceding operation. This capacity for dynamic decision-making, which governs the flow of control to different specialized functions, tools, or sub-processes, is achieved through a mechanism known as routing.
 
-<mark>提示链虽然是执行确定性线性工作流的基础方法，但在需要自适应响应的场景下显得力不从心。</mark>
-
-<mark>现实场景中，智能体系统往往要根据环境状态、用户输入或上一步的执行结果等情境信息，从多个可选方案中选择合适的行动路径。路由（Routing）机制就是实现这种控制流分发的关键技术，它决定该将请求交给哪个功能模块、工具或子流程处理。</mark>
+<mark>提示链虽然是执行确定性线性工作流的基础方法，但在需要自适应响应的场景下显得力不从心。现实场景中，智能体系统往往要根据环境状态、用户输入或上一步的执行结果等情境信息，从多个可选方案中选择合适的行动路径。路由（Routing）机制就是实现这种控制流分发的关键技术，它决定该将请求交给哪个功能模块、工具或子流程处理。</mark>
 
 Routing introduces conditional logic into an agent's operational framework, enabling a shift from a fixed execution path to a model where the agent dynamically evaluates specific criteria to select from a set of possible subsequent actions. This allows for more flexible and context-aware system behavior.
 
@@ -100,7 +98,7 @@ Ultimately, routing provides the capacity for logical arbitration that is essent
 
 ---
 
-## Hands-On Code Example (LangChain) | <mark>实战代码：LangChain 实现</mark>
+## Hands-On Code Example (LangChain) | <mark>实战示例：LangChain 实现</mark>
 
 Implementing routing in code involves defining the possible paths and the logic that decides which path to take. Frameworks like LangChain and LangGraph provide specific components and structures for this. LangGraph's state-based graph structure is particularly intuitive for visualizing and implementing routing logic.
 
@@ -273,7 +271,7 @@ The main function demonstrates the system's usage with three example requests, s
 
 ---
 
-## Hands-On Code Example (Google ADK) | <mark>使用 Google ADK 的实战代码</mark>
+## Hands-On Code Example (Google ADK) | <mark>实战示例：使用 Google ADK</mark>
 
 The Agent Development Kit (ADK) is a framework for engineering agentic systems, providing a structured environment for defining an agent's capabilities and behaviours. In contrast to architectures based on explicit computational graphs, routing within the ADK paradigm is typically implemented by defining a discrete set of "tools" that represent the agent's functions. The selection of the appropriate tool in response to a user query is managed by the framework's internal logic, which leverages an underlying model to match user intent to the correct functional handler.
 
