@@ -4,15 +4,15 @@
 
 While sequential processing via prompt chaining is a foundational technique for executing deterministic, linear workflows with language models, its applicability is limited in scenarios requiring adaptive responses. Real-world agentic systems must often arbitrate between multiple potential actions based on contingent factors, such as the state of the environment, user input, or the outcome of a preceding operation. This capacity for dynamic decision-making, which governs the flow of control to different specialized functions, tools, or sub-processes, is achieved through a mechanism known as routing.
 
-<mark>虽然通过提示链进行顺序处理是使用语言模型执行确定性、线性工作流的基础技术，但在需要自适应响应的场景中，其适用性有限。现实世界的智能体系统往往需要基于多种情境因素——如环境状态、用户输入或前序操作的结果——在多个可能的行动之间做出选择。而将控制流引导至相应的特定功能模块、工具或子流程，正是通过路由（Routing）这一机制来实现的。</mark>
+<mark>虽然通过提示链进行顺序处理是执行确定性线性工作流的基础技术，但在需要自适应响应的场景中，其适用性有限。现实世界的智能体系统往往需要基于多种情境因素（如环境状态、用户输入或前序操作的结果）在多个可能的行动之间做出选择。将控制流引导至相应的功能模块、工具或子流程，正是通过路由（Routing）机制来实现的。</mark>
 
 Routing introduces conditional logic into an agent's operational framework, enabling a shift from a fixed execution path to a model where the agent dynamically evaluates specific criteria to select from a set of possible subsequent actions. This allows for more flexible and context-aware system behavior.
 
-<mark>路由在智能体的操作框架中引入了条件判断，使其不只是沿着固定流程执行，而是根据具体情况动态评估，并从多种后续动作中选择最合适的那一个，从而实现更灵活、能根据上下文做出反应的系统行为。</mark>
+<mark>路由在智能体的操作框架中引入了条件判断逻辑，使其从固定流程执行转变为动态评估模式：根据具体情况从多种后续动作中选择最合适的一个，从而实现更灵活、能感知上下文的系统行为。</mark>
 
 For instance, an agent designed for customer inquiries, when equipped with a routing function, can first classify an incoming query to determine the user's intent. Based on this classification, it can then direct the query to a specialized agent for direct question-answering, a database retrieval tool for account information, or an escalation procedure for complex issues, rather than defaulting to a single, predetermined response pathway. Therefore, a more sophisticated agent using routing could:
 
-<mark>以客户咨询智能体为例，当它配备了路由功能后，可以先对传入的查询进行分类，判断用户意图。根据分类结果，它可以将查询导向：专门的问答智能体、用于账户信息的数据库检索工具，或处理复杂问题的升级流程，而不会被限制在固定的响应方式。因此，一个具有路由功能的智能体可以更灵活、智能地处理用户请求：</mark>
+<mark>以客户咨询智能体为例，配备路由功能后，它可以先对传入查询进行分类以判断用户意图。根据分类结果，将查询导向专门的问答智能体、用于账户信息的数据库检索工具，或处理复杂问题的升级流程，而不会被限制在固定的响应方式。因此，具有路由功能的智能体可以：</mark>
 
 1. Analyze the user's query.
 
@@ -24,51 +24,51 @@ For instance, an agent designed for customer inquiries, when equipped with a rou
 
    - If the intent is "check order status", route to a sub-agent or tool chain that interacts with the order database.
 
-    <mark>如果用户的意图是「检查订单状态」，就把请求转给能访问订单数据库的子代理或工具链来处理。</mark>
+      <mark>如果意图是「检查订单状态」，转到能访问订单数据库的子智能体或工具链。</mark>
 
    - If the intent is "product information", route to a sub-agent or chain that searches the product catalog.
 
-    <mark>如果用户意图是「产品信息」，则将请求转发到负责检索产品目录的子代理或工具链。</mark>
+      <mark>如果意图是「产品信息」，转到负责检索产品目录的子智能体或工具链。</mark>
 
    - If the intent is "technical support", route to a different chain that accesses troubleshooting guides or escalates to a human.
 
-    <mark>如果用户意图是「技术支持」，则将其转到另一个流程，该流程会访问故障排除指南或将问题升级到人工客服。</mark>
+      <mark>如果意图是「技术支持」，转到另一个流程，该流程会访问故障排除指南或升级到人工客服。</mark>
 
    - If the intent is unclear, route to a clarification sub-agent or prompt chain.
 
-    <mark>如果用户意图不清楚，就把请求转到专门用于澄清的子代理或提示流程中以获取更多信息。</mark>
+      <mark>如果意图不清楚，转到专门用于澄清的子智能体或提示流程以获取更多信息。</mark>
 
 The core component of the Routing pattern is a mechanism that performs the evaluation and directs the flow. This mechanism can be implemented in several ways:
 
-<mark>路由模式的核心是一个负责评估并指引流程走向的机制，该机制可以通过多种不同方式来实现：</mark>
+<mark>路由模式的核心是负责评估并指引流程走向的机制，该机制可以通过多种方式实现：</mark>
 
 **LLM-based Routing:** The language model itself can be prompted to analyze the input and output a specific identifier or instruction that indicates the next step or destination. For example, a prompt might ask the LLM to "Analyze the following user query and output only the category: 'Order Status', 'Product Info', 'Technical Support', or 'Other'." The agentic system then reads this output and directs the workflow accordingly.
 
-<mark><strong>基于大语言模型的路由（LLM-based Routing）：</strong> 我们可以直接通过提示，让大语言模型本身来分析输入，并输出一个特定的标识符或指令，以指明下一步的走向。例如，一个提示可以要求大语言模型：「分析以下用户请求，并只输出其类别：订单状态、产品信息、技术支持或其他。」系统随后获取这个输出，并相应地引导工作流。</mark>
+<mark><strong>基于大语言模型的路由（LLM-based Routing）：</strong>通过提示让大语言模型分析输入并输出特定标识符或指令，以指明下一步走向。例如，提示可以要求大语言模型「分析以下用户请求，并只输出其类别：订单状态、产品信息、技术支持或其他」。系统随后获取这个输出并相应地引导工作流。</mark>
 
 **Embedding-based Routing:** The input query can be converted into a vector embedding (see RAG, Chapter 14). This embedding is then compared to embeddings representing different routes or capabilities. The query is routed to the route whose embedding is most similar. This is useful for semantic routing, where the decision is based on the meaning of the input rather than just keywords.
 
-<mark><strong>基于嵌入的路由（Embedding-based Routing）：</strong> 将输入的请求转换为一个向量嵌入（Vector Embedding，详见第 14 章 RAG 部分）。然后，将这个嵌入与代表不同路径或能力的嵌入进行比较，并将请求路由到语义最相似的路径上。这种方式对于语义路由(Semantic Routing)非常有用，因为它依据的是输入的含义而非仅仅是关键词。</mark>
+<mark><strong>基于嵌入的路由（Embedding-based Routing）：</strong>将输入请求转换为向量嵌入（Vector Embedding，详见第 14 章 RAG 部分）。然后，将这个嵌入与代表不同路径或能力的嵌入进行比较，并将请求路由到语义最相似的路径上。这种方式对于语义路由（Semantic Routing）非常有用，因为它依据的是输入的含义而非仅仅关键词。</mark>
 
 **Rule-based Routing:** This involves using predefined rules or logic (e.g., if-else statements, switch cases) based on keywords, patterns, or structured data extracted from the input. This can be faster and more deterministic than LLM-based routing, but is less flexible for handling nuanced or novel inputs.
 
-<mark><strong>基于规则的路由（Rule-based Routing）：</strong> 这涉及使用预定义的规则或逻辑（如 if-else 语句、switch 判断）来做决策，其依据是输入中的关键词、模式或提取出的结构化数据。相比大模型驱动的路由，它通常更快、更确定，但在应对复杂、细微或未见过的输入时不够灵活。</mark>
+<mark><strong>基于规则的路由（Rule-based Routing）：</strong>使用预定义的规则或逻辑（如 if-else 语句、switch 判断）来做决策，依据输入中的关键词、模式或提取出的结构化数据。相比大模型驱动的路由，它通常更快、更确定，但在应对复杂、细微或未见过的输入时不够灵活。</mark>
 
 **Machine Learning Model-Based Routing:** it employs a discriminative model, such as a classifier, that has been specifically trained on a small corpus of labeled data to perform a routing task. While it shares conceptual similarities with embedding-based methods, its key characteristic is the supervised fine-tuning process, which adjusts the model's parameters to create a specialized routing function. This technique is distinct from LLM-based routing because the decision-making component is not a generative model executing a prompt at inference time. Instead, the routing logic is encoded within the fine-tuned model's learned weights. While LLMs may be used in a pre-processing step to generate synthetic data for augmenting the training set, they are not involved in the real-time routing decision itself.
 
-<mark><strong>基于机器学习模型的路由（Machine Learning Model-Based Routing）：</strong> 基于机器学习模型的路由使用判别模型（如分类器），在少量带标注的数据上专门训练来完成路由任务。与基于嵌入的方法概念相近，但其核心在于通过监督微调来调整模型参数，从而得到专门的路由功能。这不同于基于大模型的路由，因为决策不是靠在推理时运行提示的生成模型来做出，而是内嵌在微调后模型的权重中。虽然可以在预处理阶段用模型生成合成数据以扩充训练集，但在实时路由决策中并不使用它们。</mark>
+<mark><strong>基于机器学习模型的路由（Machine Learning Model-Based Routing）：</strong>使用判别模型（如分类器）在少量标注数据上专门训练来完成路由任务。与基于嵌入的方法概念相近，但其核心是通过监督微调调整模型参数，从而得到专门的路由功能。这不同于基于大模型的路由，因为决策不是靠推理时运行提示的生成模型来做出，而是内嵌在微调后模型的权重中。虽然可以在预处理阶段用大语言模型生成合成数据以扩充训练集，但在实时路由决策中并不使用它们。</mark>
 
 Routing mechanisms can be implemented at multiple junctures within an agent's operational cycle. They can be applied at the outset to classify a primary task, at intermediate points within a processing chain to determine a subsequent action, or during a subroutine to select the most appropriate tool from a given set.
 
-<mark>另外，路由机制可以在智能体运作的多个阶段启用：一开始用于识别和分类主要任务，处理流程中段用于决定下一步要采取的动作，或者在子程序中用于从可用工具中挑选最合适的一个。</mark>
+<mark>路由机制可以在智能体运作的多个阶段启用：一开始用于识别和分类主要任务，处理流程中段用于决定下一步动作，或者在子程序中用于从可用工具中挑选最合适的一个。</mark>
 
 Computational frameworks such as LangChain, LangGraph, and Google's Agent Developer Kit (ADK) provide explicit constructs for defining and managing such conditional logic. With its state-based graph architecture, LangGraph is particularly well-suited for complex routing scenarios where decisions are contingent upon the accumulated state of the entire system. Similarly, Google's ADK provides foundational components for structuring an agent's capabilities and interaction models, which serve as the basis for implementing routing logic. Within the execution environments provided by these frameworks, developers define the possible operational paths and the functions or model-based evaluations that dictate the transitions between nodes in the computational graph.
 
-<mark>LangChain、LangGraph 和 Google 智能体开发套件（ADK）等框架，可以方便的定义和管理此类条件逻辑。其中，LangGraph 基于状态图架构，尤其适合处理复杂路由场景，因为在这些场景中，决策往往依赖于整个系统累积的状态信息。同样，谷歌 ADK 也为构建智能体的能力和交互模型提供了基础组件，这些组件是实现路由逻辑的基石。在这些框架的执行环境中，开发者定义了可选的运行路径，以及决定图中节点如何转换的函数或模型评估逻辑。</mark>
+<mark>LangChain、LangGraph 和 Google 智能体开发套件（ADK）等框架可以方便地定义和管理此类条件逻辑。其中，LangGraph 基于状态图架构，尤其适合处理复杂路由场景，因为在这些场景中，决策往往依赖于整个系统累积的状态信息。同样，Google ADK 也为构建智能体的能力和交互模型提供了基础组件，这些组件是实现路由逻辑的基石。在这些框架的执行环境中，开发者定义可选的运行路径，以及决定图中节点如何转换的函数或模型评估逻辑。</mark>
 
 The implementation of routing enables a system to move beyond deterministic sequential processing. It facilitates the development of more adaptive execution flows that can respond dynamically and appropriately to a wider range of inputs and state changes.
 
-<mark>通过实现路由，系统得以超越确定性的顺序处理。它促进了更具适应性的执行流程的开发，使系统能够对更广泛的输入和状态变化做出动态且恰当的响应。</mark>
+<mark>通过实现路由，系统得以超越确定性的顺序处理，促进更具适应性的执行流程开发，使系统能够对更广泛的输入和状态变化做出动态且恰当的响应。</mark>
 
 ---
 
@@ -76,11 +76,11 @@ The implementation of routing enables a system to move beyond deterministic sequ
 
 The routing pattern is a critical control mechanism in the design of adaptive agentic systems, enabling them to dynamically alter their execution path in response to variable inputs and internal states. Its utility spans multiple domains by providing a necessary layer of conditional logic.
 
-<mark>路由模式是自适应型代理系统中的重要控制机制，能让系统根据不同输入和内部状态动态调整执行流程。通过提供必要的条件逻辑层，其效用贯穿多个领域。</mark>
+<mark>路由模式是自适应型智能体系统中的重要控制机制，能让系统根据不同输入和内部状态动态调整执行流程。通过提供必要的条件逻辑层，其效用贯穿多个领域。</mark>
 
 In human-computer interaction, such as with virtual assistants or AI-driven tutors, routing is employed to interpret user intent. An initial analysis of a natural language query determines the most appropriate subsequent action, whether it is invoking a specific information retrieval tool, escalating to a human operator, or selecting the next module in a curriculum based on user performance. This allows the system to move beyond linear dialogue flows and respond contextually.
 
-<mark>在人机交互领域，例如与虚拟助手或 AI 辅导系统交互时，路由用于识别用户的意图。对自然语言查询的初步分析会决定最合适的后续操作——比如调用某个信息检索工具、转接人工客服，或根据用户的表现选择课程的下一个模块。这样系统就能摆脱线性对话流程，做出更符合上下文的响应</mark>
+<mark>在人机交互领域，例如与虚拟助手或 AI 辅导系统交互时，路由用于识别用户意图。对自然语言查询的初步分析会决定最合适的后续操作——比如调用某个信息检索工具、转接人工客服，或根据用户表现选择课程的下一个模块。这样系统就能摆脱线性对话流程，做出更符合上下文的响应。</mark>
 
 Within automated data and document processing pipelines, routing serves as a classification and distribution function. Incoming data, such as emails, support tickets, or API payloads, is analyzed based on content, metadata, or format. The system then directs each item to a corresponding workflow, such as a sales lead ingestion process, a specific data transformation function for JSON or CSV formats, or an urgent issue escalation path.
 
@@ -88,11 +88,11 @@ Within automated data and document processing pipelines, routing serves as a cla
 
 In complex systems involving multiple specialized tools or agents, routing acts as a high-level dispatcher. A research system composed of distinct agents for searching, summarizing, and analyzing information would use a router to assign tasks to the most suitable agent based on the current objective. Similarly, an AI coding assistant uses routing to identify the programming language and user's intent—to debug, explain, or translate—before passing a code snippet to the correct specialized tool.
 
-<mark>在涉及多个专业工具或智能体的复杂系统中，路由可以起到高级调度员的作用。一个由负责搜索、总结和分析信息的独立智能体组成的研究系统，会使用一个路由器，根据当前目标将任务分配给最合适的智能体。同样，一个 AI 编程助手也会利用路由来识别编程语言和用户意图（如调试、解释或翻译），再把代码片段交给对应的专用工具处理。</mark>
+<mark>在涉及多个专业工具或智能体的复杂系统中，路由起到高级调度员的作用。一个由负责搜索、总结和分析信息的独立智能体组成的研究系统，会使用路由器根据当前目标将任务分配给最合适的智能体。同样，AI 编程助手也会利用路由来识别编程语言和用户意图（如调试、解释或翻译），再把代码片段交给对应的专用工具处理。</mark>
 
 Ultimately, routing provides the capacity for logical arbitration that is essential for creating functionally diverse and context-aware systems. It transforms an agent from a static executor of pre-defined sequences into a dynamic system that can make decisions about the most effective method for accomplishing a task under changing conditions.
 
-<mark>路由赋予系统进行逻辑判断的能力，这对构建功能多样且具备上下文感知的系统至关重要。它让代理不再只是按预设步骤执行，而是在环境变化时，能够动态选择最有效的方式来完成任务。</mark>
+<mark>路由赋予系统逻辑判断能力，这对构建功能多样且具备上下文感知的系统至关重要。它让智能体不再只是按预设步骤执行，而是在环境变化时能够动态选择最有效的方式来完成任务。</mark>
 
 ---
 
@@ -100,11 +100,11 @@ Ultimately, routing provides the capacity for logical arbitration that is essent
 
 Implementing routing in code involves defining the possible paths and the logic that decides which path to take. Frameworks like LangChain and LangGraph provide specific components and structures for this. LangGraph's state-based graph structure is particularly intuitive for visualizing and implementing routing logic.
 
-<mark>要在代码中实现路由，需要定义所有可能的路径以及决定走哪条路的逻辑。像 LangChain 和 LangGraph 这样的框架为此提供了专门的组件和结构。LangGraph 基于状态的图结构，在可视化和实现路由逻辑方面尤为直观。</mark>
+<mark>要在代码中实现路由，需要定义所有可能的路径以及决定走哪条路的逻辑。像 LangChain 和 LangGraph 这样的框架为此提供了专门的组件和结构。LangGraph 基于状态的图结构在可视化和实现路由逻辑方面尤为直观。</mark>
 
 This code demonstrates a simple agent-like system using LangChain and Google's Generative AI. It sets up a "coordinator" that routes user requests to different simulated "sub-agent" handlers based on the request's intent (booking, information, or unclear). The system uses a language model to classify the request and then delegates it to the appropriate handler function, simulating a basic delegation pattern often seen in multi-agent architectures.
 
-<mark>以下代码使用 LangChain 和 Google 的 Gemini 模型演示一个简单的智能体系统。它设置了一个「协调员」，根据请求意图（预订、信息查询或意图不明）将用户请求路由到不同的模拟「子智能体」。整个流程先由语言模型对请求进行意图分类，再把任务交给对应的处理模块，模拟了多代理架构中常见的任务委派模式。</mark>
+<mark>以下代码使用 LangChain 和 Google 的 Gemini 模型演示一个简单的智能体系统。它设置了一个「协调员」，根据请求意图（预订、信息查询或意图不明）将用户请求路由到不同的模拟「子智能体」。整个流程先由语言模型进行意图分类，再把任务交给对应的处理模块，模拟了多智能体架构中常见的任务委派模式。</mark>
 
 First, ensure you have the necessary libraries installed:
 
@@ -257,15 +257,15 @@ Final Result C: Info Handler processed request: 'Tell me about quantum physics.'
 
 As mentioned, this Python code constructs a simple agent-like system using the LangChain library and Google's Generative AI model, specifically gemini-2.5-flash. In detail, It defines three simulated sub-agent handlers: booking_handler, info_handler, and unclear_handler, each designed to process specific types of requests.
 
-<mark>如前所述，这段 Python 代码使用 LangChain 库和 Google 的 gemini-2.5-flash 模型构建了一个简单的类智能体系统。详细来说，它定义了三个模拟的子智能体处理器：booking_handler、info_handler 和 unclear_handler，分别用于处理特定类型的请求。</mark>
+<mark>如前所述，这段 Python 代码使用 LangChain 库和 Google 的 gemini-2.5-flash 模型构建了一个简单的类智能体系统。它定义了三个模拟的子智能体处理器：booking_handler、info_handler 和 unclear_handler，分别用于处理特定类型的请求。</mark>
 
 A core component is the coordinator_router_chain, which utilizes a ChatPromptTemplate to instruct the language model to categorize incoming user requests into one of three categories: 'booker', 'info', or 'unclear'. The output of this router chain is then used by a RunnableBranch to delegate the original request to the corresponding handler function. The RunnableBranch checks the decision from the language model and directs the request data to either the booking_handler, info_handler, or unclear_handler. The coordinator_agent combines these components, first routing the request for a decision and then passing the request to the chosen handler. The final output is extracted from the handler's response.
 
-<mark>核心组件 coordinator_router_chain，它通过 ChatPromptTemplate 指示模型将用户请求分为三类：'booker'、'info' 或 'unclear'。随后 RunnableBranch 使用路由链的输出将原始请求委派给相应的处理函数。RunnableBranch 会根据模型的判断，将请求数据发送到 booking_handler、info_handler 或 unclear_handler。coordinator_agent 将这些部分组合在一起：先进行路由决策，然后把请求转给选定的处理器，最后从处理器的响应中提取并返回最终结果。</mark>
+<mark>核心组件是 coordinator_router_chain，它通过 ChatPromptTemplate 指示模型将用户请求分为三类：'booker'、'info' 或 'unclear'。随后 RunnableBranch 使用路由链的输出将原始请求委派给相应的处理函数。RunnableBranch 根据模型的判断，将请求数据发送到 booking_handler、info_handler 或 unclear_handler。coordinator_agent 将这些部分组合在一起：先进行路由决策，然后把请求转给选定的处理器，最后从处理器的响应中提取并返回最终结果。</mark>
 
 The main function demonstrates the system's usage with three example requests, showcasing how different inputs are routed and processed by the simulated agents. Error handling for language model initialization is included to ensure robustness. The code structure mimics a basic multi-agent framework where a central coordinator delegates tasks to specialized agents based on intent.
 
-<mark>主函数通过三个示例请求展示了系统的实际用法，说明不同的输入如何被路由并由各个模拟代理处理。为了保证稳定性，代码还包含了语言模型初始化的错误处理。整体代码结构类似一个简化的多代理框架：中央协调器根据意图把任务分配给各个专长不同的代理。</mark>
+<mark>主函数通过三个示例请求展示了系统的实际用法，说明不同的输入如何被路由并由各个模拟智能体处理。为了保证稳定性，代码还包含了语言模型初始化的错误处理。整体代码结构类似一个简化的多智能体框架：中央协调器根据意图把任务分配给各个专长不同的智能体。</mark>
 
 ---
 
@@ -273,11 +273,11 @@ The main function demonstrates the system's usage with three example requests, s
 
 The Agent Development Kit (ADK) is a framework for engineering agentic systems, providing a structured environment for defining an agent's capabilities and behaviours. In contrast to architectures based on explicit computational graphs, routing within the ADK paradigm is typically implemented by defining a discrete set of "tools" that represent the agent's functions. The selection of the appropriate tool in response to a user query is managed by the framework's internal logic, which leverages an underlying model to match user intent to the correct functional handler.
 
-<mark>Google 智能体开发套件（ADK）是用于工程化智能体系统的框架，是用于构建智能代理系统的框架，提供了一个用于定义代理能力与行为的结构化环境。与基于显式计算图的架构相比，ADK 中的路由通常是通过定义一组独立的「工具」来实现，这些工具对应代理的各项功能。框架的内部逻辑会在用户发起查询时选择合适的工具，借助底层模型将用户意图匹配到相应的功能处理器。</mark>
+<mark>Google 智能体开发套件（ADK）是用于构建智能体系统的框架，提供了一个用于定义智能体能力与行为的结构化环境。与基于显式计算图的架构相比，ADK 中的路由通常是通过定义一组独立的「工具」来实现，这些工具对应智能体的各项功能。框架的内部逻辑会在用户发起查询时选择合适的工具，借助底层模型将用户意图匹配到相应的功能处理器。</mark>
 
 This Python code demonstrates an example of an Agent Development Kit (ADK) application using Google's ADK library. It sets up a "Coordinator" agent that routes user requests to specialized sub-agents ("Booker" for bookings and "Info" for general information) based on defined instructions. The sub-agents then use specific tools to simulate handling the requests, showcasing a basic delegation pattern within an agent system.
 
-<mark>这段 Python 代码演示了如何使用 Google ADK 构建一个应用。它设置了一个「协调员」智能体，根据预设指令把用户请求分发给两个专门的子智能体：负责预订的「Booker」智能体和提供通用信息的「Info」子智能体。各子代理再调用各自的工具来模拟处理请求，展示了在代理系统中如何进行基本的任务委派。</mark>
+<mark>这段 Python 代码演示了如何使用 Google ADK 构建一个应用。它设置了一个「协调员」智能体，根据预设指令把用户请求分发给两个专门的子智能体：负责预订的「Booker」和提供通用信息的「Info」。各子智能体再调用各自的工具来模拟处理请求，展示了智能体系统中基本的任务委派模式。</mark>
 
 ```python path=null start=null
 # Copyright (c) 2025 Marco Fago
@@ -434,11 +434,11 @@ if __name__ == "__main__":
 
 This script consists of a main Coordinator agent and two specialized sub_agents: Booker and Info. Each specialized agent is equipped with a FunctionTool that wraps a Python function simulating an action. The booking_handler function simulates handling flight and hotel bookings, while the info_handler function simulates retrieving general information. The unclear_handler is included as a fallback for requests the coordinator cannot delegate, although the current coordinator logic doesn't explicitly use it for delegation failure in the main run_coordinator function.
 
-<mark>该脚本包含一个主协调员和两个专职子智能体：Booker 和 Info。每个子智能体都配有一个 FunctionTool，用于封装模拟操作的 Python 函数。booking_handler 用来模拟处理航班和酒店预订，info_handler 用来模拟查询信息。脚本中还包含一个 unclear_handler，作为协调器在无法委派请求时的备用处理，不过在当前的 run_coordinator 主流程中，并没有明确使用它来处理委派失败的情况</mark>
+<mark>该脚本包含一个主协调员和两个专职子智能体：Booker 和 Info。每个子智能体都配有一个 FunctionTool，用于封装模拟操作的 Python 函数。booking_handler 用来模拟处理航班和酒店预订，info_handler 用来模拟查询信息。脚本中还包含一个 unclear_handler，作为协调器在无法委派请求时的备用处理，不过在当前的 run_coordinator 主流程中，并没有明确使用它来处理委派失败的情况。</mark>
 
 The Coordinator agent's primary role, as defined in its instruction, is to analyze incoming user messages and delegate them to either the Booker or Info agent. This delegation is handled automatically by the ADK's Auto-Flow mechanism because the Coordinator has sub_agents defined. The run_coordinator function sets up an InMemoryRunner, creates a user and session ID, and then uses the runner to process the user's request through the coordinator agent. The runner.run method processes the request and yields events, and the code extracts the final response text from the event.content.
 
-<mark>协调员的主要职责是分析收到的用户消息，并将其分派给 Booker 或 Info 子智能体。因为协调员定义了子代理，ADK 的流程会自动完成这种分派。run_coordinator 函数会初始化一个 InMemoryRunner，创建用户和会话 ID，然后用该 runner 将用户请求提交给协调员来处理。runner.run 方法会处理请求并生成事件，代码从这些事件的 event.content 中提取最终的响应文本</mark>
+<mark>协调员的主要职责是分析收到的用户消息，并将其分派给 Booker 或 Info 子智能体。因为协调员定义了子智能体，ADK 的流程会自动完成这种分派。run_coordinator 函数会初始化一个 InMemoryRunner，创建用户和会话 ID，然后用该 runner 将用户请求提交给协调员来处理。runner.run 方法会处理请求并生成事件，代码从这些事件的 event.content 中提取最终的响应文本。</mark>
 
 The main function demonstrates the system's usage by running the coordinator with different requests, showcasing how it delegates booking requests to the Booker and information requests to the Info agent.
 
@@ -454,11 +454,11 @@ The main function demonstrates the system's usage by running the coordinator wit
 
 **Why:** The Routing pattern provides a standardized solution by introducing conditional logic into an agent's operational framework. It enables the system to first analyze an incoming query to determine its intent or nature. Based on this analysis, the agent dynamically directs the flow of control to the most appropriate specialized tool, function, or sub-agent. This decision can be driven by various methods, including prompting LLMs, applying predefined rules, or using embedding-based semantic similarity. Ultimately, routing transforms a static, predetermined execution path into a flexible and context-aware workflow capable of selecting the best possible action.
 
-<mark><strong>解决之道：</strong> 路由模式通过在智能体的操作框架中引入条件判断，提供了一套标准化的解法。它使系统能够首先分析传入的请求以判断其意图或性质。基于此分析，智能体动态地将控制流导向最合适的专业工具、函数或子智能体。这个决策可以由多种方法驱动，包括提示大语言模型、应用预定义规则或使用基于嵌入的语义相似度。最终，路由将一个静态、预定的执行路径，转变为一个灵活且能感知上下文的工作流，能够为任务选择最佳的行动方案。</mark>
+<mark><strong>解决之道：</strong>路由模式通过在智能体的操作框架中引入条件判断，提供了一套标准化的解法。它使系统能够首先分析传入请求以判断其意图或性质。基于此分析，智能体动态地将控制流导向最合适的专业工具、函数或子智能体。这个决策可以由多种方法驱动，包括提示大语言模型、应用预定义规则或使用基于嵌入的语义相似度。最终，路由将静态、预定的执行路径转变为灵活且能感知上下文的工作流，能够为任务选择最佳的行动方案。</mark>
 
 **Rule of Thumb:** Use the Routing pattern when an agent must decide between multiple distinct workflows, tools, or sub-agents based on the user's input or the current state. It is essential for applications that need to triage or classify incoming requests to handle different types of tasks, such as a customer support bot distinguishing between sales inquiries, technical support, and account management questions.
 
-<mark><strong>经验法则：</strong> 当智能体必须根据用户输入或当前状态，在多个不同的工作流、工具或子智能体之间做出选择时，就应使用路由模式。对于那些需要对传入请求进行分类以处理不同类型任务的应用来说，它是必不可少的，例如一个需要区分销售咨询、技术支持和账户管理问题的客户支持机器人。</mark>
+<mark><strong>经验法则：</strong>当智能体必须根据用户输入或当前状态在多个不同的工作流、工具或子智能体之间做出选择时，就应使用路由模式。对于那些需要对传入请求进行分类以处理不同类型任务的应用来说，它是必不可少的，例如需要区分销售咨询、技术支持和账户管理问题的客户支持机器人。</mark>
 
 **Visual summary** | <mark>可视化总结</mark>
 
@@ -502,11 +502,11 @@ We've seen how routing can be applied in various domains, from customer service 
 
 The code examples using LangChain and Google ADK demonstrate two different, yet effective, approaches to implementing routing. LangGraph's graph-based structure provides a visual and explicit way to define states and transitions, making it ideal for complex, multi-step workflows with intricate routing logic. Google ADK, on the other hand, often focuses on defining distinct capabilities (Tools) and relies on the framework's ability to route user requests to the appropriate tool handler, which can be simpler for agents with a well-defined set of discrete actions.
 
-<mark>使用 LangChain 和 Google ADK 的代码示例展示了两种不同但同样有效的路由实现方法。LangGraph 基于图的结构提供了可视化、显式定义状态和转换的方式，非常适合具有复杂路由逻辑的多步工作流。而 Google ADK 则侧重于定义离散的能力（工具），依赖框架将用户请求路由到合适的工具处理程序，对于类型清晰、相互独立的子智能体来说，这种方式更为简洁高效</mark>
+<mark>使用 LangChain 和 Google ADK 的代码示例展示了两种不同但同样有效的路由实现方法。LangGraph 基于图的结构提供了可视化、显式定义状态和转换的方式，非常适合具有复杂路由逻辑的多步工作流。而 Google ADK 则侧重于定义离散的能力（工具），依赖框架将用户请求路由到合适的工具处理程序，对于类型清晰、相互独立的子智能体来说，这种方式更为简洁高效。</mark>
 
 Mastering the Routing pattern is essential for building agents that can intelligently navigate different scenarios and provide tailored responses or actions based on context. It's a key component in creating versatile and robust agentic applications.
 
-<mark>熟练掌握路由模式对于构建能够根据不同场景和上下文智能选择响应或执行操作的代理至关重要，它是打造灵活且可靠的代理应用的核心要素。</mark>
+<mark>熟练掌握路由模式对于构建能够根据不同场景和上下文智能选择响应或执行操作的智能体至关重要，它是打造灵活且可靠的智能体应用的核心要素。</mark>
 
 ---
 
