@@ -59,7 +59,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 ### 第二部分 | Part Two (61 页)
 
-- [ ] [第八章：内存管理 | Chapter 8: Memory Management](14-Chapter-08-Memory-Management.md)
+- [ ] [第八章：记忆管理 | Chapter 8: Memory Management](14-Chapter-08-Memory-Management.md)
 - [ ] [第九章：学习与适应 | Chapter 9: Learning and Adaptation](15-Chapter-09-Learning-and-Adaptation.md)
 - [ ] [第十章：模型上下文协议 (MCP) | Chapter 10: Model Context Protocol (MCP)](16-Chapter-10-Model-Context-Protocol.md)
 - [ ] [第十一章：目标设定与监控 | Chapter 11: Goal Setting and Monitoring](17-Chapter-11-Goal-Setting-and-Monitoring.md)
@@ -104,8 +104,8 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 ### 🔧 核心模式 | Core Patterns
 
-1. **提示链 (Prompt Chaining)** - 连续提示序列引导复杂任务
-2. **路由 (Routing)** - 智能请求路由分发
+1. **提示链 (Prompt Chaining)** - 分而治之的任务分解模式。它将复杂任务分解为一系列更小、更易管理的子问题，每个子问题通过专门设计的提示独立解决，前一步的输出传递给下一步作为输入，形成一个逻辑清晰的处理流水线。
+2. **路由 (Routing)** - 智能决策与动态分发。它能根据环境状态、用户输入或执行结果等情境信息，从多个可选方案中选择合适的行动路径。路由决定将请求交给哪个功能模块、工具或子流程处理，让智能体不再只是沿着固定流程执行。
 3. **并行化 (Parallelization)** - 多任务并行执行优化
 4. **反思 (Reflection)** - 智能体自我评估与改进
 5. **工具使用 (Tool Use)** - 外部工具与 API 集成
@@ -114,7 +114,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 ### 🎯 高级模式 | Advanced Patterns
 
-8. **内存管理 (Memory Management)** - 短期和长期记忆管理
+8. **记忆管理 (Memory Management)** - 短期和长期记忆管理
 9. **学习与适应 (Learning and Adaptation)** - 从经验中学习
 10. **模型上下文协议 (MCP)** - 标准化交互协议
 11. **目标设定与监控 (Goal Setting and Monitoring)** - 动态目标管理
