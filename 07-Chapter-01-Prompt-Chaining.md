@@ -75,7 +75,7 @@ This structured format ensures that the data is machine-readable and can be prec
 
 ---
 
-## Practical Applications & Use Cases | <mark>实际应用和用例</mark>
+## Practical Applications & Use Cases | <mark>实际应用场景</mark>
 
 Prompt chaining is a versatile pattern applicable in a wide range of scenarios when building agentic systems. Its core utility lies in breaking down complex problems into sequential, manageable steps. Here are several practical applications:
 
@@ -418,7 +418,7 @@ This structured approach is what differentiates a rudimentary AI tool from a mor
 
 **Rule of thumb:** Use this pattern when a task is too complex for a single prompt, involves multiple distinct processing stages, requires interaction with external tools between steps, or when building Agentic systems that need to perform multi-step reasoning and maintain state.
 
-<mark><strong>经验法则：</strong>如果一项任务过于复杂，单个提示难以胜任；或涉及多个独立的处理步骤；或需要在步骤间与外部工具交互；亦或在构建需要多步推理和状态维持的智能体系统时，都可考虑使用此模式。</mark>
+<mark><strong>适用场景：</strong>如果一项任务过于复杂，单个提示难以胜任；或涉及多个独立的处理步骤；或需要在步骤间与外部工具交互；亦或在构建需要多步推理和状态维持的智能体系统时，都可考虑使用此模式。</mark>
 
 **Visual summary** | <mark>可视化总结</mark>
 
