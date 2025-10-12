@@ -516,7 +516,7 @@ Mastering the Routing pattern is essential for building agents that can intellig
 
 1. LangGraph Documentation: [https://www.langchain.com/](https://www.langchain.com/)
 
-   <mark>LangGraph 官方文档：[https://www.langchain.com/](https://www.langchain.com/)</mark>
+   <mark>LangGraph 官网：[https://www.langchain.com/](https://www.langchain.com/)</mark>
 
 2. Google Agent Developer Kit Documentation: [https://google.github.io/adk-docs/](https://google.github.io/adk-docs/)
 
