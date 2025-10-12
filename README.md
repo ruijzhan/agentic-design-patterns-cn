@@ -50,7 +50,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 ### 第一部分 | Part One (103 页)
 
 - [x] [第一章：提示链 | Chapter 1: Prompt Chaining](07-Chapter-01-Prompt-Chaining.md)
-- [ ] [第二章：路由 | Chapter 2: Routing](08-Chapter-02-Routing.md)
+- [x] [第二章：路由 | Chapter 2: Routing](08-Chapter-02-Routing.md)
 - [ ] [第三章：并行化 | Chapter 3: Parallelization](09-Chapter-03-Parallelization.md)
 - [ ] [第四章：反思 | Chapter 4: Reflection](10-Chapter-04-Reflection.md)
 - [ ] [第五章：工具使用 | Chapter 5: Tool Use](11-Chapter-05-Tool-Use.md)
@@ -280,44 +280,7 @@ python codes/Chapter-01-Prompt-Chaining-Example.py
   - ✅ 允许：自由复制、分发、展示和演绎作品（需署名译者）
   - ❌ 禁止：任何形式的商业使用
   - 📧 商业合作：如需商业使用，请联系译者和原书版权方
-
----
-
-## 📈 项目进展 | Project Progress
-
-### 🗓️ 更新历史 | Update History
-
-- **2025-10-10**:
-
-  - ✅ 人工精读和优化第一部分全部翻译内容
-  - ✅ 规范标点符号使用（统一使用中文直角引号）
-  - ✅ 优化长句表达，提升中文可读性
-  - ✅ 完成翻译质量审查和改进
-
-- **2025-10-09**:
-
-  - ✅ 初始化项目仓库
-  - ✅ 完成致谢、鸣谢和前言章节翻译
-  - ✅ 完成思想领袖观点章节翻译 (Marco Argenti/Goldman Sachs)
-  - ✅ 完成介绍和智能体定义章节翻译
-  - ✅ 完成第一部分全部 7 章 AI 翻译 (提示链、路由、并行化、反思、工具使用、规划、多智能体协作)
-  - ✅ 建立翻译规范和质量标准 ([rules.md](rules/rules.md))
-  - ✅ 实现 GitHub 兼容的高亮格式 (`<mark>` 标签)
-  - ✅ 创建专业 README 文档
-  - ✅ 更新文件命名规范 (两位数前缀系统)
-  - ✅ 完成 AI 交叉评审和质量检查
-  - 📊 **当前进度**: 第一部分 7/7 章节完成 (100%)
-  - 📖 **总体进度**: 约 25% (103/424 页)
-
-### 📊 翻译统计 | Translation Statistics
-
-| 状态 | 章节数 | 页数估算 | 完成度 |
-|------|--------|----------|--------|
-| ✅ 已完成 | 13 | ~103 | 25% |
-| 🚧 进行中 | 0 | 0 | 0% |
-| ⏳ 待翻译 | 24 | ~321 | 75% |
-| **总计** | **37** | **424** | **25%** |
-
+  
 ---
 
 ## 📞 联系方式 | Contact
