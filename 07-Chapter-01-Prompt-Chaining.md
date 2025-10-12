@@ -357,6 +357,17 @@ print("\n--- Final JSON Output ---")
 print(final_result)
 ```
 
+**运行输出（译者添加）：**
+
+```json
+--- Final JSON Output ---
+{
+    "cpu": "3.5 GHz octa-core",
+    "memory": "16GB",
+    "storage": "1TB NVMe SSD"
+}
+```
+
 This Python code demonstrates how to use the LangChain library to process text. It utilizes two separate prompts: one to extract technical specifications from an input string and another to format these specifications into a JSON object. The ChatOpenAI model is employed for language model interactions, and the StrOutputParser ensures the output is in a usable string format. The LangChain Expression Language (LCEL) is used to elegantly chain these prompts and the language model together. The first chain, extraction_chain, extracts the specifications. The full_chain then takes the output of the extraction and uses it as input for the transformation prompt. A sample input text describing a laptop is provided. The full_chain is invoked with this text, processing it through both steps. The final result, a JSON string containing the extracted and formatted specifications, is then printed.
 
 <mark>这段 Python 代码演示了如何使用 LangChain 库来处理文本。它利用了两个独立的提示：一个从输入字符串中提取技术规格，另一个将这些规格格式化为 JSON 对象。ChatOpenAI 模型被用来与语言模型进行交互，StrOutputParser 确保输出是可直接使用的字符串格式。LangChain 表达式语言（LCEL），也就是代码中的 | 符号，被用来优雅地将这些组件「链接」在一起。代码首先构建了一个 extraction_chain，负责提取规格。然后，full_chain 接收前一个链的输出，并将其作为输入传给负责转换格式的提示。最后，我们提供了一段描述笔记本电脑的示例文本，并通过 invoke 方法让 full_chain 按顺序执行这两个步骤，打印出最终提取并格式化好的 JSON 字符串。</mark>
