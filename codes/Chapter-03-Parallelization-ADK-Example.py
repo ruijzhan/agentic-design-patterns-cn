@@ -1,6 +1,7 @@
+
 # Part of agent.py --> Follow https://google.github.io/adk-docs/get-started/quickstart/ to learn the setup
 # --- 1. Define Researcher Sub-Agents (to run in parallel) ---
-# --- 定义研究员智能体（并行执行） ---
+# --- 定义研究员子智能体（并行执行） ---
 
  # Researcher 1: Renewable Energy
  # 研究员 1：可再生能源
@@ -56,9 +57,9 @@
  # --- 2. Create the ParallelAgent (Runs researchers concurrently) ---
  # This agent orchestrates the concurrent execution of the researchers.
  # It finishes once all researchers have completed and stored their results in state.
- # --- 2. 创建 ParallelAgent（并行运行多个研究员） ---
- # 这个智能体协调多个研究员的并发执行。
- # 一旦所有研究员完成各自的工作并把结果写入状态，流程便结束
+ # --- 2. 创建 ParallelAgent（并行运行多个研究员子智能体） ---
+ # 该智能体协调多个研究员子智能体的并发执行。
+ # 所有研究员完成工作并将结果写入状态后，流程即结束。
  parallel_research_agent = ParallelAgent(
      name="ParallelWebResearchAgent",
      sub_agents=[researcher_agent_1, researcher_agent_2, researcher_agent_3],
@@ -68,9 +69,9 @@
  # --- 3. Define the Merger Agent (Runs *after* the parallel agents) ---
  # This agent takes the results stored in the session state by the parallel agents
  # and synthesizes them into a single, structured response with attributions.
- # --- 3. 定义合并智能体（在并行研究员之后运行） ---
- # 这个智能体会使用并行运行的智能体已保存在会话状态中的结果
- # 将这些内容整合并归纳为一份结构化的响应，并在相应部分标注出处
+ # --- 3. 定义合并智能体（在并行研究员子智能体之后运行） ---
+ # 该智能体使用并行运行的子智能体已保存在会话状态中的结果，
+ # 将这些内容整合并归纳为一份结构化的响应，并在相应部分标注出处。
  merger_agent = LlmAgent(
      name="SynthesisAgent",
      model=GEMINI_MODEL,  # Or potentially a more powerful model if needed for synthesis
@@ -121,8 +122,9 @@
  # --- 4. Create the SequentialAgent (Orchestrates the overall flow) ---
  # This is the main agent that will be run. It first executes the ParallelAgent
  # to populate the state, and then executes the MergerAgent to produce the final output.
- # --- 4. 创建 SequentialAgent，用于协调和管理整个流程 ---
- # 这是主智能体，会被启动运行。它会先执行名为 ParallelAgent 的智能体来填充状态，然后执行名为 MergerAgent 的智能体来生成最终输出。
+ # --- 4. 创建 SequentialAgent（协调整个流程） ---
+ # 这是将被运行的主智能体。它先执行 ParallelAgent 来填充状态，
+ # 然后执行 MergerAgent 来生成最终输出。
  sequential_pipeline_agent = SequentialAgent(
      name="ResearchAndSynthesisPipeline",
      # Run parallel research first, then merge
