@@ -3,13 +3,13 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-# Colab 代码链接: https://colab.research.google.com/drive/15XCzDOvBhIQaZ__xkvruf5sP9OznAbK9
+# Colab 代码链接：https://colab.research.google.com/drive/15XCzDOvBhIQaZ__xkvruf5sP9OznAbK9
 
 # 安装依赖
 # pip install langchain langchain-community langchain-openai langgraph
 
 # For better security, load environment variables from a .env file
-# 为了更好的安全性, 建议从 .env 文件加载环境变量
+# 为了更好的安全性，建议从 .env 文件加载环境变量
 from dotenv import load_dotenv
 load_dotenv()
 # Make sure your OPENAI_API_KEY is set in the .env file
