@@ -72,7 +72,9 @@ Frameworks like LangChain, LangGraph, and Google ADK provide mechanisms for para
 
 <mark>LangGraph 利用图结构，允许从单个状态转换中执行多个节点，从而在工作流中实现并行分支。</mark>
 
-<mark>Google ADK 提供了强大的原生机制来促进和管理智能体的并行执行，显著提升了复杂多智能体系统的效率和可扩展性。ADK 框架的这一内在能力使开发者能够设计并实现让多个智能体并发运行而非顺序执行的解决方案。</mark>
+<mark>Google ADK 提供了强大的原生机制来促进和管理智能体的并行执行，显著提升了复杂多智能体系统的效率和可扩展性。</mark>
+
+<mark>ADK 框架的这一内在能力使开发者能够设计并实现让多个智能体并发运行（而非顺序执行）的解决方案。</mark>
 
 The Parallelization pattern is vital for improving the efficiency and responsiveness of agentic systems, especially when dealing with tasks that involve multiple independent lookups, computations, or interactions with external services. It's a key technique for optimizing the performance of complex agent workflows.
 
@@ -84,7 +86,7 @@ The Parallelization pattern is vital for improving the efficiency and responsive
 
 Parallelization is a powerful pattern for optimizing agent performance across various applications:
 
-<mark>并行化是在各种应用中提升代理性能的一种强有力的方法：</mark>
+<mark>并行化是在各种应用中提升智能体性能的强有力方法：</mark>
 
 **1. Information Gathering and Research:** | <mark><strong>信息收集和研究：</strong></mark>
 
@@ -112,7 +114,7 @@ Applying different analysis techniques or processing different data segments con
 
 - **Use Case:** An agent analyzing customer feedback.
 
-   <mark><strong>用例：</strong>一个负责分析客户反馈的智能代理。</mark>
+   <mark><strong>用例：</strong>分析客户反馈的智能体。</mark>
 
 - **Parallel Tasks:** Run sentiment analysis, extract keywords, categorize feedback, and identify urgent issues simultaneously across a batch of feedback entries.
 
@@ -130,7 +132,7 @@ Calling multiple independent APIs or tools to gather different types of informat
 
 - **Use Case:** A travel planning agent.
 
-   <mark><strong>用例：</strong>一个负责旅行规划的智能代理。</mark>
+   <mark><strong>用例：</strong>旅行规划智能体。</mark>
 
 - **Parallel Tasks:** Check flight prices, search for hotel availability, look up local events, and find restaurant recommendations concurrently.
 
@@ -148,7 +150,7 @@ Generating different parts of a complex piece of content in parallel.
 
 - **Use Case:** An agent creating a marketing email.
 
-   <mark><strong>用例：</strong>一个负责撰写营销邮件的智能体。</mark>
+   <mark><strong>用例：</strong>撰写营销邮件的智能体。</mark>
 
 - **Parallel Tasks:** Generate a subject line, draft the email body, find a relevant image, and create a call-to-action button text simultaneously.
 
@@ -166,7 +168,7 @@ Performing multiple independent checks or validations concurrently.
 
 - **Use Case:** An agent verifying user input.
 
-   <mark><strong>用例：</strong>负责验证用户输入的智能体。</mark>
+   <mark><strong>用例：</strong>验证用户输入的智能体。</mark>
 
 - **Parallel Tasks:** Check email format, validate phone number, verify address against a database, and check for profanity simultaneously.
 
@@ -202,7 +204,7 @@ Generating multiple variations of a response or output in parallel to select the
 
 - **Use Case:** An agent generating different creative text options.
 
-   <mark><strong>用例：</strong>为同一需求生成多个创意文案的智能体。</mark>
+   <mark><strong>用例：</strong>生成多个创意文案的智能体。</mark>
 
 - **Parallel Tasks:** Generate three different headlines for an article simultaneously using slightly different prompts or models.
 
@@ -226,7 +228,7 @@ Parallel execution within the LangChain framework is facilitated by the LangChai
 
 In the context of LangGraph, this principle is applied to the graph's topology. Parallel workflows are defined by architecting the graph such that multiple nodes, lacking direct sequential dependencies, can be initiated from a single common node. These parallel pathways execute independently before their results can be aggregated at a subsequent convergence point in the graph.
 
-<mark>在 LangGraph 中，这一原则体现在图的拓扑结构上。通过把图设计成从一个公共节点同时触发多个彼此没有直接顺序依赖的节点，就能形成并行工作流。这些并行路径各自独立运行，之后在图中的某个汇聚点将它们的结果合并。</mark>
+<mark>在 LangGraph 中，这一原则体现在图的拓扑结构上。通过从一个公共节点同时触发多个没有直接顺序依赖的节点，就能形成并行工作流。这些并行路径各自独立运行，之后在图中的某个汇聚点合并结果。</mark>
 
 The following implementation demonstrates a parallel processing workflow constructed with the LangChain framework. This workflow is designed to execute two independent operations concurrently in response to a single user query. These parallel processes are instantiated as distinct chains or functions, and their respective outputs are subsequently aggregated into a unified result.
 
@@ -234,7 +236,7 @@ The following implementation demonstrates a parallel processing workflow constru
 
 The prerequisites for this implementation include the installation of the requisite Python packages, such as langchain, langchain-community, and a model provider library like langchain-openai. Furthermore, a valid API key for the chosen language model must be configured in the local environment for authentication.
 
-<mark>要实现此功能，首先需要安装一些必要的 Python 包（例如 langchain、langchain-community 以及像 langchain-openai 之类的模型提供库）。同时，还需要在本地环境中配置所选语言模型的有效 API 密钥，以便进行身份验证。</mark>
+<mark>要实现此功能，首先需要安装必要的 Python 包（如 langchain、langchain-community 及 langchain-openai 等模型提供库）。同时需要在本地环境中配置所选语言模型的有效 API 密钥，以便进行身份验证。</mark>
 
 ```python
 import os
@@ -398,7 +400,13 @@ The code begins by importing essential modules from langchain_openai and langcha
 
 A RunnableParallel block is then constructed to bundle these three chains, allowing them to execute simultaneously. This parallel runnable also includes a RunnablePassthrough to ensure the original input topic is available for subsequent steps. A separate ChatPromptTemplate is defined for the final synthesis step, taking the summary, questions, key terms, and the original topic as input to generate a comprehensive answer. The full end-to-end processing chain, named full_parallel_chain, is created by sequencing the map_chain (the parallel block) into the synthesis prompt, followed by the language model and the output parser. An asynchronous function run_parallel_example is provided to demonstrate how to invoke this full_parallel_chain. This function takes the topic as input and uses invoke to run the asynchronous chain. Finally, the standard Python if __name__ == "__main__": block shows how to execute the run_parallel_example with a sample topic, in this case, "The history of space exploration", using asyncio.run to manage the asynchronous execution.
 
-<mark>随后构建了一个 RunnableParallel 块，把这三条链打包在一起以便同时运行。这个并行运行单元还包含一个 RunnablePassthrough，确保原始输入的主题可以在后续步骤中使用。为最后的汇总步骤定义了一个单独的 ChatPromptTemplate，使用摘要、问题、关键术语和原始主题作为输入来生成完整的答案。整个端到端处理链名为 full_parallel_chain，通过将 map_chain（即并行块）连接到汇总提示，再接语言模型和输出解析器来构建。示例中提供了一个异步函数 run_parallel_example，用来演示如何调用这个 full_parallel_chain：该函数接收主题作为输入并通过 invoke 运行异步链。最后通过标准的 Python if __name__ == "__main__": 代码块演示如何用 asyncio.run 管理异步执行来运行 run_parallel_example，示例主题为「航天探索史」。</mark>
+<mark>随后构建了一个 RunnableParallel 块，把这三条链打包在一起以便同时运行。这个并行运行单元还包含一个 RunnablePassthrough，确保原始输入的主题可以在后续步骤中使用。</mark>
+
+<mark>为最后的汇总步骤定义了一个单独的 ChatPromptTemplate，使用摘要、问题、关键术语和原始主题作为输入来生成完整的答案。整个端到端处理链名为 full_parallel_chain，通过将 map_chain（即并行块）连接到汇总提示，再接语言模型和输出解析器来构建。</mark>
+
+<mark>示例中提供了一个异步函数 run_parallel_example，用来演示如何调用这个 full_parallel_chain：该函数接收主题作为输入并通过 invoke 运行异步链。</mark>
+
+<mark>最后通过标准的 Python if __name__ == "__main__": 代码块演示如何用 asyncio.run 管理异步执行来运行 run_parallel_example，示例主题为「航天探索史」。</mark>
 
 In essence, this code sets up a workflow where multiple LLM calls (for summarizing, questions, and terms) happen at the same time for a given topic, and their results are then combined by a final LLM call. This showcases the core idea of parallelization in an agentic workflow using LangChain.
 
