@@ -67,7 +67,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 ### 第三部分 | Part Three (34 页)
 
 - [ ] [第十二章：异常处理与恢复 | Chapter 12: Exception Handling and Recovery](18-Chapter-12-Exception-Handling-and-Recovery.md)
-- [ ] [第十三章：人在回路中 | Chapter 13: Human-in-the-Loop](19-Chapter-13-Human-in-the-Loop.md)
+- [ ] [第十三章：人机协作 | Chapter 13: Human-in-the-Loop](19-Chapter-13-Human-in-the-Loop.md)
 - [ ] [第十四章：知识检索 (RAG) | Chapter 14: Knowledge Retrieval (RAG)](20-Chapter-14-Knowledge-Retrieval.md)
 
 ### 第四部分 | Part Four (114 页)
@@ -122,7 +122,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 ### 🔗 集成模式 | Integration Patterns
 
 12. **异常处理与恢复 (Exception Handling and Recovery)** - 优雅错误处理
-13. **人在回路中 (Human-in-the-Loop)** - 人机协作决策
+13. **人机协作 (Human-in-the-Loop)** - 人机协作决策
 14. **知识检索 (RAG)** - 检索增强生成技术
 
 ### 🏭 生产模式 | Production Patterns
