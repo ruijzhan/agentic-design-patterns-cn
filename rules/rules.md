@@ -74,7 +74,7 @@
 所有章节标题采用双语对照格式：
 
 ```markdown
-# Chapter N: Title | <mark>第N章：标题</mark>
+# Chapter N: Title | <mark>第 N 章：标题</mark>
 
 ## Section Title | <mark>章节标题</mark>
 
@@ -210,6 +210,7 @@
 
 - 搜索残留"代理"：`grep -r "代理" --include="*.md"` 应全部改为"智能体"
 - 检查术语一致性：确保 Agent/Agentic/Canvas 等翻译统一
+- 检查代码术语格式化：在代码说明段落中，类名、函数名、变量名是否使用 `<code>` 标签
 
 #### 质量检查
 
@@ -287,6 +288,33 @@
 
 - 使用 `grep -r "代理" --include="*.md"` 检查残留
 - 全书术语必须保持统一，不可混用
+
+#### 代码术语格式化
+
+在中文翻译中引用代码组件、类名、函数名、变量名时，应使用 `<code>` 标签包裹，以提高可读性和专业性。
+
+**何时使用 `<code>` 标签：**
+
+- ✅ **类名**：`<code>ChatOpenAI</code>`、`<code>RunnableParallel</code>`、`<code>LlmAgent</code>`
+- ✅ **函数/方法名**：`<code>ainvoke</code>`、`<code>run_parallel_example</code>`、`<code>asyncio.run</code>`
+- ✅ **变量名**：`<code>map_chain</code>`、`<code>full_parallel_chain</code>`、`<code>output_key</code>`
+- ✅ **模型名称**：`<code>gpt-4o-mini</code>`、`<code>GEMINI_MODEL</code>`
+- ✅ **代码符号/运算符**：`<code>|</code>`、`<code>if __name__ == "__main__":</code>`
+- ✅ **配置项/参数**：`<code>temperature</code>`、`<code>try-except</code>`
+
+**何时不使用 `<code>` 标签：**
+
+- ❌ **框架名称**：LangChain、Google ADK、Python（这些作为产品/语言名称，不需要标记）
+- ❌ **概念性术语**：智能体、提示链、并行化（这些是翻译后的中文概念术语）
+- ❌ **技术缩写**：LLM、RAG、API（这些使用全角括号注释即可）
+
+**示例对比：**
+
+```markdown
+❌ 错误：代码从 langchain_openai 和 langchain_core 导入了关键模块，包含 ChatOpenAI、RunnableParallel 等组件。
+
+✅ 正确：代码从 <code>langchain_openai</code> 和 <code>langchain_core</code> 导入了关键模块，包含 <code>ChatOpenAI</code>、<code>RunnableParallel</code> 等组件。
+```
 
 ### 2. Spacing Rules | 空格规则
 
@@ -466,6 +494,13 @@ Fix: [specific issue] in [chapter name]
 ---
 
 ## Version History | 版本历史
+
+- **v1.3 (2025-10-13)**: 新增代码术语格式化规范
+  - 新增"代码术语格式化"章节，规范 `<code>` 标签使用
+  - 定义何时使用/不使用 `<code>` 标签的明确准则
+  - 提供类名、函数名、变量名等代码组件的标记示例
+  - 更新快速自检命令，增加代码术语格式化检查
+  - 已在第三章应用新规范，作为后续章节参考
 
 - **v1.2 (2025-10-12)**: 基于前三章翻译实践优化规则
   - 新增章节标题格式规范（双语对照格式）

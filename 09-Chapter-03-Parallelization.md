@@ -396,17 +396,17 @@ The provided Python code implements a LangChain application designed for process
 
 The code begins by importing essential modules from langchain_openai and langchain_core, including components for language models, prompts, output parsing, and runnable structures. The code attempts to initialize a ChatOpenAI instance, specifically using the "gpt-4o-mini" model, with a specified temperature for controlling creativity. A try-except block is used for robustness during the language model initialization. Three independent LangChain "chains" are then defined, each designed to perform a distinct task on the input topic. The first chain is for summarizing the topic concisely, using a system message and a user message containing the topic placeholder. The second chain is configured to generate three interesting questions related to the topic. The third chain is set up to identify between 5 and 10 key terms from the input topic, requesting them to be comma-separated. Each of these independent chains consists of a ChatPromptTemplate tailored to its specific task, followed by the initialized language model and a StrOutputParser to format the output as a string.
 
-<mark>代码从 langchain_openai 和 langchain_core 导入了关键模块，包含语言模型、提示模板、输出解析器和可运行组件。接着尝试初始化一个 ChatOpenAI 实例，指定使用 gpt-4o-mini 模型，并设置了控制创造力的温度值，初始化时用 try-except 来保证健壮性。随后定义了三条相互独立的 LangChain 链，每条链负责对输入主题执行不同任务：第一条链用来简洁地总结主题，采用系统消息和包含主题占位符的用户消息；第二条链生成与主题相关的三个有趣问题；第三条链则从主题中识别 5 到 10 个关键术语，要求用逗号分隔。每条链都由为该任务定制的 ChatPromptTemplate、已初始化的语言模型和用于把输出格式化为字符串的 StrOutputParser 组成。</mark>
+<mark>代码从 <code>langchain_openai</code> 和 <code>langchain_core</code> 导入了关键模块，包含语言模型、提示模板、输出解析器和可运行组件。接着尝试初始化一个 <code>ChatOpenAI</code> 实例，指定使用 <code>gpt-4o-mini</code> 模型，并设置了控制创造力的温度值，初始化时用 <code>try-except</code> 来保证健壮性。随后定义了三条相互独立的 LangChain 链，每条链负责对输入主题执行不同任务：第一条链用来简洁地总结主题，采用系统消息和包含主题占位符的用户消息；第二条链生成与主题相关的三个有趣问题；第三条链则从主题中识别 5 到 10 个关键术语，要求用逗号分隔。每条链都由为该任务定制的 <code>ChatPromptTemplate</code>、已初始化的语言模型和用于把输出格式化为字符串的 <code>StrOutputParser</code> 组成。</mark>
 
 A RunnableParallel block is then constructed to bundle these three chains, allowing them to execute simultaneously. This parallel runnable also includes a RunnablePassthrough to ensure the original input topic is available for subsequent steps. A separate ChatPromptTemplate is defined for the final synthesis step, taking the summary, questions, key terms, and the original topic as input to generate a comprehensive answer. The full end-to-end processing chain, named full_parallel_chain, is created by sequencing the map_chain (the parallel block) into the synthesis prompt, followed by the language model and the output parser. An asynchronous function run_parallel_example is provided to demonstrate how to invoke this full_parallel_chain. This function takes the topic as input and uses invoke to run the asynchronous chain. Finally, the standard Python if __name__ == "__main__": block shows how to execute the run_parallel_example with a sample topic, in this case, "The history of space exploration", using asyncio.run to manage the asynchronous execution.
 
-<mark>随后构建了一个 RunnableParallel 块，把这三条链打包在一起以便同时运行。这个并行运行单元还包含一个 RunnablePassthrough，确保原始输入的主题可以在后续步骤中使用。</mark>
+<mark>随后构建了一个 <code>RunnableParallel</code> 块，把这三条链打包在一起以便同时运行。这个并行运行单元还包含一个 <code>RunnablePassthrough</code>，确保原始输入的主题可以在后续步骤中使用。</mark>
 
-<mark>为最后的汇总步骤定义了一个单独的 ChatPromptTemplate，使用摘要、问题、关键术语和原始主题作为输入来生成完整的答案。整个端到端处理链名为 full_parallel_chain，通过将 map_chain（即并行块）连接到汇总提示，再接语言模型和输出解析器来构建。</mark>
+<mark>为最后的汇总步骤定义了一个单独的 <code>ChatPromptTemplate</code>，使用摘要、问题、关键术语和原始主题作为输入来生成完整的答案。整个端到端处理链名为 <code>full_parallel_chain</code>，通过将 <code>map_chain</code>（即并行块）连接到汇总提示，再接语言模型和输出解析器来构建。</mark>
 
-<mark>示例中提供了一个异步函数 run_parallel_example，用来演示如何调用这个 full_parallel_chain：该函数接收主题作为输入并通过 invoke 运行异步链。</mark>
+<mark>示例中提供了一个异步函数 <code>run_parallel_example</code>，用来演示如何调用这个 <code>full_parallel_chain</code>：该函数接收主题作为输入并通过 <code>invoke</code> 运行异步链。</mark>
 
-<mark>最后通过标准的 Python if __name__ == "__main__": 代码块演示如何用 asyncio.run 管理异步执行来运行 run_parallel_example，示例主题为「航天探索史」。</mark>
+<mark>最后通过标准的 Python <code>if __name__ == "__main__":</code> 代码块演示如何用 <code>asyncio.run</code> 管理异步执行来运行 <code>run_parallel_example</code>，示例主题为「航天探索史」。</mark>
 
 In essence, this code sets up a workflow where multiple LLM calls (for summarizing, questions, and terms) happen at the same time for a given topic, and their results are then combined by a final LLM call. This showcases the core idea of parallelization in an agentic workflow using LangChain.
 
@@ -561,19 +561,19 @@ Okay, let's now turn our attention to a concrete example illustrating these conc
 
 This code defines a multi-agent system used to research and synthesize information on sustainable technology advancements. It sets up three LlmAgent instances to act as specialized researchers. ResearcherAgent_1 focuses on renewable energy sources, ResearcherAgent_2 researches electric vehicle technology, and ResearcherAgent_3 investigates carbon capture methods. Each researcher agent is configured to use a GEMINI_MODEL and the google_search tool. They are instructed to summarize their findings concisely (1-2 sentences) and store these summaries in the session state using output_key.
 
-<mark>该代码建立了一个多智能体系统，用于收集与整合可持续技术进展的资料。系统包含三个子智能体，分别担任专门研究员：ResearcherAgent_1 聚焦可再生能源，ResearcherAgent_2 研究电动汽车技术，ResearcherAgent_3 调查碳捕集技术。每个研究员子智能体都配置为使用 GEMINI_MODEL 和 google_search 工具，并被要求将研究结果用一到两句话总结，随后通过 output_key 将这些摘要保存到会话状态中。</mark>
+<mark>该代码建立了一个多智能体系统，用于收集与整合可持续技术进展的资料。系统包含三个子智能体，分别担任专门研究员：<code>ResearcherAgent_1</code> 聚焦可再生能源，<code>ResearcherAgent_2</code> 研究电动汽车技术，<code>ResearcherAgent_3</code> 调查碳捕集技术。每个研究员子智能体都配置为使用 <code>GEMINI_MODEL</code> 和 <code>google_search</code> 工具，并被要求将研究结果用一到两句话总结，随后通过 <code>output_key</code> 将这些摘要保存到会话状态中。</mark>
 
 A ParallelAgent named ParallelWebResearchAgent is then created to run these three researcher agents concurrently. This allows the research to be conducted in parallel, potentially saving time. The ParallelAgent completes its execution once all its sub-agents (the researchers) have finished and populated the state.
 
-<mark>然后创建了一个名为 ParallelWebResearchAgent 的并行智能体，用于同时运行这三个研究员子智能体。这样可以并行开展研究，节省时间。只有当所有子智能体（研究员）都完成并将结果写入状态后，并行智能体才算执行结束。</mark>
+<mark>然后创建了一个名为 <code>ParallelWebResearchAgent</code> 的并行智能体，用于同时运行这三个研究员子智能体。这样可以并行开展研究，节省时间。只有当所有子智能体（研究员）都完成并将结果写入状态后，并行智能体才算执行结束。</mark>
 
 Next, a MergerAgent (also an LlmAgent) is defined to synthesize the research results. This agent takes the summaries stored in the session state by the parallel researchers as input. Its instruction emphasizes that the output must be strictly based only on the provided input summaries, prohibiting the addition of external knowledge. The MergerAgent is designed to structure the combined findings into a report with headings for each topic and a brief overall conclusion.
 
-<mark>接下来，定义了一个 MergerAgent（也是 LlmAgent）来综合研究结果。该智能体将并行研究员子智能体存储在会话状态中的总结作为输入。其指令强调输出必须严格基于所提供的输入总结，禁止添加外部知识。MergerAgent 旨在将合并的发现结构化为报告，每个主题都有标题和简要的总体结论。</mark>
+<mark>接下来，定义了一个 <code>MergerAgent</code>（也是 <code>LlmAgent</code>）来综合研究结果。该智能体将并行研究员子智能体存储在会话状态中的总结作为输入。其指令强调输出必须严格基于所提供的输入总结，禁止添加外部知识。<code>MergerAgent</code> 旨在将合并的发现结构化为报告，每个主题都有标题和简要的总体结论。</mark>
 
 Finally, a SequentialAgent named ResearchAndSynthesisPipeline is created to orchestrate the entire workflow. As the primary controller, this main agent first executes the ParallelAgent to perform the research. Once the ParallelAgent is complete, the SequentialAgent then executes the MergerAgent to synthesize the collected information. The sequential_pipeline_agent is set as the root_agent, representing the entry point for running this multi-agent system. The overall process is designed to efficiently gather information from multiple sources in parallel and then combine it into a single, structured report.
 
-<mark>最后，创建了一个名为 ResearchAndSynthesisPipeline 的顺序型智能体来协调整个工作流。作为主要控制器，该主智能体首先执行 ParallelAgent 来进行研究。ParallelAgent 完成后，SequentialAgent 会执行 MergerAgent 来综合收集的信息。sequential_pipeline_agent 被设置为 root_agent，代表运行该多智能体系统的入口点。整个流程的设计目标是并行从多个来源高效收集信息，然后将这些信息合并为一份结构化报告。</mark>
+<mark>最后，创建了一个名为 <code>ResearchAndSynthesisPipeline</code> 的顺序型智能体来协调整个工作流。作为主要控制器，该主智能体首先执行 <code>ParallelAgent</code> 来进行研究。<code>ParallelAgent</code> 完成后，<code>SequentialAgent</code> 会执行 <code>MergerAgent</code> 来综合收集的信息。<code>sequential_pipeline_agent</code> 被设置为 <code>root_agent</code>，代表运行该多智能体系统的入口点。整个流程的设计目标是并行从多个来源高效收集信息，然后将这些信息合并为一份结构化报告。</mark>
 
 ---
 
