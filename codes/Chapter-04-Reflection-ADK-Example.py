@@ -12,7 +12,7 @@ generator = LlmAgent(
 )
 
 # The second agent critiques the draft from the first agent.
-# 第二个智能体审查第一个智能体的草稿。
+# 第二个智能体评审第一个智能体的草稿。
 reviewer = LlmAgent(
     name="FactChecker",
     description="Reviews a given text for factual accuracy and provides a structured critique.",
@@ -28,7 +28,7 @@ reviewer = LlmAgent(
 )
 
 # The SequentialAgent ensures the generator runs before the reviewer.
-# 确保生成者在审查者之前运行。
+# 确保生成者在评论者之前运行。
 review_pipeline = SequentialAgent(
     name="WriteAndReview_Pipeline",
     sub_agents=[generator, reviewer]
@@ -39,4 +39,4 @@ review_pipeline = SequentialAgent(
 # 2. reviewer runs -> reads state['draft_text'] and saves its dictionary output to state['review_output'].
 # 执行流程：
 # 1. 生成者运行 -> 将其段落保存到 state['draft_text']。
-# 2. 审查者运行 -> 读取 state['draft_text'] 并将其字典输出保存到 state['review_output']。
+# 2. 评论者运行 -> 读取 state['draft_text'] 并将其字典输出保存到 state['review_output']。
