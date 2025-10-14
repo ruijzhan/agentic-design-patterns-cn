@@ -1,218 +1,238 @@
-# Chapter 3: Parallelization
+# Chapter 3: Parallelization | <mark>第三章：并行化</mark>
 
-<mark>第三章：并行化 (Parallelization)</mark>
-
----
-
-## Parallelization Pattern Overview
-
-<mark>并行化模式概述</mark>
+## Parallelization Pattern Overview | <mark>并行模式概述</mark>
 
 In the previous chapters, we've explored Prompt Chaining for sequential workflows and Routing for dynamic decision-making and transitions between different paths. While these patterns are essential, many complex agentic tasks involve multiple sub-tasks that can be executed *simultaneously* rather than one after another. This is where the **Parallelization** pattern becomes crucial.
 
-<mark>在前面的章节中，我们探讨了用于顺序工作流的提示词链式调用 (Prompt Chaining) 以及用于动态决策和不同路径转换的路由 (Routing)。虽然这些模式至关重要，但许多复杂的 Agent 任务涉及多个可以*同时*执行的子任务，而不是一个接一个地执行。这就是**并行化 (Parallelization)** 模式变得至关重要的地方。</mark>
+<mark>在前面的章节中，我们探讨了用于顺序工作流的提示链以及用于智能决策的路由模式。虽然这些模式很重要，但许多复杂的智能体任务需要<strong>同时</strong>执行多个子任务，而非一个接一个地执行。这时<strong>并行模式</strong>就变得至关重要。</mark>
 
 Parallelization involves executing multiple components, such as LLM calls, tool usages, or even entire sub-agents, concurrently (see Fig.1). Instead of waiting for one step to complete before starting the next, parallel execution allows independent tasks to run at the same time, significantly reducing the overall execution time for tasks that can be broken down into independent parts.
 
-<mark>并行化涉及同时执行多个组件，例如 LLM 调用、工具使用或甚至整个子 Agent（见图 1）。并行执行不是等待一个步骤完成后再开始下一个步骤，而是允许独立任务同时运行，显著减少了可分解为独立部分的任务的总执行时间。</mark>
+<mark>并行模式涉及同时执行多个组件，例如大语言模型调用、工具使用，甚至整个子智能体（见图 1）。与等待一个步骤完成后再开始下一个步骤不同，并行执行允许独立任务同时运行，这大大缩短了那些可以分解为相互独立部分的任务的总执行时间。</mark>
 
 Consider an agent designed to research a topic and summarize its findings. A sequential approach might:
 
-<mark>考虑一个设计用于研究主题并总结其发现的 Agent。顺序方法可能：</mark>
+<mark>考虑实现一个研究主题并汇总结论的智能体。按顺序执行时可能会是这样：</mark>
 
 1. Search for Source A.
+
+   <mark>搜索来源 A。</mark>
+
 2. Summarize Source A.
+
+   <mark>总结来源 A。</mark>
+
 3. Search for Source B.
+
+   <mark>搜索来源 B。</mark>
+
 4. Summarize Source B.
+
+   <mark>总结来源 B。</mark>
+
 5. Synthesize a final answer from summaries A and B.
 
-1. <mark>搜索来源 A。</mark>
-2. <mark>总结来源 A。</mark>
-3. <mark>搜索来源 B。</mark>
-4. <mark>总结来源 B。</mark>
-5. <mark>从总结 A 和 B 中综合一个最终答案。</mark>
+   <mark>整合总结 A 和 总结 B 中的内容，生成一个最终答案。</mark>
 
 A parallel approach could instead:
 
-<mark>并行方法可以这样做：</mark>
+<mark>如果使用并行模式则可以优化为：</mark>
 
 1. Search for Source A *and* Search for Source B simultaneously.
+
+   <mark><strong>同时</strong>搜索来源 A 和来源 B。</mark>
+
 2. Once both searches are complete, Summarize Source A *and* Summarize Source B simultaneously.
+
+   <mark>两次搜索完成后，同时对来源 A 和来源 B 进行总结。</mark>
+
 3. Synthesize a final answer from summaries A and B (this step is typically sequential, waiting for the parallel steps to finish).
 
-1. <mark>同时搜索来源 A <em>和</em>搜索来源 B。</mark>
-2. <mark>一旦两个搜索都完成，同时总结来源 A <em>和</em>总结来源 B。</mark>
-3. <mark>从总结 A 和 B 中综合一个最终答案（此步骤通常是顺序的，等待并行步骤完成）。</mark>
+   <mark>整合总结 A 和 总结 B 中的内容，生成一个最终答案。这一步通常按顺序进行，需要等待前面并行步骤全部完成。</mark>
 
 The core idea is to identify parts of the workflow that do not depend on the output of other parts and execute them in parallel. This is particularly effective when dealing with external services (like APIs or databases) that have latency, as you can issue multiple requests concurrently.
 
-<mark>核心思想是识别工作流中不依赖于其他部分输出的部分，并并行执行它们。这在处理具有延迟的外部服务（如 API 或数据库）时特别有效，因为您可以同时发出多个请求。</mark>
+<mark>并行模式的核心在于找出工作流中互不依赖的环节，并将它们并行执行。在处理外部服务（如 API 或数据库）时，这种做法特别有效，因为可以同时发起多个请求，从而减少总体等待时间。</mark>
 
 Implementing parallelization often requires frameworks that support asynchronous execution or multi-threading/multi-processing. Modern agentic frameworks are designed with asynchronous operations in mind, allowing you to easily define steps that can run in parallel.
 
-<mark>实现并行化通常需要支持异步执行或多线程/多进程的框架。现代 Agent 框架在设计时考虑了异步操作，允许您轻松定义可以并行运行的步骤。</mark>
+<mark>实现并行化通常需要使用支持异步执行、多线程或多进程的框架。现代智能体框架原生都能支持异步操作，帮助你方便地定义并同时运行多个步骤。</mark>
 
-![Parallelization Example](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdQ1oP1d0qmTlX2E8rDyysf0Wf68gmUFHZo2C9JVWMx3jVZhbEzOohJeLymQxKoM_ivD2XIa7xOwNqj_r7DHssN8VPtkRxlo66j5z3yLXB4_7RQq-PYsdvY7Wvx4vZo2oo?key=_g4B5WuCtKCN3ODzzzjI8Q)
+![Parallelization Example](/images/chapter03_fig1.png)
 
-*Fig.1. Example of parallelization with sub-agents*
+Fig.1. Example of parallelization with sub-agents
 
-<mark><strong>图 1：</strong>使用子 Agent 的并行化示例</mark>
+<mark>图 1：使用子智能体进行并行化的示例</mark>
 
 Frameworks like LangChain, LangGraph, and Google ADK provide mechanisms for parallel execution. In LangChain Expression Language (LCEL), you can achieve parallel execution by combining runnable objects using operators like | (for sequential) and by structuring your chains or graphs to have branches that execute concurrently. LangGraph, with its graph structure, allows you to define multiple nodes that can be executed from a single state transition, effectively enabling parallel branches in the workflow. Google ADK provides robust, native mechanisms to facilitate and manage the parallel execution of agents, significantly enhancing the efficiency and scalability of complex, multi-agent systems. This inherent capability within the ADK framework allows developers to design and implement solutions where multiple agents can operate concurrently, rather than sequentially.
 
-<mark>像 LangChain、LangGraph 和 Google ADK 这样的框架提供了并行执行的机制。在 LangChain Expression Language (LCEL) 中，您可以通过使用 | （用于顺序）等操作符组合可运行对象来实现并行执行，并通过构造您的链或图以具有并发执行的分支。LangGraph 凭借其图结构，允许您定义可以从单个状态转换执行的多个节点，有效地在工作流中启用并行分支。Google ADK 提供了强大的原生机制来促进和管理 Agent 的并行执行，显著增强了复杂多 Agent 系统的效率和可扩展性。ADK 框架内的这种固有能力允许开发人员设计和实现多个 Agent 可以并发操作而不是顺序操作的解决方案。</mark>
+<mark>LangChain、LangGraph 和 Google ADK 等框架都提供了并行执行机制。</mark>
+
+<mark>在 LangChain 表达式语言（LCEL）中，可以使用 <code>|</code> 等运算符组合可运行对象，并通过设计具有并发分支的链或图结构来实现并行执行。而 LangGraph 则利用图结构，允许从状态转换中执行多个节点，从而在工作流中实现并行分支。</mark>
+
+<mark>Google ADK 也提供了强大的原生机制来促进和管理智能体的并行执行，显著提升了复杂多智能体系统的效率和可扩展性。ADK 框架的这一内在能力使开发者能够设计并实现让多个智能体并发运行（而非顺序执行）的解决方案。</mark>
 
 The Parallelization pattern is vital for improving the efficiency and responsiveness of agentic systems, especially when dealing with tasks that involve multiple independent lookups, computations, or interactions with external services. It's a key technique for optimizing the performance of complex agent workflows.
 
-<mark>并行化模式对于提高 Agent 系统的效率和响应能力至关重要，特别是在处理涉及多个独立查找、计算或与外部服务交互的任务时。这是优化复杂 Agent 工作流性能的关键技术。</mark>
+<mark>并行模式对于提升智能体系统的效率和响应速度至关重要，特别是在需要执行多个独立查询、计算或与外部服务交互的场景中。它是优化复杂智能体工作流性能的关键技术。</mark>
 
 ---
 
-## Practical Applications & Use Cases
-
-<mark>实际应用和用例</mark>
+## Practical Applications & Use Cases | <mark>实际应用场景</mark>
 
 Parallelization is a powerful pattern for optimizing agent performance across various applications:
 
-<mark>并行化是在各种应用程序中优化 Agent 性能的强大模式：</mark>
+<mark>并行模式可以在各种场景中使用以提升智能体性能：</mark>
 
-**1. Information Gathering and Research:**
-
-<mark><strong>1. 信息收集和研究：</strong></mark>
+**1. Information Gathering and Research:** | <mark><strong>信息收集和研究：</strong></mark>
 
 Collecting information from multiple sources simultaneously is a classic use case.
 
-<mark>同时从多个来源收集信息是一个经典的用例。</mark>
+<mark>一个经典的用例就是同时从多个来源收集信息。</mark>
 
 - **Use Case:** An agent researching a company.
+
+   <mark><strong>用例：</strong>研究某个公司的智能体。</mark>
+
 - **Parallel Tasks:** Search news articles, pull stock data, check social media mentions, and query a company database, all at the same time.
+
+   <mark><strong>并行执行任务：</strong>同时搜索新闻、拉取股票数据、监测社交媒体上的提及，并查询公司数据库。</mark>
+  
 - **Benefit:** Gathers a comprehensive view much faster than sequential lookups.
 
-- <mark><strong>用例：</strong>研究公司的 Agent。</mark>
-- <mark><strong>并行任务：</strong>同时搜索新闻文章、提取股票数据、检查社交媒体提及和查询公司数据库。</mark>
-- <mark><strong>好处：</strong>比顺序查找更快地收集全面视图。</mark>
+    <mark><strong>好处：</strong>比逐项查找更快获得全面信息。</mark>
 
-**2. Data Processing and Analysis:**
-
-<mark><strong>2. 数据处理和分析：</strong></mark>
+**2. Data Processing and Analysis:** | <mark><strong>数据处理和分析：</strong></mark>
 
 Applying different analysis techniques or processing different data segments concurrently.
 
-<mark>同时应用不同的分析技术或处理不同的数据段。</mark>
+<mark>使用不同的分析方法或并行处理不同的数据段。</mark>
 
 - **Use Case:** An agent analyzing customer feedback.
+
+   <mark><strong>用例：</strong>分析客户反馈的智能体。</mark>
+
 - **Parallel Tasks:** Run sentiment analysis, extract keywords, categorize feedback, and identify urgent issues simultaneously across a batch of feedback entries.
+
+   <mark><strong>并行处理任务：</strong>在一批反馈中同时进行情感分析、关键词提取、分类，并识别需要优先处理的紧急问题。</mark>
+
 - **Benefit:** Provides a multi-faceted analysis quickly.
 
-- <mark><strong>用例：</strong>分析客户反馈的 Agent。</mark>
-- <mark><strong>并行任务：</strong>在一批反馈条目中同时运行情感分析、提取关键词、分类反馈和识别紧急问题。</mark>
-- <mark><strong>好处：</strong>快速提供多方面的分析。</mark>
+   <mark><strong>好处：</strong>快速提供多角度的分析。</mark>
 
-**3. Multi-API or Tool Interaction:**
-
-<mark><strong>3. 多 API 或工具交互：</strong></mark>
+**3. Multi-API or Tool Interaction:** | <mark><strong>多个 API 或工具交互：</strong></mark>
 
 Calling multiple independent APIs or tools to gather different types of information or perform different actions.
 
-<mark>调用多个独立的 API 或工具来收集不同类型的信息或执行不同的操作。</mark>
+<mark>调用多个独立的 API 或工具，以获取不同类别的信息或完成不同的任务。</mark>
 
 - **Use Case:** A travel planning agent.
+
+   <mark><strong>用例：</strong>旅行规划智能体。</mark>
+
 - **Parallel Tasks:** Check flight prices, search for hotel availability, look up local events, and find restaurant recommendations concurrently.
+
+   <mark><strong>并行处理任务：</strong>同时检查航班价格、搜索酒店、了解当地活动，并找到推荐的餐厅。</mark>
+
 - **Benefit:** Presents a complete travel plan faster.
 
-- <mark><strong>用例：</strong>旅行规划 Agent。</mark>
-- <mark><strong>并行任务：</strong>同时检查航班价格、搜索酒店可用性、查找本地活动和寻找餐厅推荐。</mark>
-- <mark><strong>好处：</strong>更快地呈现完整的旅行计划。</mark>
+   <mark><strong>好处：</strong>更快速地制定出完整的旅行行程。</mark>
 
-**4. Content Generation with Multiple Components:**
-
-<mark><strong>4. 多组件内容生成：</strong></mark>
+**4. Content Generation with Multiple Components:** | <mark><strong>多组件内容生成：</strong></mark>
 
 Generating different parts of a complex piece of content in parallel.
 
-<mark>并行生成复杂内容的不同部分。</mark>
+<mark>并行生成复杂作品的各个部分。</mark>
 
 - **Use Case:** An agent creating a marketing email.
+
+   <mark><strong>用例：</strong>撰写营销邮件的智能体。</mark>
+
 - **Parallel Tasks:** Generate a subject line, draft the email body, find a relevant image, and create a call-to-action button text simultaneously.
+
+   <mark><strong>并行处理任务：</strong>同时生成邮件主题、撰写正文、查找相关图片，并设计具有号召性的按钮文案。</mark>
+
 - **Benefit:** Assembles the final email more efficiently.
 
-- <mark><strong>用例：</strong>创建营销邮件的 Agent。</mark>
-- <mark><strong>并行任务：</strong>同时生成主题行、起草邮件正文、查找相关图片和创建号召性用语按钮文本。</mark>
-- <mark><strong>好处：</strong>更高效地组装最终邮件。</mark>
+   <mark><strong>好处：</strong>更高效地生成电子邮件内容。</mark>
 
-**5. Validation and Verification:**
-
-<mark><strong>5. 验证和核实：</strong></mark>
+**5. Validation and Verification:** | <mark><strong>验证和核实：</strong></mark>
 
 Performing multiple independent checks or validations concurrently.
 
-<mark>同时执行多个独立的检查或验证。</mark>
+<mark>并行执行多个彼此独立的检查或验证。</mark>
 
 - **Use Case:** An agent verifying user input.
+
+   <mark><strong>用例：</strong>验证用户输入的智能体。</mark>
+
 - **Parallel Tasks:** Check email format, validate phone number, verify address against a database, and check for profanity simultaneously.
+
+   <mark><strong>并行执行任务：</strong>同时检查邮件格式、验证电话号码、在数据库中核对地址，并检查是否有不当内容。</mark>
+
 - **Benefit:** Provides faster feedback on input validity.
 
-- <mark><strong>用例：</strong>验证用户输入的 Agent。</mark>
-- <mark><strong>并行任务：</strong>同时检查邮件格式、验证电话号码、对照数据库验证地址和检查亵渎内容。</mark>
-- <mark><strong>好处：</strong>更快地提供输入有效性反馈。</mark>
+   <mark><strong>好处：</strong>能够更快地反馈输入是否有效。</mark>
 
-**6. Multi-Modal Processing:**
-
-<mark><strong>6. 多模态处理：</strong></mark>
+**6. Multi-Modal Processing:** | <mark><strong>多模态处理：</strong></mark>
 
 Processing different modalities (text, image, audio) of the same input concurrently.
 
-<mark>同时处理同一输入的不同模态（文本、图像、音频）。</mark>
+<mark>同时对同一输入的不同模态（文本、图像、音频）数据进行处理。</mark>
 
 - **Use Case:** An agent analyzing a social media post with text and an image.
+
+   <mark><strong>用例：</strong>分析包含文本和图像的社交媒体帖子的智能体。</mark>
+
 - **Parallel Tasks:** Analyze the text for sentiment and keywords *and* analyze the image for objects and scene description simultaneously.
+
+   <mark><strong>并行执行任务：</strong>同时分析文本的情感和关键词，以及分析图像中的对象和场景描述。</mark>
+
 - **Benefit:** Integrates insights from different modalities more quickly.
 
-- <mark><strong>用例：</strong>分析包含文本和图像的社交媒体帖子的 Agent。</mark>
-- <mark><strong>并行任务：</strong>同时分析文本的情感和关键词，以及分析图像的对象和场景描述。</mark>
-- <mark><strong>好处：</strong>更快地整合来自不同模态的见解。</mark>
+   <mark><strong>好处：</strong>能更快地综合来自不同模态的信息与洞见。</mark>
 
-**7. A/B Testing or Multiple Options Generation:**
-
-<mark><strong>7. A/B 测试或多选项生成：</strong></mark>
+**7. A/B Testing or Multiple Options Generation:** | <mark><strong>A/B 测试或多种方案生成：</strong></mark>
 
 Generating multiple variations of a response or output in parallel to select the best one.
 
-<mark>并行生成响应或输出的多个变体以选择最佳的一个。</mark>
+<mark>并行生成多个响应或输出版本，然后从中挑选最佳的一种。</mark>
 
 - **Use Case:** An agent generating different creative text options.
+
+   <mark><strong>用例：</strong>生成多个创意文案的智能体。</mark>
+
 - **Parallel Tasks:** Generate three different headlines for an article simultaneously using slightly different prompts or models.
+
+   <mark><strong>并行执行任务：</strong>同时使用稍微不同的提示或模型为同一篇文章生成三条各具风格的标题。</mark>
+
 - **Benefit:** Allows for quick comparison and selection of the best option.
 
-- <mark><strong>用例：</strong>生成不同创意文本选项的 Agent。</mark>
-- <mark><strong>并行任务：</strong>使用略有不同的提示词或模型，同时为文章生成三个不同的标题。</mark>
-- <mark><strong>好处：</strong>允许快速比较和选择最佳选项。</mark>
+   <mark><strong>好处：</strong>可以快速比较各个方案并选出最优者。</mark>
 
 Parallelization is a fundamental optimization technique in agentic design, allowing developers to build more performant and responsive applications by leveraging concurrent execution for independent tasks.
 
-<mark>并行化是 Agent 设计中的基本优化技术，允许开发人员通过利用独立任务的并发执行来构建更高性能和响应更快的应用程序。</mark>
+<mark>并行模式是智能体设计中的一项重要优化技术。通过对独立任务进行并发执行，开发者可以构建更高效、更具响应性的应用程序。</mark>
 
 ---
 
-## Hands-On Code Example (LangChain)
-
-<mark>实践代码示例 (LangChain)</mark>
+## Hands-On Code Example (LangChain) | <mark>实战示例：使用 LangChain</mark>
 
 Parallel execution within the LangChain framework is facilitated by the LangChain Expression Language (LCEL). The primary method involves structuring multiple runnable components within a dictionary or list construct. When this collection is passed as input to a subsequent component in the chain, the LCEL runtime executes the contained runnables concurrently.
 
-<mark>LangChain 框架内的并行执行通过 LangChain Expression Language (LCEL) 实现。主要方法涉及在字典或列表构造中构建多个可运行组件。当这个集合作为输入传递给链中的后续组件时，LCEL 运行时会并发执行包含的可运行对象。</mark>
+<mark>在 LangChain 框架中，通过 LangChain 的表达式语言（LCEL）可以实现并行执行。常见做法是把多个可运行组件组织成字典或列表，并把这个集合作为输入传给链中的下一个组件。LCEL 执行器会并行执行集合中的各个可运行项。</mark>
 
 In the context of LangGraph, this principle is applied to the graph's topology. Parallel workflows are defined by architecting the graph such that multiple nodes, lacking direct sequential dependencies, can be initiated from a single common node. These parallel pathways execute independently before their results can be aggregated at a subsequent convergence point in the graph.
 
-<mark>在 LangGraph 的上下文中，此原则应用于图的拓扑。并行工作流是通过构建图来定义的，这样多个缺乏直接顺序依赖性的节点可以从单个公共节点启动。这些并行路径独立执行，然后在图中的后续汇聚点聚合其结果。</mark>
+<mark>在 LangGraph 中，这一原则体现在图的拓扑结构上。通过从一个公共节点同时触发多个没有直接顺序依赖的节点，就能形成并行工作流。这些并行路径各自独立运行，之后在图中的某个汇聚点合并结果。</mark>
 
 The following implementation demonstrates a parallel processing workflow constructed with the LangChain framework. This workflow is designed to execute two independent operations concurrently in response to a single user query. These parallel processes are instantiated as distinct chains or functions, and their respective outputs are subsequently aggregated into a unified result.
 
-<mark>以下实现展示了使用 LangChain 框架构建的并行处理工作流。此工作流旨在响应单个用户查询时并发执行两个独立操作。这些并行过程被实例化为不同的链或函数，它们各自的输出随后被聚合为统一的结果。</mark>
+<mark>以下示例展示了如何使用 LangChain 框架构建并行处理流程：针对同一个用户查询，工作流同时启动两个互不依赖的操作，然后将它们各自的输出合并为一个最终结果。</mark>
 
 The prerequisites for this implementation include the installation of the requisite Python packages, such as langchain, langchain-community, and a model provider library like langchain-openai. Furthermore, a valid API key for the chosen language model must be configured in the local environment for authentication.
 
-<mark>此实现的先决条件包括安装必需的 Python 包，如 langchain、langchain-community 和像 langchain-openai 这样的模型提供者库。此外，必须在本地环境中配置所选语言模型的有效 API 密钥以进行身份验证。</mark>
+<mark>要实现此功能，首先需要安装必要的 Python 包（如 langchain、langchain-community 及 langchain-openai 等模型提供库）。同时需要在本地环境中配置所选语言模型的有效 API 密钥，以便进行身份验证。</mark>
 
 ```python
 import os
@@ -224,18 +244,32 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import Runnable, RunnableParallel, RunnablePassthrough
 
+# Colab 代码链接：https://colab.research.google.com/drive/1uK1r9p-5sdX0ffMjAi_dbIkaMedb1sTj
+
+# 安装依赖
+# pip install langchain langchain-community langchain-openai langgraph
+
+# For better security, load environment variables from a .env file
+# 为了更好的安全性，建议从 .env 文件加载环境变量
+from dotenv import load_dotenv
+load_dotenv()
+
 # --- Configuration ---
 # Ensure your API key environment variable is set (e.g., OPENAI_API_KEY)
+# 确保你的 API 密钥环境变量已设置 (如 OPENAI_API_KEY)
 try:
     llm: Optional[ChatOpenAI] = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
- 
+    if llm:
+        print(f"Language model initialized: {llm.model_name}")
 except Exception as e:
     print(f"Error initializing language model: {e}")
     llm = None
 
+
 # --- Define Independent Chains ---
 # These three chains represent distinct tasks that can be executed in parallel.
-
+# --- 定义独立的链 ---
+# 这三条链代表彼此独立、可同时执行的任务。
 summarize_chain: Runnable = (
     ChatPromptTemplate.from_messages([
         ("system", "Summarize the following topic concisely:"),
@@ -263,10 +297,12 @@ terms_chain: Runnable = (
     | StrOutputParser()
 )
 
+
 # --- Build the Parallel + Synthesis Chain ---
 
 # 1. Define the block of tasks to run in parallel. The results of these,
 #    along with the original topic, will be fed into the next step.
+# --- 定义要并行执行的任务块。这些结果以及原始内容将作为输入传递给下一步。
 map_chain = RunnableParallel(
     {
         "summary": summarize_chain,
@@ -277,20 +313,24 @@ map_chain = RunnableParallel(
 )
 
 # 2. Define the final synthesis prompt which will combine the parallel results.
+# --- 定义最终的综合提示，将并行结果合并。
 synthesis_prompt = ChatPromptTemplate.from_messages([
     ("system", """Based on the following information:
-    Summary: {summary}
-    Related Questions: {questions}
-    Key Terms: {key_terms}
-    Synthesize a comprehensive answer."""),
+     Summary: {summary}
+     Related Questions: {questions}
+     Key Terms: {key_terms}
+     Synthesize a comprehensive answer."""),
     ("user", "Original topic: {topic}")
 ])
 
 # 3. Construct the full chain by piping the parallel results directly
 #    into the synthesis prompt, followed by the LLM and output parser.
+# --- 通过将并行结果直接传递给综合提示，然后是语言模型和输出解析器，构建完整的链。
 full_parallel_chain = map_chain | synthesis_prompt | llm | StrOutputParser()
 
+
 # --- Run the Chain ---
+# --- 运行链 ---
 async def run_parallel_example(topic: str) -> None:
     """
     Asynchronously invokes the parallel processing chain with a specific topic
@@ -305,7 +345,7 @@ async def run_parallel_example(topic: str) -> None:
 
     print(f"\n--- Running Parallel LangChain Example for Topic: '{topic}' ---")
     try:
-        # The input to `ainvoke` is the single 'topic' string, 
+        # The input to `ainvoke` is the single 'topic' string, which is
         # then passed to each runnable in the `map_chain`.
         response = await full_parallel_chain.ainvoke(topic)
         print("\n--- Final Response ---")
@@ -319,262 +359,310 @@ if __name__ == "__main__":
     asyncio.run(run_parallel_example(test_topic))
 ```
 
+译者注：[Colab 代码](https://colab.research.google.com/drive/1uK1r9p-5sdX0ffMjAi_dbIkaMedb1sTj) 已维护在[此处](/codes/Chapter-03-Parallelization-LangChain-Example.py)。
+
+**运行输出（译者添加）：**
+
+```text
+Language model initialized: gpt-4o-mini
+
+--- Running Parallel LangChain Example for Topic: 'The history of space exploration' ---
+
+--- Final Response ---
+The history of space exploration is a fascinating narrative marked by human curiosity, technological advancement, and international cooperation. It began in the mid-20th century, with the launch of the Soviet satellite Sputnik 1 in 1957, which signified the dawn of the Space Age. This event triggered a series of significant milestones that would shape our understanding of the cosmos.
+
+In 1961, the Soviet space program successfully launched Yuri Gagarin, the first human to journey into space, further igniting the Space Race between the United States and the Soviet Union. This fierce competition led to rapid advancements in technology and culminated with the U.S. Apollo program, which achieved the historic Moon landing in 1969. The success of Apollo 11 not only demonstrated human capability but also inspired generations to look to the stars.
+
+Throughout the 1970s and 1980s, space exploration expanded to include missions to Mars, the launch of revolutionary space telescopes like the Hubble Space Telescope, and the development of the Space Shuttle program. These initiatives allowed for more extended missions and the ability to deploy and service satellites, enhancing our understanding of the universe and our place within it.
+
+The late 1990s saw the launch of the International Space Station (ISS), a landmark achievement in international cooperation in space research. The ISS has become a platform for collaboration among multiple space agencies, including NASA, Roscosmos, ESA, JAXA, and others, allowing scientists from around the world to work together in the unique environment of space.
+
+In recent years, technological advancements, particularly in the realm of reusable rockets, have reshaped the goals and capabilities of space exploration. Companies such as SpaceX and Blue Origin have pioneered private spaceflight initiatives, driving costs down and making space more accessible than ever. This shift has reignited interest in missions targeting Mars, the Moon, and beyond, with plans for crewed missions to Mars on the horizon.
+
+The Space Race has also had lasting effects on international cooperation in contemporary space exploration. The competitive spirit of the Cold War era has evolved into a collaborative approach, exemplified by the ISS and joint missions like the Mars rover endeavors, where multiple countries contribute resources and expertise to achieve common goals.
+
+However, the entrance of private companies into the space exploration sector raises various ethical considerations and potential implications. These include questions about the commercialization of space, the prioritization of profit over scientific research, and concerns about space debris and environmental impacts. As private entities take on larger roles in exploration, the dynamics of scientific research and exploration beyond Earth's atmosphere may shift, necessitating new frameworks for governance and collaboration.
+
+In summary, the history of space exploration is a rich tapestry woven from human ingenuity and cooperation. It reflects our quest to understand the universe, marked by milestones that highlight both our achievements and the challenges that lie ahead. As we move into a new era of exploration, the interplay between public and private initiatives will shape the future of our endeavors among the stars.
+```
+
 The provided Python code implements a LangChain application designed for processing a given topic efficiently by leveraging parallel execution. Note that asyncio provides concurrency, not parallelism. It achieves this on a single thread by using an event loop that intelligently switches between tasks when one is idle (e.g., waiting for a network request). This creates the effect of multiple tasks progressing at once, but the code itself is still being executed by only one thread, constrained by Python's Global Interpreter Lock (GIL).
 
-<mark>提供的 Python 代码实现了一个 LangChain 应用程序，旨在通过利用并行执行来高效处理给定主题。请注意，asyncio 提供并发性，而非并行性。它通过使用事件循环在单个线程上实现这一点，该事件循环在一个任务空闲时（例如，等待网络请求）智能地在任务之间切换。这创造了多个任务同时进行的效果，但代码本身仍然只由一个线程执行，受到 Python 全局解释器锁 (GIL) 的限制。</mark>
+<mark>上述 Python 示例实现了一个基于 LangChain 的应用，通过并发执行来更高效地处理指定话题。需要说明的是，asyncio 实现的是并发（Concurrency），不是多线程或多核的真正并行（Parallelism）。它在单个线程中运行，通过事件循环在任务等待（如等待网络响应）时切换执行，从而让多个任务看起来同时执行。但底层代码仍在同一线程上运行，这是受 Python 全局解释器锁（GIL）的限制。</mark>
 
 The code begins by importing essential modules from langchain_openai and langchain_core, including components for language models, prompts, output parsing, and runnable structures. The code attempts to initialize a ChatOpenAI instance, specifically using the "gpt-4o-mini" model, with a specified temperature for controlling creativity. A try-except block is used for robustness during the language model initialization. Three independent LangChain "chains" are then defined, each designed to perform a distinct task on the input topic. The first chain is for summarizing the topic concisely, using a system message and a user message containing the topic placeholder. The second chain is configured to generate three interesting questions related to the topic. The third chain is set up to identify between 5 and 10 key terms from the input topic, requesting them to be comma-separated. Each of these independent chains consists of a ChatPromptTemplate tailored to its specific task, followed by the initialized language model and a StrOutputParser to format the output as a string.
 
-<mark>代码首先从 langchain_openai 和 langchain_core 导入必要的模块，包括语言模型、提示词、输出解析和可运行结构的组件。代码尝试初始化一个 ChatOpenAI 实例，专门使用"gpt-4o-mini"模型，并指定温度参数来控制创造性。在语言模型初始化过程中使用 try-except 块来增强鲁棒性。然后定义了三个独立的 LangChain "链"，每个都设计用于在输入主题上执行不同的任务。第一个链用于简洁地总结主题，使用系统消息和包含主题占位符的用户消息。第二个链配置为生成与主题相关的三个有趣问题。第三个链设置为从输入主题中识别 5 到 10 个关键术语，要求它们用逗号分隔。这些独立链中的每一个都由针对其特定任务定制的 ChatPromptTemplate 组成，然后是初始化的语言模型和用于将输出格式化为字符串的 StrOutputParser。</mark>
+<mark>代码从 <code>langchain_openai</code> 和 <code>langchain_core</code> 导入了关键模块，包含语言模型、提示模板、输出解析器和可运行组件。接着尝试初始化一个 <code>ChatOpenAI</code> 实例，指定使用 <code>gpt-4o-mini</code> 模型，并设置了控制创造力的温度值，初始化时用 <code>try-except</code> 来保证健壮性。随后定义了三条相互独立的 LangChain 链，每条链负责对输入主题执行不同任务：第一条链用来简洁地总结主题，采用系统消息和包含主题占位符的用户消息；第二条链生成与主题相关的三个有趣问题；第三条链则从主题中识别 5 到 10 个关键术语，要求用逗号分隔。每条链都由为该任务定制的 <code>ChatPromptTemplate</code>、已初始化的语言模型和用于把输出格式化为字符串的 <code>StrOutputParser</code> 组成。</mark>
 
 A RunnableParallel block is then constructed to bundle these three chains, allowing them to execute simultaneously. This parallel runnable also includes a RunnablePassthrough to ensure the original input topic is available for subsequent steps. A separate ChatPromptTemplate is defined for the final synthesis step, taking the summary, questions, key terms, and the original topic as input to generate a comprehensive answer. The full end-to-end processing chain, named full_parallel_chain, is created by sequencing the map_chain (the parallel block) into the synthesis prompt, followed by the language model and the output parser. An asynchronous function run_parallel_example is provided to demonstrate how to invoke this full_parallel_chain. This function takes the topic as input and uses invoke to run the asynchronous chain. Finally, the standard Python if __name__ == "__main__": block shows how to execute the run_parallel_example with a sample topic, in this case, "The history of space exploration", using asyncio.run to manage the asynchronous execution.
 
-<mark>然后构建一个 RunnableParallel 块来捆绑这三个链，允许它们同时执行。这个并行可运行对象还包括一个 RunnablePassthrough，以确保原始输入主题可用于后续步骤。为最终综合步骤定义了一个单独的 ChatPromptTemplate，将总结、问题、关键术语和原始主题作为输入来生成全面的答案。完整的端到端处理链（命名为 full_parallel_chain）是通过将 map_chain（并行块）排列到综合提示中，然后是语言模型和输出解析器来创建的。提供了一个异步函数 run_parallel_example 来演示如何调用此 full_parallel_chain。此函数将主题作为输入，并使用 invoke 来运行异步链。最后，标准的 Python if __name__ == "__main__": 块显示了如何使用样本主题执行 run_parallel_example，在这种情况下是"太空探索的历史"，使用 asyncio.run 来管理异步执行。</mark>
+<mark>随后构建了一个 <code>RunnableParallel</code> 块，把这三条链打包在一起以便同时运行。这个运行单元还包含一个 <code>RunnablePassthrough</code>，确保原始输入的主题可以在后续步骤中使用。</mark>
+
+<mark>接着为最后的汇总步骤定义了一个独立的 <code>ChatPromptTemplate</code>，使用摘要、问题、关键术语和原始主题作为输入来生成完整的答案。这个名为 <code>full_parallel_chain</code> 的端到端处理链，是通过 <code>map_chain</code> 连接到汇总提示，再接语言模型和输出解析器来构建的。</mark>
+
+<mark>示例中提供了一个异步函数 <code>run_parallel_example</code>，用来演示如何调用这个 <code>full_parallel_chain</code>，该函数接收主题作为输入并通过 <code>invoke</code> 运行异步链。</mark>
+
+<mark>最后，通过标准的 Python <code>if __name__ == "__main__":</code> 代码块演示如何用 <code>asyncio.run</code> 管理异步执行，来启动 <code>run_parallel_example</code> 方法，其中主题为「航天探索史」。</mark>
 
 In essence, this code sets up a workflow where multiple LLM calls (for summarizing, questions, and terms) happen at the same time for a given topic, and their results are then combined by a final LLM call. This showcases the core idea of parallelization in an agentic workflow using LangChain.
 
-<mark>本质上，这段代码设置了一个工作流，其中对给定主题的多个 LLM 调用（用于总结、问题和术语）同时发生，然后它们的结果由最终的 LLM 调用合并。这展示了使用 LangChain 在 Agent 工作流中并行化的核心思想。</mark>
+<mark>本质上，这段代码构建了一个工作流：针对某个主题，使用大语言模型同时进行摘要、提问和术语等多个调用，随后由一次最终的请求把这些输出整合在一起。该示例说明了在使用 LangChain 的智能体工作流中通过并行执行来提高效率的核心思想。</mark>
 
 ---
 
-## Hands-On Code Example (Google ADK)
-
-<mark>实践代码示例 (Google ADK)</mark>
+## Hands-On Code Example (Google ADK) | <mark>实战示例：使用 Google ADK</mark>
 
 Okay, let's now turn our attention to a concrete example illustrating these concepts within the Google ADK framework. We'll examine how the ADK primitives, such as ParallelAgent and SequentialAgent, can be applied to build an agent flow that leverages concurrent execution for improved efficiency.
 
-<mark>好的，现在让我们将注意力转向一个具体的示例，说明在 Google ADK 框架内的这些概念。我们将研究如何应用 ADK 原语（如 ParallelAgent 和 SequentialAgent）来构建利用并发执行以提高效率的 Agent 流。</mark>
+<mark>现在通过 Google ADK 框架中的具体示例来说明这些概念。我们将展示 ADK 的基本组件（如 ParallelAgent 和 SequentialAgent）来构建智能体流程，从而通过并行执行提高效率。</mark>
 
 ```python
-from google.adk.agents import LlmAgent, ParallelAgent, SequentialAgent
-from google.adk.tools import google_search
-GEMINI_MODEL="gemini-2.0-flash"
-
+# Part of agent.py --> Follow https://google.github.io/adk-docs/get-started/quickstart/ to learn the setup
 # --- 1. Define Researcher Sub-Agents (to run in parallel) ---
+# --- 定义研究员子智能体（并行执行） ---
 
-# Researcher 1: Renewable Energy
-researcher_agent_1 = LlmAgent(
-    name="RenewableEnergyResearcher",
-    model=GEMINI_MODEL,
-    instruction="""You are an AI Research Assistant specializing in energy.
-Research the latest advancements in 'renewable energy sources'.
-Use the Google Search tool provided.
-Summarize your key findings concisely (1-2 sentences).
-Output *only* the summary.
-""",
-    description="Researches renewable energy sources.",
-    tools=[google_search],
-    # Store result in state for the merger agent
-    output_key="renewable_energy_result"
-)
+ # Researcher 1: Renewable Energy
+ # 研究员 1：可再生能源
+ researcher_agent_1 = LlmAgent(
+     name="RenewableEnergyResearcher",
+     model=GEMINI_MODEL,
+     instruction="""You are an AI Research Assistant specializing in energy.
+ Research the latest advancements in 'renewable energy sources'.
+ Use the Google Search tool provided.
+ Summarize your key findings concisely (1-2 sentences).
+ Output *only* the summary.
+ """,
+     description="Researches renewable energy sources.",
+     tools=[google_search],
+     # Store result in state for the merger agent
+     output_key="renewable_energy_result"
+ )
 
-# Researcher 2: Electric Vehicles
-researcher_agent_2 = LlmAgent(
-    name="EVResearcher",
-    model=GEMINI_MODEL,
-    instruction="""You are an AI Research Assistant specializing in transportation.
-Research the latest developments in 'electric vehicle technology'.
-Use the Google Search tool provided.
-Summarize your key findings concisely (1-2 sentences).
-Output *only* the summary.
-""",
-    description="Researches electric vehicle technology.",
-    tools=[google_search],
-    # Store result in state for the merger agent
-    output_key="ev_technology_result"
-)
+ # Researcher 2: Electric Vehicles
+ # 研究员 2：电动汽车
+ researcher_agent_2 = LlmAgent(
+     name="EVResearcher",
+     model=GEMINI_MODEL,
+     instruction="""You are an AI Research Assistant specializing in transportation.
+ Research the latest developments in 'electric vehicle technology'.
+ Use the Google Search tool provided.
+ Summarize your key findings concisely (1-2 sentences).
+ Output *only* the summary.
+ """,
+     description="Researches electric vehicle technology.",
+     tools=[google_search],
+     # Store result in state for the merger agent
+     output_key="ev_technology_result"
+ )
 
-# Researcher 3: Carbon Capture
-researcher_agent_3 = LlmAgent(
-    name="CarbonCaptureResearcher",
-    model=GEMINI_MODEL,
-    instruction="""You are an AI Research Assistant specializing in climate solutions.
-Research the current state of 'carbon capture methods'.
-Use the Google Search tool provided.
-Summarize your key findings concisely (1-2 sentences).
-Output *only* the summary.
-""",
-    description="Researches carbon capture methods.",
-    tools=[google_search],
-    # Store result in state for the merger agent
-    output_key="carbon_capture_result"
-)
+ # Researcher 3: Carbon Capture
+ # 研究员 3：碳捕获
+ researcher_agent_3 = LlmAgent(
+     name="CarbonCaptureResearcher",
+     model=GEMINI_MODEL,
+     instruction="""You are an AI Research Assistant specializing in climate solutions.
+ Research the current state of 'carbon capture methods'.
+ Use the Google Search tool provided.
+ Summarize your key findings concisely (1-2 sentences).
+ Output *only* the summary.
+ """,
+     description="Researches carbon capture methods.",
+     tools=[google_search],
+     # Store result in state for the merger agent
+     output_key="carbon_capture_result"
+ )
 
-# --- 2. Create the ParallelAgent (Runs researchers concurrently) ---
-# This agent orchestrates the concurrent execution of the researchers.
-# It finishes once all researchers have completed and stored their results in state.
-parallel_research_agent = ParallelAgent(
-    name="ParallelWebResearchAgent",
-    sub_agents=[researcher_agent_1, researcher_agent_2, researcher_agent_3],
-    description="Runs multiple research agents in parallel to gather information."
-)
+ # --- 2. Create the ParallelAgent (Runs researchers concurrently) ---
+ # This agent orchestrates the concurrent execution of the researchers.
+ # It finishes once all researchers have completed and stored their results in state.
+ # --- 2. 创建 ParallelAgent（并行运行多个研究员子智能体） ---
+ # 该智能体协调多个研究员子智能体的并发执行。
+ # 所有研究员完成工作并将结果写入状态后，流程即结束。
+ parallel_research_agent = ParallelAgent(
+     name="ParallelWebResearchAgent",
+     sub_agents=[researcher_agent_1, researcher_agent_2, researcher_agent_3],
+     description="Runs multiple research agents in parallel to gather information."
+ )
 
-# --- 3. Define the Merger Agent (Runs *after* the parallel agents) ---
-# This agent takes the results stored in the session state by the parallel agents
-# and synthesizes them into a single, structured response with attributions.
-merger_agent = LlmAgent(
-    name="SynthesisAgent",
-    model=GEMINI_MODEL,  # Or potentially a more powerful model if needed for synthesis
-    instruction="""You are an AI Assistant responsible for combining research findings into a structured report.
-Your primary task is to synthesize the following research summaries, clearly attributing findings to their source areas. Structure your response using headings for each topic. Ensure the report is coherent and integrates the key points smoothly.
+ # --- 3. Define the Merger Agent (Runs *after* the parallel agents) ---
+ # This agent takes the results stored in the session state by the parallel agents
+ # and synthesizes them into a single, structured response with attributions.
+ # --- 3. 定义合并智能体（在并行研究员子智能体之后运行） ---
+ # 该智能体使用并行运行的子智能体已保存在会话状态中的结果，
+ # 将这些内容整合并归纳为一份结构化的响应，并在相应部分标注出处。
+ merger_agent = LlmAgent(
+     name="SynthesisAgent",
+     model=GEMINI_MODEL,  # Or potentially a more powerful model if needed for synthesis
+     instruction="""You are an AI Assistant responsible for combining research findings into a structured report.
 
-**Crucially: Your entire response MUST be grounded *exclusively* on the information provided in the 'Input Summaries' below. Do NOT add any external knowledge, facts, or details not present in these specific summaries.**
+ Your primary task is to synthesize the following research summaries, clearly attributing findings to their source areas. Structure your response using headings for each topic. Ensure the report is coherent and integrates the key points smoothly.
 
-**Input Summaries:**
+ **Crucially: Your entire response MUST be grounded *exclusively* on the information provided in the 'Input Summaries' below. Do NOT add any external knowledge, facts, or details not present in these specific summaries.**
 
-*   **Renewable Energy:**
-    {renewable_energy_result}
-*   **Electric Vehicles:**
-    {ev_technology_result}
-*   **Carbon Capture:**
-    {carbon_capture_result}
+ **Input Summaries:**
 
-**Output Format:**
+ *   **Renewable Energy:**
+     {renewable_energy_result}
 
-## Summary of Recent Sustainable Technology Advancements
+ *   **Electric Vehicles:**
+     {ev_technology_result}
 
-### Renewable Energy Findings
-(Based on RenewableEnergyResearcher's findings)
-[Synthesize and elaborate *only* on the renewable energy input summary provided above.]
+ *   **Carbon Capture:**
+     {carbon_capture_result}
 
-### Electric Vehicle Findings
-(Based on EVResearcher's findings)
-[Synthesize and elaborate *only* on the EV input summary provided above.]
+ **Output Format:**
 
-### Carbon Capture Findings
-(Based on CarbonCaptureResearcher's findings)
-[Synthesize and elaborate *only* on the carbon capture input summary provided above.]
+ ## Summary of Recent Sustainable Technology Advancements
 
-### Overall Conclusion
-[Provide a brief (1-2 sentence) concluding statement that connects *only* the findings presented above.]
+ ### Renewable Energy Findings
+ (Based on RenewableEnergyResearcher's findings)
+ [Synthesize and elaborate *only* on the renewable energy input summary provided above.]
 
-Output *only* the structured report following this format. Do not include introductory or concluding phrases outside this structure, and strictly adhere to using only the provided input summary content.
-""",
-    description="Combines research findings from parallel agents into a structured, cited report, strictly grounded on provided inputs.",
-    # No tools needed for merging
-    # No output_key needed here, as its direct response is the final output of the sequence
-)
+ ### Electric Vehicle Findings
+ (Based on EVResearcher's findings)
+ [Synthesize and elaborate *only* on the EV input summary provided above.]
 
-# --- 4. Create the SequentialAgent (Orchestrates the overall flow) ---
-# This is the main agent that will be run. It first executes the ParallelAgent
-# to populate the state, and then executes the MergerAgent to produce the final output.
-sequential_pipeline_agent = SequentialAgent(
-    name="ResearchAndSynthesisPipeline",
-    # Run parallel research first, then merge
-    sub_agents=[parallel_research_agent, merger_agent],
-    description="Coordinates parallel research and synthesizes the results."
-)
-root_agent = sequential_pipeline_agent
+ ### Carbon Capture Findings
+ (Based on CarbonCaptureResearcher's findings)
+ [Synthesize and elaborate *only* on the carbon capture input summary provided above.]
+
+ ### Overall Conclusion
+ [Provide a brief (1-2 sentence) concluding statement that connects *only* the findings presented above.]
+
+ Output *only* the structured report following this format. Do not include introductory or concluding phrases outside this structure, and strictly adhere to using only the provided input summary content.
+ """,
+     description="Combines research findings from parallel agents into a structured, cited report, strictly grounded on provided inputs.",
+     # No tools needed for merging
+     # No output_key needed here, as its direct response is the final output of the sequence
+ )
+
+
+ # --- 4. Create the SequentialAgent (Orchestrates the overall flow) ---
+ # This is the main agent that will be run. It first executes the ParallelAgent
+ # to populate the state, and then executes the MergerAgent to produce the final output.
+ # --- 4. 创建 SequentialAgent（协调整个流程） ---
+ # 这是将被运行的主智能体。它先执行 ParallelAgent 来填充状态，
+ # 然后执行 MergerAgent 来生成最终输出。
+ sequential_pipeline_agent = SequentialAgent(
+     name="ResearchAndSynthesisPipeline",
+     # Run parallel research first, then merge
+     sub_agents=[parallel_research_agent, merger_agent],
+     description="Coordinates parallel research and synthesizes the results."
+ )
+
+ root_agent = sequential_pipeline_agent
 ```
+
+译者注：[Colab 代码](https://colab.research.google.com/drive/1gcztL9ebeqGeWl-_0E9FeMcHMOsknB0I) 已维护在[此处](/codes/Chapter-03-Parallelization-ADK-Example.py)。
 
 This code defines a multi-agent system used to research and synthesize information on sustainable technology advancements. It sets up three LlmAgent instances to act as specialized researchers. ResearcherAgent_1 focuses on renewable energy sources, ResearcherAgent_2 researches electric vehicle technology, and ResearcherAgent_3 investigates carbon capture methods. Each researcher agent is configured to use a GEMINI_MODEL and the google_search tool. They are instructed to summarize their findings concisely (1-2 sentences) and store these summaries in the session state using output_key.
 
-<mark>这段代码定义了一个多 Agent 系统，用于研究和综合可持续技术进展的信息。它设置了三个 LlmAgent 实例作为专业研究员。ResearcherAgent_1 专注于可再生能源，ResearcherAgent_2 研究电动车技术，ResearcherAgent_3 调查碳捕获方法。每个研究员 Agent 都配置为使用 GEMINI_MODEL 和 google_search 工具。它们被指示简洁地总结其发现（1-2 句话）并使用 output_key 将这些总结存储在会话状态中。</mark>
+<mark>该代码建立了一个多智能体系统，用于收集与整合可持续技术进展的资料。系统包含三个子智能体担任不同的研究员：<code>ResearcherAgent_1</code> 聚焦可再生能源，<code>ResearcherAgent_2</code> 研究电动汽车技术，<code>ResearcherAgent_3</code> 调查碳捕集技术。每个研究员子智能体都配置为使用 <code>GEMINI_MODEL</code> 和 <code>google_search</code> 工具，并要求使用一到两句话总结研究结果，随后通过 <code>output_key</code> 将这些总结内容保存到会话状态中。</mark>
 
 A ParallelAgent named ParallelWebResearchAgent is then created to run these three researcher agents concurrently. This allows the research to be conducted in parallel, potentially saving time. The ParallelAgent completes its execution once all its sub-agents (the researchers) have finished and populated the state.
 
-<mark>然后创建了一个名为 ParallelWebResearchAgent 的 ParallelAgent 来并发运行这三个研究员 Agent。这允许并行进行研究，可能节省时间。ParallelAgent 在其所有子 Agent（研究员）完成并填充状态后完成其执行。</mark>
+<mark>然后创建了一个名为 <code>ParallelWebResearchAgent</code> 的并行智能体，用于同时运行这三个研究员子智能体。这样可以并行开展研究，节省时间。只有当所有子智能体（研究员）都完成并将结果写入状态后，并行智能体才算执行结束。</mark>
 
 Next, a MergerAgent (also an LlmAgent) is defined to synthesize the research results. This agent takes the summaries stored in the session state by the parallel researchers as input. Its instruction emphasizes that the output must be strictly based only on the provided input summaries, prohibiting the addition of external knowledge. The MergerAgent is designed to structure the combined findings into a report with headings for each topic and a brief overall conclusion.
 
-<mark>接下来，定义了一个 MergerAgent（也是一个 LlmAgent）来综合研究结果。这个 Agent 将并行研究员存储在会话状态中的总结作为输入。其指令强调输出必须严格基于所提供的输入总结，禁止添加外部知识。MergerAgent 旨在将合并的发现结构化为一个报告，每个主题都有标题和简要的总体结论。</mark>
+<mark>接下来，定义了一个 <code>MergerAgent</code>（也是 <code>LlmAgent</code>）来综合研究结果。该智能体将并行研究员子智能体存储在会话状态中的总结内容作为输入。其指令强调输出必须严格基于所提供的总结内容，禁止添加外部知识。<code>MergerAgent</code> 旨在将合并的发现结构化为报告，每个主题都有标题和简要的结论。</mark>
 
 Finally, a SequentialAgent named ResearchAndSynthesisPipeline is created to orchestrate the entire workflow. As the primary controller, this main agent first executes the ParallelAgent to perform the research. Once the ParallelAgent is complete, the SequentialAgent then executes the MergerAgent to synthesize the collected information. The sequential_pipeline_agent is set as the root_agent, representing the entry point for running this multi-agent system. The overall process is designed to efficiently gather information from multiple sources in parallel and then combine it into a single, structured report.
 
-<mark>最后，创建了一个名为 ResearchAndSynthesisPipeline 的 SequentialAgent 来协调整个工作流。作为主要控制器，这个主 Agent 首先执行 ParallelAgent 来执行研究。一旦 ParallelAgent 完成，SequentialAgent 然后执行 MergerAgent 来综合收集的信息。sequential_pipeline_agent 被设置为 root_agent，代表运行这个多 Agent 系统的入口点。整个过程旨在高效地并行从多个来源收集信息，然后将其合并为单个结构化报告。</mark>
+<mark>最后，创建了一个名为 <code>ResearchAndSynthesisPipeline</code> 的顺序型智能体来协调整个工作流。作为主要控制器，该主智能体首先执行 <code>ParallelAgent</code> 来进行研究。<code>ParallelAgent</code> 完成后，<code>SequentialAgent</code> 会执行 <code>MergerAgent</code> 来综合收集的信息。<code>sequential_pipeline_agent</code> 被设置为 <code>root_agent</code>，代表运行该多智能体系统的入口。整个流程的设计目标是并行从多个来源高效收集信息，然后将这些信息合并为一份结构化报告。</mark>
 
 ---
 
-## At a Glance
-
-<mark>概览</mark>
+## At a Glance | <mark>要点速览</mark>
 
 **What:** Many agentic workflows involve multiple sub-tasks that must be completed to achieve a final goal. A purely sequential execution, where each task waits for the previous one to finish, is often inefficient and slow. This latency becomes a significant bottleneck when tasks depend on external I/O operations, such as calling different APIs or querying multiple databases. Without a mechanism for concurrent execution, the total processing time is the sum of all individual task durations, hindering the system's overall performance and responsiveness.
 
-<mark><strong>什么：</strong>许多 Agent 工作流涉及多个必须完成以实现最终目标的子任务。纯粹的顺序执行，其中每个任务等待前一个任务完成，通常是低效和缓慢的。当任务依赖于外部 I/O 操作（如调用不同的 API 或查询多个数据库）时，这种延迟成为一个重大瓶颈。没有并发执行机制，总处理时间是所有单个任务持续时间的总和，阻碍了系统的整体性能和响应能力。</mark>
+<mark><strong>问题所在：</strong>许多智能体工作流涉及多个必须完成的子任务以实现最终目标。纯粹的顺序执行，即每个任务等待前一个任务完成再执行，通常效率低下且速度缓慢。当任务依赖于外部 I/O 操作（如调用不同的 API 或查询多个数据库）时，这种延迟会成为重大瓶颈。没有并发机制时，总耗时就是各个任务耗时的累加，进而影响系统的性能和响应速度。</mark>
 
 **Why:** The Parallelization pattern provides a standardized solution by enabling the simultaneous execution of independent tasks. It works by identifying components of a workflow, like tool usages or LLM calls, that do not rely on each other's immediate outputs. Agentic frameworks like LangChain and the Google ADK provide built-in constructs to define and manage these concurrent operations. For instance, a main process can invoke several sub-tasks that run in parallel and wait for all of them to complete before proceeding to the next step. By running these independent tasks at the same time rather than one after another, this pattern drastically reduces the total execution time.
 
-<mark><strong>为什么：</strong>并行化模式通过启用独立任务的同时执行提供标准化解决方案。它通过识别工作流的组件（如工具使用或 LLM 调用）来工作，这些组件不依赖于彼此的直接输出。像 LangChain 和 Google ADK 这样的 Agent 框架提供内置构造来定义和管理这些并发操作。例如，主进程可以调用几个并行运行的子任务，并等待所有子任务完成后再继续下一步。通过同时运行这些独立任务而不是一个接一个地运行，这种模式大大减少了总执行时间。</mark>
+<mark><strong>解决之道：</strong>并行模式通过同时执行彼此独立的任务，提供了一种标准化的解决方案来缩短整体执行时间。它的做法是识别工作流中不相互依赖的部分，比如某些工具调用或大语言模型请求。像 LangChain 和 Google ADK 这样的智能体框架内置了用于定义和管理并发操作的能力。举例来说，主流程可以启动多个并行的子任务，然后在继续下一步之前等待这些子任务全部完成。相比与顺序执行，这种并行执行能大幅减少总耗时。</mark>
 
 **Rule of thumb:** Use this pattern when a workflow contains multiple independent operations that can run simultaneously, such as fetching data from several APIs, processing different chunks of data, or generating multiple pieces of content for later synthesis.
 
-<mark><strong>经验法则：</strong>当工作流包含可以同时运行的多个独立操作时使用此模式，例如从多个 API 获取数据、处理不同的数据块或生成多个内容片段以供后续综合。</mark>
+<mark><strong>经验法则：</strong>当工作流中存在多个相互独立且可并行执行的任务时应采用该模式，例如同时从多个 API 拉取数据、并行处理不同的数据分片，或同时生成多个将来需要合并的内容，从而缩短总体执行时间。</mark>
 
-**Visual summary**
+**Visual summary** | <mark><strong>可视化总结</strong></mark>
 
-<mark><strong>可视化总结</strong></mark>
+![Parallelization Pattern](/images/chapter03_fig2.jpg)
 
-![Parallelization Pattern](https://lh7-rt.googleusercontent.com/docsz/AD_4nXf8fQf2xrLnudtFHqb8IcpEUrOPshi5GKqyY-dj_xOuMsUtrLIudrjfEW7x8CQAoL_aeiSQL4PFHaLhWez5cD0uoMDqf3iGblWzl-awCyk3hw8qZRvBpc7qUmqJyYKSLuY?key=_g4B5WuCtKCN3ODzzzjI8Q)
+Fig.2: Parallelization design pattern
 
-*Fig.2: Parallelization design pattern*
-
-<mark><strong>图 2：</strong>并行化设计模式</mark>
+<mark>图 2：并行化设计模式</mark>
 
 ---
 
-## Key Takeaways
-
-<mark>关键要点</mark>
+## Key Takeaways | <mark>核心要点</mark>
 
 Here are the key takeaways:
 
 <mark>以下是关键要点：</mark>
 
-- **Parallelization** is a pattern for executing independent tasks concurrently to improve efficiency.
+- Parallelization is a pattern for executing independent tasks concurrently to improve efficiency.
+
+   <mark>并行模式是一种将相互独立的任务同时执行，从而缩短总耗时并提高效率的方法。</mark>
+
 - It is particularly useful when tasks involve waiting for external resources, such as API calls.
+
+   <mark>在任务需要等待外部资源（比如调用 API）时，这种方式特别有用。</mark>
+
 - The adoption of a concurrent or parallel architecture introduces substantial complexity and cost, impacting key development phases such as design, debugging, and system logging.
+
+   <mark>采用并发或并行架构会显著增加复杂性和成本，从而对设计、调试和日志等开发环节带来影响。</mark>
+
 - Frameworks like LangChain and Google ADK provide built-in support for defining and managing parallel execution.
+
+   <mark>像 LangChain 和 Google ADK 这样的框架内置了对并行执行的支持，方便定义和管理并行任务。</mark>
+
 - In LangChain Expression Language (LCEL), RunnableParallel is a key construct for running multiple runnables side-by-side.
+
+   <mark>在 LangChain 的表达式语言（LCEL）中，RunnableParallel 是一个核心组件，用于并行执行多个可运行单元。</mark>
+
 - Google ADK can facilitate parallel execution through LLM-Driven Delegation, where a Coordinator agent's LLM identifies independent sub-tasks and triggers their concurrent handling by specialized sub-agents.
+
+   <mark>Google ADK 可以通过大语言模型驱动的委派机制来实现并行执行，其中协调器智能体中的大语言模型会识别出互相独立的子任务，并将这些任务分派给相应的子智能体去处理，从而并发完成各个子任务。</mark>
+
 - Parallelization helps reduce overall latency and makes agentic systems more responsive for complex tasks.
 
-- <mark><strong>并行化</strong>是一种并发执行独立任务以提高效率的模式。</mark>
-- <mark>当任务涉及等待外部资源（如 API 调用）时，它特别有用。</mark>
-- <mark>采用并发或并行架构会引入大量复杂性和成本，影响设计、调试和系统日志记录等关键开发阶段。</mark>
-- <mark>像 LangChain 和 Google ADK 这样的框架提供对定义和管理并行执行的内置支持。</mark>
-- <mark>在 LangChain Expression Language（LCEL）中，RunnableParallel 是并行运行多个可运行对象的关键构造。</mark>
-- <mark>Google ADK 可以通过 LLM 驱动的委托来促进并行执行，其中协调器 Agent 的 LLM 识别独立的子任务并触发专门的子 Agent 对它们进行并发处理。</mark>
-- <mark>并行化有助于减少总体延迟，并使 Agent 系统对复杂任务的响应更快。</mark>
+   <mark>并行模式能有效减少总体耗时，从而提升智能体系统对复杂任务的响应能力。</mark>
 
 ---
 
-## Conclusion
-
-<mark>结论</mark>
+## Conclusion | <mark>结语</mark>
 
 The parallelization pattern is a method for optimizing computational workflows by concurrently executing independent sub-tasks. This approach reduces overall latency, particularly in complex operations that involve multiple model inferences or calls to external services.
 
-<mark>并行化模式是通过并发执行独立子任务来优化计算工作流的方法。这种方法减少了总体延迟，特别是在涉及多个模型推理或对外部服务调用的复杂操作中。</mark>
+<mark>并行模式是通过并发执行独立子任务来优化计算流程。对于需要多次模型推理或调用外部服务的复杂操作，采用并行执行可以显著降低总体耗时并提高效率。</mark>
 
 Frameworks provide distinct mechanisms for implementing this pattern. In LangChain, constructs like RunnableParallel are used to explicitly define and execute multiple processing chains simultaneously. In contrast, frameworks like the Google Agent Developer Kit (ADK) can achieve parallelization through multi-agent delegation, where a primary coordinator model assigns different sub-tasks to specialized agents that can operate concurrently.
 
-<mark>框架为实现此模式提供了不同的机制。在 LangChain 中，像 RunnableParallel 这样的构造用于显式定义和同时执行多个处理链。相比之下，像 Google Agent Developer Kit (ADK) 这样的框架可以通过多 Agent 委托实现并行化，其中主协调器模型将不同的子任务分配给可以并发操作的专门 Agent。</mark>
+<mark>不同的框架为实现此模式提供了不同的机制。在 LangChain 中，像 RunnableParallel 这样的组件可以用于显式定义和执行多个处理链。相比之下，Google ADK 可以通过多智能体委派机制实现并行化，其中主协调器模型将不同的子任务分配给可以并发执行的专用智能体。</mark>
 
 By integrating parallel processing with sequential (chaining) and conditional (routing) control flows, it becomes possible to construct sophisticated, high-performance computational systems capable of efficiently managing diverse and complex tasks.
 
-<mark>通过将并行处理与顺序（链式调用）和条件（路由）控制流集成，可以构建能够高效管理多样化和复杂任务的复杂、高性能计算系统。</mark>
+<mark>将并行处理与顺序（链式）和条件（路由）控制流结合起来，可以构建既复杂又高效的计算系统，从而更有效地管理各类复杂任务。</mark>
 
 ---
 
-## References
-
-<mark>参考文献</mark>
+## References | <mark>参考文献</mark>
 
 Here are some resources for further reading on the Parallelization pattern and related concepts:
 
-<mark>以下是有关并行化模式和相关概念的进一步阅读资源：</mark>
+<mark>以下是一些可供深入了解并行模式及其相关概念的推荐阅读资料：</mark>
 
 1. LangChain Expression Language (LCEL) Documentation (Parallelism): [https://python.langchain.com/docs/concepts/lcel/](https://python.langchain.com/docs/concepts/lcel/)
+
+   <mark>LangChain 表达式语言文档（并行化）：[https://python.langchain.com/docs/concepts/lcel/](https://python.langchain.com/docs/concepts/lcel/)</mark>
+
 2. Google Agent Developer Kit (ADK) Documentation (Multi-Agent Systems): [https://google.github.io/adk-docs/agents/multi-agents/](https://google.github.io/adk-docs/agents/multi-agents/)
+
+   <mark>Google ADK 文档（多智能体系统）：[https://google.github.io/adk-docs/agents/multi-agents/](https://google.github.io/adk-docs/agents/multi-agents/)</mark>
+
 3. Python asyncio Documentation: [https://docs.python.org/3/library/asyncio.html](https://docs.python.org/3/library/asyncio.html)
 
-1. <mark>LangChain Expression Language (LCEL) 文档（并行性）：[https://python.langchain.com/docs/concepts/lcel/](https://python.langchain.com/docs/concepts/lcel/)</mark>
-2. <mark>Google Agent Developer Kit (ADK) 文档（多 Agent 系统）：[https://google.github.io/adk-docs/agents/multi-agents/](https://google.github.io/adk-docs/agents/multi-agents/)</mark>
-3. <mark>Python asyncio 文档：[https://docs.python.org/3/library/asyncio.html](https://docs.python.org/3/library/asyncio.html)</mark>
-
----
-
-*Document generated on: $(date)*
-
-<mark><em>文档生成时间：$(date)</em></mark>
+   <mark>Python asyncio 文档：[https://docs.python.org/3/library/asyncio.html](https://docs.python.org/3/library/asyncio.html)</mark>

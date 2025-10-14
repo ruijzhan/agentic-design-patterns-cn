@@ -34,10 +34,24 @@
 #### 具体实践
 
 - **长句处理**：英文复杂句可拆分为多个中文短句
+  - 单个中文段落避免超过 3-4 行
+  - 代码说明等技术性段落适当拆分，提高可读性
+  - 使用空行分隔不同层次的说明
+
 - **意译许可**：为提升流畅度，允许必要的意译和句式调整
 - **段落对应**：保持段落级别的对应，但句子可灵活处理
 - **语体统一**：全书语体保持一致，避免风格断层
+
+- **冗余词汇处理**：删除不必要的冗余词汇，使表达更简洁
+  - ❌ "一个系统" → ✅ "系统"
+  - ❌ "您可以" → ✅ "可以"
+  - ❌ "Google 的 Gemini" → ✅ "Google Gemini"
+  - ❌ "它可以先对传入查询进行分类以判断" → ✅ "它可以先对传入查询进行分类，判断"
+
 - **避免口语化**：减少不必要的过渡词和口语表达
+  - ❌ "那么"、"好的"、"其实" 等过渡词
+  - ✅ 直接表达主要内容
+
 - **强调适度**：加粗文本仅在非常必要时使用
 
 #### 常见问题避免
@@ -54,6 +68,31 @@
 - 使用相同的格式（包含标题、内容概要、目录和正文）
 - 各部分之间使用横线分隔（`---`）
 - 在二级标题之间增加横线分隔，提升阅读体验
+
+#### 章节标题格式
+
+所有章节标题采用双语对照格式：
+
+```markdown
+# Chapter N: Title | <mark>第 N 章：标题</mark>
+
+## Section Title | <mark>章节标题</mark>
+
+## At a Glance | <mark>要点速览</mark>
+```
+
+#### 章节固定术语翻译
+
+| English | 中文 | 说明 |
+|---------|------|------|
+| At a Glance | 要点速览 | 章节速览部分 |
+| What | 问题所在 | 问题描述 |
+| Why | 解决之道 | 解决方案 |
+| Rule of Thumb | 经验法则 | 使用建议 |
+| Visual summary | 可视化总结 | 图示总结 |
+| Conclusion | 结语 | 章节结尾 |
+| Key Takeaways | 核心要点 | 要点总结 |
+| Hands-On Code Example | 使用 XX 的实战代码 | 代码示例标题 |
 
 ### 2. Markdown Syntax | Markdown 语法
 
@@ -121,6 +160,20 @@
 - 若需在高亮内显示强调性小标题（如「什么/为什么/经验法则/可视化总结」），使用：`<mark><strong>小标题：</strong>后续说明</mark>`。
 - 不在正文中加入进度或编辑性标注（如「已完成/代码正常」），此类信息仅出现在 PR 描述或 Issue 中。
 
+#### 参考文献格式
+
+参考文献采用独立行格式：
+
+```markdown
+1. Source Title: [URL](URL)
+
+   <mark>来源标题：[URL](URL)</mark>
+
+2. Another Source: [URL](URL)
+
+   <mark>另一来源：[URL](URL)</mark>
+```
+
 ### 6. Lists & Emphasis Patterns | 列表与强调规范
 
 - 列表内的关键短语可加粗，但仍放在 `<mark>` 中：`- <mark><strong>用例：</strong>说明……</mark>`。
@@ -157,6 +210,7 @@
 
 - 搜索残留"代理"：`grep -r "代理" --include="*.md"` 应全部改为"智能体"
 - 检查术语一致性：确保 Agent/Agentic/Canvas 等翻译统一
+- 检查代码术语格式化：在代码说明段落中，类名、函数名、变量名是否使用 `<code>` 标签
 
 #### 质量检查
 
@@ -235,6 +289,33 @@
 - 使用 `grep -r "代理" --include="*.md"` 检查残留
 - 全书术语必须保持统一，不可混用
 
+#### 代码术语格式化
+
+在中文翻译中引用代码组件、类名、函数名、变量名时，应使用 `<code>` 标签包裹，以提高可读性和专业性。
+
+**何时使用 `<code>` 标签：**
+
+- ✅ **类名**：`<code>ChatOpenAI</code>`、`<code>RunnableParallel</code>`、`<code>LlmAgent</code>`
+- ✅ **函数/方法名**：`<code>ainvoke</code>`、`<code>run_parallel_example</code>`、`<code>asyncio.run</code>`
+- ✅ **变量名**：`<code>map_chain</code>`、`<code>full_parallel_chain</code>`、`<code>output_key</code>`
+- ✅ **模型名称**：`<code>gpt-4o-mini</code>`、`<code>GEMINI_MODEL</code>`
+- ✅ **代码符号/运算符**：`<code>|</code>`、`<code>if __name__ == "__main__":</code>`
+- ✅ **配置项/参数**：`<code>temperature</code>`、`<code>try-except</code>`
+
+**何时不使用 `<code>` 标签：**
+
+- ❌ **框架名称**：LangChain、Google ADK、Python（这些作为产品/语言名称，不需要标记）
+- ❌ **概念性术语**：智能体、提示链、并行化（这些是翻译后的中文概念术语）
+- ❌ **技术缩写**：LLM、RAG、API（这些使用全角括号注释即可）
+
+**示例对比：**
+
+```markdown
+❌ 错误：代码从 langchain_openai 和 langchain_core 导入了关键模块，包含 ChatOpenAI、RunnableParallel 等组件。
+
+✅ 正确：代码从 <code>langchain_openai</code> 和 <code>langchain_core</code> 导入了关键模块，包含 <code>ChatOpenAI</code>、<code>RunnableParallel</code> 等组件。
+```
+
 ### 2. Spacing Rules | 空格规则
 
 - 中文和英文之间增加一个空格
@@ -306,7 +387,7 @@
 
 ## File Naming Convention | 文件命名规范
 
-```
+```text
 00-Table-of-Contents.md                    # 目录
 01-Dedication.md                          # 致谢
 02-Acknowledgment.md                      # 鸣谢
@@ -330,7 +411,8 @@ rules/rules.md                                 # 本规则文档
 ### 1. Commit Messages | 提交信息
 
 使用清晰的英文提交信息：
-```
+
+```text
 Add: [chapter name] translation
 Update: [chapter name] formatting
 Fix: [specific issue] in [chapter name]
@@ -349,16 +431,21 @@ Fix: [specific issue] in [chapter name]
 | English | 中文 | 备注 |
 |---------|------|------|
 | Agent | 智能体 | 核心概念 |
+| Sub-agent | 子智能体 | |
+| Multi-Agent | 多智能体 | |
+| Agentic system | 智能体系统 | |
 | Prompt Chaining | 提示链 | |
 | Routing | 路由 | |
 | Parallelization | 并行化 | |
 | Reflection | 反思 | |
 | Tool Use | 工具使用 | |
 | Planning | 规划 | |
-| Multi-Agent | 多智能体 | |
 | Memory Management | 内存管理 | |
 | Human-in-the-Loop | 人在回路中 | |
 | RAG | 检索增强生成 | 保留英文缩写 |
+| LLM | 大语言模型 | Large Language Model |
+| Concurrency | 并发性 | 与并行性 (Parallelism) 区分 |
+| Parallelism | 并行性 | 与并发性 (Concurrency) 区分 |
 
 ## Quality Standards | 质量标准
 
@@ -407,6 +494,21 @@ Fix: [specific issue] in [chapter name]
 ---
 
 ## Version History | 版本历史
+
+- **v1.3 (2025-10-13)**: 新增代码术语格式化规范
+  - 新增"代码术语格式化"章节，规范 `<code>` 标签使用
+  - 定义何时使用/不使用 `<code>` 标签的明确准则
+  - 提供类名、函数名、变量名等代码组件的标记示例
+  - 更新快速自检命令，增加代码术语格式化检查
+  - 已在第三章应用新规范，作为后续章节参考
+
+- **v1.2 (2025-10-12)**: 基于前三章翻译实践优化规则
+  - 新增章节标题格式规范（双语对照格式）
+  - 新增章节固定术语翻译表（At a Glance、Conclusion 等）
+  - 增强长段落处理规则（单段不超过 3-4 行）
+  - 新增冗余词汇处理指南（"一个"、"您"、"的"等）
+  - 完善技术术语词典（新增子智能体、并发性等）
+  - 新增参考文献格式规范
 
 - **v1.1 (2025-10-10)**: 优化翻译质量规范
   - 新增"信雅达"三重标准详细说明

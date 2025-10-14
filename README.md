@@ -50,8 +50,8 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 ### 第一部分 | Part One (103 页)
 
 - [x] [第一章：提示链 | Chapter 1: Prompt Chaining](07-Chapter-01-Prompt-Chaining.md)
-- [ ] [第二章：路由 | Chapter 2: Routing](08-Chapter-02-Routing.md)
-- [ ] [第三章：并行化 | Chapter 3: Parallelization](09-Chapter-03-Parallelization.md)
+- [x] [第二章：路由 | Chapter 2: Routing](08-Chapter-02-Routing.md)
+- [x] [第三章：并行化 | Chapter 3: Parallelization](09-Chapter-03-Parallelization.md)
 - [ ] [第四章：反思 | Chapter 4: Reflection](10-Chapter-04-Reflection.md)
 - [ ] [第五章：工具使用 | Chapter 5: Tool Use](11-Chapter-05-Tool-Use.md)
 - [ ] [第六章：规划 | Chapter 6: Planning](12-Chapter-06-Planning.md)
@@ -59,7 +59,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 ### 第二部分 | Part Two (61 页)
 
-- [ ] [第八章：内存管理 | Chapter 8: Memory Management](14-Chapter-08-Memory-Management.md)
+- [ ] [第八章：记忆管理 | Chapter 8: Memory Management](14-Chapter-08-Memory-Management.md)
 - [ ] [第九章：学习与适应 | Chapter 9: Learning and Adaptation](15-Chapter-09-Learning-and-Adaptation.md)
 - [ ] [第十章：模型上下文协议 (MCP) | Chapter 10: Model Context Protocol (MCP)](16-Chapter-10-Model-Context-Protocol.md)
 - [ ] [第十一章：目标设定与监控 | Chapter 11: Goal Setting and Monitoring](17-Chapter-11-Goal-Setting-and-Monitoring.md)
@@ -67,7 +67,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 ### 第三部分 | Part Three (34 页)
 
 - [ ] [第十二章：异常处理与恢复 | Chapter 12: Exception Handling and Recovery](18-Chapter-12-Exception-Handling-and-Recovery.md)
-- [ ] [第十三章：人在回路中 | Chapter 13: Human-in-the-Loop](19-Chapter-13-Human-in-the-Loop.md)
+- [ ] [第十三章：人机协作 | Chapter 13: Human-in-the-Loop](19-Chapter-13-Human-in-the-Loop.md)
 - [ ] [第十四章：知识检索 (RAG) | Chapter 14: Knowledge Retrieval (RAG)](20-Chapter-14-Knowledge-Retrieval.md)
 
 ### 第四部分 | Part Four (114 页)
@@ -104,9 +104,9 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 ### 🔧 核心模式 | Core Patterns
 
-1. **提示链 (Prompt Chaining)** - 连续提示序列引导复杂任务
-2. **路由 (Routing)** - 智能请求路由分发
-3. **并行化 (Parallelization)** - 多任务并行执行优化
+1. **提示链 (Prompt Chaining)** - 分而治之的任务分解模式。它将复杂任务分解为一系列更小、更易管理的子问题，每个子问题通过专门设计的提示独立解决，前一步的输出传递给下一步作为输入，形成一个逻辑清晰的处理流水线。
+2. **路由 (Routing)** - 智能决策与动态分发。它能根据环境状态、用户输入或执行结果等情境信息，从多个可选方案中选择合适的行动路径。路由决定将请求交给哪个功能模块、工具或子流程处理，让智能体不再只是沿着固定流程执行。
+3. **并行化 (Parallelization)** - 并发执行与性能提升。它通过同时执行多个独立任务来提升智能体系统的效率和响应速度，将原本需要串行等待的操作转变为并发执行，是优化复杂智能体工作流性能的关键技术。
 4. **反思 (Reflection)** - 智能体自我评估与改进
 5. **工具使用 (Tool Use)** - 外部工具与 API 集成
 6. **规划 (Planning)** - 多步骤计划制定与执行
@@ -114,7 +114,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 ### 🎯 高级模式 | Advanced Patterns
 
-8. **内存管理 (Memory Management)** - 短期和长期记忆管理
+8. **记忆管理 (Memory Management)** - 短期和长期记忆管理
 9. **学习与适应 (Learning and Adaptation)** - 从经验中学习
 10. **模型上下文协议 (MCP)** - 标准化交互协议
 11. **目标设定与监控 (Goal Setting and Monitoring)** - 动态目标管理
@@ -122,7 +122,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 ### 🔗 集成模式 | Integration Patterns
 
 12. **异常处理与恢复 (Exception Handling and Recovery)** - 优雅错误处理
-13. **人在回路中 (Human-in-the-Loop)** - 人机协作决策
+13. **人机协作 (Human-in-the-Loop)** - 人机协作决策
 14. **知识检索 (RAG)** - 检索增强生成技术
 
 ### 🏭 生产模式 | Production Patterns
@@ -280,44 +280,7 @@ python codes/Chapter-01-Prompt-Chaining-Example.py
   - ✅ 允许：自由复制、分发、展示和演绎作品（需署名译者）
   - ❌ 禁止：任何形式的商业使用
   - 📧 商业合作：如需商业使用，请联系译者和原书版权方
-
----
-
-## 📈 项目进展 | Project Progress
-
-### 🗓️ 更新历史 | Update History
-
-- **2025-10-10**:
-
-  - ✅ 人工精读和优化第一部分全部翻译内容
-  - ✅ 规范标点符号使用（统一使用中文直角引号）
-  - ✅ 优化长句表达，提升中文可读性
-  - ✅ 完成翻译质量审查和改进
-
-- **2025-10-09**:
-
-  - ✅ 初始化项目仓库
-  - ✅ 完成致谢、鸣谢和前言章节翻译
-  - ✅ 完成思想领袖观点章节翻译 (Marco Argenti/Goldman Sachs)
-  - ✅ 完成介绍和智能体定义章节翻译
-  - ✅ 完成第一部分全部 7 章 AI 翻译 (提示链、路由、并行化、反思、工具使用、规划、多智能体协作)
-  - ✅ 建立翻译规范和质量标准 ([rules.md](rules/rules.md))
-  - ✅ 实现 GitHub 兼容的高亮格式 (`<mark>` 标签)
-  - ✅ 创建专业 README 文档
-  - ✅ 更新文件命名规范 (两位数前缀系统)
-  - ✅ 完成 AI 交叉评审和质量检查
-  - 📊 **当前进度**: 第一部分 7/7 章节完成 (100%)
-  - 📖 **总体进度**: 约 25% (103/424 页)
-
-### 📊 翻译统计 | Translation Statistics
-
-| 状态 | 章节数 | 页数估算 | 完成度 |
-|------|--------|----------|--------|
-| ✅ 已完成 | 13 | ~103 | 25% |
-| 🚧 进行中 | 0 | 0 | 0% |
-| ⏳ 待翻译 | 24 | ~321 | 75% |
-| **总计** | **37** | **424** | **25%** |
-
+  
 ---
 
 ## 📞 联系方式 | Contact
