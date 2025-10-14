@@ -36,7 +36,7 @@ The process typically involves:
 
 A key and highly effective implementation of the Reflection pattern separates the process into two distinct logical roles: a Producer and a Critic. This is often called the "Generator-Critic" or "Producer-Reviewer" model. While a single agent can perform self-reflection, using two specialized agents (or two separate LLM calls with distinct system prompts) often yields more robust and unbiased results.
 
-<mark>反思模式的一个关键且高效的实现方式是将流程分为两个独立的角色：生产者（Producer）和评论者（Critic）。这通常被称为「生成器 - 评论者」（Generator-Critic）或「生产者 - 审查者」（Producer-Reviewer）模型。虽然单个智能体也能进行自我反思，但使用两个专门的智能体（或两个具有不同系统提示的独立大语言模型调用）通常能产生更稳健、更客观的结果。</mark>
+<mark>反思模式的一个关键且高效的实现方式是将流程分为两个独立的角色：生产者（Producer）和评论者（Critic）。这通常被称为「生成器-评论者」（Generator-Critic）或「生产者-审查者」（Producer-Reviewer）模型。虽然单个智能体也能进行自我反思，但使用两个专门的智能体（或两个具有不同系统提示的独立大语言模型调用）通常能产生更稳健、更客观的结果。</mark>
 
 1. The Producer Agent: This agent's primary responsibility is to perform the initial execution of the task. It focuses entirely on generating the content, whether it's writing code, drafting a blog post, or creating a plan. It takes the initial prompt and produces the first version of the output.
 
@@ -324,7 +324,7 @@ The code begins by setting up the environment, loading API keys, and initializin
 
 Let's now look at a conceptual code example implemented using the Google ADK. Specifically, the code showcases this by employing a Generator-Critic structure, where one component (the Generator) produces an initial result or plan, and another component (the Critic) provides critical feedback or a critique, guiding the Generator towards a more refined or accurate final output.
 
-<mark>现在我们来看一个使用 Google ADK 实现的示例。具体来说，代码采用「生成者 - 评论者」架构来演示反思模式，其中一个组件（生成者）产生初始结果或方案，另一个组件（评论者）提出反馈建议，帮助生成者不断改进，最终得到更完善、更准确的输出。</mark>
+<mark>现在我们来看一个使用 Google ADK 实现的示例。具体来说，代码采用「生成器-评论者」架构来演示反思模式，其中一个组件（生成器）产生初始结果或方案，另一个组件（评论者）提出反馈建议，帮助生成器不断改进，最终得到更完善、更准确的输出。</mark>
 
 ```python
 from google.adk.agents import SequentialAgent, LlmAgent
@@ -375,9 +375,9 @@ review_pipeline = SequentialAgent(
 
 This code demonstrates the use of a sequential agent pipeline in Google ADK for generating and reviewing text. It defines two LlmAgent instances: generator and reviewer. The generator agent is designed to create an initial draft paragraph on a given subject. It is instructed to write a short and informative piece and saves its output to the state key draft_text. The reviewer agent acts as a fact-checker for the text produced by the generator. It is instructed to read the text from draft_text and verify its factual accuracy. The reviewer's output is a structured dictionary with two keys: status and reasoning. status indicates if the text is "ACCURATE" or "INACCURATE", while reasoning provides an explanation for the status. This dictionary is saved to the state key review_output. A SequentialAgent named review_pipeline is created to manage the execution order of the two agents. It ensures that the generator runs first, followed by the reviewer. The overall execution flow is that the generator produces text, which is then saved to the state. Subsequently, the reviewer reads this text from the state, performs its fact-checking, and saves its findings (the status and reasoning) back to the state. This pipeline allows for a structured process of content creation and review using separate agents. **Note:** An alternative implementation utilizing ADK's LoopAgent is also available for those interested.
 
-<mark>该示例展示了在 Google ADK 中使用顺序智能体管道来生成和审查文本。它定义了两个 <code>LlmAgent</code> 实例：<code>generator</code> 和 <code>reviewer</code>。生产者智能体负责根据指定主题撰写一段简短且信息量高的初稿，并将结果存为状态键 <code>draft_text</code>。审查者智能体则作为事实核查者，从 <code>draft_text</code> 读取内容并核实事实准确性。审查者的输出是一个结构化字典，包含两个键：<code>status</code> 和 <code>reasoning</code>，其中状态的值包括 <code>ACCURATE</code> 和 <code>INACCURATE</code>，而 <code>reasoning</code> 字段是对状态判断的补充说明，具体的值保存在状态键 <code>review_output</code>。</mark>
+<mark>该示例展示了在 Google ADK 中使用顺序智能体管道来生成和审查文本。它定义了两个 <code>LlmAgent</code> 实例：<code>generator</code> 和 <code>reviewer</code>。生成器智能体负责根据指定主题撰写一段简短且信息量高的初稿，并将结果存为状态键 <code>draft_text</code>。审查者智能体则作为事实核查者，从 <code>draft_text</code> 读取内容并核实事实准确性。审查者的输出是一个结构化字典，包含两个键：<code>status</code> 和 <code>reasoning</code>，其中状态的值包括 <code>ACCURATE</code> 和 <code>INACCURATE</code>，而 <code>reasoning</code> 字段是对状态判断的补充说明，具体的值保存在状态键 <code>review_output</code>。</mark>
 
-<mark>然后通过名为 <code>review_pipeline</code> 的 <code>SequentialAgent</code> 来控制两个智能体的执行顺序，确保先执行生产者智能体，再执行审查者智能体。整体流程是生产者先生成并保存文本，然后审查者读取状态并执行事实核查，再将核查发现的内容保存回状态。这种管道化的设计便于用独立的智能体完成结构化的内容创作与审查。<strong>注意：</strong>对于感兴趣的用户，还可使用 ADK 的 <code>LoopAgent</code> 实现类似功能。</mark>
+<mark>然后通过名为 <code>review_pipeline</code> 的 <code>SequentialAgent</code> 来控制两个智能体的执行顺序，确保先执行生成器智能体，再执行审查者智能体。整体流程是生成器先生成并保存文本，然后审查者读取状态并执行事实核查，再将核查发现的内容保存回状态。这种管道化的设计便于用独立的智能体完成结构化的内容创作与审查。<strong>注意：</strong>对于感兴趣的用户，还可使用 ADK 的 <code>LoopAgent</code> 实现类似功能。</mark>
 
 Before concluding, it's important to consider that while the Reflection pattern significantly enhances output quality, it comes with important trade-offs. The iterative process, though powerful, can lead to higher costs and latency, since every refinement loop may require a new LLM call, making it suboptimal for time-sensitive applications. Furthermore, the pattern is memory-intensive; with each iteration, the conversational history expands, including the initial output, critique, and subsequent refinements.
 
@@ -427,7 +427,7 @@ Fig.2: Reflection design pattern, producer and critique agent
 
 - A powerful implementation is the Producer-Critic model, where a separate agent (or prompted role) evaluates the initial output. This separation of concerns enhances objectivity and allows for more specialized, structured feedback.
 
-   <mark>一个有效的方法是采用「生产者 - 评论者」模型，由一个独立的智能体（或基于提示的不同角色）来评估初始输出。通过职责分离可以提高评判的客观性，并提供更专业、更有条理的反馈。</mark>
+   <mark>一个有效的方法是采用「生产者-评论者」模型，由一个独立的智能体（或基于提示的不同角色）来评估初始输出。通过职责分离可以提高评判的客观性，并提供更专业、更有条理的反馈。</mark>
 
 - However, these benefits come at the cost of increased latency and computational expense, along with a higher risk of exceeding the model's context window or being throttled by API services.
 
