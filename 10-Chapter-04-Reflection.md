@@ -443,7 +443,7 @@ Fig.2: Reflection design pattern, producer and critique agent
 
 - This pattern enables agents to perform self-correction and enhance their performance over time.
 
-   <mark>该模式使代理能够自我修正，并随着时间不断提高表现。</mark>
+   <mark>该模式使智能体能够自我修正，并随着时间不断提高表现。</mark>
 
 ---
 
@@ -451,7 +451,7 @@ Fig.2: Reflection design pattern, producer and critique agent
 
 The reflection pattern provides a crucial mechanism for self-correction within an agent's workflow, enabling iterative improvement beyond a single-pass execution. This is achieved by creating a loop where the system generates an output, evaluates it against specific criteria, and then uses that evaluation to produce a refined result. This evaluation can be performed by the agent itself (self-reflection) or, often more effectively, by a distinct critic agent, which represents a key architectural choice within the pattern.
 
-<mark>反思模式为代理的工作流程提供了自我修正的关键手段，使其能通过多次迭代而不是一次性完成任务来持续改进。具体做法是形成一个循环：系统先生成初稿，然后按照既定标准对其进行评估，最后根据评估结果生成更完善的输出。这种评估既可以由智能体自己完成（自我反思），也可以由一个专门的评论者智能体来执行。通常后一种方式更有效，也是该模式的一个重要架构决策。</mark>
+<mark>反思模式为智能体的工作流程提供了自我修正的关键手段，使其能通过多次迭代而不是一次性完成任务来持续改进。具体做法是形成一个循环：系统先生成初稿，然后按照既定标准对其进行评估，最后根据评估结果生成更完善的输出。这种评估既可以由智能体自己完成（自我反思），也可以由一个专门的评论者智能体来执行。通常后一种方式更有效，也是该模式的一个重要架构决策。</mark>
 
 While a fully autonomous, multi-step reflection process requires a robust architecture for state management, its core principle is effectively demonstrated in a single generate-critique-refine cycle. As a control structure, reflection can be integrated with other foundational patterns to construct more robust and functionally complex agentic systems.
 
