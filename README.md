@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/ginobefun-agentic-design-patterns-cn-badge.png)](https://mseep.ai/app/ginobefun-agentic-design-patterns-cn)
+
 # Agentic Design Patterns | <mark>智能体设计模式</mark>
 
 ## A Hands-On Guide to Building Intelligent Systems | <mark>构建智能系统的实践指南</mark>
