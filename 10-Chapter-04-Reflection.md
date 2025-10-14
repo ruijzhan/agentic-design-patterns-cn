@@ -168,11 +168,11 @@ Reflection adds a layer of meta-cognition to agentic systems, enabling them to l
 
 The implementation of a complete, iterative reflection process necessitates mechanisms for state management and cyclical execution. While these are handled natively in graph-based frameworks like LangGraph or through custom procedural code, the fundamental principle of a single reflection cycle can be demonstrated effectively using the compositional syntax of LCEL (LangChain Expression Language).
 
-<mark>完整迭代反思过程的实现需要状态管理和循环执行机制。虽然这些在基于图的框架（如 LangGraph）中原生处理或通过自定义程序代码处理，但可使用 LCEL（LangChain Expression Language）的组合语法有效演示单个反思周期的基本原理。</mark>
+<mark>要实现完整的迭代反思流程，需要具备状态管理和循环执行的机制。虽然诸如 LangGraph 这类基于图的框架，或自定义的过程式代码可以原生支持这些功能，但通过 LCEL（LangChain 表达式语言）的组合语法，就能清晰地演示反思模式的核心原理。</mark>
 
 This example implements a reflection loop using the Langchain library and OpenAI's GPT-4o model to iteratively generate and refine a Python function that calculates the factorial of a number. The process starts with a task prompt, generates initial code, and then repeatedly reflects on the code based on critiques from a simulated senior software engineer role, refining the code in each iteration until the critique stage determines the code is perfect or a maximum number of iterations is reached. Finally, it prints the resulting refined code.
 
-<mark>本示例使用 Langchain 库和 OpenAI 的 <code>GPT-4o</code> 模型实现反思循环，迭代生成和优化计算数字阶乘的 Python 函数。过程从任务提示开始，生成初始代码，然后基于模拟高级软件工程师角色的批评反复反思代码，在每次迭代中优化代码，直到批评阶段确定代码完美或达到最大迭代次数。最后打印生成的优化代码。</mark>
+<mark>本示例使用 Langchain 库和 OpenAI 的 <code>GPT-4o</code> 模型实现反思循环，迭代生成并优化一个计算阶乘的 Python 函数。流程从任务提示开始，生成初始代码，然后由扮演高级软件工程师角色的智能体提出改进建议并反复迭代，直到确定代码已无可改进或达到最大迭代次数时结束，最终输出完善后的代码。</mark>
 
 First, ensure you have the necessary libraries installed:
 
@@ -184,7 +184,7 @@ pip install langchain langchain-community langchain-openai
 
 You will also need to set up your environment with your API key for the language model you choose (e.g., OpenAI, Google Gemini, Anthropic).
 
-<mark>还需要为选择的语言模型（例如 OpenAI、Google Gemini、Anthropic）设置 <code>API</code> 密钥环境。</mark>
+<mark>还需要为选择的语言模型（例如 OpenAI、Google Gemini、Anthropic）设置 <code>API</code> 密钥。</mark>
 
 ```python
 import os
@@ -193,23 +193,35 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import SystemMessage, HumanMessage
 
+# Colab 代码链接：https://colab.research.google.com/drive/1xnL6Rky6nsm4iAhomLnUK3kgwSyyYZfb
+
+# 安装依赖
+# pip install langchain langchain-community langchain-openai
+
 # --- Configuration ---
 # Load environment variables from .env file (for OPENAI_API_KEY)
+# 从 .env 文件加载环境变量（如 OPENAI_API_KEY）
 load_dotenv()
 
 # Check if the API key is set
+# 检查 API 密钥是否设置
 if not os.getenv("OPENAI_API_KEY"):
     raise ValueError("OPENAI_API_KEY not found in .env file. Please add it.")
 
-# Initialize the Chat LLM. We use gpt-4o for better reasoning.
-# A lower temperature is used for more deterministic outputs.
+# Initialize the Chat LLM. We use a powerful model like gpt-4o for better reasoning.
+# A lower temperature is used for more deterministic and focused outputs.
+# 使用 gpt-4o 或其他模型，并设置较低的温度值以获得更稳定的输出
 llm = ChatOpenAI(model="gpt-4o", temperature=0.1)
+
 
 def run_reflection_loop():
     """
     Demonstrates a multi-step AI reflection loop to progressively improve a Python function.
+    展示了通过多步骤反思循环，逐步改进 Python 函数的方法。
     """
+
     # --- The Core Task ---
+    # --- 核心任务的提示词 ---
     task_prompt = """
     Your task is to create a Python function named `calculate_factorial`.
     This function should do the following:
@@ -219,28 +231,33 @@ def run_reflection_loop():
     4.  Handle edge cases: The factorial of 0 is 1.
     5.  Handle invalid input: Raise a ValueError if the input is a negative number.
     """
+
     # --- The Reflection Loop ---
+    # --- 反思循环 ---
     max_iterations = 3
     current_code = ""
     # We will build a conversation history to provide context in each step.
+    # 构建对话历史，为每一步提供必要的上下文信息。
     message_history = [HumanMessage(content=task_prompt)]
-
 
     for i in range(max_iterations):
         print("\n" + "="*25 + f" REFLECTION LOOP: ITERATION {i + 1} " + "="*25)
 
         # --- 1. GENERATE / REFINE STAGE ---
         # In the first iteration, it generates. In subsequent iterations, it refines.
+        # 在第一次迭代时，生成初始代码；在后续迭代时，基于上一步的反馈优化代码。
         if i == 0:
             print("\n>>> STAGE 1: GENERATING initial code...")
             # The first message is just the task prompt.
+            # 第一次迭代时，只需要任务提示词。
             response = llm.invoke(message_history)
             current_code = response.content
         else:
             print("\n>>> STAGE 1: REFINING code based on previous critique...")
-            # The message history now contains the task, 
-            # the last code, and the last critique.
+            # The message history now contains the task, the last code, and the last critique.
             # We instruct the model to apply the critiques.
+            # 后续迭代时，除了任务提示词，还包含上一步的代码和反馈。
+            # 然后要求模型根据反馈意见优化代码。
             message_history.append(HumanMessage(content="Please refine the code using the critiques provided."))
             response = llm.invoke(message_history)
             current_code = response.content
@@ -249,21 +266,19 @@ def run_reflection_loop():
         message_history.append(response) # Add the generated code to history
 
         # --- 2. REFLECT STAGE ---
+        # --- 反思阶段 ---
         print("\n>>> STAGE 2: REFLECTING on the generated code...")
 
         # Create a specific prompt for the reflector agent.
         # This asks the model to act as a senior code reviewer.
+        # 创建一个特定的提示词，要求模型扮演高级软件工程师的角色，对代码进行仔细的审查。
         reflector_prompt = [
             SystemMessage(content="""
-                You are a senior software engineer and an expert 
-                in Python.
+                You are a senior software engineer and an expert in Python.
                 Your role is to perform a meticulous code review.
-                Critically evaluate the provided Python code based 
-                on the original task requirements.
-                Look for bugs, style issues, missing edge cases, 
-                and areas for improvement.
-                If the code is perfect and meets all requirements,
-                respond with the single phrase 'CODE_IS_PERFECT'.
+                Critically evaluate the provided Python code based on the original task requirements.
+                Look for bugs, style issues, missing edge cases, and areas for improvement.
+                If the code is perfect and meets all requirements, respond with the single phrase 'CODE_IS_PERFECT'.
                 Otherwise, provide a bulleted list of your critiques.
             """),
             HumanMessage(content=f"Original Task:\n{task_prompt}\n\nCode to Review:\n{current_code}")
@@ -273,6 +288,7 @@ def run_reflection_loop():
         critique = critique_response.content
 
         # --- 3. STOPPING CONDITION ---
+        # 如果代码完美符合要求，则结束反思循环。
         if "CODE_IS_PERFECT" in critique:
             print("\n--- Critique ---\nNo further critiques found. The code is satisfactory.")
             break
@@ -285,13 +301,18 @@ def run_reflection_loop():
     print("\nFinal refined code after the reflection process:\n")
     print(current_code)
 
+
 if __name__ == "__main__":
     run_reflection_loop()
 ```
 
+译者注：[Colab 代码](https://colab.research.google.com/drive/1xnL6Rky6nsm4iAhomLnUK3kgwSyyYZfb) 已维护在[此处](/codes/Chapter-04-Reflection-LangChain-Example.py)，同时补充了输出结果作为参考。
+
 The code begins by setting up the environment, loading API keys, and initializing a powerful language model like GPT-4o with a low temperature for focused outputs. The core task is defined by a prompt asking for a Python function to calculate the factorial of a number, including specific requirements for docstrings, edge cases (factorial of 0), and error handling for negative input. The run_reflection_loop function orchestrates the iterative refinement process. Within the loop, in the first iteration, the language model generates initial code based on the task prompt. In subsequent iterations, it refines the code based on critiques from the previous step. A separate "reflector" role, also played by the language model but with a different system prompt, acts as a senior software engineer to critique the generated code against the original task requirements. This critique is provided as a bulleted list of issues or the phrase 'CODE_IS_PERFECT' if no issues are found. The loop continues until the critique indicates the code is perfect or a maximum number of iterations is reached. The conversation history is maintained and passed to the language model in each step to provide context for both generation/refinement and reflection stages. Finally, the script prints the last generated code version after the loop concludes.
 
-<mark>代码首先设置环境、加载 API 密钥，并初始化 <code>GPT-4o</code> 等强大的语言模型，使用低 <code>temperature</code> 设置以获得专注输出。核心任务由提示定义，要求创建计算数字阶乘的 Python 函数，包括文档字符串、边缘情况（0 的阶乘）和负数输入错误处理的具体要求。<code>run_reflection_loop</code> 函数编排迭代优化过程。在循环中，第一次迭代时，语言模型基于任务提示生成初始代码。在后续迭代中，基于上一步的批评优化代码。单独的「反思者」角色，也由语言模型扮演但使用不同系统提示，充当高级软件工程师来批评生成的代码是否符合原始任务要求。批评以问题要点列表形式提供，或者如果没有发现问题则提供 <code>CODE_IS_PERFECT</code> 短语。循环继续直到批评表明代码完美或达到最大迭代次数。每个步骤中维护并传递对话历史给语言模型，为生成/优化和反思阶段提供上下文。最后，脚本在循环结束后打印最后生成的代码版本。</mark>
+<mark>代码首先设置环境、加载 API 密钥，并初始化 GPT-4o 模型，使用低温度值以获得稳定的输出。核心任务由一个提示定义，要求创建一个计算阶乘的 Python 函数，要求包含完整的文档、处理边界情况（如 0 的阶乘）、以及对负数输入的错误处理。</mark>
+
+<mark><code>run_reflection_loop</code> 函数负责协调整个迭代优化的过程。在循环处理时，第一次迭代由大语言模型基于任务提示生成初始代码。之后的迭代则根据上一步的反思给出的建议优化代码。还有一个独立的「反思者」角色，也由大语言模型扮演但使用不同系统提示，它以高级软件工程师的身份来评审生成的代码是否符合原始需求，并以问题列表的形式提供反馈意见，或者如果没有发现问题则返回 <code>CODE_IS_PERFECT</code>。循环会继续，直到评审认为代码已无可改进或达到最大迭代次数。会话历史在每一步都会保留并提供给语言模型，以为生成/改进和反思阶段提供上下文。最后，脚本在循环结束时打印出最终的代码版本。</mark>
 
 ---
 
@@ -299,12 +320,15 @@ The code begins by setting up the environment, loading API keys, and initializin
 
 Let's now look at a conceptual code example implemented using the Google ADK. Specifically, the code showcases this by employing a Generator-Critic structure, where one component (the Generator) produces an initial result or plan, and another component (the Critic) provides critical feedback or a critique, guiding the Generator towards a more refined or accurate final output.
 
-<mark>现在看一个使用 Google ADK 实现的概念性代码示例。具体来说，代码采用生成器 - 批评者结构来展示反思模式，其中一个组件（生成器）产生初始结果或计划，另一个组件（批评者）提供批评性反馈，指导生成器朝着更优化或准确的最终输出方向发展。</mark>
+<mark>现在我们来看一个使用 Google ADK 实现的示例示例。具体来说，代码采用「生成者 - 审查者」架构来演示反思模式，其中一个组件（生成者）产生初始结果或方案，另一个组件（审查者）提出反馈建议，帮助生成者不断改进，最终得到更完善、更准确的输出。</mark>
 
 ```python
 from google.adk.agents import SequentialAgent, LlmAgent
 
+# Colab 代码链接：https://colab.research.google.com/drive/1nwE2GH6c08dGlvAv7T28uF1xe2qeu2q_
+
 # The first agent generates the initial draft.
+# 第一个智能体生成初始草稿。
 generator = LlmAgent(
     name="DraftWriter",
     description="Generates initial draft content on a given subject.",
@@ -313,6 +337,7 @@ generator = LlmAgent(
 )
 
 # The second agent critiques the draft from the first agent.
+# 第二个智能体审查第一个智能体的草稿。
 reviewer = LlmAgent(
     name="FactChecker",
     description="Reviews a given text for factual accuracy and provides a structured critique.",
@@ -321,13 +346,14 @@ reviewer = LlmAgent(
     1. Read the text provided in the state key 'draft_text'.
     2. Carefully verify the factual accuracy of all claims.
     3. Your final output must be a dictionary containing two keys:
-        - "status": A string, either "ACCURATE" or "INACCURATE".
-        - "reasoning": A string providing a clear explanation for your status, citing specific issues if any are found.
+       - "status": A string, either "ACCURATE" or "INACCURATE".
+       - "reasoning": A string providing a clear explanation for your status, citing specific issues if any are found.
     """,
     output_key="review_output" # The structured dictionary is saved here.
 )
 
 # The SequentialAgent ensures the generator runs before the reviewer.
+# 确保生成者在审查者之前运行。
 review_pipeline = SequentialAgent(
     name="WriteAndReview_Pipeline",
     sub_agents=[generator, reviewer]
@@ -336,15 +362,22 @@ review_pipeline = SequentialAgent(
 # Execution Flow:
 # 1. generator runs -> saves its paragraph to state['draft_text'].
 # 2. reviewer runs -> reads state['draft_text'] and saves its dictionary output to state['review_output'].
+# 执行流程：
+# 1. 生成者运行 -> 将其段落保存到 state['draft_text']。
+# 2. 审查者运行 -> 读取 state['draft_text'] 并将其字典输出保存到 state['review_output']。
 ```
+
+译者注：[Colab 代码](https://colab.research.google.com/drive/1nwE2GH6c08dGlvAv7T28uF1xe2qeu2q_) 已维护在[此处](/codes/Chapter-04-Reflection-ADK-Example.py)。
 
 This code demonstrates the use of a sequential agent pipeline in Google ADK for generating and reviewing text. It defines two LlmAgent instances: generator and reviewer. The generator agent is designed to create an initial draft paragraph on a given subject. It is instructed to write a short and informative piece and saves its output to the state key draft_text. The reviewer agent acts as a fact-checker for the text produced by the generator. It is instructed to read the text from draft_text and verify its factual accuracy. The reviewer's output is a structured dictionary with two keys: status and reasoning. status indicates if the text is "ACCURATE" or "INACCURATE", while reasoning provides an explanation for the status. This dictionary is saved to the state key review_output. A SequentialAgent named review_pipeline is created to manage the execution order of the two agents. It ensures that the generator runs first, followed by the reviewer. The overall execution flow is that the generator produces text, which is then saved to the state. Subsequently, the reviewer reads this text from the state, performs its fact-checking, and saves its findings (the status and reasoning) back to the state. This pipeline allows for a structured process of content creation and review using separate agents. **Note:** An alternative implementation utilizing ADK's LoopAgent is also available for those interested.
 
-<mark>本代码演示了在 Google ADK 中使用顺序智能体管道来生成和审查文本。它定义了两个 <code>LlmAgent</code> 实例：<code>generator</code> 和 <code>reviewer</code>。生成器智能体旨在创建关于给定主题的初始草稿段落。它被指示撰写简短且信息丰富的文章，并将输出保存到状态键 <code>draft_text</code>。审查者智能体充当生成器产生文本的事实核查员。它被指示从 <code>draft_text</code> 读取文本并验证事实准确性。审查者的输出是一个结构化字典，包含两个键：<code>status</code> 和 <code>reasoning</code>。<code>status</code> 指示文本是 <code>ACCURATE</code> 还是 <code>INACCURATE</code>，而 <code>reasoning</code> 为状态提供解释。此字典保存到状态键 <code>review_output</code>。创建名为 <code>review_pipeline</code> 的 <code>SequentialAgent</code> 来管理两个智能体的执行顺序。它确保生成器首先运行，然后是审查者。整体执行流程是生成器产生文本，保存到状态。随后，审查者从状态读取文本，执行事实核查，并将发现（状态和推理）保存回状态。此管道允许使用独立智能体进行内容创建和审查的结构化过程。<strong>注意：</strong>对于感兴趣的用户，还可使用 ADK 的 <code>LoopAgent</code> 的替代实现。</mark>
+<mark>该示例展示了在 Google ADK 中使用顺序智能体管道来生成和审查文本。它定义了两个 <code>LlmAgent</code> 实例：<code>generator</code> 和 <code>reviewer</code>。生产者智能体负责根据指定主题撰写一段简短且信息量高的初稿，并将结果存为状态键 <code>draft_text</code>。审查者智能体则作为事实核查者，从 <code>draft_text</code> 读取内容并核实事实准确性。审查者的输出是一个结构化字典，包含两个键：<code>status</code> 和 <code>reasoning</code>，其中状态的值包括 <code>ACCURATE</code> 和 <code>INACCURATE</code>，而 <code>reasoning</code> 字段是对状态判断的补充说明，具体的值保存在状态键 <code>review_output</code>。</mark>
+
+<mark>然后通过名为 <code>review_pipeline</code> 的 <code>SequentialAgent</code> 来控制两个智能体的执行顺序，确保先执行生产者智能体，再执行审查者智能体。整体流程是生产者先生成并保存文本，然后审查者读取状态并执行事实核查，再将核查发现的内容保存回状态。这种管道化的设计便于用独立的智能体完成结构化的内容创作与审查。<strong>注意：</strong>对于感兴趣的用户，还可使用 ADK 的 <code>LoopAgent</code> 实现类似功能。</mark>
 
 Before concluding, it's important to consider that while the Reflection pattern significantly enhances output quality, it comes with important trade-offs. The iterative process, though powerful, can lead to higher costs and latency, since every refinement loop may require a new LLM call, making it suboptimal for time-sensitive applications. Furthermore, the pattern is memory-intensive; with each iteration, the conversational history expands, including the initial output, critique, and subsequent refinements.
 
-<mark>在结束之前，需要考虑虽然反思模式显著提高输出质量，但它伴随着重要的权衡。迭代过程虽然强大，但可能导致更高成本和延迟，因为每个优化循环可能需要新的 <code>LLM</code> 调用，使其在时间敏感应用中并非最优选择。此外，该模式是内存密集型的；每次迭代中，对话历史都会扩展，包括初始输出、批评和后续优化。</mark>
+<mark>在结束前需要注意，虽然反思模式能显著提升输出质量，但也有重要的权衡。其迭代过程虽有效，却可能带来更高的成本和更长的延迟，因为每次改进往往都要发起一次新的模型调用，因此对时间敏感的场景并不适合。另外，该模式占用的内存也会较多，因为随着每轮迭代的进行，会话历史会不断增长，包含最初的输出、批评意见和后续的改进内容。</mark>
 
 ---
 
@@ -352,51 +385,61 @@ Before concluding, it's important to consider that while the Reflection pattern 
 
 **What:** An agent's initial output is often suboptimal, suffering from inaccuracies, incompleteness, or a failure to meet complex requirements. Basic agentic workflows lack a built-in process for the agent to recognize and fix its own errors. This is solved by having the agent evaluate its own work or, more robustly, by introducing a separate logical agent to act as a critic, preventing the initial response from being the final one regardless of quality.
 
-<mark><strong>问题所在：</strong>智能体的初始输出通常不够理想，存在不准确、不完整或未能满足复杂要求的问题。基本智能体工作流缺乏内置过程让智能体识别和修复自己的错误。这可通过让智能体评估自己的工作来解决，或更稳健地，通过引入独立的逻辑智能体充当批评者，防止初始响应成为最终响应，无论质量如何。</mark>
+<mark><strong>问题所在：</strong>智能体的初始输出通常不够理想，存在不准确、不完整或未能满足复杂要求的问题。基本智能体工作流缺乏内置过程让智能体识别和修复自己的错误。为了解决这一点，可以让智能体先自我评估，或通过引入独立的智能体来审查和指出问题，确保初始回答不会直接作为最终结果。</mark>
 
 **Why:** The Reflection pattern offers a solution by introducing a mechanism for self-correction and refinement. It establishes a feedback loop where a "producer" agent generates an output, and then a "critic" agent (or the producer itself) evaluates it against predefined criteria. This critique is then used to generate an improved version. This iterative process of generation, evaluation, and refinement progressively enhances the quality of the final result, leading to more accurate, coherent, and reliable outcomes.
 
-<mark><strong>解决之道：</strong>反思模式通过引入自我纠正和优化机制提供解决方案。它建立反馈循环，其中「生产者」智能体生成输出，然后「批评者」智能体（或生产者本身）根据预定义标准评估输出。批评随后用于生成改进版本。这种生成、评估和优化的迭代过程逐步提高最终结果的质量，产生更准确、连贯和可靠的结果。</mark>
+<mark><strong>解决之道：</strong>反思模式通过引入自我纠错和改进机制来解决问题。它建立反馈循环，其中「生产者」智能体生成输出，然后「评论员」智能体（或生产者本身）根据预定义标准评估输出。相关的反馈建议随后用于生成改进之前的版本。这种生成、评估和优化的迭代过程逐步提高最终结果的质量，产生更准确、连贯和可靠的结果。</mark>
 
 **Rule of thumb:** Use the Reflection pattern when the quality, accuracy, and detail of the final output are more important than speed and cost. It is particularly effective for tasks like generating polished long-form content, writing and debugging code, and creating detailed plans. Employ a separate critic agent when tasks require high objectivity or specialized evaluation that a generalist producer agent might miss.
 
-<mark><strong>经验法则：</strong>当最终输出的质量、准确性和细节比速度和成本更重要时使用反思模式。它对于生成精致的长篇内容、编写和调试代码、创建详细计划等任务特别有效。当任务需要高客观性或通用生产者智能体可能遗漏的专业评估时，采用独立的批评者智能体。</mark>
+<mark><strong>经验法则：</strong>当最终输出的质量、准确性和细节比速度和成本更重要时应考虑使用反思模式。它对于生成高质量的长篇内容、编写和调试代码、创建详细计划等任务非常有效。当任务需要更高的客观性或涉及专业评估（常规生产者可能会遗漏），建议采用独立的评论员智能体以提高输出质量。</mark>
 
-**Visual summary**
+**Visual summary** | <mark><strong>可视化总结</strong></mark>
 
-<mark><strong>可视化总结</strong></mark>
+![Reflection Pattern - Self-Reflection](/images/chapter04_fig1.png)
 
-![Reflection Pattern - Self-Reflection](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdHNlQ1zsfXiUcvE1pVwspmkr8aAag2LQ3z_PoF0zTIFe9NJ6sl6QH9yYrQPwYpsAQ3GZy2lcu7-LVtzll2owohWderRmBYOMIUvl7BzP-3TxwPvnORna4NtnuEJ_ZA-oU?key=RfT2511JwbzduzhiUAoITQ)
+Fig. 1: Reflection design pattern, self-reflection
 
-*Fig. 1: Reflection design pattern, self-reflection*
+<mark>图 1：反思设计模式之自我反思</mark>
 
-<mark><strong>图 1：</strong>反思设计模式，自我反思</mark>
+![Reflection Pattern - Producer and Critic](/images/chapter04_fig2.png)
 
-![Reflection Pattern - Producer and Critic](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdACW0w8OMz3sfEecCE7c9d9I2WiINUwTs9y70JkhpKIaycGJoff6Uu7KcKWNnRDpwUCM5LA91M--a6Sy-pZjRKL_sGJPgjMgbQNe-MZ3jVM21GzFBRko-HDYQ6J8PpLVE?key=RfT2511JwbzduzhiUAoITQ)
+Fig.2: Reflection design pattern, producer and critique agent
 
-*Fig.2: Reflection design pattern, producer and critique agent*
-
-<mark><strong>图 2：</strong>反思设计模式，生产者和批评者智能体</mark>
+<mark>图 2：反思设计模式之生产者和评论员智能体</mark>
 
 ---
 
 ## Key Takeaways | <mark>核心要点</mark>
 
 - The primary advantage of the Reflection pattern is its ability to iteratively self-correct and refine outputs, leading to significantly higher quality, accuracy, and adherence to complex instructions.
+
+   <mark>反思模式的主要优势在于它可以通过反复自我修正和改进输出，显著提高质量、准确性和遵循更复杂的指令。</mark>
+
 - It involves a feedback loop of execution, evaluation/critique, and refinement. Reflection is essential for tasks requiring high-quality, accurate, or nuanced outputs.
+
+   <mark>它包括执行、评估（或批判）和改进的反馈循环。对于需要高质量、准确性或细腻表述的任务，反思是不可或缺的。</mark>
+
 - A powerful implementation is the Producer-Critic model, where a separate agent (or prompted role) evaluates the initial output. This separation of concerns enhances objectivity and allows for more specialized, structured feedback.
+
+   <mark>一个有效的方法是采用「生产者 - 评论员」模型，由一个独立的智能体（或基于提示词的不同角色）来评估初始输出。通过职责分离可以提高评判的客观性，并提供更专业、更有条理的反馈。</mark>
+
 - However, these benefits come at the cost of increased latency and computational expense, along with a higher risk of exceeding the model's context window or being throttled by API services.
+
+   <mark>然而，这些好处以增加延迟和成本为代价，同时还有超出模型上下文窗口或被 <code>API</code> 服务限流的风险。</mark>
+
 - While full iterative reflection often requires stateful workflows (like LangGraph), a single reflection step can be implemented in LangChain using LCEL to pass output for critique and subsequent refinement.
+
+   <mark>虽然完整的迭代反思通常依赖有状态的工作流（例如 LangGraph），但在 LangChain 中也可以用 LCEL 实现一次性的反思步骤，将生成的输出传给评论员以进行评审并据此改进。</mark>
+
 - Google ADK can facilitate reflection through sequential workflows where one agent's output is critiqued by another agent, allowing for subsequent refinement steps.
+
+   <mark>Google ADK 可以通过一系列串联的工作流程来促进反思：一个智能体生成输出，另一个智能体对其进行评审，并据此进行后续改进。</mark>
+
 - This pattern enables agents to perform self-correction and enhance their performance over time.
 
-- <mark>反思模式的主要优势是其迭代自我纠正和优化输出的能力，显著提高质量、准确性和对复杂指令的遵守度。</mark>
-- <mark>它涉及执行、评估/批评和优化的反馈循环。反思对于需要高质量、准确或细致输出的任务至关重要。</mark>
-- <mark>强大的实现是生产者 - 批评者模型，其中独立智能体（或提示角色）评估初始输出。这种职责分离增强了客观性，并允许更专业、结构化的反馈。</mark>
-- <mark>然而，这些好处以增加延迟和计算费用为代价，同时还有超出模型上下文窗口或被 <code>API</code> 服务限制的更高风险。</mark>
-- <mark>虽然完整的迭代反思通常需要有状态的工作流（如 <code>LangGraph</code>），但可在 <code>LangChain</code> 中使用 <code>LCEL</code> 实现单步反思，传递输出进行批评和后续优化。</mark>
-- <mark>Google ADK 可通过顺序工作流促进反思，其中一个智能体的输出被另一个智能体批评，允许后续优化步骤。</mark>
-- <mark>这种模式使智能体能够执行自我纠正并随时间提高性能。</mark>
+   <mark>该模式使代理能够自我修正，并随着时间不断提高表现。</mark>
 
 ---
 
@@ -404,11 +447,11 @@ Before concluding, it's important to consider that while the Reflection pattern 
 
 The reflection pattern provides a crucial mechanism for self-correction within an agent's workflow, enabling iterative improvement beyond a single-pass execution. This is achieved by creating a loop where the system generates an output, evaluates it against specific criteria, and then uses that evaluation to produce a refined result. This evaluation can be performed by the agent itself (self-reflection) or, often more effectively, by a distinct critic agent, which represents a key architectural choice within the pattern.
 
-<mark>反思模式为智能体工作流内的自我纠正提供关键机制，使迭代改进超越单次执行成为可能。这通过创建循环来实现，其中系统生成输出，根据特定标准评估，然后使用评估结果产生优化的结果。评估可由智能体本身（自我反思）执行，或更常见且更有效的是，由不同的批评者智能体执行，这代表了模式内的关键架构选择。</mark>
+<mark>反思模式为代理的工作流程提供了自我修正的关键手段，使其能通过多次迭代而不是一次性完成任务来持续改进。具体做法是形成一个循环：系统先生成初稿，然后按照既定标准对其进行评估，最后根据评估结果生成更完善的输出。这种评估既可以由智能体自己完成（自我反思），也可以由一个专门的评论员智能体来执行。通常后一种方式更有效，也是该模式的一个重要架构决策。</mark>
 
 While a fully autonomous, multi-step reflection process requires a robust architecture for state management, its core principle is effectively demonstrated in a single generate-critique-refine cycle. As a control structure, reflection can be integrated with other foundational patterns to construct more robust and functionally complex agentic systems.
 
-<mark>虽然完全自主的多步反思过程需要用于状态管理的强大架构，但其核心原理在单个生成 - 批评 - 优化周期中得到有效演示。作为控制结构，反思可与其他基础模式集成，以构建更强大、功能更复杂的智能体系统。</mark>
+<mark>虽然要实现完全自主的多步骤反思需要可靠的状态管理架构，但其核心思想可以通过「生成—评审—改进」的循环清晰地呈现。作为一种控制结构，反思可以与其他基础模式结合使用，从而构建更稳健、功能更强大的智能体系统。</mark>
 
 ---
 
@@ -419,17 +462,17 @@ Here are some resources for further reading on the Reflection pattern and relate
 <mark>以下是有关反思模式和相关概念的进一步阅读资源：</mark>
 
 1. Training Language Models to Self-Correct via Reinforcement Learning, [https://arxiv.org/abs/2409.12917](https://arxiv.org/abs/2409.12917)
+
+   <mark>使用强化学习训练语言模型以实现自我纠正，[https://arxiv.org/abs/2409.12917](https://arxiv.org/abs/2409.12917)</mark>
+
 2. LangChain Expression Language (LCEL) Documentation: [https://python.langchain.com/docs/introduction/](https://python.langchain.com/docs/introduction/)
+
+   <mark>LangChain 表达式语言文档：[https://python.langchain.com/docs/introduction/](https://python.langchain.com/docs/introduction/)</mark>
+
 3. LangGraph Documentation:[https://www.langchain.com/langgraph](https://www.langchain.com/langgraph)
+
+   <mark>LangGraph 文档：[https://www.langchain.com/langgraph](https://www.langchain.com/langgraph)</mark>
+
 4. Google Agent Developer Kit (ADK) Documentation (Multi-Agent Systems): [https://google.github.io/adk-docs/agents/multi-agents/](https://google.github.io/adk-docs/agents/multi-agents/)
 
-1. <mark>通过强化学习训练语言模型自我纠正，[https://arxiv.org/abs/2409.12917](https://arxiv.org/abs/2409.12917)</mark>
-2. <mark>LangChain Expression Language (LCEL) 文档：[https://python.langchain.com/docs/introduction/](https://python.langchain.com/docs/introduction/)</mark>
-3. <mark>LangGraph 文档：[https://www.langchain.com/langgraph](https://www.langchain.com/langgraph)</mark>
-4. <mark>Google Agent Developer Kit (ADK) 文档（多智能体系统）：[https://google.github.io/adk-docs/agents/multi-agents/](https://google.github.io/adk-docs/agents/multi-agents/)</mark>
-
----
-
-*Document generated on: $(date)*
-
-<mark><em>文档生成时间：$(date)</em></mark>
+   <mark>Google 智能体开发套件 (ADK) 文档（多智能体系统）：[https://google.github.io/adk-docs/agents/multi-agents/](https://google.github.io/adk-docs/agents/multi-agents/)</mark>

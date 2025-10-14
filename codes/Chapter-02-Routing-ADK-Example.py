@@ -12,7 +12,7 @@ from google.adk.tools import FunctionTool
 from google.genai import types
 from google.adk.events import Event
 
-# Colab 代码链接: https://colab.research.google.com/drive/10wxRlPyDJ70pPEtWWA3Aa3tjvfobrB3m
+# Colab 代码链接：https://colab.research.google.com/drive/10wxRlPyDJ70pPEtWWA3Aa3tjvfobrB3m
 
 # 安装依赖
 # pip install google-genai google-adk
