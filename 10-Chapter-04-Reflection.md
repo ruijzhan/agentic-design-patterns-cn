@@ -36,7 +36,7 @@ The process typically involves:
 
 A key and highly effective implementation of the Reflection pattern separates the process into two distinct logical roles: a Producer and a Critic. This is often called the "Generator-Critic" or "Producer-Reviewer" model. While a single agent can perform self-reflection, using two specialized agents (or two separate LLM calls with distinct system prompts) often yields more robust and unbiased results.
 
-<mark>反思模式的一个关键且高效的实现方式，是将流程拆分为两个独立的逻辑角色：生产者（Producer）和评论者（Critic）。这通常被称为「生成器-评论者」（Generator-Critic）或「生产者-审查者」（Producer-Reviewer）模型。虽然单个智能体也能进行自我反思，但使用两个专用的智能体（或两个具有不同系统提示的独立大语言模型调用）通常能产出更稳健、更客观的结果。</mark>
+<mark>反思模式的一个关键且高效的实现方式，是将流程拆分为两个独立的逻辑角色：生产者（Producer）和评论者（Critic）。这通常被称为「生成器 - 评论者」（Generator-Critic）或「生产者 - 审查者」（Producer-Reviewer）模型。虽然单个智能体也能进行自我反思，但使用两个专用的智能体（或两个具有不同系统提示的独立大语言模型调用）通常能产出更稳健、更客观的结果。</mark>
 
 1. The Producer Agent: This agent's primary responsibility is to perform the initial execution of the task. It focuses entirely on generating the content, whether it's writing code, drafting a blog post, or creating a plan. It takes the initial prompt and produces the first version of the output.
 
@@ -324,7 +324,7 @@ The code begins by setting up the environment, loading API keys, and initializin
 
 Let's now look at a conceptual code example implemented using the Google ADK. Specifically, the code showcases this by employing a Generator-Critic structure, where one component (the Generator) produces an initial result or plan, and another component (the Critic) provides critical feedback or a critique, guiding the Generator towards a more refined or accurate final output.
 
-<mark>现在我们来看一个使用 Google ADK 实现的示例。具体来说，代码采用「生成器-评论者」架构来演示反思模式，其中一个组件（生成器）产生初始结果或方案，另一个组件（评论者）提出反馈建议，帮助生成器不断改进，最终得到更完善、更准确的输出。</mark>
+<mark>现在我们来看一个使用 Google ADK 实现的示例。具体来说，代码采用「生成器 - 评论者」架构来演示反思模式，其中一个组件（生成器）产生初始结果或方案，另一个组件（评论者）提出反馈建议，帮助生成器不断改进，最终得到更完善、更准确的输出。</mark>
 
 ```python
 from google.adk.agents import SequentialAgent, LlmAgent
@@ -427,7 +427,7 @@ Fig.2: Reflection design pattern, producer and critique agent
 
 - A powerful implementation is the Producer-Critic model, where a separate agent (or prompted role) evaluates the initial output. This separation of concerns enhances objectivity and allows for more specialized, structured feedback.
 
-   <mark>一个有效的方法是采用「生产者-评论者」模型，由一个独立的智能体（或基于提示的不同角色）来评估初始输出。通过职责分离可以提高评判的客观性，并提供更专业、更有条理的反馈。</mark>
+   <mark>一个有效的方法是采用「生产者 - 评论者」模型，由一个独立的智能体（或基于提示的不同角色）来评估初始输出。通过职责分离可以提高评判的客观性，并提供更专业、更有条理的反馈。</mark>
 
 - However, these benefits come at the cost of increased latency and computational expense, along with a higher risk of exceeding the model's context window or being throttled by API services.
 

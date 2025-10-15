@@ -4,11 +4,11 @@
 
 So far, we've discussed agentic patterns that primarily involve orchestrating interactions between language models and managing the flow of information within the agent's internal workflow (Chaining, Routing, Parallelization, Reflection). However, for agents to be truly useful and interact with the real world or external systems, they need the ability to use Tools.
 
-<mark>到目前为止，我们探讨的智能体模式主要涉及语言模型之间的交互编排和智能体内部工作流的信息流管理（链式调用、路由、并行化、反思）。然而，要让智能体真正发挥作用并与现实世界或外部系统交互，它们需要具备使用工具（Tools）的能力。</mark>
+<mark>到目前为止，我们已经探讨了主要涉及语言模型之间交互编排和智能体内部工作流信息管理的模式，例如链式调用、路由、并行化和反思。然而，要想让智能体（Agent）真正发挥作用并与现实世界或外部系统交互，它们必须具备使用工具（Tools）的能力。</mark>
 
 The Tool Use pattern, often implemented through a mechanism called Function Calling, enables an agent to interact with external APIs, databases, services, or even execute code. It allows the LLM at the core of the agent to decide when and how to use a specific external function based on the user's request or the current state of the task.
 
-<mark>工具使用模式通常通过函数调用（Function Calling）机制实现，使智能体能够与外部 API、数据库、服务交互，甚至执行代码。它允许智能体核心的大语言模型（LLM）根据用户请求或任务当前状态，决定何时及如何使用特定的外部函数。</mark>
+<mark>工具使用模式通常通过函数调用（Function Calling）机制实现，使智能体能够与外部 API、数据库、服务甚至直接执行代码进行交互。它允许作为智能体核心的大语言模型根据用户请求或当前任务状态，来决定何时以及如何使用特定的外部函数。</mark>
 
 The process typically involves:
 
@@ -16,71 +16,67 @@ The process typically involves:
 
 1. **Tool Definition:** External functions or capabilities are defined and described to the LLM. This description includes the function's purpose, its name, and the parameters it accepts, along with their types and descriptions.
 
-1. <mark><strong>工具定义：</strong>向 LLM 定义并描述外部函数或功能。描述信息包括函数的用途、名称、可接受的参数及其类型和说明。</mark>
+   <mark><strong>工具定义：</strong>向大语言模型定义并描述外部函数或功能，包括函数的用途、名称、可接受的参数及其类型和说明。</mark>
 
 2. **LLM Decision:** The LLM receives the user's request and the available tool definitions. Based on its understanding of the request and the tools, the LLM decides if calling one or more tools is necessary to fulfill the request.
 
-2. <mark><strong>LLM 决策：</strong>LLM 接收用户请求和可用的工具定义。基于对请求和工具的理解，LLM 判断是否需要调用一个或多个工具来完成请求。</mark>
+   <mark><strong>大语言模型决策：</strong>大语言模型接收用户的请求和可用的工具定义，并根据对两者的理解判断是否需要调用一个或多个工具来完成请求。</mark>
 
 3. **Function Call Generation:** If the LLM decides to use a tool, it generates a structured output (often a JSON object) that specifies the name of the tool to call and the arguments (parameters) to pass to it, extracted from the user's request.
 
-3. <mark><strong>生成函数调用：</strong>如果 LLM 决定使用工具，它会生成结构化输出（通常是 JSON 对象），指明要调用的工具名称以及从用户请求中提取的参数。</mark>
+   <mark><strong>生成函数调用：</strong>如果大语言模型决定使用工具，它会生成结构化输出（通常是 JSON 对象），指明要调用的工具名称以及从用户请求中提取的参数。</mark>
 
 4. **Tool Execution:** The agentic framework or orchestration layer intercepts this structured output. It identifies the requested tool and executes the actual external function with the provided arguments.
 
-4. <mark><strong>工具执行：</strong>智能体框架或编排层捕获这个结构化输出，识别出请求的工具，并使用提供的参数执行相应的外部函数。</mark>
+   <mark><strong>工具执行：</strong>智能体框架或编排层捕获这个结构化输出，识别要调用的工具，并根据给定参数执行相应的外部函数。</mark>
 
 5. **Observation/Result:** The output or result from the tool execution is returned to the agent.
 
-5. <mark><strong>观察/结果：</strong>工具执行的输出或结果返回给智能体。</mark>
+   <mark><strong>观察/结果：</strong>工具执行的输出或结果返回给智能体。</mark>
 
 6. **LLM Processing (Optional but common):** The LLM receives the tool's output as context and uses it to formulate a final response to the user or decide on the next step in the workflow (which might involve calling another tool, reflecting, or providing a final answer).
 
-6. <mark><strong>LLM 处理（可选但常用）：</strong>LLM 接收工具的输出作为上下文，并用它来生成对用户的最终回复，或决定工作流的下一步（可能涉及调用另一个工具、进行反思或提供最终答案）。</mark>
+   <mark><strong>大语言模型处理（可选，但常用）：</strong>大语言模型接收工具的输出作为上下文，并用它来生成对用户的最终回复，或决定工作流的下一步（可能涉及调用另一个工具、进行反思或提供最终答案）。</mark>
 
 This pattern is fundamental because it breaks the limitations of the LLM's training data and allows it to access up-to-date information, perform calculations it can't do internally, interact with user-specific data, or trigger real-world actions. Function calling is the technical mechanism that bridges the gap between the LLM's reasoning capabilities and the vast array of external functionalities available.
 
-<mark>该模式至关重要，因为它突破了 LLM 训练数据的局限，使其能够访问最新信息、执行内部无法完成的计算、与用户特定数据交互或触发现实世界的操作。函数调用作为技术机制，弥合了 LLM 推理能力与海量外部功能之间的鸿沟。</mark>
+<mark>这种模式很关键，因为它突破了大语言模型训练数据的局限，使其能够获取最新信息、执行内部无法处理的计算、访问用户特定的数据，或触发现实世界的动作。函数调用则是把大语言模型的推理能力与外部各类功能对接起来的技术桥梁。</mark>
 
 While "function calling" aptly describes invoking specific, predefined code functions, it's useful to consider the more expansive concept of "tool calling." This broader term acknowledges that an agent's capabilities can extend far beyond simple function execution. A "tool" can be a traditional function, but it can also be a complex API endpoint, a request to a database, or even an instruction directed at another specialized agent. This perspective allows us to envision more sophisticated systems where, for instance, a primary agent might delegate a complex data analysis task to a dedicated "analyst agent" or query an external knowledge base through its API. Thinking in terms of "tool calling" better captures the full potential of agents to act as orchestrators across a diverse ecosystem of digital resources and other intelligent entities.
 
-<mark>虽然「函数调用」准确描述了调用特定、预定义代码函数的过程，但从更广阔的视角理解「工具调用」这一概念更为有益。这个更宽泛的术语承认，智能体的能力可以远远超出简单的函数执行。「工具」可以是传统函数，也可以是复杂的 API 端点、数据库请求，甚至是发给另一个专业智能体的指令。这种视角让我们能够构想更复杂的系统，例如，主智能体可以将复杂的数据分析任务委托给专门的「分析智能体」，或通过 API 查询外部知识库。「工具调用」的思维方式能更好地捕捉智能体作为编排者的全部潜力，使其能够在多样化的数字资源和其他智能实体生态系统中发挥作用。</mark>
+<mark>虽然「函数调用」这个说法确实能准确描述调用预定义代码函数的过程，但从更广阔的视角理解「工具调用」这一概念更为有益。通过这个更宽泛的术语，我们看到智能体的能力可以远远超出简单的函数执行。「工具」可以是传统函数，也可以是复杂的 API 接口、数据库请求，甚至是发给另一个智能体的指令。这种视角让我们能够构想更复杂的系统，例如，主智能体可以将复杂的数据分析任务委托给专门的「分析智能体」，或通过 API 查询外部知识库。「工具调用」的思维方式能更好地捕捉智能体作为编排者的全部潜力，使其能够在多样化的数字资源和其他智能实体生态系统中发挥作用。</mark>
 
 Frameworks like LangChain, LangGraph, and Google Agent Developer Kit (ADK) provide robust support for defining tools and integrating them into agent workflows, often leveraging the native function calling capabilities of modern LLMs like those in the Gemini or OpenAI series. On the "canvas" of these frameworks, you define the tools and then configure agents (typically LLM Agents) to be aware of and capable of using these tools.
 
-<mark>LangChain、LangGraph 和 Google Agent Developer Kit（ADK）等框架为定义工具并将其集成到智能体工作流提供了强大支持，通常利用 Gemini 或 OpenAI 系列等现代 LLM 的原生函数调用功能。在这些框架的技术底座（canvas）上，你可以定义工具，并配置智能体（通常是 LLM 智能体）来识别和使用这些工具。</mark>
+<mark>LangChain、LangGraph 和 Google 智能体开发套件（ADK）等框架为定义工具并将它们集成到智能体工作流提供了强大支持，通常会利用 Gemini 或 OpenAI 系列等现代大语言模型的原生函数调用功能。在这些框架的技术底座上，你可以定义工具，并配置智能体来识别和使用这些工具。</mark>
 
 Tool Use is a cornerstone pattern for building powerful, interactive, and externally aware agents.
 
-<mark>工具使用是构建功能强大、可交互且能感知外部世界的智能体的基石模式。</mark>
+<mark>工具使用是一种关键模式，使构建出的代理既强大又能进行交互，并能感知和利用外部资源。</mark>
 
 ---
 
-## Practical Applications & Use Cases | <mark>实际应用与用例</mark>
+## Practical Applications & Use Cases | <mark>实际应用场景</mark>
 
 The Tool Use pattern is applicable in virtually any scenario where an agent needs to go beyond generating text to perform an action or retrieve specific, dynamic information:
 
 <mark>工具使用模式几乎适用于任何智能体需要超越文本生成、执行操作或检索特定动态信息的场景：</mark>
 
-**1. Information Retrieval from External Sources:**
-
-**1.** <mark><strong>从外部源检索信息：</strong></mark>
+**1. Information Retrieval from External Sources:** | <mark><strong>从外部来源检索信息：</strong></mark>
 
 Accessing real-time data or information that is not present in the LLM's training data.
 
-<mark>访问 LLM 训练数据中不存在的实时数据或信息。</mark>
+<mark>获取大语言模型训练数据中未包含的实时信息或数据。</mark>
 
 - **Use Case:** A weather agent.
 - **Tool:** A weather API that takes a location and returns the current weather conditions.
 - **Agent Flow:** User asks, "What's the weather in London?", LLM identifies the need for the weather tool, calls the tool with "London", tool returns data, LLM formats the data into a user-friendly response.
 
-- <mark><strong>用例：</strong>天气智能体。</mark>
-- <mark><strong>工具：</strong>一个天气 API，接收地点参数，返回当前天气状况。</mark>
-- <mark><strong>智能体流程：</strong>用户提问「伦敦天气怎么样？」，LLM 识别出需要使用天气工具，用「London」作为参数调用该工具，工具返回数据后，LLM 将其格式化为对用户友好的回答。</mark>
+- <mark><strong>用例：</strong>获取和提供天气信息的智能体。</mark>
+- <mark><strong>工具：</strong>一个天气查询 API，可输入地点并返回该地的实时天气情况。</mark>
+- <mark><strong>智能体流程：</strong>用户提问「伦敦天气怎么样？」，LLM 识别出需要使用天气工具，用「伦敦」作为参数调用该工具，工具返回数据后，大语言模型将这些信息整理并以易懂的方式输出给用户。</mark>
 
-**2. Interacting with Databases and APIs:**
-
-**2.** <mark><strong>与数据库和 API 交互：</strong></mark>
+**2. Interacting with Databases and APIs:** | <mark><strong>与数据库和 API 交互：</strong></mark>
 
 Performing queries, updates, or other operations on structured data.
 
@@ -90,13 +86,11 @@ Performing queries, updates, or other operations on structured data.
 - **Tools:** API calls to check product inventory, get order status, or process payments.
 - **Agent Flow:** User asks "Is product X in stock?", LLM calls the inventory API, tool returns stock count, LLM tells the user the stock status.
 
-- <mark><strong>用例：</strong>电商智能体。</mark>
-- <mark><strong>工具：</strong>用于检查产品库存、获取订单状态或处理支付的 API 调用。</mark>
-- <mark><strong>智能体流程：</strong>用户提问「产品 X 有货吗？」，LLM 调用库存 API，工具返回库存数量，LLM 告知用户库存状态。</mark>
+- <mark><strong>用例：</strong>电商平台智能体。</mark>
+- <mark><strong>工具：</strong>通过 API 调用来检查产品库存、查询订单状态或处理支付。</mark>
+- <mark><strong>智能体流程：</strong>用户提问「产品 X 有货吗？」，大语言模型会调用库存 API，工具返回库存数量后，大语言模型会告知用户该产品库存情况。</mark>
 
-**3. Performing Calculations and Data Analysis:**
-
-**3.** <mark><strong>执行计算和数据分析：</strong></mark>
+**3. Performing Calculations and Data Analysis:** | <mark><strong>执行计算和数据分析：</strong></mark>
 
 Using external calculators, data analysis libraries, or statistical tools.
 
@@ -106,33 +100,29 @@ Using external calculators, data analysis libraries, or statistical tools.
 - **Tools:** A calculator function, a stock market data API, a spreadsheet tool.
 - **Agent Flow:** User asks "What's the current price of AAPL and calculate the potential profit if I bought 100 shares at $150?", LLM calls stock API, gets current price, then calls calculator tool, gets result, formats response.
 
-- <mark><strong>用例：</strong>金融智能体。</mark>
-- <mark><strong>工具：</strong>计算器函数、股票市场数据 API、电子表格工具。</mark>
-- <mark><strong>智能体流程：</strong>用户提问「AAPL 当前价格是多少？如果我以 150 美元买入 100 股，潜在利润是多少？」，LLM 调用股票 API 获取当前价格，然后调用计算器工具得到结果，并格式化回复。</mark>
+- <mark><strong>用例：</strong>金融领域智能体。</mark>
+- <mark><strong>工具：</strong>计算器函数、股票行情 API、电子表格工具。</mark>
+- <mark><strong>智能体流程：</strong>用户提问「苹果公司当前股价是多少？如果我以 150 美元买入 100 股，可能的利润是多少？」，大语言模型会先调用股票行情接口获取最新价格，然后调用计算器工具计算利润，最后把结果整理并返回给用户。</mark>
 
-**4. Sending Communications:**
-
-**4.** <mark><strong>发送通信：</strong></mark>
+**4. Sending Communications:** | <mark><strong>发送通知：</strong></mark>
 
 Sending emails, messages, or making API calls to external communication services.
 
-<mark>发送电子邮件、消息或调用外部通信服务的 API。</mark>
+<mark>发送电子邮件、消息或调用外部通信服务的接口。</mark>
 
 - **Use Case:** A personal assistant agent.
 - **Tool:** An email sending API.
 - **Agent Flow:** User says, "Send an email to John about the meeting tomorrow.", LLM calls an email tool with the recipient, subject, and body extracted from the request.
 
 - <mark><strong>用例：</strong>个人助理智能体。</mark>
-- <mark><strong>工具：</strong>邮件发送 API。</mark>
-- <mark><strong>智能体流程：</strong>用户说「给 John 发一封关于明天会议的邮件」，LLM 从请求中提取收件人、主题和正文，并调用邮件工具。</mark>
+- <mark><strong>工具：</strong>邮件发送接口。</mark>
+- <mark><strong>智能体流程：</strong>用户说「给约翰发一封关于明天会议的邮件」，大语言模型会从请求中提取收件人、主题和正文，并调用邮件接口发送该通知。</mark>
 
-**5. Executing Code:**
-
-**5.** <mark><strong>执行代码：</strong></mark>
+**5. Executing Code:** | <mark><strong>执行代码：</strong></mark>
 
 Running code snippets in a safe environment to perform specific tasks.
 
-<mark>在安全环境中运行代码片段以执行特定任务。</mark>
+<mark>在安全环境中运行代码片段以完成特定任务。</mark>
 
 - **Use Case:** A coding assistant agent.
 - **Tool:** A code interpreter.
@@ -140,31 +130,31 @@ Running code snippets in a safe environment to perform specific tasks.
 
 - <mark><strong>用例：</strong>编程助理智能体。</mark>
 - <mark><strong>工具：</strong>代码解释器。</mark>
-- <mark><strong>智能体流程：</strong>用户提供 Python 代码片段并提问「这段代码是做什么的？」，LLM 使用解释器工具运行代码并分析其输出。</mark>
+- <mark><strong>智能体流程：</strong>用户提供 Python 代码片段并提问「这段代码是做什么的？」，大语言模型会先使用代码解释器运行代码，并据此进行分析和解释。</mark>
 
-**6. Controlling Other Systems or Devices:**
-
-**6.** <mark><strong>控制其他系统或设备：</strong></mark>
+**6. Controlling Other Systems or Devices:** | <mark><strong>控制其他系统或设备：</strong></mark>
 
 Interacting with smart home devices, IoT platforms, or other connected systems.
 
-<mark>与智能家居设备、物联网平台或其他连接的系统交互。</mark>
+<mark>与智能家居设备、物联网平台或其他联网系统交互。</mark>
 
 - **Use Case:** A smart home agent.
 - **Tool:** An API to control smart lights.
 - **Agent Flow:** User says, "Turn off the living room lights." LLM calls the smart home tool with the command and target device.
 
 - <mark><strong>用例：</strong>智能家居智能体。</mark>
-- <mark><strong>工具：</strong>控制智能灯的 API。</mark>
-- <mark><strong>智能体流程：</strong>用户说「关掉客厅的灯」，LLM 使用命令和目标设备调用智能家居工具。</mark>
+- <mark><strong>工具：</strong>控制智能灯的接口。</mark>
+- <mark><strong>智能体流程：</strong>用户说「关掉客厅的灯」，大语言模型根据命令和目标设备调用智能家居接口来实现开关灯的操作。</mark>
 
 Tool Use is what transforms a language model from a text generator into an agent capable of sensing, reasoning, and acting in the digital or physical world (see Fig. 1)
 
-<mark>工具使用将语言模型从文本生成器转变为能够在数字或物理世界中感知、推理和行动的智能体（见图 1）。</mark>
+<mark>工具使用将语言模型从文本生成器变成能够在数字或现实世界中感知、推理和行动的智能体（见图 1）。</mark>
 
-![Tool Use Examples](https://lh7-rt.googleusercontent.com/docsz/AD_4nXexhcuSPfqWGvmYIatfUbxVbDvDkZdXfn7QFr1wNqvzVfh1hwfhf9FSOg8Yd6vjCZsBEPHiiIuK90Eiv6_nfJnekPRMt0ae2RViWYD0rcj5ZazA0hEmbA0eXtt79wiG_Q?key=15i_XMSBX4lnmMYoUoqcyg)
+![Tool Use Examples](/images/chapter05_fig1.jpg)
 
-<mark><strong>图 1：</strong>智能体使用工具的一些示例</mark>
+Fig.1: Some examples of an Agent using Tools
+
+<mark>图 1：智能体使用工具的一些示例</mark>
 
 ---
 
