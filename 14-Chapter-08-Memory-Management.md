@@ -6,19 +6,19 @@
 
 Effective memory management is crucial for intelligent agents to retain information. Agents require different types of memory, much like humans, to operate efficiently. This chapter delves into memory management, specifically addressing the immediate (short-term) and persistent (long-term) memory requirements of agents.
 
-<mark>有效的记忆管理对于智能体保留信息至关重要。与人类相似，智能体需要不同类型的记忆才能高效运作。本章将深入探讨记忆管理，重点关注智能体的即时（短期）和持久（长期）记忆需求。</mark>
+<mark>良好的记忆管理对于智能体保持信息至关重要。与人类类似，智能体需要多种类型的记忆，系统才能高效运行。本章将深入探讨记忆管理，重点聚焦于智能体的即时（短期）和持久（长期）记忆需求。</mark>
 
 In agent systems, memory refers to an agent's ability to retain and utilize information from past interactions, observations, and learning experiences. This capability allows agents to make informed decisions, maintain conversational context, and improve over time. Agent memory is generally categorized into two main types:
 
-<mark>在智能体系统中，**记忆**指的是智能体保留并利用过往交互、观察和学习经验中信息的能力。这一能力使得智能体能够做出明智决策、维持对话上下文语境，并实现持续改进优化。智能体记忆通常可分为两大主要类型：</mark>
+<mark>在智能体系统中，**记忆**指的是智能体保留并利用过往交互、观察和学习经验中信息的能力。这一能力使得智能体能够做出明智决策、维持对话上下文语境，并持续改进优化。智能体记忆通常可分为两大主要类型：</mark>
 
 ●**Short-Term Memory (Contextual Memory)**: Similar to working memory, this holds information currently being processed or recently accessed. For agents using large language models (LLMs), short-term memory primarily exists within the context window. This window contains recent messages, agent replies, tool usage results, and agent reflections from the current interaction, all of which inform the LLM's subsequent responses and actions. The context window has a limited capacity, restricting the amount of recent information an agent can directly access. Efficient short-term memory management involves keeping the most relevant information within this limited space, possibly through techniques like summarizing older conversation segments or emphasizing key details. The advent of models with 'long context' windows simply expands the size of this short-term memory, allowing more information to be held within a single interaction. However, this context is still ephemeral and is lost once the session concludes, and it can be costly and inefficient to process every time. Consequently, agents require separate memory types to achieve true persistence, recall information from past interactions, and build a lasting knowledge base.
 
-<mark>●**短期记忆（上下文记忆）**：它类似于工作记忆，负责存储当前正在处理或近期访问的信息。以大语言模型（LLMs）为核心的智能体，短期记忆主要存在于上下文窗口内。该窗口包含最近的对话消息、智能体生成的回复、工具调用结果以及来自当前交互中智能体的反思内容，所有这些都为 LLM 的后续响应和行动提供上下文支持。上下文窗口的容量有限，从而限制了智能体能够直接访问的近期信息范围。高效的短期记忆管理策略包含但不仅限于选择性地在这个有限空间内保留最相关的上下文，可能通过总结旧的对话片段或强调关键细节等技术实现。具有「长上下文」窗口的模型的出现只是扩大了这种短期记忆的容量，允许在单次交互中保存更多信息。然而，这种上下文仍然是短暂的，一旦会话结束就会丢失，而且每次处理都可能成本高昂且低效。因此，智能体需要单独的记忆类型来实现真正的持久化，从过往交互中回忆信息并构建持久的知识库。</mark>
+<mark>●**短期记忆（上下文记忆）**：类似于工作记忆，负责存储当前正在处理或近期访问的信息。以大语言模型（LLMs）为核心的智能体，短期记忆主要存在于上下文窗口内。该窗口包含最近的对话消息、智能体生成的回复、工具调用结果以及来自当前交互中智能体的反思内容，所有这些都为 LLM 的后续响应和行动提供上下文支持。上下文窗口的容量有限，从而限制了智能体能够直接访问的近期信息范围。高效的短期记忆管理策略应该选择性地在有限的上下文空间内保留最相关的信息，这可以通过总结旧的对话片段或强调关键细节等技术实现。具有「长上下文」窗口的模型的出现只是扩大了这种短期记忆的容量，从而允许在单次交互中保存更多信息。然而，这种上下文仍然是短暂的，一旦会话结束就会丢失，且每次处理都会带来高昂的成本且本身效率较低。因此，智能体需要不同类型的记忆来实现真正的持久化，从过往交互中回忆信息，并构建持久的知识库。</mark>
 
 ●**Long-Term Memory (Persistent Memory)**: This acts as a repository for information agents need to retain across various interactions, tasks, or extended periods, akin to long-term knowledge bases. Data is typically stored outside the agent's immediate processing environment, often in databases, knowledge graphs, or vector databases. In vector databases, information is converted into numerical vectors and stored, enabling agents to retrieve data based on semantic similarity rather than exact keyword matches, a process known as semantic search. When an agent needs information from long-term memory, it queries the external storage, retrieves relevant data, and integrates it into the short-term context for immediate use, thus combining prior knowledge with the current interaction.
 
-<mark>●**长期记忆（持久记忆）**：它相当于一个长期知识库，用于存储智能体在各种交互、任务或长时间段内需要保留的信息。数据通常存储在智能体的即时处理环境之外，常见于数据库、知识图谱或向量数据库中。在向量数据库中，信息被转换为数值向量并存储，使智能体能够基于语义相似性而非精确关键词匹配来检索数据，这个过程被称为语义搜索。当智能体需要来自长期记忆的信息时，它会查询外部存储、检索相关数据并将其整合到短期上下文中以供立即使用，从而将先验知识与当前信息交互结合。</mark>
+<mark>●**长期记忆（持久记忆）**：相当于一个长期知识库，用于存储智能体在各种交互、任务或长时间段内需要保留的信息。数据通常存储在智能体的实时执行环境之外，常见于数据库、知识图谱或向量数据库中。在向量数据库，信息被转换为数值向量并存储，使智能体能够基于语义相似性而非精确关键词匹配来检索数据，这个过程被称为语义搜索。当智能体需要来自长期记忆的信息时，它会查询外部存储、检索相关数据并将其整合到上下文记忆中以供随时调用，从而将先验知识与当前交互信息相结合。</mark>
 
 ------
 
@@ -42,11 +42,11 @@ Memory management is vital for agents to track information and perform intellige
 
 ●**Learning and Improvement**: Agents can refine their performance by learning from past interactions. Successful strategies, mistakes, and new information are stored in long-term memory, facilitating future adaptations. Reinforcement learning agents store learned strategies or knowledge in this way.
 
-<mark>●**学习与性能优化**：智能体通过从历史交互中学习来持续改进性能表现。成功的策略方案、错误经验以及新获取的知识都被存储在长期记忆中，为未来的自适应优化提供支持。强化学习智能体正是通过这种方式保存习得的策略和知识体系。</mark>
+<mark>●**学习与性能优化**：智能体通过从历史交互中学习来持续改进它的性能表现。成功的策略方案、错误经验以及新获取的知识都被存储在长期记忆中，为未来的自适应优化提供支持。强化学习智能体正是通过这种方式保存习得的策略和知识体系。</mark>
 
 ●**Information Retrieval (RAG)**: Agents designed for answering questions access a knowledge base, their long-term memory, often implemented within Retrieval Augmented Generation (RAG). The agent retrieves relevant documents or data to inform its responses.
 
-<mark>●**信息检索（RAG）**：为问答场景设计的智能体需要访问知识库——即其长期记忆系统，这一功能通常在检索增强生成（RAG）框架中实现。智能体通过检索相关文档和数据资源来支撑其回答的准确性和完整性。</mark>
+<mark>●**信息检索（RAG）**：为问答场景设计的智能体需要访问知识库——即长期记忆，这一功能通常在检索增强生成（RAG）框架中实现。智能体通过检索相关文档和数据资源来支撑其回答的准确性和完整性。</mark>
 
 ●**Autonomous Systems**: Robots or self-driving cars require memory for maps, routes, object locations, and learned behaviors. This involves short-term memory for immediate surroundings and long-term memory for general environmental knowledge.
 
@@ -66,7 +66,7 @@ The Google Agent Developer Kit (ADK) offers a structured method for managing con
 
 Just as in human interactions, agents require the ability to recall previous exchanges to conduct coherent and natural conversations. ADK simplifies context management through three core concepts and their associated services.
 
-<mark>正如人类交互需要记忆支撑，智能体同样需要具备回忆历史对话的能力，才能进行连贯自然的交流。ADK 通过三个核心概念及其配套服务体系，极大地简化了上下文管理的复杂性。</mark>
+<mark>正如人类之间的交流需要记忆支撑，智能体同样需要具备回忆历史对话的能力，才能进行连贯自然的交流。ADK 通过三个核心概念及其配套服务体系，极大地简化了上下文管理的复杂性。</mark>
 
 Every interaction with an agent can be considered a unique conversation thread. Agents might need to access data from earlier interactions. ADK structures this as follows:
 
@@ -155,7 +155,7 @@ Each message exchange involves a cyclical process: A message is received, the Ru
 
 ------
 
-## State: The Session's Scratchpad | <mark>State：会话的草稿本</mark>
+## State: The Session's Scratchpad | <mark>State：会话便笺</mark>
 
 In the ADK, each Session, representing a chat thread, includes a state component akin to an agent's temporary working memory for the duration of that specific conversation. While session.events logs the entire chat history, session.state stores and updates dynamic data points relevant to the active chat.
 
@@ -243,7 +243,7 @@ print(f"\n智能体运行后的状态: {updated_session.state}")
 
 Behind the scenes, the Runner sees your output_key and automatically creates the necessary actions with a state_delta when it calls append_event.
 
-<mark>在幕后，Runner 会识别你的 `output_key`，并在调用 `append_event` 时自动创建带有 `state_delta` 的必要操作。</mark>
+<mark>在后台，Runner 会识别你的 `output_key`，并在调用 `append_event` 时自动创建带有 `state_delta` 的必要操作。</mark>
 
 **2.The Standard Way: Using EventActions.state_delta (for More Complicated Updates):** For times when you need to do more complex things – like updating several keys at once, saving things that aren't just text, targeting specific scopes like user: or app:, or making updates that aren't tied to the agent's final text reply – you'll manually build a dictionary of your state changes (the state_delta) and include it within the EventActions of the Event you're appending. Let's look at one example:
 
@@ -324,7 +324,7 @@ This code demonstrates a tool-based approach for managing user session state in 
 
 The function takes a ToolContext object, provided by the ADK, to access and modify the session's state dictionary. Inside the tool, it increments a user:login_count, sets the task_status to "active", records the user:last_login_ts (timestamp), and adds a temporary flag temp:validation_needed.
 
-<mark>该函数接收由 ADK 提供的 `ToolContext` 对象，用于访问和修改会话的状态字典。在工具内部，它会递增 `user:login_count`，将 `task_status` 设置为「active」，记录 `user:last_login_ts`（时间戳），并添加临时标志 `temp:validation_needed`。</mark>
+<mark>该函数接收由 ADK 提供的 `ToolContext` 对象，用于访问和修改会话的状态字典。在工具内部，它会递增 `user:login_count`，将 `task_status` 设置为 `active`，记录 `user:last_login_ts`（时间戳），并添加临时标志 `temp:validation_needed`。</mark>
 
 The demonstration part of the code simulates how this tool would be used. It sets up an in-memory session service and creates an initial session with some predefined state. A ToolContext is then manually created to mimic the environment in which the ADK Runner would execute the tool. The log_user_login function is called with this mock context. Finally, the code retrieves the session again to show that the state has been updated by the tool's execution. The goal is to show how encapsulating state changes within tools makes the code cleaner and more organized compared to directly manipulating state outside of tools.
 
@@ -332,7 +332,7 @@ The demonstration part of the code simulates how this tool would be used. It set
 
 Note that direct modification of the `session.state` dictionary after retrieving a session is strongly discouraged as it bypasses the standard event processing mechanism. Such direct changes will not be recorded in the session's event history, may not be persisted by the selected `SessionService`, could lead to concurrency issues, and will not update essential metadata such as timestamps. The recommended methods for updating the session state are using the `output_key` parameter on an `LlmAgent` (specifically for the agent's final text responses) or including state changes within `EventActions.state_delta` when appending an event via `session_service.append_event()`. The `session.state` should primarily be used for reading existing data.
 
-<mark>请注意，强烈不建议在检索会话后直接修改 `session.state` 字典，因为这会绕过标准的事件处理机制。此类直接更改不会被记录在会话的事件历史中，可能无法被所选 `SessionService` 持久化存储，可能引发并发问题，并且不会更新时间戳等关键元数据。更新会话状态的推荐方法包括：在 `LlmAgent` 上使用 `output_key` 参数（专门用于智能体的最终文本响应），或在通过 `session_service.append_event()` 附加事件时，在 `EventActions.state_delta` 中包含状态变更。`session.state` 应主要用于读取现有数据。</mark>
+<mark>请注意，强烈不建议在检索会话后直接修改 `session.state` 字典，因为这会绕过标准的事件处理机制。此类直接更改不会被记录在会话的事件历史中，可能无法被所选 `SessionService` 持久化存储，可能引起并发问题，并且不会更新时间戳等关键元数据。更新会话状态的推荐方法包括：在 `LlmAgent` 上使用 `output_key` 参数（专门用于智能体的最终文本响应），或在通过 `session_service.append_event()` 附加事件时，在 `EventActions.state_delta` 中包含状态变更。`session.state` 应主要用于读取现有数据。</mark>
 
 To recap, when designing your state, keep it simple, use basic data types, give your keys clear names and use prefixes correctly, avoid deep nesting, and always update state using the append_event process.
 
@@ -393,7 +393,7 @@ In LangChain and LangGraph, Memory is a critical component for creating intellig
 
 **Short-Term Memory:** This is thread-scoped, meaning it tracks the ongoing conversation within a single session or thread. It provides immediate context, but a full history can challenge an LLM's context window, potentially leading to errors or poor performance. LangGraph manages short-term memory as part of the agent's state, which is persisted via a checkpointer, allowing a thread to be resumed at any time.
 
-<mark>**短期记忆：**这是线程作用域的，意味着它在单个会话或线程内跟踪正在进行的对话。它提供即时上下文，但完整的历史记录可能会挑战 LLM 的上下文窗口限制，可能导致错误或性能下降。LangGraph 将短期记忆作为智能体状态的一部分进行管理，通过检查点机制实现持久化，允许随时恢复线程执行。</mark>
+<mark>**短期记忆：**这是线程作用域的，意味着它在单个会话或线程内跟踪正在进行的对话。它提供即时上下文，但完整的历史记录会挑战 LLM 的上下文窗口限制，随之可能导致错误或性能下降。LangGraph 将短期记忆作为智能体状态的一部分进行管理，通过检查点机制实现持久化，允许随时恢复线程执行。</mark>
 
 **Long-Term Memory:** This stores user-specific or application-level data across sessions and is shared between conversational threads. It is saved in custom "namespaces" and can be recalled at any time in any thread. LangGraph provides stores to save and recall long-term memories, enabling agents to retain knowledge indefinitely.
 
@@ -672,7 +672,7 @@ Memory Bank offers seamless integration with the Google ADK, providing an immedi
 
 **Rule of thumb:** Use this pattern when an agent needs to do more than answer a single question. It is essential for agents that must maintain context throughout a conversation, track progress in multi-step tasks, or personalize interactions by recalling user preferences and history. Implement memory management whenever the agent is expected to learn or adapt based on past successes, failures, or newly acquired information.
 
-<mark>**经验法则：**当智能体需要做的不仅仅是回答单个问题时，使用此模式。对于必须在整个对话中维持上下文、跟踪多步骤任务中的进度或通过回忆用户偏好和历史来个性化交互的智能体来说，这是必不可少的。只要智能体需要根据过去的成功、失败或新获得的信息进行学习或适应，就实现记忆管理。</mark>
+<mark>**经验法则：**当智能体需要执行超越单一问题回答的复杂任务时，建议采用此类模式。对于必须在整个对话中维持上下文、跟踪多步骤任务中的进度或通过回忆用户偏好和历史来个性化交互的智能体来说，这类模式也是必不可少的。当智能体需要基于过去的成功、失败或新获得的信息进行学习或自适应调整时，就需要进行实施记忆管理。</mark>
 
 **Visual summary**
 
@@ -746,12 +746,16 @@ To quickly recap the main points about memory management:
 
 This chapter dove into the really important job of memory management for agent systems, showing the difference between the short-lived context and the knowledge that sticks around for a long time. We talked about how these types of memory are set up and where you see them used in building smarter agents that can remember things. We took a detailed look at how Google ADK gives you specific pieces like Session, State, and MemoryService to handle this. Now that we've covered how agents can remember things, both short-term and long-term, we can move on to how they can learn and adapt. The next pattern "Learning and Adaptation" is about an agent changing how it thinks, acts, or what it knows, all based on new experiences or data.
 
-<mark>本章深入探讨了智能体系统中记忆管理这一至关重要的技术领域，清晰阐述了短暂上下文信息与长期持久化知识之间的本质区别。我们系统分析了不同类型记忆机制的架构设计原理及其在构建具备记忆能力的更智能智能体中的具体应用场景。通过详细剖析 Google ADK 框架如何通过 Session、State 和 MemoryService 等专用组件来实现系统化的记忆管理。在完整掌握智能体短期与长期记忆技术的基础上，我们现在将转向探索智能体如何实现持续学习和自我适应。下一个核心技术模式「学习与适应」将深入探讨智能体如何基于新的经验积累和数据输入，动态调整其认知模式、行为策略和知识体系。</mark>
+<mark>本章深入探讨了智能体系统中记忆管理这一至关重要的技术领域，清晰阐述了临时上下文信息与长期持久化知识之间的本质区别。我们系统性地剖析了各类记忆机制的架构设计原理，并深入探讨了其在构建具备记忆能力的智能体系统中的具体应用场景。通过详细剖析 Google ADK 框架如何通过 Session、State 和 MemoryService 等专用组件来实现系统化的记忆管理。在完整掌握智能体短期与长期记忆技术的基础上，我们现在将转向探索智能体如何实现持续学习和自我适应。下一个核心技术模式「学习与适应」将深入探讨智能体如何基于新的经验积累和数据输入，动态调整其认知模式、行为策略和知识体系。</mark>
 
 ------
 
 ## References | <mark>参考文献</mark>
 
-1. ADK Memory: <https://google.github.io/adk-docs/sessions/memory/> <mark>ADK 记忆：<https://google.github.io/adk-docs/sessions/memory/></mark>
-2. LangGraph Memory: <https://langchain-ai.github.io/langgraph/concepts/memory/> <mark>LangGraph 记忆：<https://langchain-ai.github.io/langgraph/concepts/memory/></mark>
-3. Vertex AI Agent Engine Memory Bank: <https://cloud.google.com/blog/products/ai-machine-learning/vertex-ai-memory-bank-in-public-preview> <mark>Vertex AI Agent Engine Memory Bank：<https://cloud.google.com/blog/products/ai-machine-learning/vertex-ai-memory-bank-in-public-preview></mark>
+1. ADK Memory: <https://google.github.io/adk-docs/sessions/memory/>
+   <mark>ADK 记忆：<https://google.github.io/adk-docs/sessions/memory/></mark>
+2. LangGraph Memory: <https://langchain-ai.github.io/langgraph/concepts/memory/>
+   <mark>LangGraph 记忆：<https://langchain-ai.github.io/langgraph/concepts/memory/></mark>
+3. Vertex AI Agent Engine Memory Bank: <https://cloud.google.com/blog/products/ai-machine-learning/vertex-ai-memory-bank-in-public-preview>
+   <mark>Vertex AI Agent Engine Memory Bank：<https://cloud.google.com/blog/products/ai-machine-learning/vertex-ai-memory-bank-in-public-preview></mark>
+
