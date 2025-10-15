@@ -158,15 +158,15 @@ Fig.1: Some examples of an Agent using Tools
 
 ---
 
-## Hands-On Code Example (LangChain) | <mark>使用 LangChain 的实战代码</mark>
+## Hands-On Code Example (LangChain) | <mark>实战代码：使用 LangChain</mark>
 
 The implementation of tool use within the LangChain framework is a two-stage process. Initially, one or more tools are defined, typically by encapsulating existing Python functions or other runnable components. Subsequently, these tools are bound to a language model, thereby granting the model the capability to generate a structured tool-use request when it determines that an external function call is required to fulfill a user's query.
 
-<mark>在 <code>LangChain</code> 框架中实现工具使用分为两个阶段。首先，定义一个或多个工具，通常通过封装现有的 Python 函数或其他可运行组件来完成。随后，将这些工具绑定到语言模型上，从而赋予模型一种能力：当它判断需要外部函数调用来满足用户查询时，能够生成结构化的工具使用请求。</mark>
+<mark>在 <code>LangChain</code> 框架中，使用工具分两个步骤。首先，定义一个或多个工具，通常通过封装现有的 Python 函数或其他可执行组件来完成。随后，将这些工具和大语言模型绑定，这样当大语言模型判断需要调用外部函数来完成用户请求时，就能生成结构化的调用请求并执行相应操作。</mark>
 
 The following implementation will demonstrate this principle by first defining a simple function to simulate an information retrieval tool. Following this, an agent will be constructed and configured to leverage this tool in response to user input. The execution of this example requires the installation of the core LangChain libraries and a model-specific provider package. Furthermore, proper authentication with the selected language model service, typically via an API key configured in the local environment, is a necessary prerequisite.
 
-<mark>以下实现将演示这一原理。首先定义一个简单函数来模拟信息检索工具，然后构建并配置智能体，使其能够利用该工具响应用户输入。运行此示例需要安装 LangChain 核心库和特定模型的提供程序包。此外，还必须通过在本地环境中配置 API 密钥等方式，与所选语言模型服务进行正确的身份验证。</mark>
+<mark>以下代码将演示这一原理。首先定义一个简单函数来模拟信息检索工具，然后构建并配置智能体，使其能够利用该工具响应用户输入。运行此示例需要先安装 LangChain 的核心库和相应的模型提供者包，并在本地环境中配置好 API 密钥以对所选的语言模型服务进行身份验证。</mark>
 
 ```python
 import os, getpass
@@ -181,102 +181,123 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.tools import tool as langchain_tool
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 
+# Colab 代码链接：https://colab.research.google.com/drive/1PNsMB2kcCP-iPgpYamG11bGkBiP3QViz#scrollTo=FW3Eh5_OjUea
+
 # UNCOMMENT
 # Prompt the user securely and set API keys as an environment variables
+# 安全地提示用户并设置 API 密钥为环境变量
 os.environ["GOOGLE_API_KEY"] = getpass.getpass("Enter your Google API key: ")
 os.environ["OPENAI_API_KEY"] = getpass.getpass("Enter your OpenAI API key: ")
 
 try:
-  # A model with function/tool calling capabilities is required.
-  llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0)
-  print(f"✅ Language model initialized: {llm.model}")
+   # A model with function/tool calling capabilities is required.
+   # 需要一个具有函数/工具调用能力的模型
+   llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0)
+   print(f"✅ Language model initialized: {llm.model}")
 except Exception as e:
-  print(f"🚨 Error initializing language model: {e}")
-  llm = None
+   print(f"🛑 Error initializing language model: {e}")
+   llm = None
 
 # --- Define a Tool ---
+# --- 定义一个工具 ---
 @langchain_tool
 def search_information(query: str) -> str:
-  """
-  Provides factual information on a given topic. Use this tool to find answers to phrases
-  like 'capital of France' or 'weather in London?'.
-  """
-  print(f"\n--- 🔍️ Tool Called: search_information with query: '{query}' ---")
-  # Simulate a search tool with a dictionary of predefined results.
-  simulated_results = {
-      "weather in london": "The weather in London is currently cloudy with a temperature of 15°C.",
-      "capital of france": "The capital of France is Paris.",
-      "population of earth": "The estimated population of Earth is around 8 billion people.",
-      "tallest mountain": "Mount Everest is the tallest mountain above sea level.",
-      "default": f"Simulated search result for '{query}': No specific information found, but the topic seems interesting."
-  }
-  result = simulated_results.get(query.lower(), simulated_results["default"])
-  print(f"--- TOOL RESULT: {result} ---")
-  return result
+   """
+   Provides factual information on a given topic. Use this tool to find answers to phrases
+   like 'capital of France' or 'weather in London?'.
+   # 供关于特定主题的事实信息。使用此工具查找类似「法国的首都是哪里？」或「伦敦的天气如何？」这类问题的答案。
+   """
+   print(f"\n--- 🛠️ Tool Called: search_information with query: '{query}' ---")
+   # Simulate a search tool with a dictionary of predefined results.
+   # 模拟一个搜索工具，使用预定义的结果。
+   simulated_results = {
+       "weather in london": "The weather in London is currently cloudy with a temperature of 15°C.",
+       "capital of france": "The capital of France is Paris.",
+       "population of earth": "The estimated population of Earth is around 8 billion people.",
+       "tallest mountain": "Mount Everest is the tallest mountain above sea level.",
+       "default": f"Simulated search result for '{query}': No specific information found, but the topic seems interesting."
+   }
+   result = simulated_results.get(query.lower(), simulated_results["default"])
+   print(f"--- TOOL RESULT: {result} ---")
+   return result
 
 tools = [search_information]
 
 # --- Create a Tool-Calling Agent ---
+# --- 创建一个工具调用智能体 ---
 if llm:
-  # This prompt template requires an `agent_scratchpad` placeholder for the agent's internal steps.
-  agent_prompt = ChatPromptTemplate.from_messages([
-      ("system", "You are a helpful assistant."),
-      ("human", "{input}"),
-      ("placeholder", "{agent_scratchpad}"),
-  ])
+   # This prompt template requires an `agent_scratchpad` placeholder for the agent's internal steps.
+   # 这个提示模板需要一个 `agent_scratchpad` 占位符，用于记录智能体的内部步骤。
+   agent_prompt = ChatPromptTemplate.from_messages([
+       ("system", "You are a helpful assistant."),
+       ("human", "{input}"),
+       ("placeholder", "{agent_scratchpad}"),
+   ])
 
-  # Create the agent, binding the LLM, tools, and prompt together.
-  agent = create_tool_calling_agent(llm, tools, agent_prompt)
+   # Create the agent, binding the LLM, tools, and prompt together.
+   # 创建智能体，将 LLM、工具和提示绑定在一起。
+   agent = create_tool_calling_agent(llm, tools, agent_prompt)
 
-  # AgentExecutor is the runtime that invokes the agent and executes the chosen tools.
-  # The 'tools' argument is not needed here as they are already bound to the agent.
-  agent_executor = AgentExecutor(agent=agent, verbose=True, tools=tools)
+   # AgentExecutor is the runtime that invokes the agent and executes the chosen tools.
+   # The 'tools' argument is not needed here as they are already bound to the agent.
+   # AgentExecutor 是运行时，用于调用智能体并执行选定的工具。这里的 'tools' 参数不需要了，因为它们已经绑定到智能体了。
+   agent_executor = AgentExecutor(agent=agent, verbose=True, tools=tools)
 
 async def run_agent_with_tool(query: str):
-  """Invokes the agent executor with a query and prints the final response."""
-  print(f"\n--- 🏃 Running Agent with Query: '{query}' ---")
-  try:
-      response = await agent_executor.ainvoke({"input": query})
-      print("\n--- ✅ Final Agent Response ---")
-      print(response["output"])
-  except Exception as e:
-      print(f"\n🚨 An error occurred during agent execution: {e}")
+   """
+   Invokes the agent executor with a query and prints the final response.
+   # 调用智能体执行器并打印最终响应。
+   """
+   print(f"\n--- 🏃 Running Agent with Query: '{query}' ---")
+   try:
+       response = await agent_executor.ainvoke({"input": query})
+       print("\n--- ✅ Final Agent Response ---")
+       print(response["output"])
+   except Exception as e:
+       print(f"\n🛑 An error occurred during agent execution: {e}")
 
 async def main():
-  """Runs all agent queries concurrently."""
-  tasks = [
-      run_agent_with_tool("What is the capital of France?"),
-      run_agent_with_tool("What's the weather like in London?"),
-      run_agent_with_tool("Tell me something about dogs.") # Should trigger the default tool response
-  ]
-  await asyncio.gather(*tasks)
+   """
+   Runs all agent queries concurrently.
+   # 并发运行所有智能体查询。
+   """
+   tasks = [
+       run_agent_with_tool("What is the capital of France?"),
+       run_agent_with_tool("What's the weather like in London?"),
+       run_agent_with_tool("Tell me something about dogs.") # Should trigger the default tool response
+   ]
+   await asyncio.gather(*tasks)
 
 nest_asyncio.apply()
 asyncio.run(main())
 ```
 
+译者注：[Colab 代码](https://colab.research.google.com/drive/1PNsMB2kcCP-iPgpYamG11bGkBiP3QViz#scrollTo=FW3Eh5_OjUea) 已维护在[此处](/codes/Chapter-05-Tool-Use-LangChain-Example.py)。
+
 The code sets up a tool-calling agent using the LangChain library and the Google Gemini model. It defines a <code>search_information</code> tool that simulates providing factual answers to specific queries. The tool has predefined responses for "weather in london," "capital of france," and "population of earth," and a default response for other queries. A <code>ChatGoogleGenerativeAI</code> model is initialized, ensuring it has tool-calling capabilities. A <code>ChatPromptTemplate</code> is created to guide the agent's interaction. The <code>create_tool_calling_agent</code> function is used to combine the language model, tools, and prompt into an agent. An <code>AgentExecutor</code> is then set up to manage the agent's execution and tool invocation. The <code>run_agent_with_tool</code> asynchronous function is defined to invoke the agent with a given query and print the result. The <code>main</code> asynchronous function prepares multiple queries to be run concurrently. These queries are designed to test both the specific and default responses of the <code>search_information</code> tool. Finally, the <code>asyncio.run(main())</code> call executes all the agent tasks. The code includes checks for successful LLM initialization before proceeding with agent setup and execution.
 
 <mark>该代码使用 <code>LangChain</code> 库和 Google Gemini 模型构建了一个工具调用智能体。
 
-它定义了 <code>search_information</code> 工具，该工具模拟为特定查询提供事实性答案。该工具为「weather in london」、「capital of france」和「population of earth」等查询预设了响应，并为其他查询提供默认响应。
+它定义了 <code>search_information</code> 工具，用于根据特定查询返回预设的事实性答案。该工具为「weather in london」、「capital of france」和「population of earth」等查询预设了响应，并为其他查询提供默认响应。
 
-代码初始化了 <code>ChatGoogleGenerativeAI</code> 模型，确保其具备工具调用能力，并创建 <code>ChatPromptTemplate</code> 来引导智能体的交互。<code>create_tool_calling_agent</code> 函数用于将语言模型、工具和提示组合成智能体。
+代码初始化了 <code>ChatGoogleGenerativeAI</code> 模型，确保其具备工具调用能力，并创建了用于引导对话的 <code>ChatPromptTemplate</code>。<code>create_tool_calling_agent</code> 函数用于将语言模型、工具和提示组合成智能体。
 
-接着设置 <code>AgentExecutor</code> 来管理智能体的执行和工具调用。异步函数 <code>run_agent_with_tool</code> 用于通过给定查询调用智能体并打印结果。
+接着设置 <code>AgentExecutor</code> 来管理智能体的执行和工具调用。异步函数 <code>run_agent_with_tool</code> 用于用指定查询调用代理并输出结果。
 
-主异步函数 <code>main</code> 准备多个查询并发运行，旨在测试 <code>search_information</code> 工具的特定响应和默认响应。最后，通过 <code>asyncio.run(main())</code> 调用来执行所有智能体任务。代码在进行智能体设置和执行之前，包含了检查 LLM 是否成功初始化的步骤。</mark>
+主异步函数 <code>main</code> 则准备了多条并发查询以测试工具 <code>search_information</code> 的特定与默认响应。执行前，代码会检查模型是否成功初始化，最后，通过 <code>asyncio.run(main())</code> 调用来启动所有任务。</mark>
 
 ---
 
-## Hands-On Code Example (CrewAI) | <mark>使用 CrewAI 的实战代码</mark>
+## Hands-On Code Example (CrewAI) | <mark>实战代码：使用 CrewAI</mark>
 
 This code provides a practical example of how to implement function calling (Tools) within the CrewAI framework. It sets up a simple scenario where an agent is equipped with a tool to look up information. The example specifically demonstrates fetching a simulated stock price using this agent and tool.
 
-<mark>该代码提供了在 <code>CrewAI</code> 框架内实现函数调用（工具）的实际示例。它构建了一个简单场景：智能体配备了用于查询信息的工具。该示例具体演示了如何使用智能体和工具来获取模拟的股票价格。</mark>
+<mark>该代码提供了在 <code>CrewAI</code> 框架内实现函数调用（工具使用）的实际示例。场景很简单：为智能体配备一个用于查找信息的工具，并通过该智能体和工具来获取模拟的股票价格。</mark>
 
 ```python
 # pip install crewai langchain-openai
+
+# Colab 代码链接：https://colab.research.google.com/drive/1TBcatcgnntrm31kfIzENsSMNYwMNLUOh
 
 import os
 from crewai import Agent, Task, Crew
@@ -285,108 +306,135 @@ import logging
 
 # --- Best Practice: Configure Logging ---
 # A basic logging setup helps in debugging and tracking the crew's execution.
+# --- 最佳实践：配置日志 ---
+# 一个基础的日志设置有助于调试和追踪 crewAI 的执行过程。
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # --- Set up your API Key ---
 # For production, it's recommended to use a more secure method for key management
 # like environment variables loaded at runtime or a secret manager.
+# --- 设置你的 API 密钥 ---
+# 在生产环境中，推荐使用更安全的密钥管理方法，
+# 例如在运行时加载环境变量或使用密钥管理器。
 #
 # Set the environment variable for your chosen LLM provider (e.g., OPENAI_API_KEY)
+# 根据你选择的模型提供商设置环境变量（如 OPENAI_API_KEY）
 # os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"
 # os.environ["OPENAI_MODEL_NAME"] = "gpt-4o"
 
 # --- 1. Refactored Tool: Returns Clean Data ---
 # The tool now returns raw data (a float) or raises a standard Python error.
 # This makes it more reusable and forces the agent to handle outcomes properly.
+# --- 1. 重构工具：返回纯净数据 ---
+# 该工具返回原始数据（一个浮点数）或抛出标准的 Python 错误。
+# 这样可以提高可重用性，并确保代理在处理结果时采取适当的处理措施。
 @tool("Stock Price Lookup Tool")
 def get_stock_price(ticker: str) -> float:
-   """
-   Fetches the latest simulated stock price for a given stock ticker symbol.
-   Returns the price as a float. Raises a ValueError if the ticker is not found.
-   """
-   logging.info(f"Tool Call: get_stock_price for ticker '{ticker}'")
-   simulated_prices = {
-       "AAPL": 178.15,
-       "GOOGL": 1750.30,
-       "MSFT": 425.50,
-   }
-   price = simulated_prices.get(ticker.upper())
+    """
+    Fetches the latest simulated stock price for a given stock ticker symbol.
+    Returns the price as a float. Raises a ValueError if the ticker is not found.
+    获取指定股票代码的最新模拟股价信息。
+    返回该股票的价格（浮点数）。如果找不到该代码，会抛出 ValueError 异常。
+    """
+    logging.info(f"Tool Call: get_stock_price for ticker '{ticker}'")
+    simulated_prices = {
+        "AAPL": 178.15,
+        "GOOGL": 1750.30,
+        "MSFT": 425.50,
+    }
+    price = simulated_prices.get(ticker.upper())
 
-   if price is not None:
-       return price
-   else:
-       # Raising a specific error is better than returning a string.
-       # The agent is equipped to handle exceptions and can decide on the next action.
-       raise ValueError(f"Simulated price for ticker '{ticker.upper()}' not found.")
+    if price is not None:
+        return price
+    else:
+        # Raising a specific error is better than returning a string.
+        # The agent is equipped to handle exceptions and can decide on the next action.
+        # 与其返回一个字符串，不如抛出一个明确的错误，这样更清晰也便于处理。
+        # 该智能体具备异常处理能力，能够在发生问题时判断并选择合适的后续动作。
+        raise ValueError(f"Simulated price for ticker '{ticker.upper()}' not found.")
+
 
 # --- 2. Define the Agent ---
 # The agent definition remains the same, but it will now leverage the improved tool.
+# --- 2. 定义智能体 ---
+# 智能体的定义仍然沿用原有内容，不过现在会使用增强后的工具。
 financial_analyst_agent = Agent(
- role='Senior Financial Analyst',
- goal='Analyze stock data using provided tools and report key prices.',
- backstory="You are an experienced financial analyst adept at using data sources to find stock information. You provide clear, direct answers.",
- verbose=True,
- tools=[get_stock_price],
- # Allowing delegation can be useful, but is not necessary for this simple task.
- allow_delegation=False,
+  role='Senior Financial Analyst',
+  goal='Analyze stock data using provided tools and report key prices.',
+  backstory="You are an experienced financial analyst adept at using data sources to find stock information. You provide clear, direct answers.",
+  verbose=True,
+  tools=[get_stock_price],
+  # Allowing delegation can be useful, but is not necessary for this simple task.
+  # 允许委托在某些情况下很有用，但对于这个简单的任务并非必需。
+  allow_delegation=False,
 )
 
 # --- 3. Refined Task: Clearer Instructions and Error Handling ---
 # The task description is more specific and guides the agent on how to react
 # to both successful data retrieval and potential errors.
+# --- 3. 优化任务：提供更清晰的指引与更完善的错误处理 ---
+# 任务描述更加详尽，能够指导智能体在成功返回数据和抛出错误时采取正确的处理。
 analyze_aapl_task = Task(
- description=(
-     "What is the current simulated stock price for Apple (ticker: AAPL)? "
-     "Use the 'Stock Price Lookup Tool' to find it. "
-     "If the ticker is not found, you must report that you were unable to retrieve the price."
- ),
- expected_output=(
-     "A single, clear sentence stating the simulated stock price for AAPL. "
-     "For example: 'The simulated stock price for AAPL is $178.15.' "
-     "If the price cannot be found, state that clearly."
- ),
- agent=financial_analyst_agent,
+  description=(
+      "What is the current simulated stock price for Apple (ticker: AAPL)? "
+      "Use the 'Stock Price Lookup Tool' to find it. "
+      "If the ticker is not found, you must report that you were unable to retrieve the price."
+  ),
+  expected_output=(
+      "A single, clear sentence stating the simulated stock price for AAPL. "
+      "For example: 'The simulated stock price for AAPL is $178.15.' "
+      "If the price cannot be found, state that clearly."
+  ),
+  agent=financial_analyst_agent,
 )
 
 # --- 4. Formulate the Crew ---
 # The crew orchestrates how the agent and task work together.
+# --- 4. 组建 Crew ---
+# Crew 负责协调智能体和任务。
 financial_crew = Crew(
- agents=[financial_analyst_agent],
- tasks=[analyze_aapl_task],
- verbose=True # Set to False for less detailed logs in production
+  agents=[financial_analyst_agent],
+  tasks=[analyze_aapl_task],
+  verbose=True # Set to False for less detailed logs in production
 )
 
 # --- 5. Run the Crew within a Main Execution Block ---
 # Using a __name__ == "__main__": block is a standard Python best practice.
+# --- 5. 在主程序中运行 Crew ---
+# 使用 __name__ == "__main__": 块是 Python 的最佳实践。
 def main():
-   """Main function to run the crew."""
-   # Check for API key before starting to avoid runtime errors.
-   if not os.environ.get("OPENAI_API_KEY"):
-       print("ERROR: The OPENAI_API_KEY environment variable is not set.")
-       print("Please set it before running the script.")
-       return
+    """Main function to run the crew."""
+    # Check for API key before starting to avoid runtime errors.
+    # 在启动 Crew 之前，检查 OPENAI_API_KEY 环境变量是否已设置。
+    if not os.environ.get("OPENAI_API_KEY"):
+        print("ERROR: The OPENAI_API_KEY environment variable is not set.")
+        print("Please set it before running the script.")
+        return
 
-   print("\n## Starting the Financial Crew...")
-   print("---------------------------------")
-   
-   # The kickoff method starts the execution.
-   result = financial_crew.kickoff()
+    print("\n## Starting the Financial Crew...")
+    print("---------------------------------")
 
-   print("\n---------------------------------")
-   print("## Crew execution finished.")
-   print("\nFinal Result:\n", result)
+    # The kickoff method starts the execution.
+    # 使用 kickoff 方法启动执行。
+    result = financial_crew.kickoff()
+
+    print("\n---------------------------------")
+    print("## Crew execution finished.")
+    print("\nFinal Result:\n", result)
 
 if __name__ == "__main__":
-   main()
+    main()
 ```
+
+译者注：[Colab 代码](https://colab.research.google.com/drive/1TBcatcgnntrm31kfIzENsSMNYwMNLUOh) 已维护在[此处](/codes/Chapter-05-Tool-Use-CrewAI-Example.py)。
 
 This code demonstrates a simple application using the Crew.ai library to simulate a financial analysis task. It defines a custom tool, <code>get_stock_price</code>, that simulates looking up stock prices for predefined tickers. The tool is designed to return a floating-point number for valid tickers or raise a <code>ValueError</code> for invalid ones. A Crew.ai Agent named <code>financial_analyst_agent</code> is created with the role of a Senior Financial Analyst. This agent is given the <code>get_stock_price</code> tool to interact with. A Task is defined, <code>analyze_aapl_task</code>, specifically instructing the agent to find the simulated stock price for AAPL using the tool. The task description includes clear instructions on how to handle both success and failure cases when using the tool. A Crew is assembled, comprising the <code>financial_analyst_agent</code> and the <code>analyze_aapl_task</code>. The <code>verbose</code> setting is enabled for both the agent and the crew to provide detailed logging during execution. The main part of the script runs the crew's task using the <code>kickoff()</code> method within a standard <code>if __name__ == "__main__":</code> block. Before starting the crew, it checks if the <code>OPENAI_API_KEY</code> environment variable is set, which is required for the agent to function. The result of the crew's execution, which is the output of the task, is then printed to the console. The code also includes basic logging configuration for better tracking of the crew's actions and tool calls. It uses environment variables for API key management, though it notes that more secure methods are recommended for production environments. In short, the core logic showcases how to define tools, agents, and tasks to create a collaborative workflow in Crew.ai.
 
 <mark>该代码演示了使用 <code>Crew.ai</code> 库模拟金融分析任务的简单应用。
 
-它定义了自定义工具 <code>get_stock_price</code>，用于模拟查询预定义股票代码的价格。该工具被设计为对有效股票代码返回浮点数，对无效代码则抛出 <code>ValueError</code> 异常。
+它定义了自定义工具 <code>get_stock_price</code>，用于模拟查询预定义股票代码的价格。该工具被设计为对有效股票代码返回浮点数，对无效代码抛出 <code>ValueError</code> 异常。
 
-一个名为 <code>financial_analyst_agent</code> 的 Crew.ai 智能体被创建，其角色是高级金融分析师，并被授予 <code>get_stock_price</code> 工具进行交互。接着定义任务 <code>analyze_aapl_task</code>，明确指示智能体使用该工具查找 AAPL 的模拟股价，任务描述包含处理工具使用成功和失败情况的清晰指令。
+一个名为 <code>financial_analyst_agent</code> 的 Crew.ai 智能体被创建，其角色是高级金融分析师，并被授予 <code>get_stock_price</code> 工具进行交互。接着定义任务 <code>analyze_aapl_task</code>，明确指示智能体使用该工具查找 AAPL 的股价，任务描述包含处理工具使用成功和失败情况的清晰指令。
 
 Crew 由 <code>financial_analyst_agent</code> 和 <code>analyze_aapl_task</code> 组建而成，并为智能体和 Crew 都启用 <code>verbose</code> 设置以便在执行期间提供详细日志。
 
@@ -398,7 +446,7 @@ Crew 执行的结果（即任务的输出）最终被打印到控制台。代码
 
 ---
 
-## Hands-on code (Google ADK) | <mark>使用 Google ADK 的实战代码</mark>
+## Hands-on code (Google ADK) | <mark>实战代码：使用 Google ADK</mark>
 
 The Google Agent Developer Kit (ADK) includes a library of natively integrated tools that can be directly incorporated into an agent's capabilities.
 

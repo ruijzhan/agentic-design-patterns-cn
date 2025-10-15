@@ -8,9 +8,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/ginobefun/agentic-design-patterns-cn)](https://github.com/ginobefun/agentic-design-patterns-cn/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/ginobefun/agentic-design-patterns-cn)](https://github.com/ginobefun/agentic-design-patterns-cn/network)
 
-**作者 (Author)**: [Antonio Gulli](https://www.linkedin.com/in/searchguy/)
-
-**译者 (Translator)**: [ginobefun](https://github.com/ginobefun) 
+**原书作者 (Author)**: [Antonio Gulli](https://www.linkedin.com/in/searchguy/)
 
 **原书链接 (Original Book)**: [Amazon](https://www.amazon.com/Agentic-Design-Patterns-Hands-Intelligent/dp/3032014018/)
 
