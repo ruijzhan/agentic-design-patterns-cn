@@ -32,7 +32,7 @@ In simple terms, an **AI agent** is a system designed to perceive its environmen
 
 Agents are becoming increasingly popular at a stunning pace. According to recent studies, a majority of large IT companies are actively using these agents, and a fifth of them just started within the past year. The financial markets are also taking notice. By the end of 2024, AI agent startups had raised more than $2 billion, and the market was valued at $5.2 billion. It's expected to explode to nearly $200 billion in value by 2034. In short, all signs point to AI agents playing a massive role in our future economy.
 
-<mark>智智能体的普及速度惊人。根据最近的研究，大多数大型 IT 公司正在积极使用这些智能体，其中五分之一的公司是在过去一年内才开始使用的。金融市场也注意到了这一点。到 2024 年底，AI 智能体初创公司已筹集了超过 20 亿美元，市场估值达到 52 亿美元。预计到 2034 年，其市场价值将爆炸式增长至近 2000 亿美元。简而言之，所有迹象都表明 AI 智能体将在我们未来的经济中扮演极为重要的角色。</mark>
+<mark>智能体的普及速度惊人。根据最近的研究，大多数大型 IT 公司正在积极使用这些智能体，其中五分之一的公司是在过去一年内才开始使用的。金融市场也注意到了这一点。到 2024 年底，AI 智能体初创公司已筹集了超过 20 亿美元，市场估值达到 52 亿美元。预计到 2034 年，其市场价值将爆炸式增长至近 2000 亿美元。简而言之，所有迹象都表明 AI 智能体将在我们未来的经济中扮演极为重要的角色。</mark>
 
 In just two years, the AI paradigm has shifted dramatically, moving from simple automation to sophisticated, autonomous systems (see Fig. 2). Initially, workflows relied on basic prompts and triggers to process data with LLMs. This evolved with Retrieval-Augmented Generation (RAG), which enhanced reliability by grounding models on factual information. We then saw the development of individual AI Agents capable of using various tools. Today, we are entering the era of Agentic AI, where a team of specialized agents works in concert to achieve complex goals, marking a significant leap in AI's collaborative power.
 
