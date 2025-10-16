@@ -4,7 +4,7 @@
 
 So far, we've discussed agentic patterns that primarily involve orchestrating interactions between language models and managing the flow of information within the agent's internal workflow (Chaining, Routing, Parallelization, Reflection). However, for agents to be truly useful and interact with the real world or external systems, they need the ability to use Tools.
 
-<mark>到目前为止，我们已经探讨了主要涉及语言模型之间交互编排和智能体内部工作流信息管理的模式，例如链式调用、路由、并行化和反思。然而，要想让智能体（Agent）真正发挥作用并与现实世界或外部系统交互，它们必须具备使用工具（Tools）的能力。</mark>
+<mark>到目前为止，我们已经探讨了主要涉及语言模型之间交互编排和智能体内部工作流信息管理的模式，例如提示链、路由、并行化和反思。然而，要想让智能体（Agent）真正发挥作用并与现实世界或外部系统交互，它们必须具备使用工具（Tools）的能力。</mark>
 
 The Tool Use pattern, often implemented through a mechanism called Function Calling, enables an agent to interact with external APIs, databases, services, or even execute code. It allows the LLM at the core of the agent to decide when and how to use a specific external function based on the user's request or the current state of the task.
 
@@ -40,19 +40,19 @@ The process typically involves:
 
 This pattern is fundamental because it breaks the limitations of the LLM's training data and allows it to access up-to-date information, perform calculations it can't do internally, interact with user-specific data, or trigger real-world actions. Function calling is the technical mechanism that bridges the gap between the LLM's reasoning capabilities and the vast array of external functionalities available.
 
-<mark>这种模式很关键，因为它突破了大语言模型训练数据的局限，使其能够获取最新信息、执行内部无法处理的计算、访问用户特定的数据，或触发现实世界的动作。函数调用则是把大语言模型的推理能力与外部各类功能对接起来的技术桥梁。</mark>
+<mark>这种模式很关键，因为它突破了大语言模型训练数据的局限，使其能够获取最新信息、执行内部无法处理的计算、访问用户特定的数据，或触发现实世界的动作。函数调用是连接大语言模型推理能力与外部功能的技术桥梁。</mark>
 
 While "function calling" aptly describes invoking specific, predefined code functions, it's useful to consider the more expansive concept of "tool calling." This broader term acknowledges that an agent's capabilities can extend far beyond simple function execution. A "tool" can be a traditional function, but it can also be a complex API endpoint, a request to a database, or even an instruction directed at another specialized agent. This perspective allows us to envision more sophisticated systems where, for instance, a primary agent might delegate a complex data analysis task to a dedicated "analyst agent" or query an external knowledge base through its API. Thinking in terms of "tool calling" better captures the full potential of agents to act as orchestrators across a diverse ecosystem of digital resources and other intelligent entities.
 
-<mark>虽然「函数调用」这个说法确实能准确描述调用预定义代码函数的过程，但从更广阔的视角理解「工具调用」这一概念更为有益。通过这个更宽泛的术语，我们看到智能体的能力可以远远超出简单的函数执行。「工具」可以是传统函数，也可以是复杂的 API 接口、数据库请求，甚至是发给另一个智能体的指令。这种视角让我们能够构想更复杂的系统，例如，主智能体可以将复杂的数据分析任务委托给专门的「分析智能体」，或通过 API 查询外部知识库。「工具调用」的思维方式能更好地捕捉智能体作为编排者的全部潜力，使其能够在多样化的数字资源和其他智能实体生态系统中发挥作用。</mark>
+<mark>虽然「函数调用」这个说法确实能准确描述调用预定义代码函数的过程，但从更广阔的视角理解「工具调用」这一概念更为有益。通过这个更宽泛的术语，我们看到智能体的能力可以远远超出简单的函数执行。工具可以是传统函数、复杂的 API 接口、数据库请求，甚至是发给另一个智能体的指令。这种视角让我们能够构想更复杂的系统，例如，主智能体可以将复杂的数据分析任务委托给专门的「分析智能体」，或通过 API 查询外部知识库。「工具调用」的思维方式能更好地捕捉智能体作为编排者的全部潜力，使其能够在多样化的数字资源和其他智能实体生态系统中发挥作用。</mark>
 
 Frameworks like LangChain, LangGraph, and Google Agent Developer Kit (ADK) provide robust support for defining tools and integrating them into agent workflows, often leveraging the native function calling capabilities of modern LLMs like those in the Gemini or OpenAI series. On the "canvas" of these frameworks, you define the tools and then configure agents (typically LLM Agents) to be aware of and capable of using these tools.
 
-<mark>LangChain、LangGraph 和 Google 智能体开发套件（ADK）等框架为定义工具并将它们集成到智能体工作流提供了强大支持，通常会利用 Gemini 或 OpenAI 系列等现代大语言模型的原生函数调用功能。在这些框架的技术底座上，你可以定义工具，并配置智能体来识别和使用这些工具。</mark>
+<mark>LangChain、LangGraph 和 Google 智能体开发套件（ADK）等框架为定义工具并将它们集成到智能体工作流提供了强大支持，通常会利用 Gemini 或 OpenAI 系列等现代大语言模型的原生函数调用功能。在这些框架中，你可以定义工具，并配置智能体来识别和使用这些工具。</mark>
 
 Tool Use is a cornerstone pattern for building powerful, interactive, and externally aware agents.
 
-<mark>工具使用是一种关键模式，使构建出的代理既强大又能进行交互，并能感知和利用外部资源。</mark>
+<mark>工具使用是构建强大、可交互且能感知和利用外部资源的智能体的关键模式。</mark>
 
 ---
 
@@ -73,7 +73,7 @@ Accessing real-time data or information that is not present in the LLM's trainin
 - **Agent Flow:** User asks, "What's the weather in London?", LLM identifies the need for the weather tool, calls the tool with "London", tool returns data, LLM formats the data into a user-friendly response.
 
 - <mark><strong>用例：</strong>获取和提供天气信息的智能体。</mark>
-- <mark><strong>工具：</strong>一个天气查询 API，可输入地点并返回该地的实时天气情况。</mark>
+- <mark><strong>工具：</strong>天气查询 API，可输入地点并返回该地的实时天气情况。</mark>
 - <mark><strong>智能体流程：</strong>用户提问「伦敦天气怎么样？」，LLM 识别出需要使用天气工具，用「伦敦」作为参数调用该工具，工具返回数据后，大语言模型将这些信息整理并以易懂的方式输出给用户。</mark>
 
 **2. Interacting with Databases and APIs:** | <mark><strong>与数据库和 API 交互：</strong></mark>
@@ -116,7 +116,7 @@ Sending emails, messages, or making API calls to external communication services
 
 - <mark><strong>用例：</strong>个人助理智能体。</mark>
 - <mark><strong>工具：</strong>邮件发送接口。</mark>
-- <mark><strong>智能体流程：</strong>用户说「给约翰发一封关于明天会议的邮件」，大语言模型会从请求中提取收件人、主题和正文，并调用邮件接口发送该通知。</mark>
+- <mark><strong>智能体流程：</strong>用户说「给约翰发一封关于明天会议的邮件」，大语言模型会从请求中提取收件人、主题和正文，并调用邮件接口发送邮件。</mark>
 
 **5. Executing Code:** | <mark><strong>执行代码：</strong></mark>
 
@@ -154,7 +154,7 @@ Tool Use is what transforms a language model from a text generator into an agent
 
 Fig.1: Some examples of an Agent using Tools
 
-<mark>图 1：智能体使用工具的一些示例</mark>
+<mark><strong>图 1：</strong>智能体使用工具的一些示例</mark>
 
 ---
 
@@ -205,7 +205,7 @@ def search_information(query: str) -> str:
    """
    Provides factual information on a given topic. Use this tool to find answers to phrases
    like 'capital of France' or 'weather in London?'.
-   # 供关于特定主题的事实信息。使用此工具查找类似「法国的首都是哪里？」或「伦敦的天气如何？」这类问题的答案。
+   # 提供关于特定主题的事实信息。使用此工具查找类似「法国的首都是哪里？」或「伦敦的天气如何？」这类问题的答案。
    """
    print(f"\n--- 🛠️ Tool Called: search_information with query: '{query}' ---")
    # Simulate a search tool with a dictionary of predefined results.
@@ -276,15 +276,15 @@ asyncio.run(main())
 
 The code sets up a tool-calling agent using the LangChain library and the Google Gemini model. It defines a <code>search_information</code> tool that simulates providing factual answers to specific queries. The tool has predefined responses for "weather in london," "capital of france," and "population of earth," and a default response for other queries. A <code>ChatGoogleGenerativeAI</code> model is initialized, ensuring it has tool-calling capabilities. A <code>ChatPromptTemplate</code> is created to guide the agent's interaction. The <code>create_tool_calling_agent</code> function is used to combine the language model, tools, and prompt into an agent. An <code>AgentExecutor</code> is then set up to manage the agent's execution and tool invocation. The <code>run_agent_with_tool</code> asynchronous function is defined to invoke the agent with a given query and print the result. The <code>main</code> asynchronous function prepares multiple queries to be run concurrently. These queries are designed to test both the specific and default responses of the <code>search_information</code> tool. Finally, the <code>asyncio.run(main())</code> call executes all the agent tasks. The code includes checks for successful LLM initialization before proceeding with agent setup and execution.
 
-<mark>该代码使用 <code>LangChain</code> 库和 Google Gemini 模型构建了一个工具调用智能体。
+<mark>该代码使用 <code>LangChain</code> 库和 Google Gemini 模型构建了工具调用智能体。</mark>
 
-它定义了 <code>search_information</code> 工具，用于根据特定查询返回预设的事实性答案。该工具为「weather in london」、「capital of france」和「population of earth」等查询预设了响应，并为其他查询提供默认响应。
+<mark>首先定义 <code>search_information</code> 工具，用于根据特定查询返回预设的事实性答案。该工具为「weather in london」、「capital of france」和「population of earth」等查询预设了响应，并为其他查询提供默认响应。</mark>
 
-代码初始化了 <code>ChatGoogleGenerativeAI</code> 模型，确保其具备工具调用能力，并创建了用于引导对话的 <code>ChatPromptTemplate</code>。<code>create_tool_calling_agent</code> 函数用于将语言模型、工具和提示组合成智能体。
+<mark>代码初始化 <code>ChatGoogleGenerativeAI</code> 模型，确保其具备工具调用能力，并创建用于引导对话的 <code>ChatPromptTemplate</code>。<code>create_tool_calling_agent</code> 函数将语言模型、工具和提示组合成智能体。</mark>
 
-接着设置 <code>AgentExecutor</code> 来管理智能体的执行和工具调用。异步函数 <code>run_agent_with_tool</code> 用于用指定查询调用代理并输出结果。
+<mark>然后设置 <code>AgentExecutor</code> 管理智能体的执行和工具调用。异步函数 <code>run_agent_with_tool</code> 用指定查询调用智能体并输出结果。</mark>
 
-主异步函数 <code>main</code> 则准备了多条并发查询以测试工具 <code>search_information</code> 的特定与默认响应。执行前，代码会检查模型是否成功初始化，最后，通过 <code>asyncio.run(main())</code> 调用来启动所有任务。</mark>
+<mark>主异步函数 <code>main</code> 准备多条并发查询，测试工具 <code>search_information</code> 的特定与默认响应。执行前代码检查模型是否成功初始化，最后通过 <code>asyncio.run(main())</code> 启动所有任务。</mark>
 
 ---
 
@@ -292,7 +292,7 @@ The code sets up a tool-calling agent using the LangChain library and the Google
 
 This code provides a practical example of how to implement function calling (Tools) within the CrewAI framework. It sets up a simple scenario where an agent is equipped with a tool to look up information. The example specifically demonstrates fetching a simulated stock price using this agent and tool.
 
-<mark>该代码提供了在 <code>CrewAI</code> 框架内实现函数调用（工具使用）的实际示例。场景很简单：为智能体配备一个用于查找信息的工具，并通过该智能体和工具来获取模拟的股票价格。</mark>
+<mark>该代码提供了在 <code>CrewAI</code> 框架内实现函数调用（工具使用）的实际示例。场景很简单：为智能体配备用于查找信息的工具，并通过该智能体和工具来获取模拟的股票价格。</mark>
 
 ```python
 # pip install crewai langchain-openai
@@ -327,7 +327,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # This makes it more reusable and forces the agent to handle outcomes properly.
 # --- 1. 重构工具：返回纯净数据 ---
 # 该工具返回原始数据（一个浮点数）或抛出标准的 Python 错误。
-# 这样可以提高可重用性，并确保代理在处理结果时采取适当的处理措施。
+# 这样可以提高可重用性，并确保智能体在处理结果时采取适当的处理措施。
 @tool("Stock Price Lookup Tool")
 def get_stock_price(ticker: str) -> float:
     """
@@ -430,19 +430,19 @@ if __name__ == "__main__":
 
 This code demonstrates a simple application using the Crew.ai library to simulate a financial analysis task. It defines a custom tool, <code>get_stock_price</code>, that simulates looking up stock prices for predefined tickers. The tool is designed to return a floating-point number for valid tickers or raise a <code>ValueError</code> for invalid ones. A Crew.ai Agent named <code>financial_analyst_agent</code> is created with the role of a Senior Financial Analyst. This agent is given the <code>get_stock_price</code> tool to interact with. A Task is defined, <code>analyze_aapl_task</code>, specifically instructing the agent to find the simulated stock price for AAPL using the tool. The task description includes clear instructions on how to handle both success and failure cases when using the tool. A Crew is assembled, comprising the <code>financial_analyst_agent</code> and the <code>analyze_aapl_task</code>. The <code>verbose</code> setting is enabled for both the agent and the crew to provide detailed logging during execution. The main part of the script runs the crew's task using the <code>kickoff()</code> method within a standard <code>if __name__ == "__main__":</code> block. Before starting the crew, it checks if the <code>OPENAI_API_KEY</code> environment variable is set, which is required for the agent to function. The result of the crew's execution, which is the output of the task, is then printed to the console. The code also includes basic logging configuration for better tracking of the crew's actions and tool calls. It uses environment variables for API key management, though it notes that more secure methods are recommended for production environments. In short, the core logic showcases how to define tools, agents, and tasks to create a collaborative workflow in Crew.ai.
 
-<mark>该代码演示了使用 <code>Crew.ai</code> 库模拟金融分析任务的简单应用。
+<mark>该代码演示了使用 <code>Crew.ai</code> 库模拟金融分析任务的简单应用。</mark>
 
-<mark>首先定义了工具 <code>get_stock_price</code>，用于模拟查询预定义股票代码的价格。该工具被设计为对有效股票代码返回浮点数，对无效代码抛出 <code>ValueError</code> 异常。</mark>
+<mark>首先定义工具 <code>get_stock_price</code>，用于模拟查询预定义股票代码的价格。该工具被设计为对有效股票代码返回浮点数，对无效代码抛出 <code>ValueError</code> 异常。</mark>
 
-<mark>一个名为 <code>financial_analyst_agent</code> 的 Crew.ai 智能体被创建，其角色是高级金融分析师，并被授予 <code>get_stock_price</code> 工具进行交互。接着定义任务 <code>analyze_aapl_task</code>，明确指示智能体使用该工具查找 AAPL 的股价，任务描述包含处理工具使用成功和失败情况的清晰指令。</mark>
+<mark>创建名为 <code>financial_analyst_agent</code> 的 Crew.ai 智能体，其角色是高级金融分析师，并被授予 <code>get_stock_price</code> 工具进行交互。接着定义任务 <code>analyze_aapl_task</code>，明确指示智能体使用该工具查找 AAPL 的股价，任务描述包含处理成功和失败情况的清晰指令。</mark>
 
 <mark>Crew 由 <code>financial_analyst_agent</code> 和 <code>analyze_aapl_task</code> 组建而成，并为智能体和 Crew 都启用 <code>verbose</code> 设置以便在执行期间提供详细日志。</mark>
 
 <mark>脚本的主体部分在标准的 <code>if __name__ == "__main__":</code> 块内，使用 <code>kickoff()</code> 方法运行 Crew 的任务。在启动 Crew 之前，检查 <code>OPENAI_API_KEY</code> 环境变量是否已设置，这是智能体运行所必需的。</mark>
 
-<mark>Crew 执行的结果（即任务的输出）最终被打印到控制台。代码还包括基本的日志配置，以便更好地追踪 Crew 的行为和工具调用。它使用环境变量管理 API 密钥，但指出在生产环境中推荐使用更安全的方法。</mark>
+<mark>Crew 执行的结果最终被打印到控制台。代码还包括基本的日志配置，以便更好地追踪 Crew 的行为和工具调用。它使用环境变量管理 API 密钥，但指出在生产环境中推荐使用更安全的方法。</mark>
 
-<mark>简而言之，其核心逻辑展示了如何在 Crew.ai 中定义工具、智能体和任务，以创建协作式的工作流。</mark>
+<mark>简而言之，核心逻辑展示了如何在 Crew.ai 中定义工具、智能体和任务，以创建协作式的工作流。</mark>
 
 ---
 
@@ -454,7 +454,7 @@ The Google Agent Developer Kit (ADK) includes a library of natively integrated t
 
 **Google search:** A primary example of such a component is the Google Search tool. This tool serves as a direct interface to the Google Search engine, equipping the agent with the functionality to perform web searches and retrieve external information.
 
-<mark><strong>Google 搜索：</strong> Google 搜索工具就是一个典型的例子，它作为 Google 搜索引擎的直接接口，可以为智能体提供执行网络搜索和检索外部信息的功能。</mark>
+<mark><strong>Google 搜索：</strong>Google 搜索工具就是典型例子，它作为 Google 搜索引擎的直接接口，可以为智能体提供执行网络搜索和检索外部信息的功能。</mark>
 
 ```python
 from google.adk.agents import Agent
@@ -513,21 +513,21 @@ asyncio.run(call_agent("what's the latest ai news?"))
 
 This code demonstrates how to create and use a basic agent powered by the Google ADK for Python. The agent is designed to answer questions by utilizing Google Search as a tool. First, necessary libraries from IPython, google.adk, and google.genai are imported. Constants for the application name, user ID, and session ID are defined. An Agent instance named "basic_search_agent" is created with a description and instructions indicating its purpose. It's configured to use the Google Search tool, which is a pre-built tool provided by the ADK. An <code>InMemorySessionService</code> (see Chapter 8) is initialized to manage sessions for the agent. A new session is created for the specified application, user, and session IDs. A <code>Runner</code> is instantiated, linking the created agent with the session service. This runner is responsible for executing the agent's interactions within a session. A helper function <code>call_agent</code> is defined to simplify the process of sending a query to the agent and processing the response. Inside <code>call_agent</code>, the user's query is formatted as a <code>types.Content</code> object with the role 'user'. The <code>runner.run</code> method is called with the user ID, session ID, and the new message content. The <code>runner.run</code> method returns a list of events representing the agent's actions and responses. The code iterates through these events to find the final response. If an event is identified as the final response, the text content of that response is extracted. The extracted agent response is then printed to the console. Finally, the <code>call_agent</code> function is called with the query "what's the latest ai news?" to demonstrate the agent in action.
 
-<mark>该代码演示了如何使用 Python 的 Google ADK 创建并使用简单的智能体，该智能体可以通过 Google 搜索工具来回答问题。
+<mark>该代码演示了如何使用 Python 的 Google ADK 创建并使用简单的智能体，该智能体可以通过 Google 搜索工具来回答问题。</mark>
 
-<mark>首先，从 IPython、<code>google.adk</code> 和 <code>google.genai</code> 导入必要的库，并定义应用名称、用户 ID 和会话 ID 的常量。创建名为「basic_search_agent」的 <code>Agent</code> 实例，并为其提供描述和指令来说明其用途，同时配置它使用 ADK 提供的预构建工具——Google 搜索。</mark>
+<mark>首先从 IPython、<code>google.adk</code> 和 <code>google.genai</code> 导入必要的库，并定义应用名称、用户 ID 和会话 ID 的常量。创建名为「basic_search_agent」的 <code>Agent</code> 实例，并为其提供描述和指令来说明其用途，同时配置它使用 ADK 提供的预构建工具——Google 搜索。</mark>
 
 <mark>初始化 <code>InMemorySessionService</code>（详见第八章）来管理智能体的会话，并为指定的应用、用户和会话 ID 创建新会话。实例化 <code>Runner</code>，将创建的智能体与会话服务连接起来，该运行器负责在会话中执行智能体的交互。</mark>
 
-<mark>辅助函数 <code>call_agent</code> 用于简化向智能体发送查询和处理响应的过程。在 <code>call_agent</code> 内部，用户的查询被格式化为角色为「user」的 <code>types.Content</code> 对象。<code>runner.run</code> 方法被调用，并传入用户 ID、会话 ID 和新的消息内容。</mark>
+<mark>辅助函数 <code>call_agent</code> 用于简化向智能体发送查询和处理响应的过程。在 <code>call_agent</code> 内部，用户的查询被格式化为角色为「user」的 <code>types.Content</code> 对象，<code>runner.run</code> 方法被调用并传入用户 ID、会话 ID 和新的消息内容。</mark>
 
-<mark>该方法返回事件列表，代表智能体的行为和响应。代码遍历这些事件以找到最终响应，如果某个事件被识别为最终响应，则提取其文本内容，并打印到控制台。</mark>
+<mark>该方法返回事件列表，代表智能体的行为和响应。代码遍历这些事件以找到最终响应，如果某个事件被识别为最终响应，则提取其文本内容并打印到控制台。</mark>
 
-<mark>最后，通过调用 <code>call_agent</code> 函数并传入查询「what's the latest ai news?」来展示智能体的实际运行效果。</mark>
+<mark>最后通过调用 <code>call_agent</code> 函数并传入查询「what's the latest ai news?」来展示智能体的实际运行效果。</mark>
 
 **Code execution:** The Google ADK features integrated components for specialized tasks, including an environment for dynamic code execution. The <code>built_in_code_execution</code> tool provides an agent with a sandboxed Python interpreter. This allows the model to write and run code to perform computational tasks, manipulate data structures, and execute procedural scripts. Such functionality is critical for addressing problems that require deterministic logic and precise calculations, which are outside the scope of probabilistic language generation alone.
 
-<mark><strong>代码执行：</strong> Google ADK 为特定任务集成了专门组件，包括动态代码执行环境。<code>built_in_code_execution</code> 工具为代理提供了一个沙箱化的 Python 解释器，使模型能够编写并运行代码来完成计算任务、处理数据结构和执行脚本。对于需要确定性逻辑和精确计算的问题，这类功能非常重要，因为这类问题不是概率性语言生成所能可靠解决的。</mark>
+<mark><strong>代码执行：</strong>Google ADK 为特定任务集成了专门组件，包括动态代码执行环境。<code>built_in_code_execution</code> 工具为智能体提供沙箱化的 Python 解释器，使模型能够编写并运行代码来完成计算任务、处理数据结构和执行脚本。对于需要确定性逻辑和精确计算的问题，这类功能非常重要，因为这类问题不是概率性语言生成所能可靠解决的。</mark>
 
 ```python
 import os, getpass
@@ -643,7 +643,7 @@ except RuntimeError as e:
 
 This script uses Google's Agent Development Kit (ADK) to create an agent that solves mathematical problems by writing and executing Python code. It defines an <code>LlmAgent</code> specifically instructed to act as a calculator, equipping it with the <code>built_in_code_execution</code> tool. The primary logic resides in the <code>call_agent_async</code> function, which sends a user's query to the agent's runner and processes the resulting events. Inside this function, an asynchronous loop iterates through events, printing the generated Python code and its execution result for debugging. The code carefully distinguishes between these intermediate steps and the final event containing the numerical answer. Finally, a <code>main</code> function runs the agent with two different mathematical expressions to demonstrate its ability to perform calculations.
 
-<mark>该脚本使用 Google ADK 创建了一个通过编写和执行 Python 代码来解决数学问题的智能体。</mark>
+<mark>该脚本使用 Google ADK 创建了通过编写和执行 Python 代码来解决数学问题的智能体。</mark>
 
 <mark>首先定义了 <code>LlmAgent</code>，并明确指示其扮演计算器的角色，同时为其配备 <code>built_in_code_execution</code> 工具。</mark>
 
@@ -653,13 +653,13 @@ This script uses Google's Agent Development Kit (ADK) to create an agent that so
 
 **Enterprise search:** This code defines a Google ADK application using the google.adk library in Python. It specifically uses a <code>VSearchAgent</code>, which is designed to answer questions by searching a specified Vertex AI Search datastore. The code initializes a <code>VSearchAgent</code> named "q2_strategy_vsearch_agent", providing a description, the model to use ("gemini-2.0-flash-exp"), and the ID of the Vertex AI Search datastore. The <code>DATASTORE_ID</code> is expected to be set as an environment variable. It then sets up a <code>Runner</code> for the agent, using an <code>InMemorySessionService</code> to manage conversation history. An asynchronous function <code>call_vsearch_agent_async</code> is defined to interact with the agent. This function takes a query, constructs a message content object, and calls the runner's <code>run_async</code> method to send the query to the agent. The function then streams the agent's response back to the console as it arrives. It also prints information about the final response, including any source attributions from the datastore. Error handling is included to catch exceptions during the agent's execution, providing informative messages about potential issues like an incorrect datastore ID or missing permissions. Another asynchronous function <code>run_vsearch_example</code> is provided to demonstrate how to call the agent with example queries. The main execution block checks if the <code>DATASTORE_ID</code> is set and then runs the example using <code>asyncio.run</code>. It includes a check to handle cases where the code is run in an environment that already has a running event loop, like a Jupyter notebook.
 
-<mark><strong>企业搜索：</strong>这段 Python 代码使用 <code>google.adk</code> 库定义了一个 Google ADK 应用，使用 <code>VSearchAgent</code> 工具搜索 Vertex AI Search 数据来回答问题。</mark>
+<mark><strong>企业搜索：</strong>这段 Python 代码使用 <code>google.adk</code> 库定义了 Google ADK 应用，使用 <code>VSearchAgent</code> 工具搜索 Vertex AI Search 数据存储来回答问题。</mark>
 
 <mark>代码先创建了一个名为 <code>q2_strategy_vsearch_agent</code> 的 <code>VSearchAgent</code>，提供描述、使用的模型（gemini-2.0-flash-exp）以及 Vertex AI Search 数据存储的 ID。<code>DATASTORE_ID</code> 需要通过环境变量设置。</mark>
 
 <mark>接着为智能体设置 <code>Runner</code>，并使用 <code>InMemorySessionService</code> 来管理对话历史。异步函数 <code>call_vsearch_agent_async</code> 用于与智能体交互，该函数接收查询，构造消息内容对象，并调用运行器的 <code>run_async</code> 方法将查询发送给智能体。</mark>
 
-<mark>然后函数以流式方式将智能体的响应输出到控制台，并打印关于最终响应的信息，包括来自数据存储的任何来源归因。代码包含错误处理机制，以捕获智能体执行期间的异常，并提供有关数据存储 ID 不正确或权限缺失等潜在问题的提示信息。
+<mark>然后函数以流式方式将智能体的响应输出到控制台，并打印关于最终响应的信息，包括来自数据存储的任何来源归因。代码包含错误处理机制，以捕获智能体执行期间的异常，并提供有关数据存储 ID 不正确或权限缺失等潜在问题的提示信息。</mark>
 
 <mark>另一个异步函数 <code>run_vsearch_example</code> 用于演示如何用示例查询调用智能体。主执行块检查 <code>DATASTORE_ID</code> 是否已设置，然后使用 <code>asyncio.run</code> 运行示例。它还包含检查，以处理在已有运行事件循环的环境（如 Jupyter notebook）中运行代码的情况。</mark>
 
@@ -777,7 +777,7 @@ if __name__ == "__main__":
 
 Overall, this code provides a basic framework for building a conversational AI application that leverages Vertex AI Search to answer questions based on information stored in a datastore. It demonstrates how to define an agent, set up a runner, and interact with the agent asynchronously while streaming the response. The focus is on retrieving and synthesizing information from a specific datastore to answer user queries.
 
-<mark>总结一下，这段代码提供了一个用于构建对话式 AI 应用的基本框架。该应用通过 Vertex AI Search 根据存储在数据存储中的信息来回答问题。示例展示了如何定义代理、配置运行器，以及如何在异步交互中以流式方式接收响应。核心是从指定的数据存储中检索信息并将其整合以回答用户的提问。</mark>
+<mark>总结一下，这段代码提供了用于构建对话式 AI 应用的基本框架。该应用通过 Vertex AI Search 根据存储在数据存储中的信息来回答问题。示例展示了如何定义智能体、配置运行器，以及如何在异步交互中以流式方式接收响应。核心是从指定的数据存储中检索信息并将其整合以回答用户的提问。</mark>
 
 **Vertex Extensions:** A Vertex AI extension is a structured API wrapper that enables a model to connect with external APIs for real-time data processing and action execution. Extensions offer enterprise-grade security, data privacy, and performance guarantees. They can be used for tasks like generating and running code, querying websites, and analyzing information from private datastores. Google provides prebuilt extensions for common use cases like Code Interpreter and Vertex AI Search, with the option to create custom ones. The primary benefit of extensions includes strong enterprise controls and seamless integration with other Google products. The key difference between extensions and function calling lies in their execution: Vertex AI automatically executes extensions, whereas function calls require manual execution by the user or client.
 
@@ -789,7 +789,7 @@ Overall, this code provides a basic framework for building a conversational AI a
 
 **What:** LLMs are powerful text generators, but they are fundamentally disconnected from the outside world. Their knowledge is static, limited to the data they were trained on, and they lack the ability to perform actions or retrieve real-time information. This inherent limitation prevents them from completing tasks that require interaction with external APIs, databases, or services. Without a bridge to these external systems, their utility for solving real-world problems is severely constrained.
 
-<mark><strong>问题所在：</strong>大语言模型是强大的文本生成器，但它们本质上与外部世界脱节。它们的知识是静态的，仅限于训练时所用的数据，并且缺乏执行操作或检索实时信息的能力。这种固有的局限性使它们处理完成需要与外部 API、数据库或服务交互的任务。如果没有连接这些外部系统的桥梁，它们在解决现实世界问题方面的实用性将大打折扣。</mark>
+<mark><strong>问题所在：</strong>大语言模型是强大的文本生成器，但它们本质上与外部世界脱节。它们的知识是静态的，仅限于训练时所用的数据，并且缺乏执行操作或检索实时信息的能力。这种固有的局限性使它们无法完成需要与外部 API、数据库或服务交互的任务。如果没有连接这些外部系统的桥梁，它们在解决现实世界问题方面的实用性将大打折扣。</mark>
 
 **Why:** The Tool Use pattern, often implemented via function calling, provides a standardized solution to this problem. It works by describing available external functions, or "tools," to the LLM in a way it can understand. Based on a user's request, the agentic LLM can then decide if a tool is needed and generate a structured data object (like a JSON) specifying which function to call and with what arguments. An orchestration layer executes this function call, retrieves the result, and feeds it back to the LLM. This allows the LLM to incorporate up-to-date, external information or the result of an action into its final response, effectively giving it the ability to act.
 
@@ -805,7 +805,7 @@ Overall, this code provides a basic framework for building a conversational AI a
 
 Fig.2: Tool use design pattern
 
-<mark>图 2：工具使用设计模式</mark>
+<mark><strong>图 2：</strong>工具使用设计模式</mark>
 
 ---
 
@@ -829,7 +829,7 @@ Fig.2: Tool use design pattern
 
 - Tool Use is essential for building agents that can perform real-world actions and provide up-to-date information.
 
-   <mark>工具使用对于构建能执行现实任务并提供最新信息的智能代理来说非常重要。</mark>
+   <mark>工具使用对于构建能执行现实任务并提供最新信息的智能体来说至关重要。</mark>
 
 - LangChain simplifies tool definition using the @tool decorator and provides create_tool_calling_agent and AgentExecutor for building tool-using agents.
 
@@ -845,7 +845,7 @@ Fig.2: Tool use design pattern
 
 The Tool Use pattern is a critical architectural principle for extending the functional scope of large language models beyond their intrinsic text generation capabilities. By equipping a model with the ability to interface with external software and data sources, this paradigm allows an agent to perform actions, execute computations, and retrieve information from other systems. This process involves the model generating a structured request to call an external tool when it determines that doing so is necessary to fulfill a user's query. Frameworks such as LangChain, Google ADK, and Crew AI offer structured abstractions and components that facilitate the integration of these external tools. These frameworks manage the process of exposing tool specifications to the model and parsing its subsequent tool-use requests. This simplifies the development of sophisticated agentic systems that can interact with and take action within external digital environments.
 
-<mark>工具使用模式是一种重要的架构设计，用来把大型语言模型的能力扩展到纯文本生成之外。通过让模型能够与外部软件和数据源对接，这一模式使得智能代理可以执行操作、完成计算并从其他系统获取信息。当模型判断需要调用外部工具来满足用户请求时，它会生成一个结构化的调用请求。像 LangChain、Google ADK 和 Crew AI 这样的框架提供了便于集成外部工具的抽象层和组件，负责向模型暴露工具的规范并解析模型发出的工具调用请求，从而简化了构建能在外部数字环境中交互并采取行动的复杂代理系统的工作。</mark>
+<mark>工具使用模式是一种重要的架构设计，用来把大型语言模型的能力扩展到纯文本生成之外。通过让模型能够与外部软件和数据源对接，这一模式使得智能体可以执行操作、完成计算并从其他系统获取信息。当模型判断需要调用外部工具来满足用户请求时，它会生成一个结构化的调用请求。像 LangChain、Google ADK 和 Crew AI 这样的框架提供了便于集成外部工具的抽象层和组件，负责向模型暴露工具的规范并解析模型发出的工具调用请求，从而简化了构建能在外部数字环境中交互并采取行动的复杂智能体系统的工作。</mark>
 
 ---
 
@@ -857,7 +857,7 @@ The Tool Use pattern is a critical architectural principle for extending the fun
 
 2. Google Agent Developer Kit (ADK) Documentation (Tools): <https://google.github.io/adk-docs/tools/>
 
-   <mark>Google 开发者套件 (ADK) 文档（工具使用）：<https://google.github.io/adk-docs/tools/></mark>
+   <mark>Google 开发者套件（ADK）文档（工具使用）：<https://google.github.io/adk-docs/tools/></mark>
 
 3. OpenAI Function Calling Documentation: <https://platform.openai.com/docs/guides/function-calling>
 
