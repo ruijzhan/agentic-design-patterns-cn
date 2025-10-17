@@ -291,12 +291,10 @@ The code sets up a tool-calling agent using the LangChain library and the Google
 
 This code provides a practical example of how to implement function calling (Tools) within the CrewAI framework. It sets up a simple scenario where an agent is equipped with a tool to look up information. The example specifically demonstrates fetching a simulated stock price using this agent and tool.
 
-<mark>该代码提供了在 <code>CrewAI</code> 框架内实现函数调用（工具使用）的实际示例。场景很简单：为智能体配备用于查找信息的工具，并通过该智能体和工具来获取模拟的股票价格。</mark>
+<mark>以下代码展示了使用 <code>CrewAI</code> 框架实现函数调用的实际示例。场景很简单：为智能体配备用于查找信息的工具，并通过该智能体和工具来获取模拟的股票价格。</mark>
 
 ```python
 # pip install crewai langchain-openai
-
-# Colab 代码链接：https://colab.research.google.com/drive/1TBcatcgnntrm31kfIzENsSMNYwMNLUOh
 
 import os
 from crewai import Agent, Task, Crew
@@ -306,7 +304,7 @@ import logging
 # --- Best Practice: Configure Logging ---
 # A basic logging setup helps in debugging and tracking the crew's execution.
 # --- 最佳实践：配置日志 ---
-# 一个基础的日志设置有助于调试和追踪 crewAI 的执行过程。
+# 良好的日志设置有助于调试和追踪 crewAI 的执行过程。
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # --- Set up your API Key ---
@@ -324,9 +322,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # --- 1. Refactored Tool: Returns Clean Data ---
 # The tool now returns raw data (a float) or raises a standard Python error.
 # This makes it more reusable and forces the agent to handle outcomes properly.
-# --- 1. 重构工具：返回纯净数据 ---
-# 该工具返回原始数据（一个浮点数）或抛出标准的 Python 错误。
-# 这样可以提高可重用性，并确保智能体在处理结果时采取适当的处理措施。
+# --- 1. 重构后的工具 ---
+# 该工具现在返回模拟的股价（一个浮点数）或抛出标准的 Python 错误。
+# 这样可以提高可重用性，并确保代理在处理结果时采取适当的处理措施。
 @tool("Stock Price Lookup Tool")
 def get_stock_price(ticker: str) -> float:
     """
@@ -371,8 +369,8 @@ financial_analyst_agent = Agent(
 # --- 3. Refined Task: Clearer Instructions and Error Handling ---
 # The task description is more specific and guides the agent on how to react
 # to both successful data retrieval and potential errors.
-# --- 3. 优化任务：提供更清晰的指引与更完善的错误处理 ---
-# 任务描述更加详尽，能够指导智能体在成功返回数据和抛出错误时采取正确的处理。
+# --- 3. 优化后的任务：提供更清晰的指引与更完善的错误处理 ---
+# 任务描述更加详尽，能够指导智能体在查询成功和抛出错误时都采取正确的处理。
 analyze_aapl_task = Task(
   description=(
       "What is the current simulated stock price for Apple (ticker: AAPL)? "
@@ -389,8 +387,8 @@ analyze_aapl_task = Task(
 
 # --- 4. Formulate the Crew ---
 # The crew orchestrates how the agent and task work together.
-# --- 4. 组建 Crew ---
-# Crew 负责协调智能体和任务。
+# --- 4. 构建 Crew 实例 ---
+# 由该实例来负责协调智能体和任务。
 financial_crew = Crew(
   agents=[financial_analyst_agent],
   tasks=[analyze_aapl_task],
@@ -399,7 +397,7 @@ financial_crew = Crew(
 
 # --- 5. Run the Crew within a Main Execution Block ---
 # Using a __name__ == "__main__": block is a standard Python best practice.
-# --- 5. 在主程序中运行 Crew ---
+# --- 5. 在主程序中运行 ---
 # 使用 __name__ == "__main__": 块是 Python 的最佳实践。
 def main():
     """Main function to run the crew."""
@@ -425,23 +423,25 @@ if __name__ == "__main__":
     main()
 ```
 
-译者注：[Colab 代码](https://colab.research.google.com/drive/1TBcatcgnntrm31kfIzENsSMNYwMNLUOh) 已维护在[此处](/codes/Chapter-05-Tool-Use-CrewAI-Example.py)。
+译者注：[Colab 代码](https://colab.research.google.com/drive/1TBcatcgnntrm31kfIzENsSMNYwMNLUOh) 已维护在[此处](/codes/Chapter-05-Tool-Use-CrewAI-Example.py)，并添加了输出示例。
 
 This code demonstrates a simple application using the Crew.ai library to simulate a financial analysis task. It defines a custom tool, <code>get_stock_price</code>, that simulates looking up stock prices for predefined tickers. The tool is designed to return a floating-point number for valid tickers or raise a <code>ValueError</code> for invalid ones. A Crew.ai Agent named <code>financial_analyst_agent</code> is created with the role of a Senior Financial Analyst. This agent is given the <code>get_stock_price</code> tool to interact with. A Task is defined, <code>analyze_aapl_task</code>, specifically instructing the agent to find the simulated stock price for AAPL using the tool. The task description includes clear instructions on how to handle both success and failure cases when using the tool. A Crew is assembled, comprising the <code>financial_analyst_agent</code> and the <code>analyze_aapl_task</code>. The <code>verbose</code> setting is enabled for both the agent and the crew to provide detailed logging during execution. The main part of the script runs the crew's task using the <code>kickoff()</code> method within a standard <code>if __name__ == "__main__":</code> block. Before starting the crew, it checks if the <code>OPENAI_API_KEY</code> environment variable is set, which is required for the agent to function. The result of the crew's execution, which is the output of the task, is then printed to the console. The code also includes basic logging configuration for better tracking of the crew's actions and tool calls. It uses environment variables for API key management, though it notes that more secure methods are recommended for production environments. In short, the core logic showcases how to define tools, agents, and tasks to create a collaborative workflow in Crew.ai.
 
-<mark>该代码演示了使用 <code>Crew.ai</code> 库模拟金融分析任务的简单应用。</mark>
+<mark>以上代码演示了一个使用 <code>Crew.ai</code> 库来模拟金融分析任务的简单应用。</mark>
 
-<mark>首先定义工具 <code>get_stock_price</code>，用于模拟查询预定义股票代码的价格。该工具被设计为对有效股票代码返回浮点数，对无效代码抛出 <code>ValueError</code> 异常。</mark>
+<mark>首先定义了工具 <code>get_stock_price</code>，用于模拟查询指定股票代码的价格，当股票代码是预定义的有效代码时返回模拟的价格，如果是其他代码则抛出 <code>ValueError</code> 异常。</mark>
 
-<mark>创建名为 <code>financial_analyst_agent</code> 的 Crew.ai 智能体，其角色是高级金融分析师，并被授予 <code>get_stock_price</code> 工具进行交互。接着定义任务 <code>analyze_aapl_task</code>，明确指示智能体使用该工具查找 AAPL 的股价，任务描述包含处理成功和失败情况的清晰指令。</mark>
+<mark>接着创建一个名为 <code>financial_analyst_agent</code> 的 Crew.ai 智能体，其被赋予的角色是高级金融分析师，允许使用 <code>get_stock_price</code> 工具进行交互。</mark>
 
-<mark>Crew 由 <code>financial_analyst_agent</code> 和 <code>analyze_aapl_task</code> 组建而成，并为智能体和 Crew 都启用 <code>verbose</code> 设置以便在执行期间提供详细日志。</mark>
+<mark>随后定义了 <code>analyze_aapl_task</code> 任务，该任务要求智能体使用工具查找苹果（股票代码为 AAPL）的股价，并详细描述了如何处理成功和失败的情形。</mark>
 
-<mark>脚本的主体部分在标准的 <code>if __name__ == "__main__":</code> 块内，使用 <code>kickoff()</code> 方法运行 Crew 的任务。在启动 Crew 之前，检查 <code>OPENAI_API_KEY</code> 环境变量是否已设置，这是智能体运行所必需的。</mark>
+<mark>然后基于上述的 <code>financial_analyst_agent</code> 智能体和 <code>analyze_aapl_task</code> 任务构建了 <code>Crew</code> 实例，并设置 <code>verbose</code> 为 true 以便在执行期间输出详细日志。</mark>
 
-<mark>Crew 执行的结果最终被打印到控制台。代码还包括基本的日志配置，以便更好地追踪 Crew 的行为和工具调用。它使用环境变量管理 API 密钥，但指出在生产环境中推荐使用更安全的方法。</mark>
+<mark>脚本的主体部分在标准的 <code>if __name__ == "__main__":</code> 块内，使用 <code>kickoff()</code> 方法运行 Crew 实例的任务。在启动 Crew 之前，检查 <code>OPENAI_API_KEY</code> 环境变量是否已设置，这是智能体运行所必需的。</mark>
 
-<mark>简而言之，核心逻辑展示了如何在 Crew.ai 中定义工具、智能体和任务，以创建协作式的工作流。</mark>
+<mark>Crew 执行的结果最终被打印到控制台。代码中还包括了日志配置，以便能更好地追踪 Crew 的行为和工具调用。它使用环境变量管理 API 密钥，但在生产环境中推荐使用更安全的方法。</mark>
+
+<mark>简而言之，这个示例展示了如何在 Crew.ai 中定义工具、智能体和任务，以创建协作式的工作流。</mark>
 
 ---
 
