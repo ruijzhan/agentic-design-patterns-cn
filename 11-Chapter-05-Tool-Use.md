@@ -166,7 +166,7 @@ The implementation of tool use within the LangChain framework is a two-stage pro
 
 The following implementation will demonstrate this principle by first defining a simple function to simulate an information retrieval tool. Following this, an agent will be constructed and configured to leverage this tool in response to user input. The execution of this example requires the installation of the core LangChain libraries and a model-specific provider package. Furthermore, proper authentication with the selected language model service, typically via an API key configured in the local environment, is a necessary prerequisite.
 
-<mark>以下代码将演示这一原理。首先定义一个简单函数来模拟信息检索工具，然后构建并配置智能体，使其能够利用该工具响应用户输入。运行此示例需要先安装 LangChain 的核心库和相应的模型提供者包，并在本地环境中配置好 API 密钥以对所选的语言模型服务进行身份验证。</mark>
+<mark>以下代码将演示这一原理。首先定义一个简单函数来模拟信息检索工具，然后构建并配置智能体，使其能够利用该工具响应用户输入。运行此示例需要先安装 LangChain 的核心库和相应的模型接入包，并在本地环境中配置好 API 密钥。</mark>
 
 ```python
 import os, getpass
@@ -181,17 +181,15 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.tools import tool as langchain_tool
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 
-# Colab 代码链接：https://colab.research.google.com/drive/1PNsMB2kcCP-iPgpYamG11bGkBiP3QViz#scrollTo=FW3Eh5_OjUea
-
 # UNCOMMENT
 # Prompt the user securely and set API keys as an environment variables
-# 安全地提示用户并设置 API 密钥为环境变量
+# 安全地提示用户设置 API 密钥作为环境变量
 os.environ["GOOGLE_API_KEY"] = getpass.getpass("Enter your Google API key: ")
 os.environ["OPENAI_API_KEY"] = getpass.getpass("Enter your OpenAI API key: ")
 
 try:
    # A model with function/tool calling capabilities is required.
-   # 需要一个具有函数/工具调用能力的模型
+   # 需要一个具有函数调用能力的模型，这里使用 Gemini 2.0 Flash。
    llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0)
    print(f"✅ Language model initialized: {llm.model}")
 except Exception as e:
@@ -199,17 +197,17 @@ except Exception as e:
    llm = None
 
 # --- Define a Tool ---
-# --- 定义一个工具 ---
+# --- 定义模拟的搜索工具 ---
 @langchain_tool
 def search_information(query: str) -> str:
    """
    Provides factual information on a given topic. Use this tool to find answers to phrases
    like 'capital of France' or 'weather in London?'.
-   # 提供关于特定主题的事实信息。使用此工具查找类似「法国的首都是哪里？」或「伦敦的天气如何？」这类问题的答案。
+   # 模拟提供关于特定查询的输出。使用此工具查找类似「法国的首都是哪里？」或「伦敦的天气如何？」这类问题的答案。
    """
    print(f"\n--- 🛠️ Tool Called: search_information with query: '{query}' ---")
    # Simulate a search tool with a dictionary of predefined results.
-   # 模拟一个搜索工具，使用预定义的结果。
+   # 通过一个字典预定义的结果来模拟搜索工具。
    simulated_results = {
        "weather in london": "The weather in London is currently cloudy with a temperature of 15°C.",
        "capital of france": "The capital of France is Paris.",
@@ -224,7 +222,7 @@ def search_information(query: str) -> str:
 tools = [search_information]
 
 # --- Create a Tool-Calling Agent ---
-# --- 创建一个工具调用智能体 ---
+# --- 创建一个使用工具的智能体 ---
 if llm:
    # This prompt template requires an `agent_scratchpad` placeholder for the agent's internal steps.
    # 这个提示模板需要一个 `agent_scratchpad` 占位符，用于记录智能体的内部步骤。
@@ -235,18 +233,19 @@ if llm:
    ])
 
    # Create the agent, binding the LLM, tools, and prompt together.
-   # 创建智能体，将 LLM、工具和提示绑定在一起。
+   # 使用定义好的大语言模型、工具和提示词模板构建智能体。
    agent = create_tool_calling_agent(llm, tools, agent_prompt)
 
    # AgentExecutor is the runtime that invokes the agent and executes the chosen tools.
    # The 'tools' argument is not needed here as they are already bound to the agent.
-   # AgentExecutor 是运行时，用于调用智能体并执行选定的工具。这里的 'tools' 参数不需要了，因为它们已经绑定到智能体了。
+   # AgentExecutor 负责调用智能体并运行其选择工具的运行时组件。
+   # 这里的 'tools' 参数可以不需要了，因为它们已经绑定到智能体上了。
    agent_executor = AgentExecutor(agent=agent, verbose=True, tools=tools)
 
 async def run_agent_with_tool(query: str):
    """
    Invokes the agent executor with a query and prints the final response.
-   # 调用智能体执行器并打印最终响应。
+   执行智能体并打印最终输出信息。
    """
    print(f"\n--- 🏃 Running Agent with Query: '{query}' ---")
    try:
@@ -259,7 +258,7 @@ async def run_agent_with_tool(query: str):
 async def main():
    """
    Runs all agent queries concurrently.
-   # 并发运行所有智能体查询。
+   并发运行所有智能体查询任务。
    """
    tasks = [
        run_agent_with_tool("What is the capital of France?"),
@@ -272,23 +271,23 @@ nest_asyncio.apply()
 asyncio.run(main())
 ```
 
-译者注：[Colab 代码](https://colab.research.google.com/drive/1PNsMB2kcCP-iPgpYamG11bGkBiP3QViz#scrollTo=FW3Eh5_OjUea) 已维护在[此处](/codes/Chapter-05-Tool-Use-LangChain-Example.py)。
+译者注：[Colab 代码](https://colab.research.google.com/drive/1PNsMB2kcCP-iPgpYamG11bGkBiP3QViz#scrollTo=FW3Eh5_OjUea) 已维护在[此处](/codes/Chapter-05-Tool-Use-LangChain-Example.py)，并添加了输出示例。
 
 The code sets up a tool-calling agent using the LangChain library and the Google Gemini model. It defines a <code>search_information</code> tool that simulates providing factual answers to specific queries. The tool has predefined responses for "weather in london," "capital of france," and "population of earth," and a default response for other queries. A <code>ChatGoogleGenerativeAI</code> model is initialized, ensuring it has tool-calling capabilities. A <code>ChatPromptTemplate</code> is created to guide the agent's interaction. The <code>create_tool_calling_agent</code> function is used to combine the language model, tools, and prompt into an agent. An <code>AgentExecutor</code> is then set up to manage the agent's execution and tool invocation. The <code>run_agent_with_tool</code> asynchronous function is defined to invoke the agent with a given query and print the result. The <code>main</code> asynchronous function prepares multiple queries to be run concurrently. These queries are designed to test both the specific and default responses of the <code>search_information</code> tool. Finally, the <code>asyncio.run(main())</code> call executes all the agent tasks. The code includes checks for successful LLM initialization before proceeding with agent setup and execution.
 
-<mark>该代码使用 <code>LangChain</code> 库和 Google Gemini 模型构建了工具调用智能体。</mark>
+<mark>以上代码使用了 <code>LangChain</code> 库和 Google Gemini 模型构建了一个使用工具的智能体。</mark>
 
-<mark>首先定义 <code>search_information</code> 工具，用于根据特定查询返回预设的事实性答案。该工具为「weather in london」、「capital of france」和「population of earth」等查询预设了响应，并为其他查询提供默认响应。</mark>
+<mark>首先定义了 <code>search_information</code> 工具，用于模拟检索特定问题的事实答案，比如「伦敦天气怎么样？」、「法国的首都是哪里？」和「地球的人口是多少？」，如果是其他问题就返回一个兜底回复。</mark>
 
-<mark>代码初始化 <code>ChatGoogleGenerativeAI</code> 模型，确保其具备工具调用能力，并创建用于引导对话的 <code>ChatPromptTemplate</code>。<code>create_tool_calling_agent</code> 函数将语言模型、工具和提示组合成智能体。</mark>
+<mark>接着初始化了一个具备工具调用能力的 <code>ChatGoogleGenerativeAI</code> 模型，并创建了用于引导对话的 <code>ChatPromptTemplate</code>。通过 <code>create_tool_calling_agent</code> 将上述定义的模型、工具和提示组合成智能体，并用 <code>AgentExecutor</code> 负责具体的执行与工具调用任务。</mark>
 
-<mark>然后设置 <code>AgentExecutor</code> 管理智能体的执行和工具调用。异步函数 <code>run_agent_with_tool</code> 用指定查询调用智能体并输出结果。</mark>
+<mark>代码中还用异步函数 <code>run_agent_with_tool</code>，用于用指定输入调用智能体，并打印最终输出结果。主异步函数 <code>main</code> 则准备了多条查询，以测试工具 <code>search_information</code> 的输出情况，包括预定义的查询和兜底回复。</mark>
 
-<mark>主异步函数 <code>main</code> 准备多条并发查询，测试工具 <code>search_information</code> 的特定与默认响应。执行前代码检查模型是否成功初始化，最后通过 <code>asyncio.run(main())</code> 启动所有任务。</mark>
+<mark>执行前代码会检查模型是否成功初始化，最后通过 <code>asyncio.run(main())</code> 启动所有任务。</mark>
 
 ---
 
-## Hands-On Code Example (CrewAI) | <mark>实战代码：使用 CrewAI</mark>
+## Hands-On Code Example (CrewAI) | <mark>实战代码：CrewAI</mark>
 
 This code provides a practical example of how to implement function calling (Tools) within the CrewAI framework. It sets up a simple scenario where an agent is equipped with a tool to look up information. The example specifically demonstrates fetching a simulated stock price using this agent and tool.
 
