@@ -440,8 +440,8 @@ Fix: [specific issue] in [chapter name]
 | Reflection | 反思 | |
 | Tool Use | 工具使用 | |
 | Planning | 规划 | |
-| Memory Management | 内存管理 | |
-| Human-in-the-Loop | 人在回路中 | |
+| Memory Management | 记忆管理 | |
+| Human-in-the-Loop | 人机协同 | |
 | RAG | 检索增强生成 | 保留英文缩写 |
 | LLM | 大语言模型 | Large Language Model |
 | Concurrency | 并发性 | 与并行性 (Parallelism) 区分 |
