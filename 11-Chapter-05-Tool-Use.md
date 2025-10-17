@@ -4,11 +4,11 @@
 
 So far, we've discussed agentic patterns that primarily involve orchestrating interactions between language models and managing the flow of information within the agent's internal workflow (Chaining, Routing, Parallelization, Reflection). However, for agents to be truly useful and interact with the real world or external systems, they need the ability to use Tools.
 
-<mark>到目前为止，我们已经探讨了主要涉及语言模型之间交互编排和智能体内部工作流信息管理的模式，例如提示链、路由、并行化和反思。然而，要想让智能体（Agent）真正发挥作用并与现实世界或外部系统交互，它们必须具备使用工具（Tools）的能力。</mark>
+<mark>到目前为止，我们讨论的智能体模式侧重于在大语言模型间协调交互和管理智能体内部的信息流（如提示链、路由、并行化和反思模式）。但如果要让智能体真正有用、能与现实世界或外部系统交互，就必须赋予它们使用工具的能力。</mark>
 
 The Tool Use pattern, often implemented through a mechanism called Function Calling, enables an agent to interact with external APIs, databases, services, or even execute code. It allows the LLM at the core of the agent to decide when and how to use a specific external function based on the user's request or the current state of the task.
 
-<mark>工具使用模式通常通过函数调用（Function Calling）机制实现，使智能体能够与外部 API、数据库、服务甚至直接执行代码进行交互。它允许作为智能体核心的大语言模型根据用户请求或当前任务状态，来决定何时以及如何使用特定的外部函数。</mark>
+<mark>工具使用模式通常通过函数调用（Function Calling）机制实现，使智能体能够与外部 API、数据库、服务交互，甚至直接执行代码。它允许作为智能体核心的大语言模型根据用户请求或当前任务状态，来决定何时以及如何使用特定的外部函数。</mark>
 
 The process typically involves:
 
@@ -16,7 +16,7 @@ The process typically involves:
 
 1. **Tool Definition:** External functions or capabilities are defined and described to the LLM. This description includes the function's purpose, its name, and the parameters it accepts, along with their types and descriptions.
 
-   <mark><strong>工具定义：</strong>向大语言模型定义并描述外部函数或功能，包括函数的用途、名称、可接受的参数及其类型和说明。</mark>
+   <mark><strong>工具定义：</strong>向大语言模型描述外部函数或功能，包括函数的用途、名称，以及所接受参数的类型和说明。</mark>
 
 2. **LLM Decision:** The LLM receives the user's request and the available tool definitions. Based on its understanding of the request and the tools, the LLM decides if calling one or more tools is necessary to fulfill the request.
 
@@ -44,15 +44,15 @@ This pattern is fundamental because it breaks the limitations of the LLM's train
 
 While "function calling" aptly describes invoking specific, predefined code functions, it's useful to consider the more expansive concept of "tool calling." This broader term acknowledges that an agent's capabilities can extend far beyond simple function execution. A "tool" can be a traditional function, but it can also be a complex API endpoint, a request to a database, or even an instruction directed at another specialized agent. This perspective allows us to envision more sophisticated systems where, for instance, a primary agent might delegate a complex data analysis task to a dedicated "analyst agent" or query an external knowledge base through its API. Thinking in terms of "tool calling" better captures the full potential of agents to act as orchestrators across a diverse ecosystem of digital resources and other intelligent entities.
 
-<mark>虽然「函数调用」这个说法确实能准确描述调用预定义代码函数的过程，但从更广阔的视角理解「工具调用」这一概念更为有益。通过这个更宽泛的术语，我们看到智能体的能力可以远远超出简单的函数执行。工具可以是传统函数、复杂的 API 接口、数据库请求，甚至是发给另一个智能体的指令。这种视角让我们能够构想更复杂的系统，例如，主智能体可以将复杂的数据分析任务委托给专门的「分析智能体」，或通过 API 查询外部知识库。「工具调用」的思维方式能更好地捕捉智能体作为编排者的全部潜力，使其能够在多样化的数字资源和其他智能实体生态系统中发挥作用。</mark>
+<mark>虽然「函数调用」这个说法确实能准确描述调用预定义代码函数的过程，但从更广阔的视角理解「工具调用」这一概念更为有益。通过这个更广义的术语，我们看到智能体的能力可以远远超出简单的函数执行。工具可以是传统函数、复杂的 API 接口、数据库请求，甚至是发给另一个智能体的指令。这种视角让我们能够构想更复杂的系统，例如，主智能体可以将复杂的数据分析任务委托给专门的「分析智能体」，或通过 API 查询外部知识库。「工具调用」的思维方式能更好地捕捉智能体作为编排者的全部潜力，使其能够在多样化的数字资源和其他智能生态系统中发挥作用。</mark>
 
 Frameworks like LangChain, LangGraph, and Google Agent Developer Kit (ADK) provide robust support for defining tools and integrating them into agent workflows, often leveraging the native function calling capabilities of modern LLMs like those in the Gemini or OpenAI series. On the "canvas" of these frameworks, you define the tools and then configure agents (typically LLM Agents) to be aware of and capable of using these tools.
 
-<mark>LangChain、LangGraph 和 Google 智能体开发套件（ADK）等框架为定义工具并将它们集成到智能体工作流提供了强大支持，通常会利用 Gemini 或 OpenAI 系列等现代大语言模型的原生函数调用功能。在这些框架中，你可以定义工具，并配置智能体来识别和使用这些工具。</mark>
+<mark>LangChain、LangGraph 和 Google ADK 等框架可以很方便的定义工具并将它们集成到智能体工作流中，通常会利用 Gemini 或 OpenAI 等现代大语言模型的原生函数调用功能。在这些框架中，你可以定义工具，并通过设置让智能体识别和使用这些工具。</mark>
 
 Tool Use is a cornerstone pattern for building powerful, interactive, and externally aware agents.
 
-<mark>工具使用是构建强大、可交互且能感知和利用外部资源的智能体的关键模式。</mark>
+<mark>工具使用是构建强大、可交互且能感知和利用外部资源智能体的关键模式。</mark>
 
 ---
 
