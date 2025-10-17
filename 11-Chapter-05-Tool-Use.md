@@ -60,23 +60,23 @@ Tool Use is a cornerstone pattern for building powerful, interactive, and extern
 
 The Tool Use pattern is applicable in virtually any scenario where an agent needs to go beyond generating text to perform an action or retrieve specific, dynamic information:
 
-<mark>工具使用模式几乎适用于任何智能体需要超越文本生成、执行操作或检索特定动态信息的场景：</mark>
+<mark>当智能体需要的不只是文本生成，而是执行操作或检索动态信息的时候，工具使用模式几乎都能派上用场。</mark>
 
-**1. Information Retrieval from External Sources:** | <mark><strong>从外部来源检索信息：</strong></mark>
+**1. Information Retrieval from External Sources:** | <mark><strong>从外部来源获取信息：</strong></mark>
 
 Accessing real-time data or information that is not present in the LLM's training data.
 
-<mark>获取大语言模型训练数据中未包含的实时信息或数据。</mark>
+<mark>获取大语言模型训练数据中未包含的实时数据或信息。</mark>
 
 - **Use Case:** A weather agent.
 - **Tool:** A weather API that takes a location and returns the current weather conditions.
 - **Agent Flow:** User asks, "What's the weather in London?", LLM identifies the need for the weather tool, calls the tool with "London", tool returns data, LLM formats the data into a user-friendly response.
 
-- <mark><strong>用例：</strong>获取和提供天气信息的智能体。</mark>
-- <mark><strong>工具：</strong>天气查询 API，可输入地点并返回该地的实时天气情况。</mark>
-- <mark><strong>智能体流程：</strong>用户提问「伦敦天气怎么样？」，LLM 识别出需要使用天气工具，用「伦敦」作为参数调用该工具，工具返回数据后，大语言模型将这些信息整理并以易懂的方式输出给用户。</mark>
+- <mark><strong>用例：</strong>天气信息智能体。</mark>
+- <mark><strong>工具：</strong>天气查询接口，可输入地点并返回该地的实时天气。</mark>
+- <mark><strong>智能体流程：</strong>用户提问「伦敦天气怎么样？」，大语言模型识别出需要使用天气工具，并使用「伦敦」作为参数调用该工具，工具返回数据后，大语言模型将这些信息整理并以易懂的方式输出给用户。</mark>
 
-**2. Interacting with Databases and APIs:** | <mark><strong>与数据库和 API 交互：</strong></mark>
+**2. Interacting with Databases and APIs:** | <mark><strong>与数据库和接口交互：</strong></mark>
 
 Performing queries, updates, or other operations on structured data.
 
@@ -87,22 +87,22 @@ Performing queries, updates, or other operations on structured data.
 - **Agent Flow:** User asks "Is product X in stock?", LLM calls the inventory API, tool returns stock count, LLM tells the user the stock status.
 
 - <mark><strong>用例：</strong>电商平台智能体。</mark>
-- <mark><strong>工具：</strong>通过 API 调用来检查产品库存、查询订单状态或处理支付。</mark>
-- <mark><strong>智能体流程：</strong>用户提问「产品 X 有货吗？」，大语言模型会调用库存 API，工具返回库存数量后，大语言模型会告知用户该产品库存情况。</mark>
+- <mark><strong>工具：</strong>通过接口来检查产品库存、查询订单状态或处理支付。</mark>
+- <mark><strong>智能体流程：</strong>用户提问「产品 X 有货吗？」，大语言模型先调用库存接口，工具返回库存数量后，大语言模型向用户反馈该产品库存情况。</mark>
 
 **3. Performing Calculations and Data Analysis:** | <mark><strong>执行计算和数据分析：</strong></mark>
 
 Using external calculators, data analysis libraries, or statistical tools.
 
-<mark>使用外部计算器、数据分析库或统计工具。</mark>
+<mark>使用计算器、数据分析库或统计工具。</mark>
 
 - **Use Case:** A financial agent.
 - **Tools:** A calculator function, a stock market data API, a spreadsheet tool.
 - **Agent Flow:** User asks "What's the current price of AAPL and calculate the potential profit if I bought 100 shares at $150?", LLM calls stock API, gets current price, then calls calculator tool, gets result, formats response.
 
 - <mark><strong>用例：</strong>金融领域智能体。</mark>
-- <mark><strong>工具：</strong>计算器函数、股票行情 API、电子表格工具。</mark>
-- <mark><strong>智能体流程：</strong>用户提问「苹果公司当前股价是多少？如果我以 150 美元买入 100 股，可能的利润是多少？」，大语言模型会先调用股票行情接口获取最新价格，然后调用计算器工具计算利润，最后把结果整理并返回给用户。</mark>
+- <mark><strong>工具：</strong>计算器函数、股票行情接口、电子表格工具。</mark>
+- <mark><strong>智能体流程：</strong>用户提问「苹果公司当前股价是多少？如果我以 150 美元买入 100 股，可能会赚多少钱？」，大语言模型会先调用股票行情接口获取最新价格，然后调用计算器工具计算收益，最后把结果整理并返回给用户。</mark>
 
 **4. Sending Communications:** | <mark><strong>发送通知：</strong></mark>
 
@@ -122,7 +122,7 @@ Sending emails, messages, or making API calls to external communication services
 
 Running code snippets in a safe environment to perform specific tasks.
 
-<mark>在安全环境中运行代码片段以完成特定任务。</mark>
+<mark>在受控且安全的环境中运行代码片段以完成特定任务。</mark>
 
 - **Use Case:** A coding assistant agent.
 - **Tool:** A code interpreter.
@@ -130,7 +130,7 @@ Running code snippets in a safe environment to perform specific tasks.
 
 - <mark><strong>用例：</strong>编程助理智能体。</mark>
 - <mark><strong>工具：</strong>代码解释器。</mark>
-- <mark><strong>智能体流程：</strong>用户提供 Python 代码片段并提问「这段代码是做什么的？」，大语言模型会先使用代码解释器运行代码，并据此进行分析和解释。</mark>
+- <mark><strong>智能体流程：</strong>用户提供一段 Python 代码并问「这段代码是做什么的？」，大语言模型会先使用代码解释器运行代码，并据此进行分析和解释。</mark>
 
 **6. Controlling Other Systems or Devices:** | <mark><strong>控制其他系统或设备：</strong></mark>
 
@@ -144,17 +144,17 @@ Interacting with smart home devices, IoT platforms, or other connected systems.
 
 - <mark><strong>用例：</strong>智能家居智能体。</mark>
 - <mark><strong>工具：</strong>控制智能灯的接口。</mark>
-- <mark><strong>智能体流程：</strong>用户说「关掉客厅的灯」，大语言模型根据命令和目标设备调用智能家居接口来实现开关灯的操作。</mark>
+- <mark><strong>智能体流程：</strong>用户说「关掉客厅的灯」，大语言模型将带有命令和目标设备信息的请求发送给智能家居工具以执行操作。</mark>
 
 Tool Use is what transforms a language model from a text generator into an agent capable of sensing, reasoning, and acting in the digital or physical world (see Fig. 1)
 
-<mark>工具使用将语言模型从文本生成器变成能够在数字或现实世界中感知、推理和行动的智能体（见图 1）。</mark>
+<mark>工具使用模式将语言模型从文本生成器变成能够在数字或现实世界中感知、推理和行动的智能体（见图 1）。</mark>
 
 ![Tool Use Examples](/images/chapter05_fig1.jpg)
 
 Fig.1: Some examples of an Agent using Tools
 
-<mark><strong>图 1：</strong>智能体使用工具的一些示例</mark>
+<mark>图 1：智能体使用工具的一些示例</mark>
 
 ---
 
