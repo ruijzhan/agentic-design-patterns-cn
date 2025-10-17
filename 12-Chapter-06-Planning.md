@@ -23,7 +23,7 @@ A hallmark of this process is adaptability. An initial plan is merely a starting
 
 However, it is crucial to recognize the trade-off between flexibility and predictability. Dynamic planning is a specific tool, not a universal solution. When a problem's solution is already well-understood and repeatable, constraining the agent to a predetermined, fixed workflow is more effective. This approach limits the agent's autonomy to reduce uncertainty and the risk of unpredictable behavior, guaranteeing a reliable and consistent outcome. Therefore, the decision to use a planning agent versus a simple task-execution agent hinges on a single question: does the "how" need to be discovered, or is it already known?
 
-<mark>然而，认识到灵活性和可预测性之间的权衡是至关重要的。动态规划是一个特定的工具，而不是通用解决方案。当问题的解决方案已经被充分理解且可重复时，将智能体约束到预定的、固定的工作流程更有效。这种方法限制了智能体的自主性以减少不确定性和不可预测行为的风险，保证可靠和一致的结果。因此，使用规划智能体与简单任务执行智能体的决定取决于一个问题："如何"需要被发现，还是已经知道？</mark>
+<mark>然而，认识到灵活性和可预测性之间的权衡是至关重要的。动态规划是一个特定的工具，而不是通用解决方案。当问题的解决方案已经被充分理解且可重复时，将智能体约束到预定的、固定的工作流程更有效。这种方法限制了智能体的自主性以减少不确定性和不可预测行为的风险，保证可靠和一致的结果。因此，使用规划智能体与简单任务执行智能体的决定取决于一个问题：是需要去解决“怎么做”的问题，还是已经知道该怎么做了？</mark>
 
 ---
 
