@@ -653,17 +653,24 @@ This script uses Google's Agent Development Kit (ADK) to create an agent that so
 
 **Enterprise search:** This code defines a Google ADK application using the google.adk library in Python. It specifically uses a <code>VSearchAgent</code>, which is designed to answer questions by searching a specified Vertex AI Search datastore. The code initializes a <code>VSearchAgent</code> named "q2_strategy_vsearch_agent", providing a description, the model to use ("gemini-2.0-flash-exp"), and the ID of the Vertex AI Search datastore. The <code>DATASTORE_ID</code> is expected to be set as an environment variable. It then sets up a <code>Runner</code> for the agent, using an <code>InMemorySessionService</code> to manage conversation history. An asynchronous function <code>call_vsearch_agent_async</code> is defined to interact with the agent. This function takes a query, constructs a message content object, and calls the runner's <code>run_async</code> method to send the query to the agent. The function then streams the agent's response back to the console as it arrives. It also prints information about the final response, including any source attributions from the datastore. Error handling is included to catch exceptions during the agent's execution, providing informative messages about potential issues like an incorrect datastore ID or missing permissions. Another asynchronous function <code>run_vsearch_example</code> is provided to demonstrate how to call the agent with example queries. The main execution block checks if the <code>DATASTORE_ID</code> is set and then runs the example using <code>asyncio.run</code>. It includes a check to handle cases where the code is run in an environment that already has a running event loop, like a Jupyter notebook.
 
-<mark><strong>企业搜索：</strong>这段 Python 代码使用 <code>google.adk</code> 库定义了 Google ADK 应用，使用 <code>VSearchAgent</code> 工具搜索 Vertex AI Search 数据存储来回答问题。</mark>
+<mark><strong>企业搜索：</strong>下面这段 Python 代码使用 <code>google.adk</code> 库定义了一个 Google ADK 应用，使用 <code>VSearchAgent</code> 工具搜索 Vertex AI Search 数据来回答问题。</mark>
 
-<mark>代码先创建了一个名为 <code>q2_strategy_vsearch_agent</code> 的 <code>VSearchAgent</code>，提供描述、使用的模型（gemini-2.0-flash-exp）以及 Vertex AI Search 数据存储的 ID。<code>DATASTORE_ID</code> 需要通过环境变量设置。</mark>
+<mark>代码先创建了一个名为 <code>q2_strategy_vsearch_agent</code> 的 <code>VSearchAgent</code> 示例，提供详细的描述、使用的模型（gemini-2.0-flash-exp）以及 Vertex AI Search 数据存储的 ID，其中 <code>DATASTORE_ID</code> 需要通过环境变量设置。</mark>
 
-<mark>接着为智能体设置 <code>Runner</code>，并使用 <code>InMemorySessionService</code> 来管理对话历史。异步函数 <code>call_vsearch_agent_async</code> 用于与智能体交互，该函数接收查询，构造消息内容对象，并调用运行器的 <code>run_async</code> 方法将查询发送给智能体。</mark>
+<mark>接着为智能体设置 <code>Runner</code> 实例，并使用 <code>InMemorySessionService</code> 来管理对话历史。</mark>
 
-<mark>然后函数以流式方式将智能体的响应输出到控制台，并打印关于最终响应的信息，包括来自数据存储的任何来源归因。代码包含错误处理机制，以捕获智能体执行期间的异常，并提供有关数据存储 ID 不正确或权限缺失等潜在问题的提示信息。</mark>
+<mark>核心的异步函数 <code>call_vsearch_agent_async</code> 用于与智能体交互，该函数接收查询请求构造为消息对象，并作为参数传给 <code>run_async</code> 方法从而实现将查询请求发送给智能体并等待异步事件返回。</mark>
 
-<mark>另一个异步函数 <code>run_vsearch_example</code> 用于演示如何用示例查询调用智能体。主执行块检查 <code>DATASTORE_ID</code> 是否已设置，然后使用 <code>asyncio.run</code> 运行示例。它还包含检查，以处理在已有运行事件循环的环境（如 Jupyter notebook）中运行代码的情况。</mark>
+<mark>随后该函数以流式方式将智能体的响应输出到控制台，并打印关于最终响应的信息，包括来自数据存储的元数据。代码具备错误处理机制，以捕获智能体执行期间的异常，并提供有价值的上下文信息，如数据存储 ID 不正确或权限缺失等。</mark>
+
+<mark>另一个异步函数 <code>run_vsearch_example</code> 用于演示如何调用该智能体。主执行块先检查 <code>DATASTORE_ID</code> 是否已设置，然后使用 <code>asyncio.run</code> 运行示例。代码最后还包含一个异常检查，避免在已有运行事件循环的环境（如 Jupyter notebook）中运行代码时出现错误。</mark>
 
 ```python
+# Colab 代码链接：https://colab.research.google.com/drive/1AhF4Jam8wuYMEYU27y22r1uTbixs9MSE
+
+# 依赖安装：
+# pip install google-adk nest-asyncio python-dotenv
+
 import asyncio
 from google.genai import types
 from google.adk import agents
@@ -672,6 +679,7 @@ from google.adk.sessions import InMemorySessionService
 import os
 
 # --- Configuration ---
+# --- 环境变量配置 ---
 # Ensure you have set your GOOGLE_API_KEY and DATASTORE_ID environment variables
 # 请确认已在环境变量中配置 GOOGLE_API_KEY 和 DATASTORE_ID
 
@@ -688,7 +696,7 @@ USER_ID = "user_123"  # Example User ID
 SESSION_ID = "session_456" # Example Session ID
 
 # --- Agent Definition (Updated with the newer model from the guide) ---
-# --- 定义智能体 ---
+# --- 定义一个使用 Vertex AI Search 数据存储的智能体 ---
 vsearch_agent = agents.VSearchAgent(
     name="q2_strategy_vsearch_agent",
     description="Answers questions about Q2 strategy documents using Vertex AI Search.",
@@ -698,7 +706,7 @@ vsearch_agent = agents.VSearchAgent(
 )
 
 # --- Runner and Session Initialization ---
-# --- 初始化运行器和会话 ---
+# --- 初始化执行器和会话 ---
 runner = Runner(
     agent=vsearch_agent,
     app_name=APP_NAME,
@@ -717,18 +725,18 @@ async def call_vsearch_agent_async(query: str):
 
     try:
         # Construct the message content correctly
-        # 构造消息内容
+        # 构造消息对象
         content = types.Content(role='user', parts=[types.Part(text=query)])
 
         # Process events as they arrive from the asynchronous runner
-        # 处理异步事件
+        # 执行并处理异步事件
         async for event in runner.run_async(
             user_id=USER_ID,
             session_id=SESSION_ID,
             new_message=content
         ):
             # For token-by-token streaming of the response text
-            # 流式输出文本
+            # 处理流式输出的文本
             if hasattr(event, 'content_part_delta') and event.content_part_delta:
                 print(event.content_part_delta.text, end="", flush=True)
 
@@ -777,11 +785,11 @@ if __name__ == "__main__":
 
 Overall, this code provides a basic framework for building a conversational AI application that leverages Vertex AI Search to answer questions based on information stored in a datastore. It demonstrates how to define an agent, set up a runner, and interact with the agent asynchronously while streaming the response. The focus is on retrieving and synthesizing information from a specific datastore to answer user queries.
 
-<mark>总结一下，这段代码提供了用于构建对话式 AI 应用的基本框架。该应用通过 Vertex AI Search 根据存储在数据存储中的信息来回答问题。示例展示了如何定义智能体、配置运行器，以及如何在异步交互中以流式方式接收响应。核心是从指定的数据存储中检索信息并将其整合以回答用户的提问。</mark>
+<mark>总结一下，这段代码提供了用于构建对话式 AI 应用的基本框架，该应用通过查询 Vertex AI Search 中的数据来回答问题。示例详细展示了如何定义智能体、配置执行器，以及如何在异步交互中以流式方式接收响应。最终达到了从指定的数据存储中检索信息并将其整合以回答用户提问的目的。</mark>
 
 **Vertex Extensions:** A Vertex AI extension is a structured API wrapper that enables a model to connect with external APIs for real-time data processing and action execution. Extensions offer enterprise-grade security, data privacy, and performance guarantees. They can be used for tasks like generating and running code, querying websites, and analyzing information from private datastores. Google provides prebuilt extensions for common use cases like Code Interpreter and Vertex AI Search, with the option to create custom ones. The primary benefit of extensions includes strong enterprise controls and seamless integration with other Google products. The key difference between extensions and function calling lies in their execution: Vertex AI automatically executes extensions, whereas function calls require manual execution by the user or client.
 
-<mark><strong>Vertex 扩展：Vertex AI 扩展是对外部 API 的结构化封装，允许模型直接连接外部服务以进行实时数据处理和执行操作。扩展提供企业级的安全、数据隐私保护和性能保障，适用于生成与运行代码、查询网站、分析私有数据存储中的信息等场景。Google 提供了诸如代码解释器和 Vertex AI Search 的预置扩展，也支持自定义扩展。它们的主要优势是强大的企业控制能力与与 Google 生态的无缝整合。与函数调用不同的是，Vertex AI 会自动执行扩展，而函数调用通常需要由用户或客户端来触发和执行。</mark>
+<mark><strong>Vertex 扩展：Vertex AI 扩展是对外部接口的结构化封装，允许模型直接连接外部服务以实现实时数据的处理和操作。扩展提供企业级的安全、数据隐私保护和性能保障，适用于生成与运行代码、查询网站、分析私有数据等场景。Google 提供了诸如代码解释器和 Vertex AI Search 的预置扩展，当然也支持自定义扩展。它们的核心优势是强大的企业控制能力以及与 Google 生态的无缝衔接。与函数调用不同的是，Vertex AI 会自动执行扩展，而函数调用通常需要由用户或客户端来触发和执行。</mark>
 
 ---
 
@@ -789,11 +797,11 @@ Overall, this code provides a basic framework for building a conversational AI a
 
 **What:** LLMs are powerful text generators, but they are fundamentally disconnected from the outside world. Their knowledge is static, limited to the data they were trained on, and they lack the ability to perform actions or retrieve real-time information. This inherent limitation prevents them from completing tasks that require interaction with external APIs, databases, or services. Without a bridge to these external systems, their utility for solving real-world problems is severely constrained.
 
-<mark><strong>问题所在：</strong>大语言模型是强大的文本生成器，但它们本质上与外部世界脱节。它们的知识是静态的，仅限于训练时所用的数据，并且缺乏执行操作或检索实时信息的能力。这种固有的局限性使它们无法完成需要与外部 API、数据库或服务交互的任务。如果没有连接这些外部系统的桥梁，它们在解决现实世界问题方面的实用性将大打折扣。</mark>
+<mark><strong>问题所在：</strong>大语言模型是强大的文本生成器，但它们本质上与外部世界脱节。它们的知识是静态的，仅限于训练时所用的数据，并且缺乏执行操作或检索实时信息的能力。这种固有的局限性使它们无法完成需要与外部接口、数据库、服务进行交互的任务。如果没有连接这些外部系统的桥梁，它们在解决实际问题的能力将大打折扣。</mark>
 
 **Why:** The Tool Use pattern, often implemented via function calling, provides a standardized solution to this problem. It works by describing available external functions, or "tools," to the LLM in a way it can understand. Based on a user's request, the agentic LLM can then decide if a tool is needed and generate a structured data object (like a JSON) specifying which function to call and with what arguments. An orchestration layer executes this function call, retrieves the result, and feeds it back to the LLM. This allows the LLM to incorporate up-to-date, external information or the result of an action into its final response, effectively giving it the ability to act.
 
-<mark><strong>解决之道：</strong>工具使用模式（通常通过函数调用实现）为这个问题提供了标准化解决方案。它的工作原理是，以大语言模型能理解的方式向其描述可用的外部函数或「工具」。基于用户请求，具有智能能力的模型可以判断是否需要使用工具，并生成结构化数据对象（如 JSON），指明要调用哪个函数以及使用什么参数。编排层负责执行此函数调用，获取结果，并将其反馈给模型。这使得大语言模型能够将最新的外部信息或操作结果整合到最终响应中，从而有效地赋予了它行动的能力。</mark>
+<mark><strong>解决之道：</strong>工具使用模式（通常通过函数调用机制实现）为这个问题提供了标准化解决方案。它的工作原理是，以大语言模型能理解的方式向其描述可用的外部函数或工具。基于用户请求，具有智能能力的模型可以判断是否需要使用工具，并生成结构化数据对象（如 JSON），指明要调用哪个函数以及使用什么参数。编排层负责执行此函数调用，获取结果，并将其反馈给模型。这使得大语言模型能够将最新的外部信息或操作结果整合到最终响应中，从而有效地赋予了它行动的能力。</mark>
 
 **Rule of thumb:** Use the Tool Use pattern whenever an agent needs to break out of the LLM's internal knowledge and interact with the outside world. This is essential for tasks requiring real-time data (e.g., checking weather, stock prices), accessing private or proprietary information (e.g., querying a company's database), performing precise calculations, executing code, or triggering actions in other systems (e.g., sending an email, controlling smart devices).
 
@@ -805,7 +813,7 @@ Overall, this code provides a basic framework for building a conversational AI a
 
 Fig.2: Tool use design pattern
 
-<mark><strong>图 2：</strong>工具使用设计模式</mark>
+<mark>图 2：工具使用模式</mark>
 
 ---
 
@@ -813,7 +821,7 @@ Fig.2: Tool use design pattern
 
 - Tool Use (Function Calling) allows agents to interact with external systems and access dynamic information.
 
-   <mark>工具使用（函数调用）使智能体能够与外部系统交互并获取动态信息。</mark>
+   <mark>工具使用（函数调用）模式使智能体能够与外部系统交互并获取动态信息。</mark>
 
 - It involves defining tools with clear descriptions and parameters that the LLM can understand.
 
@@ -821,7 +829,7 @@ Fig.2: Tool use design pattern
 
 - The LLM decides when to use a tool and generates structured function calls.
 
-   <mark>大语言模型会决定何时使用工具，并生成结构化的函数调用以执行这些操作。</mark>
+   <mark>大语言模型会决定何时使用工具，并生成结构化的数据以执行这些操作。</mark>
 
 - Agentic frameworks execute the actual tool calls and return the results to the LLM.
 
@@ -829,15 +837,15 @@ Fig.2: Tool use design pattern
 
 - Tool Use is essential for building agents that can perform real-world actions and provide up-to-date information.
 
-   <mark>工具使用对于构建能执行现实任务并提供最新信息的智能体来说至关重要。</mark>
+   <mark>工具使用模式对于构建能够执行现实任务并提供最新信息的智能体来说至关重要。</mark>
 
 - LangChain simplifies tool definition using the @tool decorator and provides create_tool_calling_agent and AgentExecutor for building tool-using agents.
 
-   <mark>LangChain 使用 <code>@tool</code> 装饰器简化工具定义，并提供 <code>create_tool_calling_agent</code> 和 <code>AgentExecutor</code> 来构建使用工具的智能体。</mark>
+   <mark>LangChain 使用 <code>@tool</code> 装饰器简化工具定义，并提供 <code>create_tool_calling_agent</code> 和 <code>AgentExecutor</code> 来构建能够使用工具的智能体。</mark>
 
 - Google ADK has a number of very useful pre-built tools such as Google Search, Code Execution and Vertex AI Search Tool.
 
-   <mark>Google ADK 提供了多种非常实用的现成工具，例如 Google 搜索、代码执行器和 Vertex AI 搜索工具，方便将外部功能直接集成到工作流程中。</mark>
+   <mark>Google ADK 提供了多种非常实用的内置工具，比如 Google 搜索、代码执行器和 Vertex AI Search 工具，方便将外部功能直接集成到工作流程中。</mark>
 
 ---
 
@@ -845,7 +853,9 @@ Fig.2: Tool use design pattern
 
 The Tool Use pattern is a critical architectural principle for extending the functional scope of large language models beyond their intrinsic text generation capabilities. By equipping a model with the ability to interface with external software and data sources, this paradigm allows an agent to perform actions, execute computations, and retrieve information from other systems. This process involves the model generating a structured request to call an external tool when it determines that doing so is necessary to fulfill a user's query. Frameworks such as LangChain, Google ADK, and Crew AI offer structured abstractions and components that facilitate the integration of these external tools. These frameworks manage the process of exposing tool specifications to the model and parsing its subsequent tool-use requests. This simplifies the development of sophisticated agentic systems that can interact with and take action within external digital environments.
 
-<mark>工具使用模式是一种重要的架构设计，用来把大型语言模型的能力扩展到纯文本生成之外。通过让模型能够与外部软件和数据源对接，这一模式使得智能体可以执行操作、完成计算并从其他系统获取信息。当模型判断需要调用外部工具来满足用户请求时，它会生成一个结构化的调用请求。像 LangChain、Google ADK 和 Crew AI 这样的框架提供了便于集成外部工具的抽象层和组件，负责向模型暴露工具的规范并解析模型发出的工具调用请求，从而简化了构建能在外部数字环境中交互并采取行动的复杂智能体系统的工作。</mark>
+<mark>工具使用模式是一种重要的架构原则，用于把大型语言模型的能力扩展到纯文本生成之外。通过让模型能够与外部软件和数据源对接，这一模式使得智能体可以执行操作、完成计算以及从其他系统获取信息。当模型判断需要调用外部工具来满足用户请求时，它会生成一个结构化的调用请求。</mark>
+
+<mark>像 LangChain、Google ADK 和 Crew AI 这样的框架提供了便于集成外部工具的抽象层和组件，负责向模型暴露工具的定义并解析模型返回的工具调用请求。总体而言，这大大简化了能够在外部数字环境中感知、交互和行动的复杂代理系统的开发。</mark>
 
 ---
 

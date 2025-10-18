@@ -1,3 +1,8 @@
+# Colab 代码链接：https://colab.research.google.com/drive/1AhF4Jam8wuYMEYU27y22r1uTbixs9MSE
+
+# 依赖安装：
+# pip install google-adk nest-asyncio python-dotenv
+
 import asyncio
 from google.genai import types
 from google.adk import agents
@@ -6,6 +11,7 @@ from google.adk.sessions import InMemorySessionService
 import os
 
 # --- Configuration ---
+# --- 环境变量配置 ---
 # Ensure you have set your GOOGLE_API_KEY and DATASTORE_ID environment variables
 # 请确认已在环境变量中配置 GOOGLE_API_KEY 和 DATASTORE_ID
 
@@ -22,7 +28,7 @@ USER_ID = "user_123"  # Example User ID
 SESSION_ID = "session_456" # Example Session ID
 
 # --- Agent Definition (Updated with the newer model from the guide) ---
-# --- 定义智能体 ---
+# --- 定义一个使用 Vertex AI Search 数据存储的智能体 ---
 vsearch_agent = agents.VSearchAgent(
     name="q2_strategy_vsearch_agent",
     description="Answers questions about Q2 strategy documents using Vertex AI Search.",
@@ -32,7 +38,7 @@ vsearch_agent = agents.VSearchAgent(
 )
 
 # --- Runner and Session Initialization ---
-# --- 初始化运行器和会话 ---
+# --- 初始化执行器和会话 ---
 runner = Runner(
     agent=vsearch_agent,
     app_name=APP_NAME,
@@ -51,18 +57,18 @@ async def call_vsearch_agent_async(query: str):
 
     try:
         # Construct the message content correctly
-        # 构造消息内容
+        # 构造消息对象
         content = types.Content(role='user', parts=[types.Part(text=query)])
 
         # Process events as they arrive from the asynchronous runner
-        # 处理异步事件
+        # 执行并处理异步事件
         async for event in runner.run_async(
             user_id=USER_ID,
             session_id=SESSION_ID,
             new_message=content
         ):
             # For token-by-token streaming of the response text
-            # 流式输出文本
+            # 处理流式输出的文本
             if hasattr(event, 'content_part_delta') and event.content_part_delta:
                 print(event.content_part_delta.text, end="", flush=True)
 
