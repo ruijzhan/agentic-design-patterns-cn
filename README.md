@@ -82,7 +82,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 | 章节 | 设计模式概述 | 负责人 | AI 翻译 | 人工评审 | 交叉评审 |
 |------|-------------|--------|---------|----------|----------|
-| [第 15 章：智能体间通信 (A2A)](21-Chapter-15-Inter-Agent-Communication.md) | 智能体通信协议，实现智能体间高效交互 | 待定 | ❌ | ❌ | ❌ |
+| [第 15 章：智能体间通信 (A2A)](21-Chapter-15-Inter-Agent-Communication.md) | 智能体通信协议，实现智能体间高效交互 | @朵朵肥 | ❌ | ❌ | ❌ |
 | [第 16 章：资源感知优化](22-Chapter-16-Resource-Aware-Optimization.md) | 资源优化管理，平衡性能与成本 | 待定 | ❌ | ❌ | ❌ |
 | [第 17 章：推理技术](23-Chapter-17-Reasoning-Techniques.md) | 增强推理能力，提升决策质量 | 待定 | ❌ | ❌ | ❌ |
 | [第 18 章：护栏/安全模式](24-Chapter-18-Guardrails-Safety-Patterns.md) | 安全保障机制，防止不当行为 | 待定 | ❌ | ❌ | ❌ |
