@@ -82,12 +82,12 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 | 章节 | 设计模式概述 | 负责人 | AI 翻译 | 人工评审 | 交叉评审 |
 |------|-------------|--------|---------|----------|----------|
-| [第 15 章：智能体间通信 (A2A)](21-Chapter-15-Inter-Agent-Communication.md) | 智能体通信协议，实现智能体间高效交互 | 待定 | ❌ | ❌ | ❌ |
+| [第 15 章：智能体间通信 (A2A)](21-Chapter-15-Inter-Agent-Communication.md) | 智能体通信协议，实现智能体间高效交互 | @朵朵肥 | ✅ | ❌ | ❌ |
 | [第 16 章：资源感知优化](22-Chapter-16-Resource-Aware-Optimization.md) | 资源优化管理，平衡性能与成本 | 待定 | ❌ | ❌ | ❌ |
-| [第 17 章：推理技术](23-Chapter-17-Reasoning-Techniques.md) | 增强推理能力，提升决策质量 | 待定 | ❌ | ❌ | ❌ |
+| [第 17 章：推理技术](23-Chapter-17-Reasoning-Techniques.md) | 增强推理能力，提升决策质量 | @Diqing | ❌ | ❌ | ❌ |
 | [第 18 章：护栏/安全模式](24-Chapter-18-Guardrails-Safety-Patterns.md) | 安全保障机制，防止不当行为 | 待定 | ❌ | ❌ | ❌ |
-| [第 19 章：评估与监控](25-Chapter-19-Evaluation-and-Monitoring.md) | 性能评估体系，量化智能体表现 | 待定 | ❌ | ❌ | ❌ |
-| [第 20 章：优先级排序](26-Chapter-20-Prioritization.md) | 任务优先级管理，优化资源分配 | @IsaacZhaoo | ✅ | ❌ | ❌ |
+| [第 19 章：评估与监控](25-Chapter-19-Evaluation-and-Monitoring.md) | 性能评估体系，量化智能体表现 | @朵朵肥 | ❌ | ❌ | ❌ |
+| [第 20 章：优先级排序](26-Chapter-20-Prioritization.md) | 任务优先级管理，优化资源分配 | @IsaacZhaoo | ❌ | ❌ | ❌ |
 | [第 21 章：探索与发现](27-Chapter-21-Exploration-and-Discovery.md) | 自主探索机制，发现新解决方案 | 待定 | ❌ | ❌ | ❌ |
 
 ### 附录 | Appendix (74 页)
@@ -243,6 +243,23 @@ python codes/Chapter-01-Prompt-Chaining-Example.py
 3. 提交更改 (`git commit -m 'Add: your contribution'`)
 4. 推送到分支 (`git push origin feature/your-contribution`)
 5. 创建 Pull Request
+
+---
+
+## 💬 交流社区 | Community
+
+欢迎加入我们的微信交流群，无论你是想一起阅读、交流心得，还是对翻译提出宝贵建议，都欢迎你的加入。后续我们还会组织交流或直播活动哦！
+
+<div align="center">
+  <img src="images/wechat_group.jpg" alt="微信交流群" width="300"/>
+</div>
+
+**📝 加群说明**：
+
+- 🚫 微信群已满 200 人，无法直接扫码加入
+- ✅ 请添加 Gino 的个人微信：**xingxing17455671**
+- 💬 备注"智能体设计模式"，将拉您入群
+- 🤝 一个人看书不如一群人讨论。加入我们吧 ~
 
 ---
 
