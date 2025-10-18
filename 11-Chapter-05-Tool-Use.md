@@ -449,11 +449,11 @@ This code demonstrates a simple application using the Crew.ai library to simulat
 
 The Google Agent Developer Kit (ADK) includes a library of natively integrated tools that can be directly incorporated into an agent's capabilities.
 
-<mark>Google 开发者套件内置了工具库，这些工具可以直接整合到智能体中以扩展其能力。</mark>
+<mark>Google 开发者套件（ADK）内置了丰富的工具，这些工具可以直接整合到智能体中，方便扩展其功能。</mark>
 
 **Google search:** A primary example of such a component is the Google Search tool. This tool serves as a direct interface to the Google Search engine, equipping the agent with the functionality to perform web searches and retrieve external information.
 
-<mark><strong>Google 搜索：</strong>Google 搜索工具就是典型例子，它作为 Google 搜索引擎的直接接口，可以为智能体提供执行网络搜索和检索外部信息的功能。</mark>
+<mark><strong>Google 搜索：</strong>Google 搜索工具就是典型的例子，它提供 Google 搜索的接口，可以为智能体提供网络搜索和外部信息检索的功能。</mark>
 
 ```python
 from google.adk.agents import Agent
@@ -465,28 +465,27 @@ import nest_asyncio
 import asyncio
 
 # Define variables required for Session setup and Agent execution
-# 定义会话和智能体执行所需变量
+# 定义会话和智能体执行所需的变量
 APP_NAME="Google Search_agent"
 USER_ID="user1234"
 SESSION_ID="1234"
 
-
 # Define Agent with access to search tool
-# 定义智能体并授予其使用搜索工具的能力
-root_agent = ADKAgent(
+# 定义一个可以使用搜索功能的智能体
+root_agent = Agent(
    name="basic_search_agent",
    model="gemini-2.0-flash-exp",
    description="Agent to answer questions using Google Search.",
    instruction="I can answer your questions by searching the internet. Just ask me anything!",
-   tools=[google_search] # Google Search is a pre-built tool to perform Google searches.
+   tools=[google_search] # Google Search is a pre-built tool to perform Google searches. Google Search 是一个内置的工具，用来执行 Google 搜索。
 )
 
 # Agent Interaction
-# 智能体交互
+# 智能体调用函数
 async def call_agent(query):
    """
    Helper function to call the agent with a query.
-   辅助函数，用于调用智能体并发送查询。
+   辅助函数，传入查询参数调用智能体。
    """
 
    # Session and Runner
@@ -508,21 +507,19 @@ nest_asyncio.apply()
 asyncio.run(call_agent("what's the latest ai news?"))
 ```
 
-译者注：[Colab 代码](https://colab.research.google.com/drive/1qFpzmHYomA4vbtuuV1DJrW_cpAZAbY_m) 已维护在[此处](/codes/Chapter-05-Tool-Use-ADK-Example-Google-Search.py)。
+译者注：[Colab 代码](https://colab.research.google.com/drive/1qFpzmHYomA4vbtuuV1DJrW_cpAZAbY_m) 已维护在[此处](/codes/Chapter-05-Tool-Use-ADK-Example-Google-Search.py)，并添加了输出示例。
 
 This code demonstrates how to create and use a basic agent powered by the Google ADK for Python. The agent is designed to answer questions by utilizing Google Search as a tool. First, necessary libraries from IPython, google.adk, and google.genai are imported. Constants for the application name, user ID, and session ID are defined. An Agent instance named "basic_search_agent" is created with a description and instructions indicating its purpose. It's configured to use the Google Search tool, which is a pre-built tool provided by the ADK. An <code>InMemorySessionService</code> (see Chapter 8) is initialized to manage sessions for the agent. A new session is created for the specified application, user, and session IDs. A <code>Runner</code> is instantiated, linking the created agent with the session service. This runner is responsible for executing the agent's interactions within a session. A helper function <code>call_agent</code> is defined to simplify the process of sending a query to the agent and processing the response. Inside <code>call_agent</code>, the user's query is formatted as a <code>types.Content</code> object with the role 'user'. The <code>runner.run</code> method is called with the user ID, session ID, and the new message content. The <code>runner.run</code> method returns a list of events representing the agent's actions and responses. The code iterates through these events to find the final response. If an event is identified as the final response, the text content of that response is extracted. The extracted agent response is then printed to the console. Finally, the <code>call_agent</code> function is called with the query "what's the latest ai news?" to demonstrate the agent in action.
 
-<mark>该代码演示了如何使用 Python 的 Google ADK 创建并使用简单的智能体，该智能体可以通过 Google 搜索工具来回答问题。</mark>
+<mark>以上代码演示了如何使用 Python 版本的 Google ADK 创建一个简单的智能体，该智能体可以通过内置的 Google 搜索工具来回答问题。</mark>
 
-<mark>首先从 IPython、<code>google.adk</code> 和 <code>google.genai</code> 导入必要的库，并定义应用名称、用户 ID 和会话 ID 的常量。创建名为「basic_search_agent」的 <code>Agent</code> 实例，并为其提供描述和指令来说明其用途，同时配置它使用 ADK 提供的预构建工具——Google 搜索。</mark>
+<mark>首先从 <code>IPython</code>、<code>google.adk</code> 和 <code>google.genai</code> 导入必要的库，并定义应用名称、用户 ID 和会话 ID 等常量。</mark>
 
-<mark>初始化 <code>InMemorySessionService</code>（详见第八章）来管理智能体的会话，并为指定的应用、用户和会话 ID 创建新会话。实例化 <code>Runner</code>，将创建的智能体与会话服务连接起来，该运行器负责在会话中执行智能体的交互。</mark>
+<mark>接着创建一个名为「basic_search_agent」的智能体实例，详细描述智能体的功能和指令，同时声明使用 ADK 内预置的 Google 搜索工具。</mark>
 
-<mark>辅助函数 <code>call_agent</code> 用于简化向智能体发送查询和处理响应的过程。在 <code>call_agent</code> 内部，用户的查询被格式化为角色为「user」的 <code>types.Content</code> 对象，<code>runner.run</code> 方法被调用并传入用户 ID、会话 ID 和新的消息内容。</mark>
+<mark>然后在智能体辅助函数内，先初始化一个 <code>InMemorySessionService</code>（详见第八章）来管理智能体的会话，并使用之前定义的应用、用户和会话 ID 等常量创建新会话。接着创建 <code>Runner</code> 实例，将创建的智能体与上述会话服务连接起来，负责在会话中执行智能体的交互。这个辅助函数 <code>call_agent</code> 封装了向智能体发送查询和处理响应的过程，用户的查询被封装成角色为「user」的 <code>types.Content</code> 对象，该对象和用户 ID、会话 ID 一起传给 <code>runner.run</code> 方法启动执行。该方法随后返回事件列表，代表智能体的行为和响应。代码遍历这些事件以找到最终响应，如果某个事件被识别为最终响应，则提取其文本内容并输出到控制台。</mark>
 
-<mark>该方法返回事件列表，代表智能体的行为和响应。代码遍历这些事件以找到最终响应，如果某个事件被识别为最终响应，则提取其文本内容并打印到控制台。</mark>
-
-<mark>最后通过调用 <code>call_agent</code> 函数并传入查询「what's the latest ai news?」来展示智能体的实际运行效果。</mark>
+<mark>最后代码传入问题「what's the latest ai news?」作为参数调用 <code>call_agent</code> 并来展示智能体的实际运行效果。</mark>
 
 **Code execution:** The Google ADK features integrated components for specialized tasks, including an environment for dynamic code execution. The <code>built_in_code_execution</code> tool provides an agent with a sandboxed Python interpreter. This allows the model to write and run code to perform computational tasks, manipulate data structures, and execute procedural scripts. Such functionality is critical for addressing problems that require deterministic logic and precise calculations, which are outside the scope of probabilistic language generation alone.
 
