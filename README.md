@@ -75,7 +75,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 | 章节 | 设计模式概述 | 负责人 | AI 翻译 | 人工评审 | 交叉评审 |
 |------|-------------|--------|---------|----------|----------|
 | [第 12 章：异常处理与恢复](18-Chapter-12-Exception-Handling-and-Recovery.md) | 优雅错误处理，确保系统稳定性 | 待定 | ❌ | ❌ | ❌ |
-| [第 13 章：人机协作](19-Chapter-13-Human-in-the-Loop.md) | 人机协作决策，融合人类智慧与 AI 能力 | @曾汉 | ⏳ | ❌ | ❌ |
+| [第 13 章：人机协作](19-Chapter-13-Human-in-the-Loop.md) | 人机协作决策，融合人类智慧与 AI 能力 | @曾汉 | ✅ | ✅ | ⏳ |
 | [第 14 章：知识检索 (RAG)](20-Chapter-14-Knowledge-Retrieval.md) | 检索增强生成技术，结合外部知识库 | @EE | ✅ | ✅ | ⏳ |
 
 ### 第四部分：生产设计模式 | Part Four: Production Patterns (114 页)
