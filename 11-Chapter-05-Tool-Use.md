@@ -515,7 +515,7 @@ This code demonstrates how to create and use a basic agent powered by the Google
 
 <mark>首先从 <code>IPython</code>、<code>google.adk</code> 和 <code>google.genai</code> 导入必要的库，并定义应用名称、用户 ID 和会话 ID 等常量。</mark>
 
-<mark>接着创建一个名为「basic_search_agent」的智能体实例，详细描述智能体的功能和指令，同时声明使用 ADK 内预置的 Google 搜索工具。</mark>
+<mark>接着创建一个名为<code>basic_search_agent</code> 的智能体实例，详细描述智能体的功能和指令，同时声明使用 ADK 内预置的 Google 搜索工具。</mark>
 
 <mark>然后在智能体辅助函数内，先初始化一个 <code>InMemorySessionService</code>（详见第八章）来管理智能体的会话，并使用之前定义的应用、用户和会话 ID 等常量创建新会话。接着创建 <code>Runner</code> 实例，将创建的智能体与上述会话服务连接起来，负责在会话中执行智能体的交互。这个辅助函数 <code>call_agent</code> 封装了向智能体发送查询和处理响应的过程，用户的查询被封装成角色为「user」的 <code>types.Content</code> 对象，该对象和用户 ID、会话 ID 一起传给 <code>runner.run</code> 方法启动执行。该方法随后返回事件列表，代表智能体的行为和响应。代码遍历这些事件以找到最终响应，如果某个事件被识别为最终响应，则提取其文本内容并输出到控制台。</mark>
 
@@ -643,13 +643,13 @@ except RuntimeError as e:
 
 This script uses Google's Agent Development Kit (ADK) to create an agent that solves mathematical problems by writing and executing Python code. It defines an <code>LlmAgent</code> specifically instructed to act as a calculator, equipping it with the <code>built_in_code_execution</code> tool. The primary logic resides in the <code>call_agent_async</code> function, which sends a user's query to the agent's runner and processes the resulting events. Inside this function, an asynchronous loop iterates through events, printing the generated Python code and its execution result for debugging. The code carefully distinguishes between these intermediate steps and the final event containing the numerical answer. Finally, a <code>main</code> function runs the agent with two different mathematical expressions to demonstrate its ability to perform calculations.
 
-<mark>该脚本使用 Google ADK 创建了通过编写和执行 Python 代码来解决数学问题的智能体。</mark>
+<mark>以上代码演示了如何使用 Google ADK 来创建具有代码执行能力的智能体，它通过编写和执行 Python 代码来解决具体的数学问题。</mark>
 
-<mark>首先定义了 <code>LlmAgent</code>，并明确指示其扮演计算器的角色，同时为其配备 <code>built_in_code_execution</code> 工具。</mark>
+<mark>接着创建一个名为 <code>code_agent</code> 的智能体实例，详细描述智能体的功能和指令，要求它扮演计算器的角色，并可以使用内置的 <code>built_in_code_execution</code> 工具来执行代码。</mark>
 
-<mark>核心逻辑位于 <code>call_agent_async</code> 函数中，该函数将用户查询发送给智能体的运行器并处理返回的事件。在该函数内部，异步循环遍历事件，打印生成的 Python 代码及其执行结果以供调试。</mark>
+<mark>核心逻辑位于 <code>call_agent_async</code> 函数中，该函数将用户查询发送给智能体的运行器并处理返回的事件。在该函数内部，使用异步循环遍历事件，打印生成的 Python 代码及其执行结果。代码区分了这些中间步骤和包含最终答案的结束事件。</mark>
 
-<mark>代码仔细区分这些中间步骤与包含最终数值答案的最终事件。最后，<code>main</code> 函数用两个不同的数学表达式运行智能体，展示其执行计算的能力。</mark>
+<mark>最后，<code>main</code> 函数用两个不同的数学表达式运行智能体，以演示其执行计算的能力。</mark>
 
 **Enterprise search:** This code defines a Google ADK application using the google.adk library in Python. It specifically uses a <code>VSearchAgent</code>, which is designed to answer questions by searching a specified Vertex AI Search datastore. The code initializes a <code>VSearchAgent</code> named "q2_strategy_vsearch_agent", providing a description, the model to use ("gemini-2.0-flash-exp"), and the ID of the Vertex AI Search datastore. The <code>DATASTORE_ID</code> is expected to be set as an environment variable. It then sets up a <code>Runner</code> for the agent, using an <code>InMemorySessionService</code> to manage conversation history. An asynchronous function <code>call_vsearch_agent_async</code> is defined to interact with the agent. This function takes a query, constructs a message content object, and calls the runner's <code>run_async</code> method to send the query to the agent. The function then streams the agent's response back to the console as it arrives. It also prints information about the final response, including any source attributions from the datastore. Error handling is included to catch exceptions during the agent's execution, providing informative messages about potential issues like an incorrect datastore ID or missing permissions. Another asynchronous function <code>run_vsearch_example</code> is provided to demonstrate how to call the agent with example queries. The main execution block checks if the <code>DATASTORE_ID</code> is set and then runs the example using <code>asyncio.run</code>. It includes a check to handle cases where the code is run in an environment that already has a running event loop, like a Jupyter notebook.
 
