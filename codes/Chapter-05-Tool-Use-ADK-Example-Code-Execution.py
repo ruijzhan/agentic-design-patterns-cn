@@ -1,3 +1,8 @@
+# Colab 代码链接：https://colab.research.google.com/drive/1iF4I_mkV_as0fYoVBuKtf5gfTONEySfK
+
+# 依赖安装：
+# pip install google-adk nest-asyncio python-dotenv
+
 import os, getpass
 import asyncio
 import nest_asyncio
@@ -12,14 +17,14 @@ from google.adk.code_executors import BuiltInCodeExecutor
 from google.genai import types
 
 # Define variables required for Session setup and Agent execution
-# 定义会话和智能体执行所需变量
+# 定义会话和智能体执行所需的变量
 APP_NAME="calculator"
 USER_ID="user1234"
 SESSION_ID="session_code_exec_async"
 
 
 # Agent Definition
-# 定义智能体
+# 定义一个可以执行代码的智能体
 code_agent = LlmAgent(
    name="calculator_agent",
    model="gemini-2.0-flash",
@@ -32,11 +37,11 @@ code_agent = LlmAgent(
 )
 
 # Agent Interaction (Async)
-# 智能体交互（异步执行）
+# 异步执行智能体
 async def call_agent_async(query):
 
    # Session and Runner
-   # 会话和执行器
+   # 创建会话和执行器
    session_service = InMemorySessionService()
    session = await session_service.create_session(app_name=APP_NAME, user_id=USER_ID, session_id=SESSION_ID)
    runner = Runner(agent=code_agent, app_name=APP_NAME, session_service=session_service)
@@ -46,7 +51,7 @@ async def call_agent_async(query):
    final_response_text = "No final text response captured."
    try:
        # Use run_async
-       # 使用 run_async 方法运行智能体
+       # 使用 run_async 方法异步执行智能体
        async for event in runner.run_async(user_id=USER_ID, session_id=SESSION_ID, new_message=content):
            print(f"Event ID: {event.id}, Author: {event.author}")
 
@@ -57,20 +62,20 @@ async def call_agent_async(query):
                for part in event.content.parts: # Iterate through all parts
                    if part.executable_code:
                        # Access the actual code string via .code
-                       # 通过 .code 访问实际的代码
+                       # 通过 .code 获取智能体生成的代码
                        print(f"  Debug: Agent generated code:\n```python\n{part.executable_code.code}\n```")
                        has_specific_part = True
                    elif part.code_execution_result:
                        # Access outcome and output correctly
-                       # 获取执行结果并打印输出
+                       # 获取代码执行结果并打印输出
                        print(f"  Debug: Code Execution Result: {part.code_execution_result.outcome} - Output:\n{part.code_execution_result.output}")
                        has_specific_part = True
                    # Also print any text parts found in any event for debugging
-                   # 同时打印任何事件的其他内容，用于调试
+                   # 同时打印其他内容，便于调试
                    elif part.text and not part.text.isspace():
                        print(f"  Text: '{part.text.strip()}'")
                        # Do not set has_specific_part=True here, as we want the final response logic below
-                       # 不要在这里设置 has_specific_part=True，因为我们想要继续获取最终输出结果
+                       # 不要在这里设置 has_specific_part=True，因为我们还想要继续等待最终输出结果
 
                # --- Check for final response AFTER specific parts ---
                # 然后在特定部分检查之后处理最终结果
@@ -105,3 +110,42 @@ except RuntimeError as e:
        # await main()
    else:
        raise e # Re-raise other runtime errors
+
+
+
+"""
+输出示例（译者添加） | Example Output (Translator added):
+
+--- Running Query: Calculate the value of (5 + 7) * 3 ---
+Warning: there are non-text parts in the response: ['executable_code', 'code_execution_result'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+Event ID: e2ff2538-fe83-4e3d-ac66-7240df32ee03, Author: calculator_agent
+  Debug: Agent generated code:
+```python
+print((5 + 7) * 3)
+
+```
+  Debug: Code Execution Result: Outcome.OUTCOME_OK - Output:
+36
+
+  Text: '36'
+==> Final Agent Response: 36
+
+------------------------------
+
+--- Running Query: What is 10 factorial? ---
+Warning: there are non-text parts in the response: ['executable_code', 'code_execution_result'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+Event ID: 208aeb7b-d8fd-4ddf-9fc2-f9218f50e084, Author: calculator_agent
+  Debug: Agent generated code:
+```python
+import math
+print(math.factorial(10))
+
+```
+  Debug: Code Execution Result: Outcome.OUTCOME_OK - Output:
+3628800
+
+  Text: '3628800'
+==> Final Agent Response: 3628800
+
+------------------------------
+"""
