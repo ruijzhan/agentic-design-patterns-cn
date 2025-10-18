@@ -57,7 +57,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 | [第 2 章：路由](08-Chapter-02-Routing.md) | 智能决策与动态分发，根据情境选择最佳行动路径 | @ginobefun | ✅ | ✅ | ⏳ |
 | [第 3 章：并行化](09-Chapter-03-Parallelization.md) | 并发执行与性能提升，同时执行多个独立任务 | @ginobefun | ✅ | ✅ | ⏳ |
 | [第 4 章：反思](10-Chapter-04-Reflection.md) | 自我评估和迭代改进，通过反馈循环优化输出质量 | @ginobefun | ✅ | ✅ | ⏳ |
-| [第 5 章：工具使用](11-Chapter-05-Tool-Use.md) | 外部工具与 API 集成，扩展智能体能力边界 | @ginobefun | ✅ | ⏳ | ❌ |
+| [第 5 章：工具使用](11-Chapter-05-Tool-Use.md) | 外部工具与 API 集成，扩展智能体能力边界 | @ginobefun | ✅ | ✅ | ⏳ |
 | [第 6 章：规划](12-Chapter-06-Planning.md) | 多步骤计划制定与执行，实现复杂目标分解 | @ginobefun | ✅ | ❌ | ❌ |
 | [第 7 章：多智能体协作](13-Chapter-07-Multi-Agent-Collaboration.md) | 协同工作架构，多个智能体配合完成任务 | @ginobefun | ✅  | ❌ | ❌ |
 

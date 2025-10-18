@@ -48,11 +48,11 @@ While "function calling" aptly describes invoking specific, predefined code func
 
 Frameworks like LangChain, LangGraph, and Google Agent Developer Kit (ADK) provide robust support for defining tools and integrating them into agent workflows, often leveraging the native function calling capabilities of modern LLMs like those in the Gemini or OpenAI series. On the "canvas" of these frameworks, you define the tools and then configure agents (typically LLM Agents) to be aware of and capable of using these tools.
 
-<mark>LangChain、LangGraph 和 Google ADK 等框架可以很方便的定义工具并将它们集成到智能体工作流中，通常会利用 Gemini 或 OpenAI 等现代大语言模型的原生函数调用功能。在这些框架中，你可以定义工具，并通过设置让智能体识别和使用这些工具。</mark>
+<mark>LangChain、LangGraph 和 Google ADK 等框架可以很方便地定义工具并将它们集成到智能体工作流中，通常会利用 Gemini 或 OpenAI 等现代大语言模型的原生函数调用功能。在这些框架中，你可以定义工具，并通过设置让智能体识别和使用这些工具。</mark>
 
 Tool Use is a cornerstone pattern for building powerful, interactive, and externally aware agents.
 
-<mark>工具使用是构建强大、可交互且能感知和利用外部资源智能体的关键模式。</mark>
+<mark>工具使用是构建强大、可交互且能感知和利用外部资源的智能体的关键模式。</mark>
 
 ---
 
@@ -162,7 +162,7 @@ Fig.1: Some examples of an Agent using Tools
 
 The implementation of tool use within the LangChain framework is a two-stage process. Initially, one or more tools are defined, typically by encapsulating existing Python functions or other runnable components. Subsequently, these tools are bound to a language model, thereby granting the model the capability to generate a structured tool-use request when it determines that an external function call is required to fulfill a user's query.
 
-<mark>在 <code>LangChain</code> 框架中，使用工具分两个步骤。首先，定义一个或多个工具，通常通过封装现有的 Python 函数或其他可执行组件来完成。随后，将这些工具和大语言模型绑定，这样当大语言模型判断需要调用外部函数来完成用户请求时，就能生成结构化的调用请求并执行相应操作。</mark>
+<mark>在 LangChain 框架中，使用工具分两个步骤。首先，定义一个或多个工具，通常通过封装现有的 Python 函数或其他可执行组件来完成。随后，将这些工具和大语言模型绑定，这样当大语言模型判断需要调用外部函数来完成用户请求时，就能生成结构化的调用请求并执行相应操作。</mark>
 
 The following implementation will demonstrate this principle by first defining a simple function to simulate an information retrieval tool. Following this, an agent will be constructed and configured to leverage this tool in response to user input. The execution of this example requires the installation of the core LangChain libraries and a model-specific provider package. Furthermore, proper authentication with the selected language model service, typically via an API key configured in the local environment, is a necessary prerequisite.
 
@@ -275,7 +275,7 @@ asyncio.run(main())
 
 The code sets up a tool-calling agent using the LangChain library and the Google Gemini model. It defines a <code>search_information</code> tool that simulates providing factual answers to specific queries. The tool has predefined responses for "weather in london," "capital of france," and "population of earth," and a default response for other queries. A <code>ChatGoogleGenerativeAI</code> model is initialized, ensuring it has tool-calling capabilities. A <code>ChatPromptTemplate</code> is created to guide the agent's interaction. The <code>create_tool_calling_agent</code> function is used to combine the language model, tools, and prompt into an agent. An <code>AgentExecutor</code> is then set up to manage the agent's execution and tool invocation. The <code>run_agent_with_tool</code> asynchronous function is defined to invoke the agent with a given query and print the result. The <code>main</code> asynchronous function prepares multiple queries to be run concurrently. These queries are designed to test both the specific and default responses of the <code>search_information</code> tool. Finally, the <code>asyncio.run(main())</code> call executes all the agent tasks. The code includes checks for successful LLM initialization before proceeding with agent setup and execution.
 
-<mark>以上代码使用了 <code>LangChain</code> 库和 Google Gemini 模型构建了一个使用工具的智能体。</mark>
+<mark>以上代码使用了 LangChain 库和 Google Gemini 模型构建了一个使用工具的智能体。</mark>
 
 <mark>首先定义了 <code>search_information</code> 工具，用于模拟检索特定问题的事实答案，比如「伦敦天气怎么样？」、「法国的首都是哪里？」和「地球的人口是多少？」，如果是其他问题就返回一个兜底回复。</mark>
 
@@ -291,7 +291,7 @@ The code sets up a tool-calling agent using the LangChain library and the Google
 
 This code provides a practical example of how to implement function calling (Tools) within the CrewAI framework. It sets up a simple scenario where an agent is equipped with a tool to look up information. The example specifically demonstrates fetching a simulated stock price using this agent and tool.
 
-<mark>以下代码展示了使用 <code>CrewAI</code> 框架实现函数调用的实际示例。场景很简单：为智能体配备用于查找信息的工具，并通过该智能体和工具来获取模拟的股票价格。</mark>
+<mark>以下代码展示了使用 CrewAI 框架实现函数调用的实际示例。场景很简单：为智能体配备用于查找信息的工具，并通过该智能体和工具来获取模拟的股票价格。</mark>
 
 ```python
 # pip install crewai langchain-openai
@@ -324,7 +324,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # This makes it more reusable and forces the agent to handle outcomes properly.
 # --- 1. 重构后的工具 ---
 # 该工具现在返回模拟的股价（一个浮点数）或抛出标准的 Python 错误。
-# 这样可以提高可重用性，并确保代理在处理结果时采取适当的处理措施。
+# 这样可以提高可重用性，并确保智能体在处理结果时采取适当的处理措施。
 @tool("Stock Price Lookup Tool")
 def get_stock_price(ticker: str) -> float:
     """
@@ -427,7 +427,7 @@ if __name__ == "__main__":
 
 This code demonstrates a simple application using the Crew.ai library to simulate a financial analysis task. It defines a custom tool, <code>get_stock_price</code>, that simulates looking up stock prices for predefined tickers. The tool is designed to return a floating-point number for valid tickers or raise a <code>ValueError</code> for invalid ones. A Crew.ai Agent named <code>financial_analyst_agent</code> is created with the role of a Senior Financial Analyst. This agent is given the <code>get_stock_price</code> tool to interact with. A Task is defined, <code>analyze_aapl_task</code>, specifically instructing the agent to find the simulated stock price for AAPL using the tool. The task description includes clear instructions on how to handle both success and failure cases when using the tool. A Crew is assembled, comprising the <code>financial_analyst_agent</code> and the <code>analyze_aapl_task</code>. The <code>verbose</code> setting is enabled for both the agent and the crew to provide detailed logging during execution. The main part of the script runs the crew's task using the <code>kickoff()</code> method within a standard <code>if __name__ == "__main__":</code> block. Before starting the crew, it checks if the <code>OPENAI_API_KEY</code> environment variable is set, which is required for the agent to function. The result of the crew's execution, which is the output of the task, is then printed to the console. The code also includes basic logging configuration for better tracking of the crew's actions and tool calls. It uses environment variables for API key management, though it notes that more secure methods are recommended for production environments. In short, the core logic showcases how to define tools, agents, and tasks to create a collaborative workflow in Crew.ai.
 
-<mark>以上代码演示了一个使用 <code>Crew.ai</code> 库来模拟金融分析任务的简单应用。</mark>
+<mark>以上代码演示了一个使用 Crew.ai 库来模拟金融分析任务的简单应用。</mark>
 
 <mark>首先定义了工具 <code>get_stock_price</code>，用于模拟查询指定股票代码的价格，当股票代码是预定义的有效代码时返回模拟的价格，如果是其他代码则抛出 <code>ValueError</code> 异常。</mark>
 
@@ -855,7 +855,7 @@ The Tool Use pattern is a critical architectural principle for extending the fun
 
 <mark>工具使用模式是一种重要的架构原则，用于把大型语言模型的能力扩展到纯文本生成之外。通过让模型能够与外部软件和数据源对接，这一模式使得智能体可以执行操作、完成计算以及从其他系统获取信息。当模型判断需要调用外部工具来满足用户请求时，它会生成一个结构化的调用请求。</mark>
 
-<mark>像 LangChain、Google ADK 和 Crew AI 这样的框架提供了便于集成外部工具的抽象层和组件，负责向模型暴露工具的定义并解析模型返回的工具调用请求。总体而言，这大大简化了能够在外部数字环境中感知、交互和行动的复杂代理系统的开发。</mark>
+<mark>像 LangChain、Google ADK 和 Crew AI 这样的框架提供了便于集成外部工具的抽象层和组件，负责向模型暴露工具的定义并解析模型返回的工具调用请求。总体而言，这大大简化了能够在外部数字环境中感知、交互和行动的复杂智能体系统的开发。</mark>
 
 ---
 

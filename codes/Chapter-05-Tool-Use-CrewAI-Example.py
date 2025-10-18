@@ -31,7 +31,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # This makes it more reusable and forces the agent to handle outcomes properly.
 # --- 1. 重构后的工具 ---
 # 该工具现在返回模拟的股价（一个浮点数）或抛出标准的 Python 错误。
-# 这样可以提高可重用性，并确保代理在处理结果时采取适当的处理措施。
+# 这样可以提高可重用性，并确保智能体在处理结果时采取适当的处理措施。
 @tool("Stock Price Lookup Tool")
 def get_stock_price(ticker: str) -> float:
     """
