@@ -246,6 +246,23 @@ python codes/Chapter-01-Prompt-Chaining-Example.py
 
 ---
 
+## 💬 交流社区 | Community
+
+欢迎加入我们的微信交流群，无论你是想一起阅读、交流心得，还是对翻译提出宝贵建议，都欢迎你的加入。后续我们还会组织交流或直播活动哦！
+
+<div align="center">
+  <img src="images/wechat_group.jpg" alt="微信交流群" width="300"/>
+</div>
+
+**📝 加群说明**：
+
+- 🚫 微信群已满 200 人，无法直接扫码加入
+- ✅ 请添加 Gino 的个人微信：**xingxing17455671**
+- 💬 备注"智能体设计模式"，将拉您入群
+- 🤝 一个人看书不如一群人讨论。加入我们吧 ~
+
+---
+
 ## 📄 版权信息 | Copyright
 
 ### 📖 原书版权
