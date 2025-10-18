@@ -523,9 +523,12 @@ This code demonstrates how to create and use a basic agent powered by the Google
 
 **Code execution:** The Google ADK features integrated components for specialized tasks, including an environment for dynamic code execution. The <code>built_in_code_execution</code> tool provides an agent with a sandboxed Python interpreter. This allows the model to write and run code to perform computational tasks, manipulate data structures, and execute procedural scripts. Such functionality is critical for addressing problems that require deterministic logic and precise calculations, which are outside the scope of probabilistic language generation alone.
 
-<mark><strong>代码执行：</strong>Google ADK 为特定任务集成了专门组件，包括动态代码执行环境。<code>built_in_code_execution</code> 工具为智能体提供沙箱化的 Python 解释器，使模型能够编写并运行代码来完成计算任务、处理数据结构和执行脚本。对于需要确定性逻辑和精确计算的问题，这类功能非常重要，因为这类问题不是概率性语言生成所能可靠解决的。</mark>
+<mark><strong>代码执行：</strong>Google ADK 还内置了用于执行动态代码的专门组件。<code>built_in_code_execution</code> 工具为智能体提供 Python 解释器执行的沙箱环境，使模型能够编写并运行代码来完成计算、处理数据和执行脚本。对于需要执行确定性逻辑和精确计算的场景，这个功能非常重要，因为这类问题不是概率性语言生成所能解决的。</mark>
 
 ```python
+# 依赖安装：
+# pip install google-adk nest-asyncio python-dotenv
+
 import os, getpass
 import asyncio
 import nest_asyncio
@@ -540,14 +543,14 @@ from google.adk.code_executors import BuiltInCodeExecutor
 from google.genai import types
 
 # Define variables required for Session setup and Agent execution
-# 定义会话和智能体执行所需变量
+# 定义会话和智能体执行所需的变量
 APP_NAME="calculator"
 USER_ID="user1234"
 SESSION_ID="session_code_exec_async"
 
 
 # Agent Definition
-# 定义智能体
+# 定义一个可以执行代码的智能体
 code_agent = LlmAgent(
    name="calculator_agent",
    model="gemini-2.0-flash",
@@ -560,11 +563,11 @@ code_agent = LlmAgent(
 )
 
 # Agent Interaction (Async)
-# 智能体交互（异步执行）
+# 异步执行智能体
 async def call_agent_async(query):
 
    # Session and Runner
-   # 会话和执行器
+   # 创建会话和执行器
    session_service = InMemorySessionService()
    session = await session_service.create_session(app_name=APP_NAME, user_id=USER_ID, session_id=SESSION_ID)
    runner = Runner(agent=code_agent, app_name=APP_NAME, session_service=session_service)
@@ -574,7 +577,7 @@ async def call_agent_async(query):
    final_response_text = "No final text response captured."
    try:
        # Use run_async
-       # 使用 run_async 方法运行智能体
+       # 使用 run_async 方法异步执行智能体
        async for event in runner.run_async(user_id=USER_ID, session_id=SESSION_ID, new_message=content):
            print(f"Event ID: {event.id}, Author: {event.author}")
 
@@ -585,20 +588,20 @@ async def call_agent_async(query):
                for part in event.content.parts: # Iterate through all parts
                    if part.executable_code:
                        # Access the actual code string via .code
-                       # 通过 .code 访问实际的代码
+                       # 通过 .code 获取智能体生成的代码
                        print(f"  Debug: Agent generated code:\n```python\n{part.executable_code.code}\n```")
                        has_specific_part = True
                    elif part.code_execution_result:
                        # Access outcome and output correctly
-                       # 获取执行结果并打印输出
+                       # 获取代码执行结果并打印输出
                        print(f"  Debug: Code Execution Result: {part.code_execution_result.outcome} - Output:\n{part.code_execution_result.output}")
                        has_specific_part = True
                    # Also print any text parts found in any event for debugging
-                   # 同时打印任何事件的其他内容，用于调试
+                   # 同时打印其他内容，便于调试
                    elif part.text and not part.text.isspace():
                        print(f"  Text: '{part.text.strip()}'")
                        # Do not set has_specific_part=True here, as we want the final response logic below
-                       # 不要在这里设置 has_specific_part=True，因为我们想要继续获取最终输出结果
+                       # 不要在这里设置 has_specific_part=True，因为我们还想要继续等待最终输出结果
 
                # --- Check for final response AFTER specific parts ---
                # 然后在特定部分检查之后处理最终结果
@@ -633,9 +636,10 @@ except RuntimeError as e:
        # await main()
    else:
        raise e # Re-raise other runtime errors
+
 ```
 
-译者注：[Colab 代码](https://colab.research.google.com/drive/1iF4I_mkV_as0fYoVBuKtf5gfTONEySfK) 已维护在[此处](/codes/Chapter-05-Tool-Use-ADK-Example-Code-Execution.py)。
+译者注：[Colab 代码](https://colab.research.google.com/drive/1iF4I_mkV_as0fYoVBuKtf5gfTONEySfK) 已维护在[此处](/codes/Chapter-05-Tool-Use-ADK-Example-Code-Execution.py)，并添加了输出示例。
 
 This script uses Google's Agent Development Kit (ADK) to create an agent that solves mathematical problems by writing and executing Python code. It defines an <code>LlmAgent</code> specifically instructed to act as a calculator, equipping it with the <code>built_in_code_execution</code> tool. The primary logic resides in the <code>call_agent_async</code> function, which sends a user's query to the agent's runner and processes the resulting events. Inside this function, an asynchronous loop iterates through events, printing the generated Python code and its execution result for debugging. The code carefully distinguishes between these intermediate steps and the final event containing the numerical answer. Finally, a <code>main</code> function runs the agent with two different mathematical expressions to demonstrate its ability to perform calculations.
 
