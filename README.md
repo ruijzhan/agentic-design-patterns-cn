@@ -87,7 +87,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 | [第 17 章：推理技术](23-Chapter-17-Reasoning-Techniques.md) | 增强推理能力，提升决策质量 | 待定 | ❌ | ❌ | ❌ |
 | [第 18 章：护栏/安全模式](24-Chapter-18-Guardrails-Safety-Patterns.md) | 安全保障机制，防止不当行为 | 待定 | ❌ | ❌ | ❌ |
 | [第 19 章：评估与监控](25-Chapter-19-Evaluation-and-Monitoring.md) | 性能评估体系，量化智能体表现 | 待定 | ❌ | ❌ | ❌ |
-| [第 20 章：优先级排序](26-Chapter-20-Prioritization.md) | 任务优先级管理，优化资源分配 | 待定 | ❌ | ❌ | ❌ |
+| [第 20 章：优先级排序](26-Chapter-20-Prioritization.md) | 任务优先级管理，优化资源分配 | @IsaacZhaoo | ✅ | ❌ | ❌ |
 | [第 21 章：探索与发现](27-Chapter-21-Exploration-and-Discovery.md) | 自主探索机制，发现新解决方案 | 待定 | ❌ | ❌ | ❌ |
 
 ### 附录 | Appendix (74 页)
