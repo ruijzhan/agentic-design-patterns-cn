@@ -678,7 +678,7 @@ Memory Bank offers seamless integration with the Google ADK, providing an immedi
 
 <mark>**可视化总结**</mark>
 
-![image-20251014150136233](C:\Users\TAO\AppData\Roaming\Typora\typora-user-images\image-20251014150136233.png)
+![记忆管理设计模式](./images/chapter08_fig1.png)
 
 Fig.1: Memory management design pattern
 
