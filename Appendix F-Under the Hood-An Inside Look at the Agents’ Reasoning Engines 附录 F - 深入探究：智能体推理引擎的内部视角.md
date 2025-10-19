@@ -755,10 +755,79 @@ ChatGPT 3
 - ✅ Final Summary 5
 - <mark>✅ 最终总结 5</mark>
 
-Grok
-<mark>Grok</mark>
+Grok 6
+<mark>Grok 6</mark>
 - Step-by-Step Explanation of How I Reason 6
 - <mark>我如何推理的逐步解释 6</mark>
 - Step 1: Understanding the Query 6
 - <mark>第 1 步：理解查询 6</mark>
+- Step 2: Contextual Analysis and Knowledge Retrieval 6
+- <mark>第 2 步：上下文分析与知识检索 6</mark>
+- Step 3: Formulating a Mental Model 7
+- <mark>第 3 步：形成心智模型 7</mark>
+- Step-by-Step Explanation of How I Reason (Continued) 7
+- <mark>我如何推理的逐步解释（续） 7</mark>
+- Step 4: Evaluating Options and Hypotheses 7
+- <mark>第 4 步：评估选项与假设 7</mark>
+- Step 5: Constructing the Response 8
+- <mark>第 5 步：构建响应 8</mark>
+- Step 6: Review and Refinement 8
+- <mark>第 6 步：审查与完善 8</mark>
+- Key Characteristics of My Reasoning 9
+- <mark>我推理的关键特征 9</mark>
+- Limitations and Considerations 9
+- <mark>局限性与考量 9</mark>
+
+Kimi 9
+<mark>Kimi 9</mark>
+- Example Question 9
+- <mark>示例问题 9</mark>
+- Phase 0 – Input Pre-Processing 10
+- <mark>阶段 0 - 输入预处理 10</mark>
+- Phase 1 – Problem Identification & Strategy Selection 10
+- <mark>阶段 1 - 问题识别与策略选择 10</mark>
+- Phase 2 – Knowledge Retrieval 11
+- <mark>阶段 2 - 知识检索 11</mark>
+- Phase 3 – Execution & Verification 11
+- <mark>阶段 3 - 执行与验证 11</mark>
+- Phase 4 – Response Generation 12
+- <mark>阶段 4 - 响应生成 12</mark>
+- Phase 5 – Metacognitive Reflection (internal) 12
+- <mark>阶段 5 - 元认知反思（内部） 12</mark>
+
+Claude 13
+<mark>Claude 13</mark>
+- Explanation Overview 13
+- <mark>解释概览 13</mark>
+- Pattern Recognition and Context Building 13
+- <mark>模式识别与上下文构建 13</mark>
+- Information Retrieval and Assembly 13
+- <mark>信息检索与组装 13</mark>
+- Structural Planning 14
+- <mark>结构规划 14</mark>
+- Iterative Refinement 14
+- <mark>迭代完善 14</mark>
+- Constraint Checking 14
+- <mark>约束检查 14</mark>
+- Analogical Thinking 14
+- <mark>类比思维 14</mark>
+
+DeepSeek 15
+<mark>DeepSeek 15</mark>
+- Step 1: Understand the Query 15
+- <mark>第 1 步：理解查询 15</mark>
+- Step 2: Identify the Goal and Constraints 15
+- <mark>第 2 步：识别目标与约束 15</mark>
+- Step 3: Retrieve Knowledge and Plan 16
+- <mark>第 3 步：检索知识并制定计划 16</mark>
+- Step 4: Execute and Verify 16
+- <mark>第 4 步：执行与验证 16</mark>
+- Step 5: Communicate the Answer 17
+- <mark>第 5 步：传达答案 17</mark>
+- Key Highlights 17
+- <mark>重点总结 17</mark>
+- Limitations 18
+- <mark>局限性 18</mark>
+- Final Thoughts 18
+- <mark>最终想法 18</mark>
 -
