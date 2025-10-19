@@ -172,7 +172,7 @@ A key feature of this architecture is its capacity for deep personalization, ach
 
 **Visual summary** | <mark>**可视化总结：**</mark>
 
-![Human in the loop design pattern](images/chapter13_fig1.png)
+![Human in the loop design pattern](/images/chapter13_fig1.png)
 
 Fig.1: Human in the loop design pattern
 

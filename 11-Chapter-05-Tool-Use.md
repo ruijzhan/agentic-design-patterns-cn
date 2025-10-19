@@ -809,7 +809,7 @@ Overall, this code provides a basic framework for building a conversational AI a
 
 **Visual summary:** | <mark><strong>可视化总结：</strong></mark>
 
-![Tool Use Design Pattern](/images//chapter05_fig2.jpg)
+![Tool Use Design Pattern](/images/chapter05_fig2.jpg)
 
 Fig.2: Tool use design pattern
 
