@@ -386,7 +386,7 @@ OpenRouter offers a detailed leaderboard (https://openrouter.ai/rankings) which 
 
 <mark>OpenRouter 提供详细的排行榜（https://openrouter.ai/rankings），根据累积令牌生产量对可用的 AI 模型进行排名。它还提供来自不同提供商（ChatGPT、Gemini、Claude）的最新模型（见图 1）。</mark>
 
-![OpenRouter Web site](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfVvmyNsEyTVlDhrJPKYAz7tiqLYsWvvXPT_KISwLAZVFnY--OZHpfIV5-vVWDo4rOzTEOfW3xqugXNalKErhm7oOyyM4wkbWLHET0JNAqyIC6DmWrWVP42gvLlLlvjtw?key=j0BlntYfur5pcw)
+![OpenRouter Web site](/images/chapter16_fig1.png)
 
 <mark><strong>图 1：</strong>OpenRouter 网站 (https://openrouter.ai/)</mark>
 
@@ -454,7 +454,7 @@ Resource-aware optimization is paramount in developing intelligent agent systems
 
 ## Visual Summary | <mark>可视化摘要</mark>
 
-![Resource-Aware Optimization Design Pattern](https://lh7-rt.googleusercontent.com/docsz/AD_4nXe_DsaMgoqcCku1Ec82RmY6STMNi0B7L_iTDg6zGEetSgdDzJ60RAqlvOxjF66jKTcteZwW_mOjB793p6M1p7JvWx22fMkKL4U2xFmiSKoMGuNgVv2u-wfkxEUQMIPO1rk)
+![Resource-Aware Optimization Design Pattern](/images/chapter16_fig2.png)
 
 <mark><strong>图 2：</strong>资源感知优化设计模式</mark>
 
