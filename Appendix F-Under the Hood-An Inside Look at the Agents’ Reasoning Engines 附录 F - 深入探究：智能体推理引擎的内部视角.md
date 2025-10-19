@@ -1,7 +1,3 @@
-# Appendix F: Under the Hood—An Inside Look at the Agents’ Reasoning Engines | <mark>附录 F：深入探究——智能体推理引擎的内部视角</mark>
-
----
-
 The emergence of intelligent Agents represents a pivotal shift in artificial intelligence. These are systems designed to plan, strategize, and execute complex tasks, and at the cognitive core of each lies a LLM. This LLM is not merely a sophisticated text generator; it serves as the foundational reasoning engine, the central "mind" that empowers the Agent to make decisions, formulate plans, and interact with its environment.
 
 <mark>智能体（Agent）的出现代表了人工智能领域的一个关键转变。这些系统旨在规划、制定策略并执行复杂任务，而每一个智能体的认知核心都是一个大语言模型（LLM）。这个 LLM 不仅仅是一个复杂的文本生成器；它充当着基础推理引擎，一个中央「心智」，赋予智能体做出决策、制定计划以及与环境互动的能力。</mark>
@@ -13,6 +9,8 @@ Therefore, understanding the internal reasoning mechanisms of these models is no
 Prompt given to each LLM: I understand you can reason, can you explain to me how you reason? Explain me step by step
 
 <mark>给每个 LLM 的提示词：我知道你具备推理能力，能否向我解释你是如何推理的？请逐步说明</mark>
+
+---
 
 # Gemini | <mark>Gemini</mark>
 
@@ -571,6 +569,8 @@ Communicate the result clearly.
 That pipeline—parsing, strategizing, knowledge retrieval, execution, verification, and explanation—repeats at every scale, from tiny arithmetic to complex multi-step problems.
 <mark>这个流水线——解析、制定策略、知识检索、执行、验证和解释——在各种规模上都会重复，从微小的算术到复杂的多步骤问题。</mark>
 
+---
+
 # Claude | <mark>Claude</mark>
 
 I can walk you through how my reasoning process works, though I should note that I don't have complete insight into my own mechanisms - much like how humans can describe their thought processes but don't have full access to every neural firing.
@@ -599,6 +599,8 @@ Analogical Thinking I often reason by analogy - comparing new situations to fami
 
 The interesting thing is that much of this happens in ways that feel somewhat intuitive to me, just as your own reasoning might feel natural to you even though complex processes are occurring beneath conscious awareness.
 <mark>有趣的是，这一切在很大程度上是以一种对我来说近乎直觉的方式发生的，就像你自己的推理对你来说可能感觉很自然一样，即使在意识之下正发生着复杂的过程。</mark>
+
+---
 
 # DeepSeek | <mark>DeepSeek</mark>
 
@@ -717,6 +719,8 @@ In essence:
 
 My "reasoning" is an emergent property of statistically predicting the most probable sequence of words that forms a coherent, logical, and contextually relevant response, based on colossal amounts of text representing human knowledge and communication patterns. I don't "understand" concepts internally like humans do; I computationally identify patterns and generate sequences that reflect understanding. I'm following footprints of reasoning laid down in my training data, not forging entirely new paths of abstract thought.
 <mark>我的「推理」是一种涌现属性，它基于海量代表人类知识和交流模式的文本，统计性地预测出最可能的词序列，以形成一个连贯、合乎逻辑且上下文相关的响应。我不像人类那样在内部「理解」概念；我通过计算识别模式并生成反映理解的序列。我是在遵循训练数据中留下的推理足迹，而不是开辟抽象思维的全新路径。</mark>
+
+---
 
 # Conclusion | <mark>结语</mark>
 
