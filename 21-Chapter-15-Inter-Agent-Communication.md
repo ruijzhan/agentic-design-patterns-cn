@@ -241,7 +241,7 @@ Credential Handling: Agents typically authenticate using secure credentials like
 A2A is a protocol that complements Anthropic's Model Context Protocol (MCP) (see Fig. 1). While MCP focuses on structuring context for agents and their interaction with external data and tools, A2A facilitates coordination and communication among agents, enabling task delegation and collaboration.
 <mark>A2A 是一种与 Anthropic 的模型上下文协议 (Model Context Protocol, MCP) 互补的协议 (见图 1)。MCP 侧重于为智能体及其与外部数据和工具的交互构建上下文, 而 A2A 则促进智能体之间的协调与通信, 从而实现任务委派和协作。</mark>
 
-![Comparison A2A and MCP Protocols](/images//chapter15_fig1.png)
+![Comparison A2A and MCP Protocols](/images/chapter15_fig1.png)
 Fig.1: Comparison A2A and MCP Protocols
 
 <mark>图 1: A2A 和 MCP 协议的比较</mark>
