@@ -53,7 +53,7 @@ Collaboration can take various forms:
 
 - <mark><strong>批评-审查者：</strong>智能体创建初始输出，如计划、草稿或答案。第二组智能体然后对这些输出进行批判性评估，检查其是否符合政策、安全性、合规性、正确性、质量和与组织目标的一致性。原始创建者或最终智能体基于此反馈修订输出。</mark>
 
-![Multi-Agent System Example](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdaZcGTrfoFGQKmHUqUnx39vNKG0T_jLeRuEAyWHupi7uJlMmT5spXI18bgwSIhtDAlFTdLIaQhQ8A9KCLY5tkt4Ydhj1SAvYBTh763Lwwd5aieKj4Vym0ZcB-I8s-E6Q?key=z8HBTGaq-EZ5Ku8evSUUOg)
+![Multi-Agent System Example](/images/chapter07_fig1.png)
 
 <mark>图 1：多智能体系统示例</mark>
 
@@ -125,7 +125,7 @@ Understanding how agents interact is fundamental to designing effective systems.
 
 6. <mark><strong>自定义：</strong>为特定需求定制的独特结构。</mark>
 
-![Agent Communication Models](https://lh7-rt.googleusercontent.com/docsz/AD_4nXd20RN-iV64P6hWjh-nm6FNm7O95DZF-0ZpSIm542_6JRcQIDic_u4Xpy24CEIyp79XwIRT5kI88CezERNBpzG09CJbLeP3hRfOUAKuNlARYC8x2OIFUuR6HT3ZijI0WjE?key=z8HBTGaq-EZ5Ku8evSUUOg)
+![Agent Communication Models](/images/chapter07_fig2.png)
 
 <mark>图 2：智能体以各种方式交流和交互</mark>
 
@@ -232,7 +232,7 @@ This code demonstrates multi-agent collaboration using CrewAI, where two special
 
 <mark>**经验法则：** 当任务对于单个智能体来说过于复杂，并且可以分解为需要专业技能或工具的不同子任务时，使用此模式。对于受益于多样化专业知识、并行处理或具有多个阶段的结构化工作流的问题，这是理想的。</mark>
 
-![Multi-Agent Design Pattern](https://lh7-rt.googleusercontent.com/docsz/AD_4nXc_V0D0GQXGXWIG_9lo74896sL3XO4U_h6RWnV515k_EKffQdvZwDnzU1H9QL-YaPUQEM2OnhzdFUu6ZxGxVEX4OszHWneif_kG7X4TiB7_CuSTPIHDLTIE04SPX124eg?key=z8HBTGaq-EZ5Ku8evSUUOg)
+![Multi-Agent Design Pattern](/images/chapter07_fig3.png)
 
 <mark>图 3：多智能体设计模式</mark>
 
