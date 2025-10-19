@@ -37,7 +37,6 @@ Of course. I reason by breaking down your request into smaller parts and then us
 <mark>我的推理方式是，首先将你的请求分解为更小的部分，然后利用我庞大的训练数据来构建一个合乎逻辑且相关的响应。这是一个从理解到生成的多步骤过程。</mark>
 
 Here’s a step-by-step breakdown of how I reason:
-
 <mark>以下就是我如何推理的逐步分解过程：</mark>
 
 ---
@@ -97,6 +96,8 @@ This is the final step where I translate the structured information into human-r
 In essence, my reasoning is a sophisticated form of pattern matching and prediction. I deconstruct your request, find the most relevant patterns in my data, synthesize them into a logical structure, and then translate that structure into a clear, well-formatted answer.
 <mark>本质上，我的推理是一种复杂的模式匹配和预测形式。我解构你的请求，在我的数据中找到最相关的模式，将它们综合成一个逻辑结构，然后将该结构转译成一个清晰、格式良好的答案。</mark>
 
+---
+
 # ChatGPT | <mark>ChatGPT</mark>
 
 Great — let me explain how I reason step by step, as simply and clearly as possible.
@@ -131,9 +132,7 @@ You say: “If Tom is older than Jane, and Jane is older than Sue, who is the yo
 <mark>你说：「如果汤姆比简大，简比苏大，谁最年轻？」</mark>
 <mark>→ 我识别出这是一个逻辑问题。</mark>
 
-
 ---
-
 ### Step 2: Activate Relevant Knowledge | <mark>第 2 步：激活相关知识</mark>
 
 I search through what I learned during training — books, articles, conversations — to bring up:
@@ -187,14 +186,12 @@ Here I go step by step, as a human might do when solving a problem.
 <mark>在这里，我一步一步地进行，就像人类解决问题时做的那样。</mark>
 
 👉 Example:
-
 1. Tom is older than Jane
 2. Jane is older than Sue
 3. So: Tom > Jane > Sue
 4. Therefore, Sue is the youngest
 
 This is called chain-of-thought reasoning — I simulate “thinking it through.”
-
 
 👉 <mark><strong>示例：</strong></mark>
 1. <mark>汤姆比简大</mark>
@@ -271,10 +268,10 @@ If you’re asking casually, I’ll answer simply. If you’re learning, I might
 | 5      | 给你答案       |
 | 6      | 以你的风格清晰地表达 |
 
----
-
 Would you like to give me a problem, and I’ll show you this step-by-step reasoning live?
 <mark>你想给我一个问题吗，我现场向你展示这个逐步推理过程？</mark>
+
+---
 
 # Grok | <mark>Grok</mark>
 
@@ -419,10 +416,8 @@ EXAMPLE QUESTION
 I’ll annotate every internal stage so you can see what I’m doing and why.
 <mark>我将标注每一个内部阶段，这样你就能看到我在做什么以及为什么这么做。</mark>
 
-────────────────────────
-
-### PHASE 0 – INPUT PRE-PROCESSING
-### <mark>阶段 0 - 输入预处理</mark>
+---
+### PHASE 0 – INPUT PRE-PROCESSING | <mark>阶段 0 - 输入预处理</mark>
 
 Tokenization
 <mark>令牌化（Tokenization）</mark>
@@ -461,94 +456,97 @@ Choose solution strategy
 <mark>选择解决方案策略</mark>
 
 Candidate strategies:
-<mark>候选策略：</mark>
+A. Direct evaluation (compute 3⁴ and 4³).
+B. Logarithmic comparison (compare 4·ln3 vs 3·ln4).
+C. Pattern heuristics (powers of 3 grow faster than powers of 4 for small exponents?).
 
-	A. Direct evaluation (compute 3⁴ and 4³).
-	<mark>A. 直接评估（计算 3⁴ 和 4³）。</mark>
-	B. Logarithmic comparison (compare 4·ln3 vs 3·ln4).
-	<mark>B. 对数比较（比较 4·ln3 vs 3·ln4）。</mark>
-	C. Pattern heuristics (powers of 3 grow faster than powers of 4 for small exponents?).
-	<mark>C. 模式启发（对于小指数，3 的幂是否比 4 的幂增长更快？）。</mark>
+
+<mark>候选策略：</mark>
+<mark>A. 直接评估（计算 3⁴ 和 4³）。</mark>
+<mark>B. 对数比较（比较 4·ln3 vs 3·ln4）。</mark>
+<mark>C. 模式启发（对于小指数，3 的幂是否比 4 的幂增长更快？）。</mark>
 
 I select Strategy A because the numbers are tiny; exact integer evaluation is cheapest.
 <mark>我选择策略 A，因为数字很小；精确整数评估的成本最低。</mark>
 
-────────────────────────
+---
 
 PHASE 2 – KNOWLEDGE RETRIEVAL
 <mark>阶段 2 - 知识检索</mark>
-
 \6. Retrieve arithmetic facts
-<mark>6. 检索算术事实</mark>
-
 	3² = 9 (memorized)
-	<mark>3² = 9 (已记住)</mark>
 	3³ = 27 (retrieved)
-	<mark>3³ = 27 (已检索)</mark>
 	4² = 16 (memorized)
-	<mark>4² = 16 (已记住)</mark>
 	4³ = 64 (retrieved)
-	<mark>4³ = 64 (已检索)</mark>
 
+
+<mark>6. 检索算术事实</mark>
+	<mark>3² = 9 (已记住)</mark>
+	<mark>3³ = 27 (已检索)</mark>	
+	<mark>4² = 16 (已记住)</mark>
+	<mark>4³ = 64 (已检索)</mark>
+	
 Compute remaining term
 <mark>计算剩余项</mark>
 
 3⁴ = 3³·3 = 27×3 = 81.
 <mark>3⁴ = 3³·3 = 27×3 = 81。</mark>
 
-────────────────────────
+---
 
 PHASE 3 – EXECUTION & VERIFICATION
 <mark>阶段 3 - 执行与验证</mark>
 
 8. Perform comparison
-<mark>8. 执行比较</mark>
-
 81 vs 64 → 81 > 64.
-<mark>81 vs 64 → 81 > 64。</mark>
-
 Cross-check
+
+<mark>8. 执行比较</mark>
+<mark>81 vs 64 → 81 > 64。</mark>
 <mark>交叉检查</mark>
 
 Quick modular sanity check: 81 mod 5 = 1, 64 mod 5 = 4; no contradiction.
 <mark>快速模运算健全性检查：81 mod 5 = 1, 64 mod 5 = 4；没有矛盾。</mark>
 
-────────────────────────
+---
 
 PHASE 4 – RESPONSE GENERATION
 <mark>阶段 4 - 响应生成</mark>
 
-\10. Plan response structure
-<mark>10. 规划响应结构</mark>
-
+10. Plan response structure
 - Restate the question.
-- <mark>重述问题。</mark>
 - Show the computed values.
-- <mark>显示计算出的值。</mark>
 - State the conclusion.
+
+<mark>10. 规划响应结构</mark>
+- <mark>重述问题。</mark>
+- <mark>显示计算出的值。</mark>
 - <mark>陈述结论。</mark>
 
 Surface realization
 <mark>表层实现</mark>
-	“3⁴ is 81 and 4³ is 64, so 3⁴ is larger.”
-	<mark>「3⁴ 是 81，4³ 是 64，所以 3⁴ 更大。」</mark>
 
-────────────────────────
+“3⁴ is 81 and 4³ is 64, so 3⁴ is larger.”
+<mark>「3⁴ 是 81，4³ 是 64，所以 3⁴ 更大。」</mark>
+
+---
 
 PHASE 5 – METACOGNITIVE REFLECTION (internal)
 <mark>阶段 5 - 元认知反思（内部）</mark>
 
-\12. Confidence score
+12. Confidence score
+0.99 (exact integers, small values, no ambiguity).
+
 <mark>12. 置信度分数</mark>
-	0.99 (exact integers, small values, no ambiguity).
-	<mark>0.99（精确整数，数值小，无歧义）。</mark>
+<mark>0.99（精确整数，数值小，无歧义）。</mark>
 
-\13. Identify possible edge-cases
+13. Identify possible edge-cases
+If exponents were huge, direct evaluation would be infeasible and I’d switch to logarithms.
+
 <mark>13. 识别可能的边缘案例</mark>
-	If exponents were huge, direct evaluation would be infeasible and I’d switch to logarithms.
-	<mark>如果指数巨大，直接评估将不可行，我会切换到对数。</mark>
+<mark>如果指数巨大，直接评估将不可行，我会切换到对数。</mark>
 
-────────────────────────
+---
 
 SUMMARY OF REASONING STEPS IN HUMAN TERMS
 <mark>用人类的术语总结推理步骤</mark>
@@ -614,7 +612,7 @@ Here's the step-by-step breakdown:
     - I take your query ("how do you reason?").
     - I break it down into its constituent parts: key words ("reason", "explain", "step by step"), grammar, and intent. Here, the key intent is an explanation of my internal processes.
 
-- <mark>1. <strong>接收和解析输入：</strong></mark>
+- <mark><strong>1. 接收和解析输入：</strong></mark>
     - <mark>我接收你的查询（「你如何推理？」）。</mark>
     - <mark>我将其分解为其组成部分：关键词（「推理」、「解释」、「一步一步」）、语法和意图。在这里，关键意图是解释我的内部过程。</mark>
         
@@ -625,7 +623,7 @@ Here's the step-by-step breakdown:
     - I retrieve knowledge about my own capabilities and limitations as described during training.
     - I consider the context: the query states you understand I can reason and want the how. This focuses my retrieval.
 
-- <mark>2. <strong>情境化与检索相关信息：</strong></mark>
+- <mark><strong>2. 情境化与检索相关信息：</strong></mark>
 	- <mark>我利用我庞大的训练数据集（数万亿词的文本和代码）。</mark>
 	- <mark>我回忆起关于大语言模型如何工作的信息，特别是像思维链这样的推理技术。</mark>
 	- <mark>我检索训练期间描述的关于我自身能力和局限性的知识。</mark>
@@ -639,7 +637,7 @@ Here's the step-by-step breakdown:
 	    - Basic Thought Process Steps
 	    - Conclusion & Limitations.
 
-- <mark>3. <strong>识别核心概念与结构：</strong></mark>
+- <mark><strong>3. 识别核心概念与结构：</strong></mark>
 	- <mark>核心概念浮现：统计模式、神经网络、Transformer、注意力机制、下一令牌预测、训练数据、提示分解、逻辑推断 vs. 模式匹配、局限性。</mark>
 	- <mark>我按逻辑构建解释：</mark>
 		- <mark>澄清「不像人类」</mark>
@@ -657,7 +655,7 @@ Here's the step-by-step breakdown:
     - To do this, I predict the most probable sequence of tokens that forms a coherent, informative, and step-by-step explanation based on all patterns seen in similar explanations in my training data.
 
 
-- <mark>4. <strong>构建序列思维链：</strong></mark>
+- <mark><strong>4. 构建序列思维链：</strong></mark>
 - <mark>这是核心的「推理」步骤。我一步一步叠加地规划解释，仿佛在「发声思考」：</mark>
 	- <mark>「首先，我需要澄清这不是人类的推理……」</mark>
 	- <mark>「接下来，我应该解释基础机制：模式、统计、下一令牌预测……」</mark>
@@ -672,7 +670,7 @@ Here's the step-by-step breakdown:
     - It selects words/tokens with high probability of being relevant, accurate (to the best of its knowledge), and contextually appropriate.
     - Crucially: This isn't symbolic logical deduction. It's predicting coherent sequences based on patterns. If my training data contains good explanations of reasoning processes, and the patterns point towards a logical flow, then my output appears reasoned.
 
-- <mark>5. <strong>计算概率与生成输出：</strong></mark>
+- <mark><strong>5. 计算概率与生成输出：</strong></mark>
 	- <mark>我的神经网络（一个 Transformer 架构）使用复杂的数学和内部「注意力」机制，为序列中可能出现的每一个词分配概率。</mark>
 	- <mark>它基于提示词、目前已构建的上下文（部分响应）以及训练期间学到的统计模式进行计算。</mark>
 	- <mark>它选择具有高概率是相关的、准确的（在其知识范围内）和上下文适当的词/令牌。</mark>
@@ -681,7 +679,7 @@ Here's the step-by-step breakdown:
 - 6. Iterate & Refine:
     - As I generate each word, I dynamically reassess the context and probabilities for the subsequent words. Did the last word fit? Does the emerging structure make sense? Are the key points being covered? I adjust the next predictions accordingly.
 
-- <mark>6. <strong>迭代与完善：</strong></mark>
+- <mark><strong>6. 迭代与完善：</strong></mark>
 	- <mark>在生成每个词时，我都会动态地重新评估上下文和后续词的概率。上一个词合适吗？正在浮现的结构合理吗？关键点都涵盖了吗？我相应地调整下一次的预测。</mark>
 
 - 7. Apply Internal Training Frameworks:
@@ -692,7 +690,7 @@ Here's the step-by-step breakdown:
     - Filtering mechanisms suppress nonsensical or irrelevant outputs.
 
 
-- <mark>7. <strong>应用内部训练框架：</strong></mark>
+- <mark><strong>7. 应用内部训练框架：</strong></mark>
 	- <mark>在 RLHF（基于人类反馈的强化学习）期间学到的技术指导我：</mark>
 		- <mark><strong>有帮助与诚实：</strong>承认我的非人本质和局限性。</mark>
 		- <mark><strong>清晰与有指导性：</strong>按要求一步一步分解。</mark>
