@@ -137,7 +137,7 @@ Expanding on this, the system's operation is not a single query-response event b
 
 <mark>展开来说，系统的操作不是单一的查询-响应事件，而是一个管理的、长期运行的过程。它首先将用户的提示解构为多点研究计划（见图 1），然后呈现给用户进行审查和修改。这允许在执行前协作塑造研究轨迹。一旦计划被批准，智能体管道启动其迭代搜索和分析循环。这不仅仅涉及执行一系列预定义搜索；智能体基于收集的信息动态制定和优化查询，主动识别知识差距、证实数据点并解决差异。</mark>
 
-![Google Deep Research Plan](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdrVzLv4sItgi77rVEnpgvLJoPEiVzCocazgQWCF76R5Rg_Znt9JUzWzi1PGt0Ylhtk1mpy8awLsxt0gDUHr6xL8l8ZbujBK7cHbt7-cjsQ2gt3_vJ1WMUB1xPUIELTKQ?key=OBPNGbus6y8MdZcoiaowsA)
+![Google Deep Research Plan](/images/chapter06_fig1.png)
 
 <mark><strong>图 1：</strong>Google Deep Research 智能体生成使用 Google Search 作为工具的执行计划。</mark>
 
@@ -145,7 +145,7 @@ A key architectural component is the system's ability to manage this process asy
 
 <mark>一个关键的架构组件是系统异步管理此过程的能力。这种设计确保可能涉及分析数百个来源的调查能够抵御单点故障，并允许用户脱离并在完成时得到通知。系统还可以整合用户提供的文档，将来自私有来源的信息与基于网络的研究相结合。最终输出不仅仅是发现的拼接列表，而是结构化的多页报告。在综合阶段，模型对收集的信息进行批判性评估，识别主要主题并将内容组织成具有逻辑部分的连贯叙述。报告设计为交互式的，通常包括音频概览、图表和指向原始引用来源的链接等功能，允许用户验证和进一步探索。除了综合结果外，模型还明确返回其搜索和参考的完整来源列表（见图 2）。这些以引用的形式呈现，提供完全的透明度和对主要信息的直接访问。整个过程将简单查询转换为全面、综合的知识体。</mark>
 
-![Deep Research Execution](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcb7LsFVlqVSCvI9raTrAR4-SBKGruyBcW-ZN0Yq5hPhsQIkkTmyg2ZK73tMzLCk4GRnWZTyXSuJse3wbyqTaZoIFHZv1JRu-RCp1Rc2nxEqZ7f5uOlNyzQE9ZzeeY59Q?key=OBPNGbus6y8MdZcoiaowsA)
+![Deep Research Execution](/images/chapter06_fig2.png)
 
 <mark><strong>图 2：</strong>Deep Research 计划执行的示例，导致 Google Search 被用作工具搜索各种网络来源。</mark>
 
@@ -157,7 +157,7 @@ For instance, in competitive analysis, the agent can be directed to systematical
 
 <mark>例如，在竞争分析中，智能体可以被指导系统性地收集和整理市场趋势、竞争对手产品规格、来自多样在线来源的公众情绪和营销策略的数据。这个自动化过程取代了手动跟踪多个竞争对手的繁重任务，允许分析师专注于更高阶的战略解读而非数据收集（见图 3）。</mark>
 
-![Deep Research Output](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWMu5jY30L-3Z2ajZ4DxqNxyBDe0LCyt8dgHttUH4EdzVI_Nefnzv9KwuAxB2gklMbA08izrTlfww_qgQkl4zuLpB82k61nT2V-iKOZD9tRxoCQNXyA06bo1VvkmYciA?key=OBPNGbus6y8MdZcoiaowsA)
+![Deep Research Output](/images/chapter06_fig3.png)
 
 <mark><strong>图 3：</strong>Google Deep Research 智能体生成的最终输出，代表我们分析使用 Google Search 作为工具获得的来源。</mark>
 
@@ -312,7 +312,7 @@ Subsequently, it attempts to access and display inline citations and metadata fr
 
 <mark><strong>可视化总结</strong></mark>
 
-![Planning Design Pattern](https://lh7-rt.googleusercontent.com/docsz/AD_4nXejwQuAKuXxPUjE99j1i9JyuHqPoJPCZFJvpLh_IeyljS0ZFXAokablmWfFel7dRsa9oVzTgAPnqRZreOM-xuuz-r8A2QSrdBih9SH2_v4ubu1sG8DAkrX-SlNcA3Z81qw?key=OBPNGbus6y8MdZcoiaowsA)
+![Planning Design Pattern](/images/chapter06_fig4.png)
 
 <mark><strong>图 4：</strong>规划设计模式</mark>
 
