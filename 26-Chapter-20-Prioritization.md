@@ -284,7 +284,7 @@ The code incorporates a simulation function (run\_simulation) of asynchronous na
 
 <mark><strong>可视化总结：</strong></mark>
 
-![Prioritization Design Pattern](https://lh7-rt.googleusercontent.com/docsz/AD_4nXe_DsaMgoqcCku1Ec82RmY6STMNi0B7L_iTDg6zGEetSgdDzJ60RAqlvOxjF66jKTcteZwW_mOjB793p6M1p7JvWx22fMkKL4U2xFmiSKoMGuNgVv2u-wfkxEUQMIPO1rk)
+![Prioritization Design Pattern](/images/chapter20_fig1.png)
 
 <mark><strong>图 1：</strong>优先级排序设计模式</mark>
 
