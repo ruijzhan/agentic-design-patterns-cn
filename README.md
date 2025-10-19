@@ -58,7 +58,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 | [第 3 章：并行化](09-Chapter-03-Parallelization.md) | 并发执行与性能提升，同时执行多个独立任务 | @ginobefun | ✅ | ✅ | ⏳ |
 | [第 4 章：反思](10-Chapter-04-Reflection.md) | 自我评估和迭代改进，通过反馈循环优化输出质量 | @ginobefun | ✅ | ✅ | ⏳ |
 | [第 5 章：工具使用](11-Chapter-05-Tool-Use.md) | 外部工具与 API 集成，扩展智能体能力边界 | @ginobefun | ✅ | ✅ | ⏳ |
-| [第 6 章：规划](12-Chapter-06-Planning.md) | 多步骤计划制定与执行，实现复杂目标分解 | @ginobefun | ✅ | ❌ | ❌ |
+| [第 6 章：规划](12-Chapter-06-Planning.md) | 多步骤计划制定与执行，实现复杂目标分解 | @ginobefun | ✅ | ⏳ | ❌ |
 | [第 7 章：多智能体协作](13-Chapter-07-Multi-Agent-Collaboration.md) | 协同工作架构，多个智能体配合完成任务 | @ginobefun | ✅  | ❌ | ❌ |
 
 ### 第二部分：高级设计模式 | Part Two: Advanced Patterns (61 页)
@@ -96,8 +96,8 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 |------|------|--------|---------|----------|----------|
 | [附录 A：高级提示技术](28-Appendix-A.md) | 高级提示工程方法与技巧 | 待定 | ❌ | ❌ | ❌ |
 | [附录 B：从 GUI 到真实世界](29-Appendix-B.md) | AI 智能体在不同环境中的应用 | 待定 | ❌ | ❌ | ❌ |
-| [附录 C：智能体框架概览](30-Appendix-C.md) | 主流智能体框架快速入门 | 待定 | ❌ | ❌ | ❌ |
-| [附录 D：AgentSpace 实践](31-Appendix-D.md) | 使用 AgentSpace 构建智能体（在线版本） | 待定 | ❌ | ❌ | ❌ |
+| [附录 C：智能体框架概览](30-Appendix-C.md) | 主流智能体框架快速入门 | @庄才家 | ❌ | ❌ | ❌ |
+| [附录 D：AgentSpace 实践](31-Appendix-D.md) | 使用 AgentSpace 构建智能体（在线版本） | @庄才家 | ❌ | ❌ | ❌ |
 | [附录 E：命令行智能体](32-Appendix-E.md) | CLI 环境下的 AI 智能体（在线版本） | 待定 | ❌ | ❌ | ❌ |
 | [附录 F：推理引擎内幕](33-Appendix-F.md) | 深入剖析智能体推理引擎机制 | @Twonly | ✅ | ✅ | ⏳ |
 | [附录 G：编程智能体](34-Appendix-G.md) | 代码生成与编程辅助智能体 | 待定 | ❌ | ❌ | ❌ |
