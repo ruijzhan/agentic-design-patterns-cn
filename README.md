@@ -99,7 +99,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 | [附录 C：智能体框架概览](30-Appendix-C.md) | 主流智能体框架快速入门 | 待定 | ❌ | ❌ | ❌ |
 | [附录 D：AgentSpace 实践](31-Appendix-D.md) | 使用 AgentSpace 构建智能体（在线版本） | 待定 | ❌ | ❌ | ❌ |
 | [附录 E：命令行智能体](32-Appendix-E.md) | CLI 环境下的 AI 智能体（在线版本） | 待定 | ❌ | ❌ | ❌ |
-| [附录 F：推理引擎内幕](33-Appendix-F.md) | 深入剖析智能体推理引擎机制 | @Twonly | ⏳ | ❌ | ❌ |
+| [附录 F：推理引擎内幕](33-Appendix-F.md) | 深入剖析智能体推理引擎机制 | @Twonly | ✅ | ✅ | ⏳ |
 | [附录 G：编程智能体](34-Appendix-G.md) | 代码生成与编程辅助智能体 | 待定 | ❌ | ❌ | ❌ |
 
 ### 结尾内容 | Back Matter
