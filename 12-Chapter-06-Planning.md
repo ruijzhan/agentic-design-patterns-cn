@@ -1,7 +1,5 @@
 # Chapter 6: Planning | <mark>第六章：规划</mark>
 
----
-
 Intelligent behavior often involves more than just reacting to the immediate input. It requires foresight, breaking down complex tasks into smaller, manageable steps, and strategizing how to achieve a desired outcome. This is where the Planning pattern comes into play. At its core, planning is the ability for an agent or a system of agents to formulate a sequence of actions to move from an initial state towards a goal state.
 
 <mark>智能行为远不止对眼前输入作出反应。它需要前瞻性，需要把复杂任务拆解为更小且可管理的步骤，并制定实现预期结果的策略。这正是规划模式发挥作用之处。其核心在于：智能体（或智能体系统）能够制定一系列行动，使系统从初始状态迈向目标状态。</mark>
@@ -12,39 +10,39 @@ Intelligent behavior often involves more than just reacting to the immediate inp
 
 In the context of AI, it's helpful to think of a planning agent as a specialist to whom you delegate a complex goal. When you ask it to "organize a team offsite," you are defining the what—the objective and its constraints—but not the how. The agent's core task is to autonomously chart a course to that goal. It must first understand the initial state (e.g., budget, number of participants, desired dates) and the goal state (a successfully booked offsite), and then discover the optimal sequence of actions to connect them. The plan is not known in advance; it is created in response to the request.
 
-<mark>在 AI 的语境下，把规划智能体看作可以委派复杂目标的专家会更容易理解。当你请它「组织团队外出活动」时，你定义了「什么」——目标及其约束条件——但没有定义「如何」。智能体的核心任务是自主规划通往该目标的路径。它必须先理解初始状态（如预算、参与人数、期望日期）和目标状态（成功预订的外出活动），再找出连接二者的最优行动序列。计划不是预先给定的；而是在响应请求时生成的。</mark>
+<mark>在 AI 的语境下，把规划智能体看作可以委派复杂目标的专家会更容易理解。当你请它「组织团队外出活动」时，你声明了需要它「做什么」——目标及其约束条件——而不是定义「如何做」。智能体的核心任务是自主规划通往该目标的路径：首先是要弄清楚当前状况（如预算、人数、日期）和目标状态（如已经成功预订的外出活动），然后找出将两者衔接起来的最佳行动步骤。而且这个计划并非预先存在的，而是根据请求即时生成的。</mark>
 
 A hallmark of this process is adaptability. An initial plan is merely a starting point, not a rigid script. The agent's real power is its ability to incorporate new information and steer the project around obstacles. For instance, if the preferred venue becomes unavailable or a chosen caterer is fully booked, a capable agent doesn't simply fail. It adapts. It registers the new constraint, re-evaluates its options, and formulates a new plan, perhaps by suggesting alternative venues or dates.
 
-<mark>这个过程的标志是适应性。初始计划只是起点，而非僵化脚本。智能体的真正能力在于吸收新信息、带领项目绕开障碍。例如，若首选场地不可用或餐饮商已被订满，有能力的智能体不会就此失败；而是会适应：记录新的约束，重新评估选项，并制定新计划，例如改换场地或日期。</mark>
+<mark>这一过程的关键是灵活应变。初步计划只是出发点，而非僵硬的指令。智能体的真正能力在于接纳新信息并在遇到阻碍时调整路线。比如，当首选场地临时无法使用或选定的餐饮服务已约满时，有能力的智能体不会就此终止，而是会根据新的约束重新评估可选方案，制定替代计划，可能会建议更换场地或调整日期。</mark>
 
 However, it is crucial to recognize the trade-off between flexibility and predictability. Dynamic planning is a specific tool, not a universal solution. When a problem's solution is already well-understood and repeatable, constraining the agent to a predetermined, fixed workflow is more effective. This approach limits the agent's autonomy to reduce uncertainty and the risk of unpredictable behavior, guaranteeing a reliable and consistent outcome. Therefore, the decision to use a planning agent versus a simple task-execution agent hinges on a single question: does the "how" need to be discovered, or is it already known?
 
-<mark>不过，必须认识到灵活性与可预测性之间的权衡。动态规划是一种特定工具，而非通用解。对于已被充分理解且可重复的问题，将智能体约束在预设的固定流程中更有效。这样可以限制自主性，从而降低不确定性与不可预测行为的风险，保证结果可靠且一致。因此，是否采用规划智能体而非简单的任务执行智能体，关键在于一问：「如何做」是否需要探索，抑或已经明确？</mark>
+<mark>然而，我们必须认识到灵活性与可预测性之间的权衡。动态规划是一个专用工具，而非万能解。当问题的解决方法已经清楚且可以重复时，让系统遵循预先设定的固定流程通常更有效。通过限制系统的自主权，可以降低不确定性和不可预测行为的风险，从而确保结果更加可靠一致。因此，是否采用规划型智能体还是简单的任务处理型智能体，关键点在于：「如何做」的方案是否需要探索，还是已经明确了？</mark>
 
 ---
 
-## Practical Applications & Use Cases | <mark>实际应用和用例</mark>
+## Practical Applications & Use Cases | <mark>实际应用场景</mark>
 
 The Planning pattern is a core computational process in autonomous systems, enabling an agent to synthesize a sequence of actions to achieve a specified goal, particularly within dynamic or complex environments. This process transforms a high-level objective into a structured plan composed of discrete, executable steps.
 
-<mark>规划模式是自主系统中的核心计算过程，使智能体能够综合一系列行动来实现指定目标，特别是在动态或复杂环境中。这个过程将高级目标转换为由离散、可执行步骤组成的结构化计划。</mark>
+<mark>规划是自主系统的核心计算过程之一，它使智能体能够在动态或复杂的环境中，设计出一连串动作来实现特定目标。该过程把高层次的目标转化为由若干可执行的具体步骤组成的结构化计划。</mark>
 
 In domains such as procedural task automation, planning is used to orchestrate complex workflows. For example, a business process like onboarding a new employee can be decomposed into a directed sequence of sub-tasks, such as creating system accounts, assigning training modules, and coordinating with different departments. The agent generates a plan to execute these steps in a logical order, invoking necessary tools or interacting with various systems to manage dependencies.
 
-<mark>在流程自动化等领域，规划用于编排复杂工作流。例如，新员工入职这样的业务流程可以分解成一系列有序的子任务，如创建系统账户、分配培训模块、与各部门协调。智能体会生成计划，并按逻辑顺序执行这些步骤，调用必要的工具或与各类系统交互以管理依赖关系。</mark>
+<mark>在流程自动化等领域，规划用于编排复杂工作流。例如，新员工入职这样的业务流程可以分解成一系列有序的子任务，如创建系统账户、分配培训课程、与各部门协调等。智能体会制定计划，并按逻辑顺序执行这些步骤，调用必要的工具或与各类系统交互，以处理各项依赖关系。</mark>
 
 Within robotics and autonomous navigation, planning is fundamental for state-space traversal. A system, whether a physical robot or a virtual entity, must generate a path or sequence of actions to transition from an initial state to a goal state. This involves optimizing for metrics such as time or energy consumption while adhering to environmental constraints, like avoiding obstacles or following traffic regulations.
 
-<mark>在机器人和自主导航中，规划是状态空间遍历的基础。系统，无论是物理机器人还是虚拟实体，必须生成路径或行动序列以从初始状态转换到目标状态。这涉及优化时间或能源消耗等指标，同时遵守环境约束，如避开障碍物或遵循交通规则。</mark>
+<mark>在机器人与自主导航中，规划是进行状态空间遍历的核心。无论是实体机器人还是虚拟主体，系统都需要生成路径或动作序列，从起始状态到达目标状态。这个过程要在遵守环境约束（如避障或遵守交通法规）的前提下，优化时间、能耗等指标。</mark>
 
 This pattern is also critical for structured information synthesis. When tasked with generating a complex output like a research report, an agent can formulate a plan that includes distinct phases for information gathering, data summarization, content structuring, and iterative refinement. Similarly, in customer support scenarios involving multi-step problem resolution, an agent can create and follow a systematic plan for diagnosis, solution implementation, and escalation.
 
-<mark>这种模式对结构化的信息整合也至关重要。当任务需要生成研究报告等复杂输出时，智能体可以制定包含信息收集、数据归纳、内容结构化与迭代打磨等阶段的计划。同样，在多步骤问题排查与客户支持场景中，智能体可以创建并遵循诊断、实施解决方案与升级处理的系统化流程。</mark>
+<mark>这种模式对结构化的信息整合也至关重要。当任务需要生成研究报告等复杂输出时，智能体可以制定包含信息收集、数据归纳、内容结构化与迭代打磨等阶段的计划。在涉及多步骤问题解决的客户支持场景中，智能体也能制定并执行一套系统化流程来进行诊断、实施解决方案并在必要时升级处理。</mark>
 
 In essence, the Planning pattern allows an agent to move beyond simple, reactive actions to goal-oriented behavior. It provides the logical framework necessary to solve problems that require a coherent sequence of interdependent operations.
 
-<mark>本质上，规划模式允许智能体超越简单的反应式行动，转向目标导向的行为。它提供了解决需要一系列相互依赖操作的问题所必需的逻辑框架。</mark>
+<mark>本质上，规划模式使代理不再局限于简单的被动反应，而是能够以目标为导向地行动。它为解决那些需要一系列相互关联步骤才能完成的问题，提供了必要的逻辑框架。</mark>
 
 ---
 
