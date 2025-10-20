@@ -74,7 +74,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 | 章节 | 设计模式概述 | 负责人 | AI 翻译 | 人工评审 | 交叉评审 |
 |------|-------------|--------|---------|----------|----------|
-| [第 12 章：异常处理与恢复](18-Chapter-12-Exception-Handling-and-Recovery.md) | 优雅错误处理，确保系统稳定性 | 待定 | ❌ | ❌ | ❌ |
+| [第 12 章：异常处理与恢复](18-Chapter-12-Exception-Handling-and-Recovery.md) | 优雅错误处理，确保系统稳定性 | @EE | ❌ | ❌ | ❌ |
 | [第 13 章：人机协作](19-Chapter-13-Human-in-the-Loop.md) | 人机协作决策，融合人类智慧与 AI 能力 | @曾汉 | ✅ | ✅ | ⏳ |
 | [第 14 章：知识检索 (RAG)](20-Chapter-14-Knowledge-Retrieval.md) | 检索增强生成技术，结合外部知识库 | @EE | ✅ | ✅ | ⏳ |
 
@@ -99,7 +99,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 | [附录 C：智能体框架概览](30-Appendix-C.md) | 主流智能体框架快速入门 | @庄才家 | ❌ | ❌ | ❌ |
 | [附录 D：AgentSpace 实践](31-Appendix-D.md) | 使用 AgentSpace 构建智能体（在线版本） | @庄才家 | ❌ | ❌ | ❌ |
 | [附录 E：命令行智能体](32-Appendix-E.md) | CLI 环境下的 AI 智能体（在线版本） | 待定 | ❌ | ❌ | ❌ |
-| [附录 F：推理引擎内幕](33-Appendix-F.md) | 深入剖析智能体推理引擎机制 | @Twonly | ✅ | ✅ | ⏳ |
+| [附录 F：推理引擎内幕](33-Appendix-F.md) | 深入剖析智能体推理引擎机制 | @EE | ✅ | ✅ | ⏳ |
 | [附录 G：编程智能体](34-Appendix-G.md) | 代码生成与编程辅助智能体 | 待定 | ❌ | ❌ | ❌ |
 
 ### 结尾内容 | Back Matter
