@@ -309,6 +309,7 @@ if __name__ == "__main__":
    # run_code_agent(use_case_input, goals_input)
 
 ```
+译者注：[Colab 代码](https://colab.research.google.com/drive/1553L0BIxqhPFS6RHiLnF_ELjEkWZpqsC?usp=drive_open) 已维护在[此处](/codes/17-Chapter-11-Goal-Setting-and-Monitoring-Example.py)。
 
 Along with this brief, you provide a strict quality checklist, which represents the objectives the final code must meet—criteria like "the solution must be simple," "it must be functionally correct," or "it needs to handle unexpected edge cases."
 
