@@ -2,7 +2,7 @@
 
 Individual AI agents often face limitations when tackling complex, multifaceted problems, even with advanced capabilities. To overcome this, Inter-Agent Communication (A2A) enables diverse AI agents, potentially built with different frameworks, to collaborate effectively. This collaboration involves seamless coordination, task delegation, and information exchange. Google's A2A protocol is an open standard designed to facilitate this universal communication. This chapter will explore A2A, its practical applications, and its implementation within the Google ADK.
 
-<mark>单个 AI 智能体 (Agent) 在处理复杂、多方面的问题时, 即使具备先进的能力, 也常常面临局限性。为了克服这一挑战, 智能体间通信 (Inter-Agent Communication, A2A) 使不同的 AI 智能体 (可能基于不同的框架构建) 能够有效协作。这种协作涉及无缝的协调、任务委派和信息交换。谷歌的 A2A 协议是一项旨在促进这种通用通信的开放标准。本章将探讨 A2A、其实际应用及其在谷歌 ADK 中的实现。</mark>
+<mark>单个 AI 智能体(Agent)在处理复杂、多方面的问题时, 即使具备先进的能力, 也常常面临局限性。为了克服这一挑战, 智能体间通信(Inter-Agent Communication, A2A)使不同的 AI 智能体(可能基于不同的框架构建)能够有效协作。这种协作涉及无缝的协调、任务委派和信息交换。谷歌的 A2A 协议是一项旨在促进这种通用通信的开放标准。本章将探讨 A2A、其实际应用及其在谷歌 ADK 中的实现。</mark>
 
 ## Inter-Agent Communication Pattern Overview ｜ <mark>智能体间通信模式概述</mark>
 
@@ -437,22 +437,20 @@ independently on different ports, enabling system scalability and distribution.
 - <mark>像Trickle AI这样的工具有助于可视化和跟踪A2A通信, 帮助开发人员监控、调试和优化多智能体系统。</mark>
 
 - While A2A is a high-level protocol for managing tasks and workflows between different agents, the Model Context Protocol (MCP) provides a standardized interface for LLMs to interface with external resources
-- <mark>A2A是一个用于管理不同智能体之间任务和工作流的高级协议, 而模型上下文协议(MCP)则为 LLM 与外部资源交互提供了一个标准化的接口。</mark>
+- <mark>A2A是一个用于管理不同智能体之间任务和工作流的高级协议, 而模型上下文协议(MCP)则为LLM与外部资源交互提供了一个标准化的接口。</mark>
 
-## Conclusions
-
-<mark>结论</mark>
+## Conclusions | <mark>结论</mark>
 
 The Inter-Agent Communication (A2A) protocol establishes a vital, open standard to overcome the inherent isolation of individual AI agents. By providing a common HTTP-based framework, it ensures seamless collaboration and interoperability between agents built on different platforms, such as Google ADK, LangGraph, or CrewAI. A core component is the Agent Card, which serves as a digital identity, clearly defining an agent's capabilities and enabling dynamic discovery by other agents. The protocol's flexibility supports various interaction patterns, including synchronous requests, asynchronous polling, and real-time streaming, catering to a wide range of application needs. This enables the creation of modular and scalable architectures where specialized agents can be combined to orchestrate complex automated workflows. Security is a fundamental aspect, with built-in mechanisms like mTLS and explicit authentication requirements to protect communications. While complementing other standards like MCP, A2A's unique focus is on the high-level coordination and task delegation between agents. The strong backing from major technology companies and the availability of practical implementations highlight its growing importance. This protocol paves the way for developers to build more sophisticated, distributed, and intelligent multi-agent systems. Ultimately, A2A is a foundational pillar for fostering an innovative and interoperable ecosystem of collaborative AI.
 
-<mark>智能体间通信 (A2A) 协议建立了一个至关重要的开放标准, 以克服单个 AI 智能体固有的孤立性。通过提供一个通用的基于 HTTP 的框架, 它确保了在不同平台 (如 Google ADK、LangGraph 或 CrewAI) 上构建的智能体之间的无缝协作和互操作性。其核心组件是智能体卡片, 它作为数字身份, 清 晰地定义了智能体的能力, 并使其他智能体能够动态发现它。该协议的灵活性支持各种交互模式, 包 括同步请求、异步轮询和实时流式传输, 满足了广泛的应用需求。这使得创建模块化和可扩展的架构成为可能, 其中专门的智能体可以组合起来编排复杂的自动化工作流。安全性是一个基本方面, 内置了 mTLS 和明确的身份验证要求等机制来保护通信。虽然 A2A 与 MCP 等其他标准互补, 但其独特的重点在于智能体之间的高层协调和任务委派。来自主要技术公司的强大支持和实际实现的可用性凸显了其日益增长的重要性。该协议为开发人员构建更复杂、分布式和智能的多智能体系统铺平了道路。最终, A2A 是促进协作式 AI 的创新和互操作生态系统的基础支柱。</mark>
+<mark>智能体间通信(A2A)协议建立了一个至关重要的开放标准, 以克服单个AI智能体固有的孤立性。通过提供一个通用的基于HTTP的框架, 它确保了在不同平台 (如 Google ADK、LangGraph或CrewAI) 上构建的智能体之间的无缝协作和互操作性。其核心组件是智能体卡片, 它作为数字身份, 清晰地定义了智能体的能力, 并使其他智能体能够动态发现这个智能体。该协议的灵活性支持各种交互模式, 包括同步请求、异步轮询和实时流式传输, 满足了广泛的应用需求。这使得创建模块化和可扩展的架构成为可能, 其中专门的智能体可以组合起来编排复杂的自动化工作流。安全性是一个基本方面, 内置了mTLS和明确的身份验证要求等机制来保护通信。虽然A2A与MCP等其他标准互补, 但其独特的重点在于智能体之间的高层协调和任务委派。来自主流技术公司的强大支持和实际实现的可用性凸显了其日益增长的重要性。该协议为开发人员构建更复杂、分布式和智能的多智能体系统铺平了道路。最终,A2A是促进协作式AI的创新和互操作生态系统的基础支柱。</mark>
 
 ## References | <mark>参考文献</mark>
 
-1.  Chen, B. (2025, April 22). How to Build Your First Google A2A Project: A Step-by-Step Tutorial. Trickle.so Blog. [https://www.trickle.so/blog/how-to-build-google-a2a-project](https://www.trickle.so/blog/how-to-build-google-a2a-project)
-2.  Google A2A GitHub Repository. [https://github.com/google-a2a/A2A](https://github.com/google-a2a/A2A)
-3.  Google Agent Development Kit (ADK) [https://google.github.io/adk-docs/](https://google.github.io/adk-docs/)
-4.  Getting Started with Agent-to-Agent (A2A) Protocol: [https://codelabs.developers.google.com/intro-a2a-purchasing-concierge\#0](https://codelabs.developers.google.com/intro-a2a-purchasing-concierge#0)
-5.  Google Agent Discovery - [https://a2a-protocol.org/latest/](https://a2a-protocol.org/latest/)
-6.  Communication between different AI frameworks such as LangGraph, CrewAI, and Google ADK [https://www.trickle.so/blog/how-to-build-google-a2a-project](https://www.trickle.so/blog/how-to-build-google-a2a-project)
-7.  Designing Collaborative Multi-Agent Systems with the A2A Protocol [https://www.oreilly.com/radar/designing-collaborative-multi-agent-systems-with-the-a2a-protocol/](https://www.oreilly.com/radar/designing-collaborative-multi-agent-systems-with-the-a2a-protocol/)
+1. Chen, B. (2025, April 22). How to Build Your First Google A2A Project: A Step-by-Step Tutorial. Trickle.so Blog. [https://www.trickle.so/blog/how-to-build-google-a2a-project](https://www.trickle.so/blog/how-to-build-google-a2a-project)
+2. Google A2A GitHub Repository. [https://github.com/google-a2a/A2A](https://github.com/google-a2a/A2A)
+3. Google Agent Development Kit (ADK) [https://google.github.io/adk-docs/](https://google.github.io/adk-docs/)
+4. Getting Started with Agent-to-Agent (A2A) Protocol: [https://codelabs.developers.google.com/intro-a2a-purchasing-concierge\#0](https://codelabs.developers.google.com/intro-a2a-purchasing-concierge#0)
+5. Google Agent Discovery - [https://a2a-protocol.org/latest/](https://a2a-protocol.org/latest/)
+6. Communication between different AI frameworks such as LangGraph, CrewAI, and Google ADK [https://www.trickle.so/blog/how-to-build-google-a2a-project](https://www.trickle.so/blog/how-to-build-google-a2a-project)
+7. Designing Collaborative Multi-Agent Systems with the A2A Protocol [https://www.oreilly.com/radar/designing-collaborative-multi-agent-systems-with-the-a2a-protocol/](https://www.oreilly.com/radar/designing-collaborative-multi-agent-systems-with-the-a2a-protocol/)
