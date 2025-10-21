@@ -16,7 +16,7 @@ Focus on data-rich insights, use reliable sources, and include inline citations.
 user_query = "Research the economic impact of semaglutide on global healthcare systems."
 
 # Create the Deep Research API call
-# 调研深度研究 API
+# 调用深度研究 API
 response = client.responses.create(
   model="o3-deep-research-2025-06-26",
   input=[

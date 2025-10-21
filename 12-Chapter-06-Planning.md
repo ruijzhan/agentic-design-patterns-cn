@@ -42,7 +42,7 @@ This pattern is also critical for structured information synthesis. When tasked 
 
 In essence, the Planning pattern allows an agent to move beyond simple, reactive actions to goal-oriented behavior. It provides the logical framework necessary to solve problems that require a coherent sequence of interdependent operations.
 
-<mark>本质上，规划模式使代理不再局限于简单的被动反应，而是能够以目标为导向地行动。它为解决那些需要一系列相互关联步骤才能完成的问题，提供了必要的逻辑框架。</mark>
+<mark>本质上，规划模式使智能体不再局限于简单的被动反应，而是能够以目标为导向地行动。它为解决那些需要一系列相互关联步骤才能完成的问题，提供了必要的逻辑框架。</mark>
 
 ---
 
@@ -116,6 +116,8 @@ print("\n\n---\n## Task Result ##\n---")
 print(result)
 ```
 
+译者注：[Colab 代码](https://colab.research.google.com/drive/1TBcatcgnntrm31kfIzENsSMNYwMNLUOh) 已维护在[此处](/codes/Chapter-06-Planning-CrewAI-Example.py)。
+
 This code uses the CrewAI library to create an AI agent that plans and writes a summary on a given topic. It starts by importing necessary libraries, including Crew.ai and langchain_openai, and loading environment variables from a .env file. A ChatOpenAI language model is explicitly defined for use with the agent. An Agent named planner_writer_agent is created with a specific role and goal: to plan and then write a concise summary. The agent's backstory emphasizes its expertise in planning and technical writing. A Task is defined with a clear description to first create a plan and then write a summary on the topic "The importance of Reinforcement Learning in AI", with a specific format for the expected output. A Crew is assembled with the agent and task, set to process them sequentially. Finally, the crew.kickoff() method is called to execute the defined task and the result is printed.
 
 <mark>此代码使用 <code>CrewAI</code> 库创建一个在给定主题上进行规划并撰写摘要的 AI 智能体。</mark>
@@ -132,7 +134,7 @@ Google Gemini DeepResearch (see Fig.1) is an agent-based system designed for aut
 
 Expanding on this, the system's operation is not a single query-response event but a managed, long-running process. It begins by deconstructing a user's prompt into a multi-point research plan (see Fig. 1), which is then presented to the user for review and modification. This allows for a collaborative shaping of the research trajectory before execution. Once the plan is approved, the agentic pipeline initiates its iterative search-and-analysis loop. This involves more than just executing a series of predefined searches; the agent dynamically formulates and refines its queries based on the information it gathers, actively identifying knowledge gaps, corroborating data points, and resolving discrepancies.
 
-<mark>进一步来说，系统并非一次性的问答事件，而是受控的、持续运行的过程。它会先把用户的提示拆解成多个要点的研究计划（见图 1），再呈现给用户审阅与修改，以便在开始执行前共同确定研究方向。一旦计划获批，智能便会开启循环的搜索与分析过程。这个过程并非简单地执行预设搜索，而是根据获取到的信息不断生成和调整查询，主动发现知识盲点、核对数据并解决冲突。</mark>
+<mark>进一步来说，系统并非一次性的问答事件，而是受控的、持续运行的过程。它会先把用户的提示拆解成多个要点的研究计划（见图 1），再呈现给用户审阅与修改，以便在开始执行前共同确定研究方向。一旦计划获批，智能体便会开启循环的搜索与分析过程。这个过程并非简单地执行预设搜索，而是根据获取到的信息不断生成和调整查询，主动发现知识盲点、核对数据并解决冲突。</mark>
 
 ![Google Deep Research Plan](/images/chapter06_fig1.png)
 
@@ -142,7 +144,7 @@ Fig. 1: Google Deep Research agent generating an execution plan for using Google
 
 A key architectural component is the system's ability to manage this process asynchronously. This design ensures that the investigation, which can involve analyzing hundreds of sources, is resilient to single-point failures and allows the user to disengage and be notified upon completion. The system can also integrate user-provided documents, combining information from private sources with its web-based research. The final output is not merely a concatenated list of findings but a structured, multi-page report. During the synthesis phase, the model performs a critical evaluation of the collected information, identifying major themes and organizing the content into a coherent narrative with logical sections. The report is designed to be interactive, often including features like an audio overview, charts, and links to the original cited sources, allowing for verification and further exploration by the user. In addition to the synthesized results, the model explicitly returns the full list of sources it searched and consulted (see Fig.2). These are presented as citations, providing complete transparency and direct access to the primary information. This entire process transforms a simple query into a comprehensive, synthesized body of knowledge.
 
-<mark>一个关键的架构要点是系统对整个流程的异步管理能力。这样的设计使得可能涉及数百个来源的研究具备抵御单点故障的能力，并允许用户中途离开，待任务完成后再收到通知。系统还能整合用户提供的文档，把私有资料和网络搜索到的信息相结合。最终产出不是简单堆砌的要点列表，而是结构化的多页报告。在整合阶段，模型会对收集到的信息进行严格评估，提炼主要主题并按逻辑分成章节，形成连贯的叙述。报告通常是交互式的，如音频简介、图表及指向原始引用来源的链接，便于用户核查和进一步探索。除整合后的结论外，模型还会明确返回其搜索与参考的完整来源清单（见图 2），以引用的形式呈现，确保透明并可直接访问原始资料。整个过程把一次简单的查询转化为一套全面、系统化的知识体成果</mark>
+<mark>一个关键的架构要点是系统对整个流程的异步管理能力。这样的设计使得可能涉及数百个来源的研究具备抵御单点故障的能力，并允许用户中途离开，待任务完成后再收到通知。系统还能整合用户提供的文档，把私有资料和网络搜索到的信息相结合。最终产出不是简单堆砌的要点列表，而是结构化的多页报告。在整合阶段，模型会对收集到的信息进行严格评估，提炼主要主题并按逻辑分成章节，形成连贯的叙述。报告通常是交互式的，如音频简介、图表及指向原始引用来源的链接，便于用户核查和进一步探索。除整合后的结论外，模型还会明确返回其搜索与参考的完整来源清单（见图 2），以引用的形式呈现，确保透明并可直接访问原始资料。整个过程把一次简单的查询转化为全面且系统化的知识成果。</mark>
 
 ![Deep Research Execution](/images/chapter06_fig2.png)
 
@@ -152,7 +154,7 @@ Fig. 2: An example of Deep Research plan being executed, resulting in Google Sea
 
 By mitigating the substantial time and resource investment required for manual data acquisition and synthesis, Gemini DeepResearch provides a more structured and exhaustive method for information discovery. The system's value is particularly evident in complex, multi-faceted research tasks across various domains.
 
-<mark>通过减少手动数据获取和整合数据所需的大量时间和资源投入，Gemini 深入研究为信息发现提供了更结构化、更全面的方法。在各类复杂、多维的研究任务中，这一系统的价值尤为明显。</mark>
+<mark>通过减少手动数据获取和整合数据所需的大量时间和资源投入，Gemini 深度研究为信息发现提供了更结构化、更全面的方法。在各类复杂、多维的研究任务中，这一系统的价值尤为明显。</mark>
 
 For instance, in competitive analysis, the agent can be directed to systematically gather and collate data on market trends, competitor product specifications, public sentiment from diverse online sources, and marketing strategies. This automated process replaces the laborious task of manually tracking multiple competitors, allowing analysts to focus on higher-order strategic interpretation rather than data collection (see Fig. 3).
 
@@ -174,15 +176,15 @@ The efficiency of this approach stems from the automation of the iterative searc
 
 ---
 
-## OpenAI Deep Research API | <mark>OpenAI 深入研究接口</mark>
+## OpenAI Deep Research API | <mark>OpenAI 深度研究接口</mark>
 
 The OpenAI Deep Research API is a specialized tool designed to automate complex research tasks. It utilizes an advanced, agentic model that can independently reason, plan, and synthesize information from real-world sources. Unlike a simple Q&A model, it takes a high-level query and autonomously breaks it down into sub-questions, performs web searches using its built-in tools, and delivers a structured, citation-rich final report. The API provides direct programmatic access to this entire process, using at the time of writing models like o3-deep-research-2025-06-26 for high-quality synthesis and the faster o4-mini-deep-research-2025-06-26 for latency-sensitive application
 
-<mark>OpenAI 深入研究接口（OpenAI Deep Research API）是一款专为自动化复杂研究任务而设计的工具。它利用高级智能体模型，能够独立推理、规划，并从真实世界来源整合信息。不同于简单的问答模型，它接收高层次的问题并自主拆解为若干子问题，借助内置工具进行网络搜索，最终给出结构化且带有引用的报告。通过该接口可以用编程的方式控制整个流程。在撰写本文时，常用 <code>o3-deep-research-2025-06-26</code> 模型生成高质量的调研内容，而像 <code>o4-mini-deep-research-2025-06-26</code> 模型则可用于对延迟更敏感的场景。</mark>
+<mark>OpenAI 深度研究接口（OpenAI Deep Research API）是一款专为自动化复杂研究任务而设计的工具。它利用高级智能体模型，能够独立推理、规划，并从真实世界来源整合信息。不同于简单的问答模型，它接收高层次的问题并自主拆解为若干子问题，借助内置工具进行网络搜索，最终给出结构化且带有引用的报告。通过该接口可以用编程的方式控制整个流程。撰写本书时可使用 <code>o3-deep-research-2025-06-26</code> 模型生成高质量的调研内容，而 <code>o4-mini-deep-research-2025-06-26</code> 模型则可用于对延迟更敏感的场景。</mark>
 
 The Deep Research API is useful because it automates what would otherwise be hours of manual research, delivering professional-grade, data-driven reports suitable for informing business strategy, investment decisions, or policy recommendations. Its key benefits include:
 
-<mark>深入研究接口很有用，因为它能将本需数小时人工调研的工作自动化，产出用于商业战略、投资决策或政策建议的专业级、数据驱动的报告。其主要优势包括：</mark>
+<mark>深度研究接口很有用，因为它能将本需数小时人工调研的工作自动化，产出用于商业战略、投资决策或政策建议的专业级、数据驱动的报告。其主要优势包括：</mark>
 
 - **Structured, Cited Output:** It produces well-organized reports with inline citations linked to source metadata, ensuring claims are verifiable and data-backed.
 
@@ -214,7 +216,7 @@ Focus on data-rich insights, use reliable sources, and include inline citations.
 user_query = "Research the economic impact of semaglutide on global healthcare systems."
 
 # Create the Deep Research API call
-# 调研深度研究 API
+# 调用深度研究 API
 response = client.responses.create(
   model="o3-deep-research-2025-06-26",
   input=[
@@ -293,6 +295,8 @@ except StopIteration:
     print("\nNo code execution steps found.")
 ```
 
+译者注：[Colab 代码](https://colab.research.google.com/drive/1Tk21aTvp9XGn-qBQUCA7_hgSB2Bz4h-o) 已维护在[此处](/codes/Chapter-06-Planning-Deep-Research-API-Example.py)。
+
 This code snippet utilizes the OpenAI API to perform a "Deep Research" task. It starts by initializing the OpenAI client with your API key, which is crucial for authentication. Then, it defines the role of the AI agent as a professional researcher and sets the user's research question about the economic impact of semaglutide. The code constructs an API call to the o3-deep-research-2025-06-26 model, providing the defined system message and user query as input. It also requests an automatic summary of the reasoning and enables web search capabilities. After making the API call, it extracts and prints the final generated report.
 
 <mark>以上代码演示了如何使用 OpenAI 接口来执行深度研究。首先需要使用你的 API Key 初始化 OpenAI 客户端，用于身份验证。随后定义 AI 智能体的角色（专业研究员），并设置「关于司美格鲁肽对全球医疗体系经济影响」的研究话题。接着向 <code>o3-deep-research-2025-06-26</code> 模型发起接口请求，传入预设的系统消息和用户查询，同时请求自动生成推理摘要并启用网络搜索功能。完成调用后，代码会提取并打印最终生成的报告。</mark>
@@ -347,7 +351,7 @@ Fig.4; Planning design pattern
 
 - Google Deep Research is an agent analyzing on our behalf sources obtained using Google Search as a tool. It reflects, plans, and executes.
 
-   <mark>Google 深入研究会把 Google 搜索引擎作为工具来代替我们检索与分析来源，具备反思、规划与执行能力。</mark>
+   <mark>Google 深度研究会把 Google 搜索引擎作为工具来代替我们检索与分析来源，具备反思、规划与执行能力。</mark>
 
 ---
 
@@ -363,7 +367,7 @@ In conclusion, the Planning pattern is a foundational component that elevates ag
 
 1. Google DeepResearch (Gemini Feature): [gemini.google.com](https://gemini.google.com)
 
-   <mark>Google 深入研究（Gemini 功能）：[gemini.google.com](https://gemini.google.com)</mark>
+   <mark>Google 深度研究（Gemini 功能）：[gemini.google.com](https://gemini.google.com)</mark>
 
 2. OpenAI, Introducing deep research: [https://openai.com/index/introducing-deep-research/](https://openai.com/index/introducing-deep-research/)
 
