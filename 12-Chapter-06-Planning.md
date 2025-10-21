@@ -14,7 +14,7 @@ In the context of AI, it's helpful to think of a planning agent as a specialist 
 
 A hallmark of this process is adaptability. An initial plan is merely a starting point, not a rigid script. The agent's real power is its ability to incorporate new information and steer the project around obstacles. For instance, if the preferred venue becomes unavailable or a chosen caterer is fully booked, a capable agent doesn't simply fail. It adapts. It registers the new constraint, re-evaluates its options, and formulates a new plan, perhaps by suggesting alternative venues or dates.
 
-<mark>这一过程的关键是灵活应变。初步计划只是出发点，而非僵硬的指令。智能体的真正能力在于接纳新信息并在遇到阻碍时调整路线。比如，当首选场地临时无法使用或选定的餐饮服务已约满时，有能力的智能体不会就此终止，而是会根据新的约束重新评估可选方案，制定替代计划，可能会建议更换场地或调整日期。</mark>
+<mark>这一过程的关键是灵活应变。初步计划只是出发点，而非僵硬的指令。智能体的真正能力在于接纳新信息，并在遇到阻碍时调整路线。比如，当首选场地临时无法使用或选定的餐饮服务已约满时，有能力的智能体不会就此终止，而是会根据新的约束重新评估可选方案，制定替代计划，如建议更换场地或调整日期。</mark>
 
 However, it is crucial to recognize the trade-off between flexibility and predictability. Dynamic planning is a specific tool, not a universal solution. When a problem's solution is already well-understood and repeatable, constraining the agent to a predetermined, fixed workflow is more effective. This approach limits the agent's autonomy to reduce uncertainty and the risk of unpredictable behavior, guaranteeing a reliable and consistent outcome. Therefore, the decision to use a planning agent versus a simple task-execution agent hinges on a single question: does the "how" need to be discovered, or is it already known?
 
@@ -116,7 +116,7 @@ print("\n\n---\n## Task Result ##\n---")
 print(result)
 ```
 
-译者注：[Colab 代码](https://colab.research.google.com/drive/1TBcatcgnntrm31kfIzENsSMNYwMNLUOh) 已维护在[此处](/codes/Chapter-06-Planning-CrewAI-Example.py)。
+<mark>译者注：[Colab 代码](https://colab.research.google.com/drive/1TBcatcgnntrm31kfIzENsSMNYwMNLUOh) 已维护在[此处](/codes/Chapter-06-Planning-CrewAI-Example.py)。</mark>
 
 This code uses the CrewAI library to create an AI agent that plans and writes a summary on a given topic. It starts by importing necessary libraries, including Crew.ai and langchain_openai, and loading environment variables from a .env file. A ChatOpenAI language model is explicitly defined for use with the agent. An Agent named planner_writer_agent is created with a specific role and goal: to plan and then write a concise summary. The agent's backstory emphasizes its expertise in planning and technical writing. A Task is defined with a clear description to first create a plan and then write a summary on the topic "The importance of Reinforcement Learning in AI", with a specific format for the expected output. A Crew is assembled with the agent and task, set to process them sequentially. Finally, the crew.kickoff() method is called to execute the defined task and the result is printed.
 
@@ -295,7 +295,7 @@ except StopIteration:
     print("\nNo code execution steps found.")
 ```
 
-译者注：[Colab 代码](https://colab.research.google.com/drive/1Tk21aTvp9XGn-qBQUCA7_hgSB2Bz4h-o) 已维护在[此处](/codes/Chapter-06-Planning-Deep-Research-API-Example.py)。
+<mark>译者注：[Colab 代码](https://colab.research.google.com/drive/1Tk21aTvp9XGn-qBQUCA7_hgSB2Bz4h-o) 已维护在[此处](/codes/Chapter-06-Planning-Deep-Research-API-Example.py)。</mark>
 
 This code snippet utilizes the OpenAI API to perform a "Deep Research" task. It starts by initializing the OpenAI client with your API key, which is crucial for authentication. Then, it defines the role of the AI agent as a professional researcher and sets the user's research question about the economic impact of semaglutide. The code constructs an API call to the o3-deep-research-2025-06-26 model, providing the defined system message and user query as input. It also requests an automatic summary of the reasoning and enables web search capabilities. After making the API call, it extracts and prints the final generated report.
 
