@@ -323,9 +323,9 @@ Subsequently, it attempts to access and display inline citations and metadata fr
 
 **Visual summary:** | <mark>可视化总结：</mark>
 
-Fig.4; Planning design pattern
-
 ![Planning Design Pattern](/images/chapter06_fig4.png)
+
+Fig.4; Planning design pattern
 
 <mark>图 4：规划模式</mark>
 
