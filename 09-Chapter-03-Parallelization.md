@@ -347,6 +347,7 @@ async def run_parallel_example(topic: str) -> None:
     try:
         # The input to `ainvoke` is the single 'topic' string, which is
         # then passed to each runnable in the `map_chain`.
+        # `ainvoke` 的输入是单个 'topic' 字符串，该字符串随后会被传递给 `map_chain` 中的每个可运行项。
         response = await full_parallel_chain.ainvoke(topic)
         print("\n--- Final Response ---")
         print(response)
@@ -356,6 +357,7 @@ async def run_parallel_example(topic: str) -> None:
 if __name__ == "__main__":
     test_topic = "The history of space exploration"
     # In Python 3.7+, asyncio.run is the standard way to run an async function.
+    # 在 Python 3.7 及更高版本中，asyncio.run 是运行异步函数的标准方式。
     asyncio.run(run_parallel_example(test_topic))
 ```
 
