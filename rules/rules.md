@@ -446,6 +446,9 @@ Fix: [specific issue] in [chapter name]
 | LLM | 大语言模型 | Large Language Model |
 | Concurrency | 并发性 | 与并行性 (Parallelism) 区分 |
 | Parallelism | 并行性 | 与并发性 (Concurrency) 区分 |
+| Model Context Protocol | 模型上下文协议 | 英文缩写为：MCP |
+| Tool Function Calling | 工具函数调用 | |
+
 
 ## Quality Standards | 质量标准
 
