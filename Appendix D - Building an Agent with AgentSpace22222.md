@@ -1,3 +1,6 @@
+Chapter 21: Exploration and Discovery | 第二十一章：探索与发现
+
+Appendix D - Building an Agent with AgentSpace | 附录D: 基于AgentSpace构建智能体
 
 
 Overview--概览
