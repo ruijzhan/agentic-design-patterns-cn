@@ -4,3 +4,14 @@ strength lies in its LangChain Expression Language (LCEL), which allows you to "
 components together into a chain. This creates a clear, linear sequence where the
 output of one step becomes the input for the next. It's built for workflows that are
 Directed Acyclic Graphs (DAGs), meaning the process flows in one direction without
+loops.
+Use it for:
+● Simple RAG: Retrieve a document, create a prompt, get an answer from an LLM.
+● Summarization: Take user text, feed it to a summarization prompt, and return the
+output.
+● Extraction: Extract structured data (like JSON) from a block of text.
+Python
+# A simple LCEL chain conceptually
+# (This is not runnable code, just illustrates the flow)
+chain = prompt | model | output_parse
+
