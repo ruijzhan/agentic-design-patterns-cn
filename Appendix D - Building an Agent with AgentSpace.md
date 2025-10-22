@@ -1,7 +1,6 @@
-Appendix D - Building an Agent with AgentSpace | 附录D: 基于AgentSpace构建智能体
+# Appendix D - Building an Agent with AgentSpace | <mark>附录D: 基于AgentSpace构建智能体</mark>
 
-
-Overview--概览
+## Overview | <mark>概览</mark>
 
 AgentSpace is a platform designed to facilitate an "agent-driven enterprise" by integrating artificial intelligence into daily workflows. At its core, it provides a unified search capability across an organization's entire digital footprint, including documents, emails, and databases. This system utilizes advanced AI models, like Google's Gemini, to comprehend and synthesize information from these varied sources.
 
@@ -23,37 +22,33 @@ How to build an Agent with AgentSpace UI
 
 <mark>如何使用 AgentSpace UI 构建智能体</mark>
 
-<markstyle="color:black;">Figure 1 illustrates how to access AgentSpace by selecting AI Applications from the Google Cloud Console.</mark>
+Figure 1 illustrates how to access AgentSpace by selecting AI Applications from the Google Cloud Console.
 
 <mark>图 1 展示了如何通过从 Google Cloud Console 选择“AI 应用”来访问 AgentSpace。</mark>
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140597818-455d7428-484f-4bf5-858f-7495fd418bbd.png)
 
-<markstyle="color:black;">Fig</mark>. 1: <markstyle="color:black;"> </mark>H<markstyle="color:black;">ow to </mark>use Google Cloud Console to<markstyle="color:black;"> access AgentSpace</mark>
+Fig. 1:  How to use Google Cloud Console to access AgentSpace
 
-<markstyle="color:black;">图 1</mark><markstyle="color:black;background-color:#FBDE28;">：如何使用 Google Cloud Console 访问 AgentSpace</mark>
+<mark>图 1：如何使用 Google Cloud Console 访问 AgentSpace</mark>
 
-<markstyle="color:black;">Your agent can be connected to various services, including Calendar, Google Mail, Workaday, Jira, Outlook, and Service Now (see Fig. 2).</mark>
+Your agent can be connected to various services, including Calendar, Google Mail, Workaday, Jira, Outlook, and Service Now (see Fig. 2).
 
-<markstyle="color:black;background-color:#FBDE28;">您的智能体可以连接到各种服务，包括日历、Google Mail、Workaday、Jira、Outlook 和 Service Now（见图 2）。</mark>
-
-
+<mark>您的智能体可以连接到各种服务，包括日历、Google Mail、Workaday、Jira、Outlook 和 Service Now（见图 2）。</mark>
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140597872-5c91627d-6ad6-4f13-a72e-82888c0b0eee.png)
 
-Fig. 2: <markstyle="color:black;">Integrate with diverse services, including Google and third-party platforms.</mark>
+Fig. 2: Integrate with diverse services, including Google and third-party platforms.
 
 <mark>图 2：与包括 Google 和第三方平台在内的各种服务集成。</mark>
 
-<markstyle="color:black;">The Agent can then utilize its own prompt, chosen from a gallery of pre-made prompts provided by Google, as illustrated in Fig. 3.</mark>
+The Agent can then utilize its own prompt, chosen from a gallery of pre-made prompts provided by Google, as illustrated in Fig. 3.
 
 <mark>然后，智能体可以使用自己的提示，这些提示可以从 Google 提供的预制提示库中选择，如图 3 所示。</mark>
 
-
-
 ![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140598084-0db2871e-1251-44d1-8bcd-ab4c9b13d6f1.png)
 
-Fig.3: <markstyle="color:black;">Google's Gallery of P</mark>re-assembled <markstyle="color:black;"> </mark>p<markstyle="color:black;">rompts</mark>
+Fig.3: Google's Gallery of Pre-assembled  prompts
 
 <mark>图 3：Google 预置提示库</mark>
 
@@ -63,13 +58,13 @@ In alternative you can create your own prompt as in Fig.4, which will be then us
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140598048-09bf9f3c-c8bd-4ff9-9514-fc76840344c5.png)
 
-Fig.4: <markstyle="color:black;">Customizing the Agent's Prompt</mark><markstyle="color:black;">  </mark>
+Fig.4: Customizing the Agent's Prompt
 
-<markstyle="color:black;background-color:#FBDE28;">图 4：自定义智能体提示</mark>
+<mark>图 4：自定义智能体提示</mark>
 
 AgentSpace offers a number of advanced features such as integration with datastores to store your own data, integration with Google Knowledge Graph or with your private Knowledge Graph, Web interface for exposing your agent to the Web, and Analytics to monitor usage, and more (see Fig. 5) 
 
-<markstyle="color:black;background-color:#FBDE28;">AgentSpace 提供许多高级功能，例如与数据存储集成以存储您自己的数据、与 Google 知识图谱或您的私有知识图谱集成、用于将您的智能体公开到 Web 的 Web 界面以及用于监控使用情况的 Analytics 等等（参见图 5）。</mark>
+<mark>AgentSpace 提供许多高级功能，例如与数据存储集成以存储您自己的数据、与 Google 知识图谱或您的私有知识图谱集成、用于将您的智能体公开到 Web 的 Web 界面以及用于监控使用情况的 Analytics 等等（参见图 5）。</mark>
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140598223-8f7249bf-931c-42c2-8f33-a916c0a4bdcb.png)
 
@@ -77,19 +72,17 @@ Fig. 5: AgentSpace advanced capabilities
 
 <mark>图 5：AgentSpace 高级功能</mark>
 
-<markstyle="color:black;">Upon completion, the AgentSpace chat interface (Fig. 6) will be accessible.</mark>
+Upon completion, the AgentSpace chat interface (Fig. 6) will be accessible.
 
 <mark>完成后，即可访问 AgentSpace 聊天界面（图 6）。</mark>
 
-
-
 ![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140598253-264347cb-f46d-468c-abcc-a87eb21ef909.png)
 
-<markstyle="color:black;">Fig</mark>.<markstyle="color:black;"> 6: The AgentSpace User Interface for initiating a chat with your Agent.</mark>
+Fig. 6: The AgentSpace User Interface for initiating a chat with your Agent.
 
-<markstyle="color:black;background-color:#FBDE28;">图 6：用于与您的智能体发起聊天的 AgentSpace 用户界面。</mark>
+<mark>图 6：用于与您的智能体发起聊天的 AgentSpace 用户界面。</mark>
 
-Conclusion **<markstyle="color:rgb(31, 35, 40);">| </mark>****<markstyle="color:rgb(31, 35, 40);background-color:rgb(255, 248, 197);">结语</mark>**
+## Conclusion | <mark>结语</mark>
 
 In conclusion, AgentSpace provides a functional framework for developing and deploying AI agents within an organization's existing digital infrastructure. The system's architecture links complex backend processes, such as autonomous reasoning and enterprise knowledge graph mapping, to a graphical user interface for agent construction. Through this interface, users can configure agents by integrating various data services and defining their operational parameters via prompts, resulting in customized, context-aware automated systems.
 
@@ -99,14 +92,13 @@ This approach abstracts the underlying technical complexity, enabling the constr
 
 <mark>这种方法抽象了底层的技术复杂性，无需深厚的编程专业知识即可构建专用的多智能体系统。其主要目标是将自动化分析和操作功能直接嵌入到工作流中，从而提高流程效率并增强数据驱动的分析能力。在实践教学方面，我们提供动手学习模块，例如 Google Cloud Skills Boost 上的“使用 Agentspace 构建新一代 AI 智能体”实验室，它为技能学习提供了一个结构化的环境。</mark>
 
+## References | <mark>参考文献</mark>
 
-
-## References <markstyle="color:rgb(31, 35, 40);">| </mark><markstyle="color:rgb(31, 35, 40);background-color:rgb(255, 248, 197);">参考文献</mark>
 1. Create a no-code agent with Agent Designer, [https://cloud.google.com/agentspace/agentspace-enterprise/docs/agent-designer](https://cloud.google.com/agentspace/agentspace-enterprise/docs/agent-designer)
 
-     使用 Agent Designer 创建无代码智能体，[https://cloud.google.com/agentspace/agentspace-enterprise/docs/agent-designer](https://cloud.google.com/agentspace/agentspace-enterprise/docs/agent-designer)
+     <mark>使用 Agent Designer 创建无代码智能体，[https://cloud.google.com/agentspace/agentspace-enterprise/docs/agent-designer](https://cloud.google.com/agentspace/agentspace-enterprise/docs/agent-designer)
 
 2. Google Cloud Skills Boost,[https://www.cloudskillsboost.google/](https://www.cloudskillsboost.google/)
 
-      Google Cloud Skills Boost,[https://www.cloudskillsboost.google/](https://www.cloudskillsboost.google/)
+      <mark>Google Cloud Skills Boost,[https://www.cloudskillsboost.google/](https://www.cloudskillsboost.google/)</mark>
 
