@@ -1,4 +1,6 @@
 
+Appendix D - Building an Agent with AgentSpace
+
 Overview--概览
 AgentSpace is a platform designed to facilitate an "agent-driven enterprise" by integrating artificial intelligence into daily workflows. At its core, it provides a unified search capability across an organization's entire digital footprint, including documents, emails, and databases. This system utilizes advanced AI models, like Google's Gemini, to comprehend and synthesize information from these varied sources.
 AgentSpace 是一个旨在通过将人工智能融入日常工作流程来促进“智能体驱动型企业”发展的平台。其核心是提供统一的搜索功能，涵盖组织的全部数字足迹，包括文档、电子邮件和数据库。该系统利用先进的人工智能模型（例如 Google 的 Gemini）来理解和整合来自不同来源的信息。
