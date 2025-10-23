@@ -24,7 +24,7 @@ How to build an Agent with AgentSpace UI
 
 Figure 1 illustrates how to access AgentSpace by selecting AI Applications from the Google Cloud Console.
 
-<mark>图 1 展示了如何通过从 Google Cloud Console 选择“AI Appcalition”选项来访问 AgentSpace。</mark>
+<mark>图 1 展示了如何通过从 Google Cloud Console 选择“AI Appcalition”来访问 AgentSpace。</mark>
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140597818-455d7428-484f-4bf5-858f-7495fd418bbd.png)
 
@@ -64,7 +64,7 @@ Fig.4: Customizing the Agent's Prompt
 
 AgentSpace offers a number of advanced features such as integration with datastores to store your own data, integration with Google Knowledge Graph or with your private Knowledge Graph, Web interface for exposing your agent to the Web, and Analytics to monitor usage, and more (see Fig. 5) 
 
-<mark>AgentSpace 提供许多高级功能，例如与数据存储集成以存储您自己的数据、与 Google 知识图谱或您的私有知识图谱集成、用于将您的智能体公开到 Web 的 Web 界面以及用于监控使用情况的 Analytics 等等（参见图 5）。</mark>
+<mark>AgentSpace 提供许多高级功能，例如与数据存储集成以存储您自己的数据、与 Google 知识图谱或您的私有知识图谱集成、用于将您的智能体公开到Web界面以及用于监控使用情况的 Analytics 等等（参见图 5）。</mark>
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140598223-8f7249bf-931c-42c2-8f33-a916c0a4bdcb.png)
 
@@ -86,11 +86,11 @@ Fig. 6: The AgentSpace User Interface for initiating a chat with your Agent.
 
 In conclusion, AgentSpace provides a functional framework for developing and deploying AI agents within an organization's existing digital infrastructure. The system's architecture links complex backend processes, such as autonomous reasoning and enterprise knowledge graph mapping, to a graphical user interface for agent construction. Through this interface, users can configure agents by integrating various data services and defining their operational parameters via prompts, resulting in customized, context-aware automated systems.
 
-<mark>总而言之，AgentSpace 提供了一个功能框架，用于在组织现有的数字基础架构内开发和部署 AI 智能体。该系统的架构将复杂的后端流程（例如自主推理和企业知识图谱映射）链接到用于构建智能体的图形用户界面。通过该界面，用户可以通过集成各种数据服务并通过提示定义其操作参数来配置智能体，从而构建定制的、情境感知的自动化系统。</mark>
+<mark>总而言之，AgentSpace 提供用于在组织现有的数字基础架构内开发和部署AI智能体的功能框架。该系统的架构将复杂的后端流程（例如自主推理和企业知识图谱映射）链接到用于构建智能体的图形用户界面。通过该界面，用户可以通过集成各种数据服务并通过提示定义其操作参数来配置智能体，从而构建定制的、情境感知的自动化系统。</mark>
 
 This approach abstracts the underlying technical complexity, enabling the construction of specialized multi-agent systems without requiring deep programming expertise. The primary objective is to embed automated analytical and operational capabilities directly into workflows, thereby increasing process efficiency and enhancing data-driven analysis. For practical instruction, hands-on learning modules are available, such as the "Build a Gen AI Agent with Agentspace" lab on Google Cloud Skills Boost, which provides a structured environment for skill acquisition.
 
-<mark>这种方法抽象了底层的技术复杂性，无需深厚的编程专业知识即可构建专用的多智能体系统。其主要目标是将自动化分析和操作功能直接嵌入到工作流中，从而提高流程效率并增强数据驱动的分析能力。在实践教学方面，我们提供动手学习模块，例如 Google Cloud Skills Boost 上的“使用 Agentspace 构建新一代 AI 智能体”实验室，它为技能学习提供了一个结构化的环境。</mark>
+<mark>这种方法抽象了底层的技术复杂性，无需深厚的编程专业知识即可构建专用的多智能体系统。其主要目标是将自动化分析和操作功能直接嵌入到工作流中，从而提高流程效率并增强数据驱动的分析能力。在实践教学方面，我们提供动手学习模块，例如 Google Cloud Skills Boost 上的“Build a Gen AI Agent with Agentspace”实验，它为技能学习提供结构化的环境。</mark>
 
 ## References | <mark>参考文献</mark>
 
