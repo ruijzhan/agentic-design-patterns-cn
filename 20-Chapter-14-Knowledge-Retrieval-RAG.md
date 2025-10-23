@@ -414,7 +414,7 @@ Fig. 3: Knowledge Retrieval pattern: an AI agent to find and synthesize informat
 - <mark>实际应用涵盖企业搜索、客户支持、法律研究和个性化推荐。</mark> 
 
 ---
-# Conclusion | <mark>结语</mark>
+## Conclusion | <mark>结语</mark>
 In conclusion, Retrieval-Augmented Generation (RAG) addresses the core limitation of a Large Language Model's static knowledge by connecting it to external, up-to-date data sources. The process works by first retrieving relevant information snippets and then augmenting the user's prompt, enabling the LLM to generate more accurate and contextually aware responses. This is made possible by foundational technologies like embeddings, semantic search, and vector databases, which find information based on meaning rather than just keywords. By grounding outputs in verifiable data, RAG significantly reduces factual errors and allows for the use of proprietary information, enhancing trust through citations.
 
 <mark>总之，检索增强生成（RAG）通过将大语言模型（LLM）连接到外部的、最新的数据源，解决了其静态知识的核心局限。该过程首先检索相关信息片段，然后增强用户的提示词，使 LLM 能够生成更准确、更具上下文感知能力的响应。这得益于嵌入、语义搜索和向量数据库等基础技术，可以根据含义而非仅仅是关键字来查找信息。通过将输出建立在可验证的数据之上，RAG 显著减少了事实性错误，并允许使用专有信息，通过引用增强了可信度。</mark>
