@@ -4,7 +4,7 @@ For AI agents to be truly effective and purposeful, they need more than just the
 
 <mark>要让 AI 智能体真正有效且有目的性，它们需要的不仅仅是处理信息或使用工具的能力；它们需要明确的方向感，并能够知道自己是否真的在取得成功。这就是目标设定与监控模式发挥作用的地方。该模式旨在为智能体提供要努力实现的具体目标，并配备跟踪进度和判断这些目标是否实现的手段。</mark>
 
-# Goal Setting and Monitoring Pattern Overview | <mark>目标设定与监控模式概述</mark>
+## Goal Setting and Monitoring Pattern Overview | <mark>目标设定与监控模式概述</mark>
 
 Think about planning a trip. You don't just spontaneously appear at your destination. You decide where you want to go (the goal state), figure out where you are starting from (the initial state), consider available options (transportation, routes, budget), and then map out a sequence of steps: book tickets, pack bags, travel to the airport/station, board the transport, arrive, find accommodation, etc. This step-by-step process, often considering dependencies and constraints, is fundamentally what we mean by planning in agentic systems.
 
@@ -18,7 +18,7 @@ A good planning capability allows agents to tackle problems that aren't simple, 
 
 <mark>良好的规划能力，使智能体不止能够处理简单的单步查询问题。规划还使的智能体能够处理多个面向的请求，通过重新规划来适应变化，并编排复杂的工作流程。这是一个基础模式，支撑着许多高级智能体行为，将简单的反应式系统，转变为能够主动努力实现既定目标的系统。</mark>
 
-# Practical Applications & Use Cases | <mark>实际应用场景</mark>
+## Practical Applications & Use Cases | <mark>实际应用场景</mark>
 
 The Goal Setting and Monitoring pattern is essential for building agents that can operate autonomously and reliably in complex, real-world scenarios. Here are some practical applications:
 
@@ -47,7 +47,7 @@ This pattern is fundamental for agents that need to operate reliably, achieve sp
 
 <mark>对于需要可靠运行、实现特定结果并适应动态条件的智能体来说，这种模式是基础，它为智能化的自我管理提供了必要的框架。</mark>
 
-# Hands-On Code Example | <mark>实战示例</mark>
+## Hands-On Code Example | <mark>实战示例</mark>
 
 To illustrate the Goal Setting and Monitoring pattern, we have an example using LangChain and OpenAI APIs. This Python script outlines an autonomous AI agent engineered to generate and refine Python code. Its core function is to produce solutions for specified problems, ensuring adherence to user-defined quality benchmarks.
 
@@ -365,7 +365,7 @@ I leave to the interested reader the task of adding these more sophisticated con
 
 <mark>添加更复杂的控制并使代码更接近生产就绪，这个任务就留给感兴趣的读者了。</mark>
 
-# At a Glance | <mark>要点速览</mark>
+## At a Glance | <mark>要点速览</mark>
 
 **What**: AI agents often lack a clear direction, preventing them from acting with purpose beyond simple, reactive tasks. Without defined objectives, they cannot independently tackle complex, multi-step problems or orchestrate sophisticated workflows. Furthermore, there is no inherent mechanism for them to determine if their actions are leading to a successful outcome. This limits their autonomy and prevents them from being truly effective in dynamic, real-world scenarios where mere task execution is insufficient.
 
@@ -387,7 +387,7 @@ Fig.2: Goal design patterns
 
 <mark>图 2：目标设计模式</mark>
 
-# Key takeaways | <mark>核心要点</mark>
+## Key takeaways | <mark>核心要点</mark>
 
 Key takeaways include:
 
@@ -406,13 +406,13 @@ Key takeaways include:
 * In Google's ADK, goals are often conveyed through agent instructions, with monitoring accomplished through state management and tool interactions.
 <mark>* 在 Google 的 ADK 中，目标通常通过智能体指令传达，监控则通过状态管理和工具交互来完成。</mark>
 
-# Conclusion | <mark>结语</mark>
+## Conclusion | <mark>结语</mark>
 
 This chapter focused on the crucial paradigm of Goal Setting and Monitoring. I highlighted how this concept transforms AI agents from merely reactive systems into proactive, goal-driven entities. The text emphasized the importance of defining clear, measurable objectives and establishing rigorous monitoring procedures to track progress. Practical applications demonstrated how this paradigm supports reliable autonomous operation across various domains, including customer service and robotics. A conceptual coding example illustrates the implementation of these principles within a structured framework, using agent directives and state management to guide and evaluate an agent's achievement of its specified goals. Ultimately, equipping agents with the ability to formulate and oversee goals is a fundamental step toward building truly intelligent and accountable AI systems.
 
 <mark>本章重点讨论了目标设定与监控这一关键范式。我强调了这一概念如何将 AI 智能体从纯粹的反应式系统转变为主动的、目标驱动的实体。文本强调了明确定义可测量目标和建立严格监控程序以跟踪进度的重要性。实际应用展示了这一范式如何在各个领域（包括客户服务和机器人技术）支持可靠的自主操作。一个概念性编码示例，说明了在结构化框架内实现这些原则，使用智能体指令和状态管理，来指导和评估智能体实现其指定目标的能力。最终，为智能体配备制定和监督目标的能力，是构建真正智能和负责任的 AI 系统的基石。</mark>
 
-# References | <mark>参考文献</mark>
+## References | <mark>参考文献</mark>
 
 1. SMART Goals Framework. [https://en.wikipedia.org/wiki/SMART\_criteria](https://en.wikipedia.org/wiki/SMART_criteria) 
    
