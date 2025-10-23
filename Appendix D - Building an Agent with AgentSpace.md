@@ -1,5 +1,7 @@
 # Appendix D - Building an Agent with AgentSpace* | <mark>附录D: 基于AgentSpace构建智能体</mark>
 
+* Google Cloud Agentspace现已更名为Gemini Enterprise;出于保持与原文英文一致的原则，本译文仍继续采用AgentSpace名称。
+
 ## Overview | <mark>概览</mark>
 
 AgentSpace is a platform designed to facilitate an "agent-driven enterprise" by integrating artificial intelligence into daily workflows. At its core, it provides a unified search capability across an organization's entire digital footprint, including documents, emails, and databases. This system utilizes advanced AI models, like Google's Gemini, to comprehend and synthesize information from these varied sources.
