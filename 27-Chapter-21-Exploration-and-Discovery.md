@@ -201,7 +201,7 @@ The judgment agents are designed with a specific prompt that closely emulates th
 
 <mark>判断智能体设计了特定的提示词，紧密模拟人类评审者通常采用的认知框架和评估标准。该提示词指导智能体通过类似于人类专家的视角来分析输出，考虑相关性、连贯性、事实准确性和整体质量等因素。通过设计这些提示词以镜像人类评审协议，该系统旨在达到接近人类辨别力的评估复杂程度。</mark>
 
-```python
+````python
 def get_score(outlined_plan, latex, reward_model_llm, reviewer_type=None, attempts=3, openai_api_key=None):
     e = str()
     for _attempt in range(attempts):
@@ -260,7 +260,7 @@ Instead, only use Accept or Reject.
 This JSON will be automatically parsed, so ensure
 the format is precise.
 """
-```
+````
 
 In this multi-agent system, the research process is structured around specialized roles, mirroring a typical academic hierarchy to streamline workflow and optimize output.
 
