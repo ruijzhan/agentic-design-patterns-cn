@@ -12,11 +12,11 @@ The platform enables the creation and deployment of specialized AI "agents" that
 
 To achieve this, AgentSpace constructs an enterprise knowledge graph, mapping the relationships between people, documents, and data. This allows the AI to understand context and deliver more relevant and personalized results. The platform also includes a no-code interface called Agent Designer for creating custom agents without requiring deep technical expertise.
 
-<mark>为了实现这一点，AgentSpace 构建了一个企业知识图谱，映射了人员、文档和数据之间的关系。这使得人工智能能够理解上下文并提供更相关、更个性化的结果。该平台还包含一个名为 Agent Designer 的无代码界面，无需深厚的技术专业知识即可创建自定义智能体。</mark>
+<mark>为了实现这一点，AgentSpace 构建了一个企业知识图谱，映射了人员、文档和数据之间的关系。这使得人工智能够理解上下文并提供更相关、更个性化的结果。该平台还包含一个名为 Agent Designer 的无代码界面，无需深厚的技术专业知识即可创建自定义智能体。</mark>
 
 Furthermore, AgentSpace supports a multi-agent system where different AI agents can communicate and collaborate through an open protocol known as the Agent2Agent (A2A) Protocol. This interoperability allows for more complex and orchestrated workflows. Security is a foundational component, with features like role-based access controls and data encryption to protect sensitive enterprise information. Ultimately, AgentSpace aims to enhance productivity and decision-making by embedding intelligent, autonomous systems directly into an organization's operational fabric.
 
-<mark>此外，AgentSpace 支持多智能体系统，不同的 AI 智能体可以通过名为 Agent2Agent (A2A) 协议的开放协议进行通信和协作。这种互操作性支持更复杂、更协调的工作流程。安全性是其基础组件，它提供基于角色的访问控制和数据加密等功能来保护敏感的企业信息。AgentSpace 的最终目标是通过将智能自主系统直接嵌入到组织的运营结构中来提高生产力和决策能力。</mark>
+<mark>此外，AgentSpace 支持多智能体系统，不同的 AI 智能体可以通过Agent2Agent (A2A) 协议的开放协议进行通信和协作。这种互操作性支持更复杂、更协调的工作流程。安全性是其基础组件，它还提供基于角色的访问控制和数据加密等功能来保护敏感的企业信息。AgentSpace 的最终目标是通过将智能自主系统直接嵌入到组织的运营结构中来提高生产力和决策能力。</mark>
 
 How to build an Agent with AgentSpace UI
 
@@ -24,7 +24,7 @@ How to build an Agent with AgentSpace UI
 
 Figure 1 illustrates how to access AgentSpace by selecting AI Applications from the Google Cloud Console.
 
-<mark>图 1 展示了如何通过从 Google Cloud Console 选择“AI 应用”来访问 AgentSpace。</mark>
+<mark>图 1 展示了如何通过从 Google Cloud Console 选择“AI Appcalition”选项来访问 AgentSpace。</mark>
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140597818-455d7428-484f-4bf5-858f-7495fd418bbd.png)
 
