@@ -108,37 +108,37 @@ The capacity to delineate specialized agents and meticulously orchestrate their 
 
 Understanding the intricate ways in which agents interact and communicate is fundamental to designing effective multi-agent systems. As depicted in Fig. 2, a spectrum of interrelationship and communication models exists, ranging from the simplest single-agent scenario to complex, custom-designed collaborative frameworks. Each model presents unique advantages and challenges, influencing the overall efficiency, robustness, and adaptability of the multi-agent system.
 
-<mark>理解智能体交互和通信的复杂方式对于设计有效的多智能体系统至关重要。如图 2 所示,存在从最简单的单智能体场景到复杂的定制协作框架的一系列相互关系和通信模型。每种模型都具有独特的优势和挑战,影响多智能体系统的整体效率、鲁棒性和适应性。</mark>
+<mark>理解智能体之间如何交互和通信是设计高效多智能体系统的基础。如图 2 所示，智能体间互联关系和通信模型呈现一条谱系，从最简单的单智能体场景到复杂的定制协作框架。每种模型各有优劣，会影响多智能体系统的整体效率、稳定性和灵活性。</mark>
 
 ### 1. Single Agent | <mark>单智能体</mark>
 
 At the most basic level, a "Single Agent" operates autonomously without direct interaction or communication with other entities. While this model is straightforward to implement and manage, its capabilities are inherently limited by the individual agent's scope and resources. It is suitable for tasks that are decomposable into independent sub-problems, each solvable by a single, self-sufficient agent.
 
-<mark>在最基本的层面上,「单智能体」自主运行,不与其他实体进行直接交互或通信。虽然这种模型易于实现和管理,但其能力本质上受到单个智能体范围和资源的限制。它适用于可分解为独立子问题的任务,每个子问题都可由单个自给自足的智能体解决。</mark>
+<mark>在最基本的层面上,「单智能体」独立运行，不需要与其他实体进行直接交互或通信。虽然这种模型易于实现和管理，但其能力本质上受限于单个智能体的职责和资源。它适合那些能被分解为独立子问题的场景，其中每个子问题都可由单个自给自足的智能体来解决。</mark>
 
 ### 2. Network | <mark>网络</mark>
 
 The "Network" model represents a significant step towards collaboration, where multiple agents interact directly with each other in a decentralized fashion. Communication typically occurs peer-to-peer, allowing for the sharing of information, resources, and even tasks. This model fosters resilience, as the failure of one agent does not necessarily cripple the entire system. However, managing communication overhead and ensuring coherent decision-making in a large, unstructured network can be challenging.
 
-<mark>「网络」模型代表了向协作迈出的重要一步,多个智能体以去中心化的方式直接相互交互。通信通常以点对点方式进行,允许共享信息、资源甚至任务。这种模型增强了弹性,因为一个智能体的故障不一定会使整个系统瘫痪。然而,在大型非结构化网络中管理通信开销和确保连贯的决策可能具有挑战性。</mark>
+<mark>「网络」模型向协作迈出了重要一步，多个智能体以去中心化、点对点的方式直接交互，能够共享信息、资源乃至分担任务。这种模型结构更具弹性，因为某个智能体的故障不一定会影响整个系统。然而，在大规模、非结构化的网络中，如何控制通信开销并确保决策的一致性仍然是个挑战。</mark>
 
 ### 3. Supervisor | <mark>监督者</mark>
 
 In the "Supervisor" model, a dedicated agent, the "supervisor," oversees and coordinates the activities of a group of subordinate agents. The supervisor acts as a central hub for communication, task allocation, and conflict resolution. This hierarchical structure offers clear lines of authority and can simplify management and control. However, it introduces a single point of failure (the supervisor) and can become a bottleneck if the supervisor is overwhelmed by a large number of subordinates or complex tasks.
 
-<mark>在「监督者」模型中,专门的智能体即「监督者」负责监督和协调一组下属智能体的活动。监督者充当通信、任务分配和冲突解决的中心枢纽。这种层级结构提供了明确的权力线,可以简化管理和控制。然而,它引入了单点故障(监督者),如果监督者被大量下属或复杂任务所淹没,可能会成为瓶颈。</mark>
+<mark>在「监督者」模型中，有一个专门的「监督者」智能体来负责监督和协调下一级智能体的工作。监督者充当通信、任务分配和冲突解决的中心枢纽，能带来清晰的权责分工并简化管理与控制。然而，这种层级结构也会带来单点故障风险（即监督者本人），而且当下一级智能体数量过多或任务非常复杂时，监督者可能成为整体系统的瓶颈。</mark>
 
-### 4. Supervisor as a Tool | <mark>监督者作为工具</mark>
+### 4. Supervisor as a Tool | <mark>将监督者视为工具</mark>
 
 This model is a nuanced extension of the "Supervisor" concept, where the supervisor's role is less about direct command and control and more about providing resources, guidance, or analytical support to other agents. The supervisor might offer tools, data, or computational services that enable other agents to perform their tasks more effectively, without necessarily dictating their every action. This approach aims to leverage the supervisor's capabilities without imposing rigid top-down control.
 
-<mark>这种模型是「监督者」概念的细微扩展,监督者的角色不太关注直接命令和控制,而更多关注为其他智能体提供资源、指导或分析支持。监督者可能提供工具、数据或计算服务,使其他智能体能够更有效地执行任务,而不必指示其每个操作。这种方法旨在利用监督者的能力,而不强加严格的自上而下控制。</mark>
+<mark>这种模型是「监督者」解决的细微扩展，监督者的角色不再直接指挥和控制，而是通过提供资源、指导或分析支持来辅助其他智能体。监督者可能提供工具、数据或计算服务，帮助其他智能体更高效地完成任务，而不是干预或支配它们的每一步行动。此方法旨在发挥监督者的能力，同时避免僵化的自上而下控制。</mark>
 
 ### 5. Hierarchical | <mark>层级</mark>
 
 The "Hierarchical" model expands upon the supervisor concept to create a multi-layered organizational structure. This involves multiple levels of supervisors, with higher-level supervisors overseeing lower-level ones, and ultimately, a collection of operational agents at the lowest tier. This structure is well-suited for complex problems that can be decomposed into sub-problems, each managed by a specific layer of the hierarchy. It provides a structured approach to scalability and complexity management, allowing for distributed decision-making within defined boundaries.
 
-<mark>「层级」模型扩展了监督者概念,创建了多层组织结构。这涉及多个级别的监督者,高级监督者监督低级监督者,最终在最低层有一组操作智能体。这种结构非常适合可以分解为子问题的复杂问题,每个子问题由层级结构的特定层管理。它提供了一种结构化的可扩展性和复杂性管理方法,允许在定义的边界内进行分布式决策。</mark>
+<mark>「层级」模型基于监督者概念创建了一个多层组织结构：高层级的监督者负责监督低层级监督者，最底层则由具体的执行智能体组成。该架构非常适合于可以拆分为若干子问题的复杂任务，每一层负责管理特定的子问题。通过这种分层管理，它为应对复杂性和实现可扩展性提供了清晰的结构，并允许在既定边界内进行分布式决策。</mark>
 
 ![Agent Communication Models](/images/chapter07_fig2.png)
 
@@ -150,11 +150,11 @@ Fig. 2: Agents communicate and interact in various ways.
 
 The "Custom" model represents the ultimate flexibility in multi-agent system design. It allows for the creation of unique interrelationship and communication structures tailored precisely to the specific requirements of a given problem or application. This can involve hybrid approaches that combine elements from the previously mentioned models, or entirely novel designs that emerge from the unique constraints and opportunities of the environment. Custom models often arise from the need to optimize for specific performance metrics, handle highly dynamic environments, or incorporate domain-specific knowledge into the system's architecture. Designing and implementing custom models typically requires a deep understanding of multi-agent systems principles and careful consideration of communication protocols, coordination mechanisms, and emergent behaviors.
 
-<mark>「自定义」模型代表了多智能体系统设计的终极灵活性。它允许创建独特的相互关系和通信结构,精确地针对给定问题或应用的特定要求进行定制。这可能涉及结合前述模型元素的混合方法,或从环境的独特约束和机会中产生的全新设计。自定义模型通常源于优化特定性能指标、处理高度动态环境或将领域特定知识纳入系统架构的需求。设计和实现自定义模型通常需要对多智能体系统原理有深刻理解,并仔细考虑通信协议、协调机制和涌现行为。</mark>
+<mark>「自定义」模型代表了多智能体系统设计的终极灵活性，允许为特定问题或应用精确定制相互关系和通信结构。它既可以是融合了已有模型特点的混合方案，也可以是针对环境独特约束与机会所产生的全新设计。自定义模型通常用于优化特定性能指标、处理高度动态环境或将领域特定知识纳入系统架构的场景。设计与实现这类模型通常要求对多智能体系统原理有深入理解，并需慎重规划通信协议、协调机制及可能出现的涌现行为。</mark>
 
 In summary, the choice of interrelationship and communication model for a multi-agent system is a critical design decision. Each model offers distinct advantages and disadvantages, and the optimal choice depends on factors such as the complexity of the task, the number of agents, the desired level of autonomy, the need for robustness, and the acceptable communication overhead. Future advancements in multi-agent systems will likely continue to explore and refine these models, as well as develop new paradigms for collaborative intelligence.
 
-<mark>总之,为多智能体系统选择相互关系和通信模型是一个关键的设计决策。每种模型都具有独特的优势和劣势,最佳选择取决于任务的复杂性、智能体数量、所需的自主性水平、鲁棒性需求以及可接受的通信开销等因素。多智能体系统的未来进展可能会继续探索和完善这些模型,并开发协作智能的新范式。</mark>
+<mark>总之，为多智能体系统选定相互关系与通信模型是一个关键的设计决策。各种模型各有优劣，哪种最合适取决于任务复杂度、智能体数量、所需自治程度、对系统鲁棒性的要求以及可接受的通信开销。未来，多智能体系统领域可能会继续改进这些模型，并探索新的协作智能范式。</mark>
 
 ---
 
