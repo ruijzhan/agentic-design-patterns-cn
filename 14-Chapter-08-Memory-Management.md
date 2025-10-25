@@ -1,8 +1,6 @@
 ------
 
-# Chapter 8: Memory Management | 
-
-# <mark>第 8 章：记忆管理</mark>
+# Chapter 8: Memory Management | <mark>第 8 章：记忆管理</mark>
 
 Effective memory management is crucial for intelligent agents to retain information. Agents require different types of memory, much like humans, to operate efficiently. This chapter delves into memory management, specifically addressing the immediate (short-term) and persistent (long-term) memory requirements of agents.
 
