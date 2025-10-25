@@ -158,15 +158,15 @@ In summary, the choice of interrelationship and communication model for a multi-
 
 ---
 
-## Hands-On code (Crew AI) | <mark>实战代码:使用 CrewAI</mark>
+## Hands-On code (Crew AI) | <mark>实战代码：使用 CrewAI</mark>
 
 This Python code defines an AI-powered crew using the CrewAI framework to generate a blog post about AI trends. It starts by setting up the environment, loading API keys from a .env file. The core of the application involves defining two agents: a researcher to find and summarize AI trends, and a writer to create a blog post based on the research.
 
-<mark>这段 Python 代码使用 CrewAI 框架定义了一个由 AI 驱动的团队来生成关于 AI 趋势的博客文章。它首先设置环境,从 <code>.env</code> 文件加载 API 密钥。应用的核心涉及定义两个智能体:一个研究员负责查找和总结 AI 趋势,一个作家负责基于研究创建博客文章。</mark>
+<mark>以下这段 Python 代码使用 CrewAI 框架创建了一个由 AI 驱动的团队，用来撰写一篇关于 AI 趋势的博客。程序首先配置环境，从 <code>.env</code> 文件加载 API 密钥。核心部分定义了两个智能体：一个研究员负责查找和总结 AI 趋势，一个写手负责根据研究内容编写最终的博客文章。</mark>
 
 Two tasks are defined accordingly: one for researching the trends and another for writing the blog post, with the writing task depending on the output of the research task. These agents and tasks are then assembled into a Crew, specifying a sequential process where tasks are executed in order. The Crew is initialized with the agents, tasks, and a language model (specifically the "gemini-2.0-flash" model). The main function executes this crew using the kickoff() method, orchestrating the collaboration between the agents to produce the desired output. Finally, the code prints the final result of the crew's execution, which is the generated blog post.
 
-<mark>相应地定义了两个任务:一个用于研究趋势,另一个用于撰写博客文章,写作任务依赖于研究任务的输出。然后将这些智能体和任务组装成一个 Crew,指定按顺序执行任务的顺序流程。Crew 使用智能体、任务和语言模型(特别是 <code>gemini-2.0-flash</code> 模型)进行初始化。主函数使用 <code>kickoff()</code> 方法执行此 Crew,编排智能体之间的协作以产生所需的输出。最后,代码打印 Crew 执行的最终结果,即生成的博客文章。</mark>
+<mark>根据上述要求定义了两个任务：一个用于调研趋势，另一个用于撰写博客文章，其中写作任务依赖于调研任务的输出。然后将这些智能体和任务组装成一个 Crew 示例，指定按顺序执行任务。Crew 使用智能体、任务和大语言模型（这里使用 <code>gemini-2.0-flash</code> 模型）进行初始化。主函数使用 <code>kickoff()</code> 方法启动此 Crew 实例，编排智能体之间的协作以产出所需的结果。最后程序打印 Crew 执行的最终结果，即生成的博客文章。</mark>
 
 ```python
 import os
@@ -175,8 +175,10 @@ from crewai import Agent, Task, Crew, Process
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 def setup_environment():
-   """Loads environment variables and checks for the required API key."""
-   # 加载环境变量并检查所需的 API 密钥
+   """
+   Loads environment variables and checks for the required API key.
+   加载环境变量并检查所需的 API 密钥
+   """
    load_dotenv()
    if not os.getenv("GOOGLE_API_KEY"):
        raise ValueError("GOOGLE_API_KEY not found. Please set it in your .env file.")
@@ -184,8 +186,8 @@ def setup_environment():
 def main():
    """
    Initializes and runs the AI crew for content creation using the latest Gemini model.
+   使用最新的 Gemini 模型初始化并运行用于内容创建的 AI 团队
    """
-   # 使用最新的 Gemini 模型初始化并运行用于内容创建的 AI 团队
    setup_environment()
 
    # Define the language model to use.
@@ -193,11 +195,11 @@ def main():
    # For cutting-edge (preview) capabilities, you could use "gemini-2.5-flash".
    # 定义要使用的语言模型
    # 更新为 Gemini 2.0 系列的模型以获得更好的性能和功能
-   # 如需前沿（预览）功能，可以使用 "gemini-2.5-flash"
+   # 如需最新的特性，可以使用 "gemini-2.5-flash" 模型
    llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
    # Define Agents with specific roles and goals
-   # 定义具有特定角色和目标的智能体
+   # 定义具体的角色和目标的智能体
    researcher = Agent(
        role='Senior Research Analyst',
        goal='Find and summarize the latest trends in AI.',
@@ -230,17 +232,18 @@ def main():
    )
 
    # Create the Crew
-   # 创建 Crew
+   # 创建 Crew 实例
    blog_creation_crew = Crew(
        agents=[researcher, writer],
        tasks=[research_task, writing_task],
        process=Process.sequential,
        llm=llm,
-       verbose=2 # Set verbosity for detailed crew execution logs
+       # verbose=2 # Set verbosity for detailed crew execution logs
+       verbose=True  # 译者注：CrewAI 的 Crew 类在最新版本中，verbose 参数只接受布尔值（True 或 False），不再支持整数级别（0, 1, 2）
    )
 
    # Execute the Crew
-   # 执行 Crew
+   # 启动 Crew 实例
    print("## Running the blog creation crew with Gemini 2.0 Flash... ##")
    try:
        result = blog_creation_crew.kickoff()
@@ -257,15 +260,15 @@ if __name__ == "__main__":
 
 We will now delve into further examples within the Google ADK framework, with particular emphasis on hierarchical, parallel, and sequential coordination paradigms, alongside the implementation of an agent as an operational instrument.
 
-<mark>我们现在将深入探讨 Google ADK 框架内的更多示例,特别强调层级、并行和顺序协调范式,以及将智能体实现为操作工具。</mark>
+<mark>接下来我们将深入探讨 Google ADK 框架内的更多示例，重点介绍层级、并行和顺序三种协调模式，并演示如何将智能体作为一个可操作的工具来实现。</mark>
 
 ---
 
-## Hands-on Code (Google ADK) | <mark>实战代码:使用 Google ADK</mark>
+## Hands-on Code (Google ADK) | <mark>实战代码：使用 Google ADK</mark>
 
 The following code example demonstrates the establishment of a hierarchical agent structure within the Google ADK through the creation of a parent-child relationship. The code defines two types of agents: LlmAgent and a custom TaskExecutor agent derived from BaseAgent. The TaskExecutor is designed for specific, non-LLM tasks and in this example, it simply yields a "Task finished successfully" event. An LlmAgent named greeter is initialized with a specified model and instruction to act as a friendly greeter. The custom TaskExecutor is instantiated as task_doer. A parent LlmAgent called coordinator is created, also with a model and instructions. The coordinator's instructions guide it to delegate greetings to the greeter and task execution to the task_doer. The greeter and task_doer are added as sub-agents to the coordinator, establishing a parent-child relationship. The code then asserts that this relationship is correctly set up. Finally, it prints a message indicating that the agent hierarchy has been successfully created.
 
-<mark>以下代码示例演示了如何通过创建父子关系在 Google ADK 中建立层级智能体结构。代码定义了两种类型的智能体:<code>LlmAgent</code> 和从 <code>BaseAgent</code> 派生的自定义 <code>TaskExecutor</code> 智能体。<code>TaskExecutor</code> 专为特定的非 LLM 任务而设计,在此示例中,它只是产生一个「任务成功完成」事件。名为 <code>greeter</code> 的 <code>LlmAgent</code> 使用指定的模型和指令进行初始化,充当友好的问候者。自定义 <code>TaskExecutor</code> 被实例化为 <code>task_doer</code>。创建名为 <code>coordinator</code> 的父 <code>LlmAgent</code>,同样具有模型和指令。<code>coordinator</code> 的指令指导它将问候委托给 <code>greeter</code>,将任务执行委托给 <code>task_doer</code>。将 <code>greeter</code> 和 <code>task_doer</code> 作为子智能体添加到 <code>coordinator</code>,建立父子关系。然后代码断言此关系已正确设置。最后,它打印一条消息,指示已成功创建智能体层级结构。</mark>
+<mark>以下代码演示了如何通过在 Google ADK 中创建父子智能体关系来建立多层级结构。代码中定义了两种类型的智能体：<code>LlmAgent</code> 和从 <code>BaseAgent</code> 的自定义 <code>TaskExecutor</code>。<code>TaskExecutor</code> 用于处理特定的非大语言模型任务，在这个示例中，它只是发出一个「任务成功完成」事件。一个名为 <code>greeter</code> 的 <code>LlmAgent</code> 智能体使用指定的模型并被要求扮演友好的迎宾角色。通过自定义 <code>TaskExecutor</code> 实例化为 <code>task_doer</code>。随后创建一个名为 <code>coordinator</code> 的父 <code>LlmAgent</code>，同样指定了模型与指令，要求它将问候任务委托给 <code>greeter</code>，将具体的任务执行委托给 <code>task_doer</code>。通过把 <code>greeter</code> 和 <code>task_doer</code> 作为 <code>coordinator</code> 的子智能体，建立了父子关系。代码接着断言此关系已正确设置，最后打印一条消息，表示智能体层级关系已成功创建。</mark>
 
 ```python
 from google.adk.agents import LlmAgent, BaseAgent
@@ -274,38 +277,44 @@ from google.adk.events import Event
 from typing import AsyncGenerator
 
 # Correctly implement a custom agent by extending BaseAgent
-# 通过扩展 BaseAgent 正确实现自定义智能体
+# 通过继承 BaseAgent 类实现自定义智能体
 class TaskExecutor(BaseAgent):
-   """A specialized agent with custom, non-LLM behavior."""
-   # 具有自定义非 LLM 行为的专业智能体
+   """
+   A specialized agent with custom, non-LLM behavior.
+   一个自定义的非基于大语言模型的智能体
+   """
    name: str = "TaskExecutor"
    description: str = "Executes a predefined task."
 
    async def _run_async_impl(self, context: InvocationContext) -> AsyncGenerator[Event, None]:
-       """Custom implementation logic for the task."""
-       # 任务的自定义实现逻辑
+       """
+       Custom implementation logic for the task.
+       自定义任务的实现逻辑
+       """
        # This is where your custom logic would go.
        # For this example, we'll just yield a simple event.
-       # 这里是你的自定义逻辑所在
-       # 在这个示例中，我们只是产生一个简单的事件
+       # 这里是自定义逻辑所在
+       # 在这个示例中，我们只是返回一个简单的事件
        yield Event(author=self.name, content="Task finished successfully.")
 
 # Define individual agents with proper initialization
 # LlmAgent requires a model to be specified.
-# 定义具有正确初始化的各个智能体
-# LlmAgent 需要指定模型
+# 定义具有明确功能的智能体
+# LlmAgent 需要指定使用的模型
 greeter = LlmAgent(
    name="Greeter",
    model="gemini-2.0-flash-exp",
    instruction="You are a friendly greeter."
 )
-task_doer = TaskExecutor() # Instantiate our concrete custom agent
-                            # 实例化我们的具体自定义智能体
+
+# Instantiate our concrete custom agent
+# 实例化自定义智能体
+task_doer = TaskExecutor() 
 
 # Create a parent agent and assign its sub-agents
 # The parent agent's description and instructions should guide its delegation logic.
-# 创建父智能体并分配其子智能体
-# 父智能体的描述和指令应指导其委派逻辑
+# 创建一个父智能体并声明其子智能体列表
+# 父智能体的描述和指令应该能够指导其委派子智能体的逻辑
 coordinator = LlmAgent(
    name="Coordinator",
    model="gemini-2.0-flash-exp",
@@ -319,8 +328,8 @@ coordinator = LlmAgent(
 
 # The ADK framework automatically establishes the parent-child relationships.
 # These assertions will pass if checked after initialization.
-# ADK 框架自动建立父子关系
-# 如果在初始化后检查，这些断言将通过
+# ADK 框架会自动建立上述层级关系
+# 如果在初始化后检查，这些断言将成立
 assert greeter.parent_agent == coordinator
 assert task_doer.parent_agent == coordinator
 
@@ -329,7 +338,7 @@ print("Agent hierarchy created successfully.")
 
 This code excerpt illustrates the employment of the LoopAgent within the Google ADK framework to establish iterative workflows. The code defines two agents: ConditionChecker and ProcessingStep. ConditionChecker is a custom agent that checks a "status" value in the session state. If the "status" is "completed", ConditionChecker escalates an event to stop the loop. Otherwise, it yields an event to continue the loop. ProcessingStep is an LlmAgent using the "gemini-2.0-flash-exp" model. Its instruction is to perform a task and set the session "status" to "completed" if it's the final step. A LoopAgent named StatusPoller is created. StatusPoller is configured with max_iterations=10. StatusPoller includes both ProcessingStep and an instance of ConditionChecker as sub-agents. The LoopAgent will execute the sub-agents sequentially for up to 10 iterations, stopping if ConditionChecker finds the status is "completed".
 
-<mark>这段代码摘录说明了在 Google ADK 框架中使用 <code>LoopAgent</code> 来建立迭代工作流。代码定义了两个智能体:<code>ConditionChecker</code> 和 <code>ProcessingStep</code>。<code>ConditionChecker</code> 是一个自定义智能体,用于检查会话状态中的「status」值。如果「status」为「completed」,<code>ConditionChecker</code> 会升级事件以停止循环。否则,它会产生事件以继续循环。<code>ProcessingStep</code> 是使用 <code>gemini-2.0-flash-exp</code> 模型的 <code>LlmAgent</code>。其指令是执行任务,如果是最后一步,则将会话「status」设置为「completed」。创建名为 <code>StatusPoller</code> 的 <code>LoopAgent</code>。<code>StatusPoller</code> 配置为 <code>max_iterations=10</code>。<code>StatusPoller</code> 包括 <code>ProcessingStep</code> 和 <code>ConditionChecker</code> 实例作为子智能体。<code>LoopAgent</code> 将顺序执行子智能体最多 10 次迭代,如果 <code>ConditionChecker</code> 发现状态为「completed」则停止。</mark>
+<mark>继续下一个示例，以下这段代码演示了如何在 Google ADK 框架中使用 <code>LoopAgent</code> 创建迭代工作流。代码定义了两个智能体：<code>ConditionChecker</code> 和 <code>ProcessingStep</code>。<code>ConditionChecker</code> 是一个自定义智能体，用于检查会话状态中的「status」字段值。如果「status」为「completed」，<code>ConditionChecker</code> 会终止循环。否则，它会发出一个事件以继续循环。<code>ProcessingStep</code> 是一个使用 <code>gemini-2.0-flash-exp</code> 模型的 <code>LlmAgent</code>，负责执行具体的任务，如果是最后一步，则将会话「status」设置为「completed」。示例中创建了一个名为 <code>StatusPoller</code> 的 <code>LoopAgent</code>，配置为最多循环 10 次（<code>max_iterations=10</code>），并将 <code>ProcessingStep</code> 和 <code>ConditionChecker</code> 实例作为子智能体顺序执行。<code>LoopAgent</code> 最多执行 10 次循环，如果 <code>ConditionChecker</code> 检测到状态为「completed」则提前终止。</mark>
 
 ```python
 import asyncio
@@ -341,30 +350,34 @@ from google.adk.agents.invocation_context import InvocationContext
 # Best Practice: Define custom agents as complete, self-describing classes.
 # 最佳实践：将自定义智能体定义为完整的、自描述的类
 class ConditionChecker(BaseAgent):
-   """A custom agent that checks for a 'completed' status in the session state."""
-   # 检查会话状态中是否有「completed」状态的自定义智能体
+   """
+   A custom agent that checks for a 'completed' status in the session state.
+   一个自定义的智能体，用于检查会话是否为「completed」状态
+   """
    name: str = "ConditionChecker"
    description: str = "Checks if a process is complete and signals the loop to stop."
 
    async def _run_async_impl(
        self, context: InvocationContext
    ) -> AsyncGenerator[Event, None]:
-       """Checks state and yields an event to either continue or stop the loop."""
-       # 检查状态并产生事件以继续或停止循环
+       """
+       Checks state and yields an event to either continue or stop the loop.
+       检查状态并产生事件以继续或停止循环
+       """
        status = context.session.state.get("status", "pending")
        is_done = (status == "completed")
 
        if is_done:
            # Escalate to terminate the loop when the condition is met.
-           # 满足条件时升级以终止循环
+           # 满足条件时终止循环
            yield Event(author=self.name, actions=EventActions(escalate=True))
        else:
            # Yield a simple event to continue the loop.
-           # 产生简单事件以继续循环
+           # 否则，发出简单事件以继续循环
            yield Event(author=self.name, content="Condition not met, continuing loop.")
 
 # Correction: The LlmAgent must have a model and clear instructions.
-# 更正：LlmAgent 必须有模型和清晰的指令
+# 说明：LlmAgent 必须指定使用的模型和清晰的指令
 process_step = LlmAgent(
    name="ProcessingStep",
    model="gemini-2.0-flash-exp",
@@ -372,14 +385,13 @@ process_step = LlmAgent(
 )
 
 # The LoopAgent orchestrates the workflow.
-# LoopAgent 编排工作流
+# 使用 LoopAgent 编排工作流
 poller = LoopAgent(
    name="StatusPoller",
    max_iterations=10,
    sub_agents=[
        process_step,
        ConditionChecker() # Instantiating the well-defined custom agent.
-                          # 实例化定义良好的自定义智能体
    ]
 )
 
@@ -387,9 +399,9 @@ poller = LoopAgent(
 # and then 'ConditionChecker'
 # repeatedly until the status is 'completed' or 10 iterations
 # have passed.
-# 此轮询器现在将执行 'process_step'
-# 然后执行 'ConditionChecker'
-# 重复执行直到状态为 'completed' 或已经过 10 次迭代
+# 此轮询器现在将执行 'process_step' 智能体
+# 然后执行 'ConditionChecker' 智能体    
+# 重复执行直到状态为 'completed' 或达到 10 次循环
 ```
 
 This code excerpt elucidates the SequentialAgent pattern within the Google ADK, engineered for the construction of linear workflows. This code defines a sequential agent pipeline using the google.adk.agents library. The pipeline consists of two agents, step1 and step2. step1 is named "Step1_Fetch" and its output will be stored in the session state under the key "data". step2 is named "Step2_Process" and is instructed to analyze the information stored in session.state["data"] and provide a summary. The SequentialAgent named "MyPipeline" orchestrates the execution of these sub-agents. When the pipeline is run with an initial input, step1 will execute first. The response from step1 will be saved into the session state under the key "data". Subsequently, step2 will execute, utilizing the information that step1 placed into the state as per its instruction. This structure allows for building workflows where the output of one agent becomes the input for the next. This is a common pattern in creating multi-step AI or data processing pipelines.
