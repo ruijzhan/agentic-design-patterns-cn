@@ -406,19 +406,19 @@ poller = LoopAgent(
 
 This code excerpt elucidates the SequentialAgent pattern within the Google ADK, engineered for the construction of linear workflows. This code defines a sequential agent pipeline using the google.adk.agents library. The pipeline consists of two agents, step1 and step2. step1 is named "Step1_Fetch" and its output will be stored in the session state under the key "data". step2 is named "Step2_Process" and is instructed to analyze the information stored in session.state["data"] and provide a summary. The SequentialAgent named "MyPipeline" orchestrates the execution of these sub-agents. When the pipeline is run with an initial input, step1 will execute first. The response from step1 will be saved into the session state under the key "data". Subsequently, step2 will execute, utilizing the information that step1 placed into the state as per its instruction. This structure allows for building workflows where the output of one agent becomes the input for the next. This is a common pattern in creating multi-step AI or data processing pipelines.
 
-<mark>这段代码摘录阐明了 Google ADK 中的 <code>SequentialAgent</code> 模式,专为构建线性工作流而设计。此代码使用 <code>google.adk.agents</code> 库定义了一个顺序智能体管道。管道由两个智能体组成:<code>step1</code> 和 <code>step2</code>。<code>step1</code> 命名为「Step1_Fetch」,其输出将存储在会话状态中的「data」键下。<code>step2</code> 命名为「Step2_Process」,被指示分析存储在 <code>session.state["data"]</code> 中的信息并提供摘要。名为「MyPipeline」的 <code>SequentialAgent</code> 编排这些子智能体的执行。当使用初始输入运行管道时,<code>step1</code> 将首先执行。来自 <code>step1</code> 的响应将保存到会话状态中的「data」键下。随后,<code>step2</code> 将执行,根据其指令利用 <code>step1</code> 放入状态中的信息。这种结构允许构建工作流,其中一个智能体的输出成为下一个智能体的输入。这是创建多步骤 AI 或数据处理管道的常见模式。</mark>
+<mark>下面代码则演示了如何通过 Google ADK 中的 <code>SequentialAgent</code> 来构建线性工作流。示例中使用 <code>google.adk.agents</code> 库定义了由两个智能体组成的顺序智能体流水线：<code>step1</code> 和 <code>step2</code>。<code>step1</code> 命名为「Step1_Fetch」，其输出将存储在会话状态中的「data」属性下。<code>step2</code> 命名为「Step2_Process」，被要求分析存储在 <code>session.state["data"]</code> 中的信息并给出摘要。名为「MyPipeline」的 <code>SequentialAgent</code> 编排这些子智能体的执行。当使用原始输入运行流水线时，<code>step1</code> 会先执行，并把结果写入会话状态中的「data」属性下。随后，<code>step2</code> 再执行，根据其指令读取状态并继续处理。这样的结构便于构建多步流程，使一个智能体的输出能作为下一个智能体的输入，是常见的构建多步骤 AI 或数据处理流水线模式。</mark>
 
 ```python
 from google.adk.agents import SequentialAgent, Agent
 
 # This agent's output will be saved to session.state["data"]
-# 此智能体的输出将保存到 session.state["data"]
+# 该智能体的输出将保存到 session.state["data"]
 step1 = Agent(name="Step1_Fetch", output_key="data")
 
 # This agent will use the data from the previous step.
 # We instruct it on how to find and use this data.
-# 此智能体将使用上一步的数据
-# 我们指示它如何查找和使用这些数据
+# 该智能体会使用上一步的输出
+# 通过指令告诉它如何查找和使用上一步的输出
 step2 = Agent(
    name="Step2_Process",
    instruction="Analyze the information found in state['data'] and provide a summary."
@@ -432,14 +432,14 @@ pipeline = SequentialAgent(
 # When the pipeline is run with an initial input, Step1 will execute,
 # its response will be stored in session.state["data"], and then
 # Step2 will execute, using the information from the state as instructed.
-# 当使用初始输入运行管道时，Step1 将执行，
-# 其响应将存储在 session.state["data"] 中，然后
-# Step2 将执行，按照指示使用状态中的信息
+# 当使用原始输入运行 pipeline 时，Step1 先执行，
+# 它的响应会保存到 session.state["data"] 中，然后
+# Step2 再执行，按照指令使用状态中的信息
 ```
 
 The following code example illustrates the ParallelAgent pattern within the Google ADK, which facilitates the concurrent execution of multiple agent tasks. The data_gatherer is designed to run two sub-agents concurrently: weather_fetcher and news_fetcher. The weather_fetcher agent is instructed to get the weather for a given location and store the result in session.state["weather_data"]. Similarly, the news_fetcher agent is instructed to retrieve the top news story for a given topic and store it in session.state["news_data"]. Each sub-agent is configured to use the "gemini-2.0-flash-exp" model. The ParallelAgent orchestrates the execution of these sub-agents, allowing them to work in parallel. The results from both weather_fetcher and news_fetcher would be gathered and stored in the session state. Finally, the example shows how to access the collected weather and news data from the final_state after the agent's execution is complete.
 
-<mark>以下代码示例说明了 Google ADK 中的 <code>ParallelAgent</code> 模式,它促进了多个智能体任务的并发执行。<code>data_gatherer</code> 旨在并发运行两个子智能体:<code>weather_fetcher</code> 和 <code>news_fetcher</code>。<code>weather_fetcher</code> 智能体被指示获取给定位置的天气并将结果存储在 <code>session.state["weather_data"]</code> 中。类似地,<code>news_fetcher</code> 智能体被指示检索给定主题的头条新闻并将其存储在 <code>session.state["news_data"]</code> 中。每个子智能体都配置为使用 <code>gemini-2.0-flash-exp</code> 模型。<code>ParallelAgent</code> 编排这些子智能体的执行,允许它们并行工作。来自 <code>weather_fetcher</code> 和 <code>news_fetcher</code> 的结果将被收集并存储在会话状态中。最后,示例展示了如何在智能体执行完成后从 <code>final_state</code> 访问收集的天气和新闻数据。</mark>
+<mark>下面的代码示例演示了如何通过 Google ADK 中的 <code>ParallelAgent</code> 来实现多个智能体任务的并行执行。<code>data_gatherer</code> 声明需要并行运行两个子智能体：<code>weather_fetcher</code> 和 <code>news_fetcher</code>。其中 <code>weather_fetcher</code> 智能体被要求获取给定位置的天气并将结果保持在 <code>session.state["weather_data"]</code> 中，<code>news_fetcher</code> 智能体则被要求检索给定主题的头条新闻并将其保持在 <code>session.state["news_data"]</code> 中。每个子智能体都使用 <code>gemini-2.0-flash-exp</code> 模型。<code>ParallelAgent</code> 负责编排这些子智能体的并行执行，收集它们的执行结果并存储在会话状态中。最后，示例展示了如何在智能体执行完成后从会话状态中获取收集的天气和新闻数据。</mark>
 
 ```python
 from google.adk.agents import Agent, ParallelAgent
@@ -447,18 +447,16 @@ from google.adk.agents import Agent, ParallelAgent
 # It's better to define the fetching logic as tools for the agents
 # For simplicity in this example, we'll embed the logic in the agent's instruction.
 # In a real-world scenario, you would use tools.
-# 最好将获取逻辑定义为智能体的工具
-# 为了简单起见，在这个示例中，我们将逻辑嵌入到智能体的指令中
-# 在实际场景中，你应该使用工具
+# 在实际场景中最好将查询数据的逻辑定义为智能体的工具
+# 为了简单起见，在这个示例中，我们将查询数据的逻辑放在了智能体的指令中
 
 # Define the individual agents that will run in parallel
-# 定义将并行运行的各个智能体
+# 定义两个并行运行的子智能体：weather_fetcher 和 news_fetcher
 weather_fetcher = Agent(
    name="weather_fetcher",
    model="gemini-2.0-flash-exp",
    instruction="Fetch the weather for the given location and return only the weather report.",
    output_key="weather_data"  # The result will be stored in session.state["weather_data"]
-                              # 结果将存储在 session.state["weather_data"]
 )
 
 news_fetcher = Agent(
@@ -466,11 +464,10 @@ news_fetcher = Agent(
    model="gemini-2.0-flash-exp",
    instruction="Fetch the top news story for the given topic and return only that story.",
    output_key="news_data"      # The result will be stored in session.state["news_data"]
-                              # 结果将存储在 session.state["news_data"]
 )
 
 # Create the ParallelAgent to orchestrate the sub-agents
-# 创建 ParallelAgent 以编排子智能体
+# 使用 ParallelAgent 编排子智能体并行执行
 data_gatherer = ParallelAgent(
    name="data_gatherer",
    sub_agents=[
@@ -482,7 +479,7 @@ data_gatherer = ParallelAgent(
 
 The provided code segment exemplifies the "Agent as a Tool" paradigm within the Google ADK, enabling an agent to utilize the capabilities of another agent in a manner analogous to function invocation. Specifically, the code defines an image generation system using Google's LlmAgent and AgentTool classes. It consists of two agents: a parent artist_agent and a sub-agent image_generator_agent. The generate_image function is a simple tool that simulates image creation, returning mock image data. The image_generator_agent is responsible for using this tool based on a text prompt it receives. The artist_agent's role is to first invent a creative image prompt. It then calls the image_generator_agent through an AgentTool wrapper. The AgentTool acts as a bridge, allowing one agent to use another agent as a tool. When the artist_agent calls the image_tool, the AgentTool invokes the image_generator_agent with the artist's invented prompt. The image_generator_agent then uses the generate_image function with that prompt. Finally, the generated image (or mock data) is returned back up through the agents. This architecture demonstrates a layered agent system where a higher-level agent orchestrates a lower-level, specialized agent to perform a task.
 
-<mark>提供的代码段示例说明了 Google ADK 中的「智能体作为工具」范式,使智能体能够以类似于函数调用的方式利用另一个智能体的能力。具体来说,代码使用 Google 的 <code>LlmAgent</code> 和 <code>AgentTool</code> 类定义了一个图像生成系统。它由两个智能体组成:父智能体 <code>artist_agent</code> 和子智能体 <code>image_generator_agent</code>。<code>generate_image</code> 函数是一个简单的工具,模拟图像创建,返回模拟图像数据。<code>image_generator_agent</code> 负责根据接收到的文本提示使用此工具。<code>artist_agent</code> 的角色首先是发明创意图像提示。然后通过 <code>AgentTool</code> 包装器调用 <code>image_generator_agent</code>。<code>AgentTool</code> 充当桥梁,允许一个智能体将另一个智能体用作工具。当 <code>artist_agent</code> 调用 <code>image_tool</code> 时,<code>AgentTool</code> 使用艺术家发明的提示调用 <code>image_generator_agent</code>。然后 <code>image_generator_agent</code> 使用该提示调用 <code>generate_image</code> 函数。最后,生成的图像(或模拟数据)通过智能体返回。此架构演示了一个分层智能体系统,其中高级智能体编排低级专业智能体来执行任务。</mark>
+<mark>最后这个示例演示了 Google ADK 中的「智能体作为工具」范式，使智能体能够以类似于函数调用的方式利用另一个智能体的能力。具体来说，代码使用 Google 的 <code>LlmAgent</code> 和 <code>AgentTool</code> 类定义了一个图像生成系统。它由两个智能体组成：父智能体 <code>artist_agent</code> 和子智能体 <code>image_generator_agent</code>。<code>generate_image</code> 函数是一个简单的工具，模拟图像创建，返回模拟图像数据。<code>image_generator_agent</code> 负责根据接收到的提示词使用此工具。<code>artist_agent</code> 的角色是先构思出一个富有创意的图像提示词，然后通过 <code>AgentTool</code> 包装器调用 <code>image_generator_agent</code>。这里 <code>AgentTool</code> 起到桥梁作用，允许一个智能体将另一个智能体用作工具。当 <code>artist_agent</code> 调用 <code>image_tool</code> 时，<code>AgentTool</code> 使用 <code>artist_agent</code> 输出的提示词调用 <code>image_generator_agent</code> 智能体。然后 <code>image_generator_agent</code> 使用该提示调用 <code>generate_image</code> 函数。最后，生成的图像（或模拟数据）通过智能体返回。整个架构展示了一个分层的代理体系，上层代理负责编排，下层专用代理负责具体执行。</mark>
 
 ```python
 from google.adk.agents import LlmAgent
@@ -491,30 +488,26 @@ from google.genai import types
 
 # 1. A simple function tool for the core capability.
 # This follows the best practice of separating actions from reasoning.
-# 1. 核心功能的简单函数工具
-# 这遵循将操作与推理分离的最佳实践
+# 1. 一个简单的函数工具
+# 遵循分离操作与推理的最佳实践
 def generate_image(prompt: str) -> dict:
    """
    Generates an image based on a textual prompt.
+   基于文本提示生成图像
 
    Args:
        prompt: A detailed description of the image to generate.
-
+       要生成的图像的详细描述
    Returns:
        A dictionary with the status and the generated image bytes.
+       包含状态和生成的图像字节的字典
    """
-   # 基于文本提示生成图像
-   #
-   # 参数:
-   #     prompt: 要生成的图像的详细描述
-   #
-   # 返回:
-   #     包含状态和生成的图像字节的字典
+
    print(f"TOOL: Generating image for prompt: '{prompt}'")
    # In a real implementation, this would call an image generation API.
    # For this example, we return mock image data.
-   # 在实际实现中，这将调用图像生成 API
-   # 在这个示例中，我们返回模拟图像数据
+   # 在实际实现中，这里将调用真实的图像生成 API
+   # 但是为了简便起见，在这个示例中，我们仅返回模拟的图像数据
    mock_image_bytes = b"mock_image_data_for_a_cat_wearing_a_hat"
    return {
        "status": "success",
@@ -527,7 +520,7 @@ def generate_image(prompt: str) -> dict:
 # 2. Refactor the ImageGeneratorAgent into an LlmAgent.
 # It now correctly uses the input passed to it.
 # 2. 将 ImageGeneratorAgent 重构为 LlmAgent
-# 它现在正确使用传递给它的输入
+# 它现在能接收并使用传给它的参数了
 image_generator_agent = LlmAgent(
    name="ImageGen",
    model="gemini-2.0-flash",
@@ -543,15 +536,15 @@ image_generator_agent = LlmAgent(
 
 # 3. Wrap the corrected agent in an AgentTool.
 # The description here is what the parent agent sees.
-# 3. 将修正后的智能体包装在 AgentTool 中
-# 这里的描述是父智能体看到的内容
+# 3. 将智能体封装在 AgentTool 中
+# 这里的描述父智能体是能看到的
 image_tool = agent_tool.AgentTool(
    agent=image_generator_agent,
    description="Use this tool to generate an image. The input should be a descriptive prompt of the desired image."
 )
 
 # 4. The parent agent remains unchanged. Its logic was correct.
-# 4. 父智能体保持不变。其逻辑是正确的
+# 4. 父智能体保持不变。
 artist_agent = LlmAgent(
    name="Artist",
    model="gemini-2.0-flash",
@@ -569,15 +562,15 @@ artist_agent = LlmAgent(
 
 **What:** Complex problems often exceed the capabilities of a single, monolithic LLM-based agent. A solitary agent may lack the diverse, specialized skills or access to the specific tools needed to address all parts of a multifaceted task. This limitation creates a bottleneck, reducing the system's overall effectiveness and scalability. As a result, tackling sophisticated, multi-domain objectives becomes inefficient and can lead to incomplete or suboptimal outcomes.
 
-<mark><strong>问题所在:</strong>复杂问题往往超出单个单体 LLM 智能体的能力范围。单一智能体可能缺乏处理多方面任务所有部分所需的多样化专业技能或特定工具访问权限。这种限制造成了瓶颈,降低了系统的整体有效性和可扩展性。因此,处理复杂的多领域目标变得低效,可能导致不完整或次优的结果。</mark>
+<mark><strong>问题所在：</strong> 复杂问题往往超出单个智能体的能力范围，因为单个智能体可能不具备处理复杂任务所需的各种专业技能或特定工具的访问权限。这种限制造成了瓶颈，降低了系统的整体效率和可扩展性。从而导致单个智能体在处理复杂的跨领域目标时变得低效，容易产出不完整或次优的结果。</mark>
 
 **Why:** The Multi-Agent Collaboration pattern offers a standardized solution by creating a system of multiple, cooperating agents. A complex problem is broken down into smaller, more manageable sub-problems. Each sub-problem is then assigned to a specialized agent with the precise tools and capabilities required to solve it. These agents work together through defined communication protocols and interaction models like sequential handoffs, parallel workstreams, or hierarchical delegation. This agentic, distributed approach creates a synergistic effect, allowing the group to achieve outcomes that would be impossible for any single agent.
 
-<mark><strong>解决之道:</strong>多智能体协作模式通过创建一个由多个协作智能体组成的系统来提供标准化解决方案。复杂问题被分解为更小、更易管理的子问题。然后将每个子问题分配给具有解决该问题所需的精确工具和能力的专业智能体。这些智能体通过定义的通信协议和交互模型(如顺序交接、并行工作流或层级委派)协同工作。这种智能体式的分布式方法产生了协同效应,使团队能够实现任何单个智能体都无法实现的成果。</mark>
+<mark><strong>解决之道：</strong> 多智能体协作模式通过创建一个由多个相互协作的智能体组成的系统，提供了一套标准化解决方案。复杂问题被分解为更小、更易管理的子问题，每个子问题分配给具有解决该问题所需的工具和能力的专业智能体去处理。这些智能体之间按预定义的通信协议和交互模型（如顺序交接、并行工作流或层级委派）协同工作。这样的智能体分布式协作方法能够产生协同效应，实现单个智能体无法达成的结果。</mark>
 
 **Rule of thumb:** Use this pattern when a task is too complex for a single agent and can be decomposed into distinct sub-tasks requiring specialized skills or tools. It is ideal for problems that benefit from diverse expertise, parallel processing, or a structured workflow with multiple stages, such as complex research and analysis, software development, or creative content generation.
 
-<mark><strong>经验法则:</strong>当任务对于单个智能体来说过于复杂且可以分解为需要专业技能或工具的不同子任务时,使用此模式。它非常适合从多样化专业知识、并行处理或具有多个阶段的结构化工作流中受益的问题,例如复杂的研究与分析、软件开发或创意内容生成。</mark>
+<mark><strong>经验法则：</strong> 当某个任务对于单个智能体过于复杂且可以拆分为多个各自需要专业技能或工具的子任务时，应使用此模式。它非常适合从多样化专业知识、并行处理或具有多个阶段的结构化工作流中受益的问题，例如复杂的研究与分析、软件开发或创意内容生成等。</mark>
 
 **Visual summary:** | <mark>可视化总结:</mark>
 
@@ -585,7 +578,7 @@ artist_agent = LlmAgent(
 
 Fig.3: Multi-Agent design pattern
 
-<mark>图 3:多智能体设计模式</mark>
+<mark>图 3：多智能体设计模式</mark>
 
 ---
 
@@ -593,19 +586,19 @@ Fig.3: Multi-Agent design pattern
 
 - Multi-agent collaboration involves multiple agents working together to achieve a common goal.
 
-   <mark>多智能体协作涉及多个智能体协同工作以实现共同目标。</mark>
+   <mark>多个智能体通过协同合作，完成一个共同的目标。</mark>
 
 - This pattern leverages specialized roles, distributed tasks, and inter-agent communication.
 
-   <mark>此模式利用专业化角色、分布式任务和智能体间通信。</mark>
+   <mark>该模式通过明确分工的专业角色、分散执行的任务和智能体间协同通信机制，来实现智能体间的协作。</mark>
 
 - Collaboration can take forms like sequential handoffs, parallel processing, debate, or hierarchical structures.
 
-   <mark>协作可以采取顺序交接、并行处理、辩论或层级结构等形式。</mark>
+   <mark>协作可以以多种方式进行，例如顺序交接、并行处理、辩论式讨论或层级结构等形式。</mark>
 
 - This pattern is ideal for complex problems requiring diverse expertise or multiple distinct stages.
 
-   <mark>此模式非常适合需要多样化专业知识或多个不同阶段的复杂问题。</mark>
+   <mark>该模式非常适合处理需要多种专业技能或包含多个独立阶段的复杂问题。</mark>
 
 ---
 
@@ -613,16 +606,16 @@ Fig.3: Multi-Agent design pattern
 
 This chapter explored the Multi-Agent Collaboration pattern, demonstrating the benefits of orchestrating multiple specialized agents within systems. We examined various collaboration models, emphasizing the pattern's essential role in addressing complex, multifaceted problems across diverse domains. Understanding agent collaboration naturally leads to an inquiry into their interactions with the external environment.
 
-<mark>本章探讨了多智能体协作模式,展示了在系统内编排多个专业智能体的优势。我们检查了各种协作模型,强调了该模式在解决跨各领域复杂多面问题中的关键作用。理解智能体协作自然会引发对其与外部环境交互的探究。</mark>
+<mark>本章探讨了多智能体协作模式，展示了在系统内协同多个专长不同智能体所带来的优势。我们分析了多种协作模型，强调了该模式在不同领域应对复杂、多层次问题时的重要性。对智能体协作的理解自然会引出了对它们如何与外部环境交互的进一步思考。</mark>
 
 ---
 
 ## References | <mark>参考文献</mark>
 
-1. Multi-Agent Collaboration Mechanisms: A Survey of LLMs, https://arxiv.org/abs/2501.06322
+1. Multi-Agent Collaboration Mechanisms: A Survey of LLMs, [https://arxiv.org/abs/2501.06322](https://arxiv.org/abs/2501.06322)
 
-   <mark>多智能体协作机制:大语言模型调研,https://arxiv.org/abs/2501.06322</mark>
+   <mark>多智能体协作机制：大语言模型综述，[https://arxiv.org/abs/2501.06322](https://arxiv.org/abs/2501.06322)</mark>
 
-2. Multi-Agent System — The Power of Collaboration, https://aravindakumar.medium.com/introducing-multi-agent-frameworks-the-power-of-collaboration-e9db31bba1b6
+2. Multi-Agent System — The Power of Collaboration, [https://aravindakumar.medium.com/introducing-multi-agent-frameworks-the-power-of-collaboration-e9db31bba1b6](https://aravindakumar.medium.com/introducing-multi-agent-frameworks-the-power-of-collaboration-e9db31bba1b6)
 
-   <mark>多智能体系统——协作的力量,https://aravindakumar.medium.com/introducing-multi-agent-frameworks-the-power-of-collaboration-e9db31bba1b6</mark>
+   <mark>多智能体系统——协作的力量，[https://aravindakumar.medium.com/introducing-multi-agent-frameworks-the-power-of-collaboration-e9db31bba1b6](https://aravindakumar.medium.com/introducing-multi-agent-frameworks-the-power-of-collaboration-e9db31bba1b6)</mark>
