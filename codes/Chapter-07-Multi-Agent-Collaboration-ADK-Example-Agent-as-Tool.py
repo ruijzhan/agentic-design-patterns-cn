@@ -53,7 +53,7 @@ image_generator_agent = LlmAgent(
 # 3. Wrap the corrected agent in an AgentTool.
 # The description here is what the parent agent sees.
 # 3. 将智能体封装在 AgentTool 中
-# 这里的描述父智能体是能看到的
+# 这里的描述是父智能体可见的
 image_tool = agent_tool.AgentTool(
    agent=image_generator_agent,
    description="Use this tool to generate an image. The input should be a descriptive prompt of the desired image."
