@@ -59,7 +59,7 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 | [第 4 章：反思](10-Chapter-04-Reflection.md) | 自我评估和迭代改进，通过反馈循环优化输出质量 | @ginobefun | ✅ | ✅ | ⏳ |
 | [第 5 章：工具使用](11-Chapter-05-Tool-Use.md) | 外部工具与 API 集成，扩展智能体能力边界 | @ginobefun | ✅ | ✅ | ⏳ |
 | [第 6 章：规划](12-Chapter-06-Planning.md) | 多步骤计划制定与执行，实现复杂目标分解 | @ginobefun | ✅ | ✅ | ⏳ |
-| [第 7 章：多智能体协作](13-Chapter-07-Multi-Agent-Collaboration.md) | 协同工作架构，多个智能体配合完成任务 | @ginobefun | ✅  | ✅ | ❌ |
+| [第 7 章：多智能体协作](13-Chapter-07-Multi-Agent-Collaboration.md) | 协同工作架构，多个智能体配合完成任务 | @ginobefun | ✅  | ✅ | ⏳ |
 
 ### 第二部分：高级设计模式 | Part Two: Advanced Patterns (61 页)
 

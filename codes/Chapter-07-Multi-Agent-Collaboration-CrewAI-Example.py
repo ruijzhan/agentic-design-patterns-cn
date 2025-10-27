@@ -18,7 +18,7 @@ def setup_environment():
 def main():
    """
    Initializes and runs the AI crew for content creation using the latest Gemini model.
-   使用最新的 Gemini 模型初始化并运行用于内容创建的 AI 团队
+   使用 Gemini 2.0 Flash 模型初始化并运行用于内容创建的 AI 智能体「创作团队」
    """
    setup_environment()
 
