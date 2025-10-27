@@ -2,15 +2,15 @@
 
 While a monolithic agent architecture can be effective for well-defined problems, its capabilities are often constrained when faced with complex, multi-domain tasks. The Multi-Agent Collaboration pattern addresses these limitations by structuring a system as a cooperative ensemble of distinct, specialized agents. This approach is predicated on the principle of task decomposition, where a high-level objective is broken down into discrete sub-problems. Each sub-problem is then assigned to an agent possessing the specific tools, data access, or reasoning capabilities best suited for that task.
 
-<mark>单智能体在处理任务明确、范围清晰的问题时表现良好，但在面对更复杂的跨领域任务时往往力不从心。多智能体协作模式通过将系统组织为一组相互合作、各司其职的专长型智能体来克服这些限制。这种模式基于任务分解原则，将高层次目标拆解为若干独立的子问题，然后将每个子问题分配给拥有相应工具、数据权限或推理能力的智能体来处理，以发挥各自优势。</mark>
+<mark>单智能体在处理任务明确、范围清晰的问题时表现良好，但在面对更复杂的跨领域任务时往往力不从心。多智能体协作模式通过组织一组相互合作、各司其职的专长型智能体来克服这些限制。这种模式基于任务分解原则，将高层次目标拆解为若干独立的子问题，然后将每个子问题分配给拥有相应工具、数据权限或推理能力的智能体来处理，以发挥各自优势。</mark>
 
 For example, a complex research query might be decomposed and assigned to a Research Agent for information retrieval, a Data Analysis Agent for statistical processing, and a Synthesis Agent for generating the final report. The efficacy of such a system is not merely due to the division of labor but is critically dependent on the mechanisms for inter-agent communication. This requires a standardized communication protocol and a shared ontology, allowing agents to exchange data, delegate sub-tasks, and coordinate their actions to ensure the final output is coherent.
 
-<mark>例如，一个复杂的研究问题可以这样拆分：由研究智能体负责信息检索、由数据分析智能体负责统计处理、由综合智能体负责生成最终报告。这类系统的效果不仅源于分工，更取决于智能体之间的通信机制。为此需要标准化的通信协议和共享的本体，使智能体能够交换数据、委派子任务并协调行动，以确保最终结果的连贯一致。</mark>
+<mark>例如，一个复杂的研究问题可以这样拆分：由研究智能体负责信息检索、数据分析智能体负责统计处理、综合智能体负责生成最终报告。这类系统的效果不仅源于分工，更取决于智能体之间的通信机制。为此需要标准化的通信协议和共享机制，使智能体之间能够交换数据、委派子任务和协调行动，以确保最终结果的连贯一致。</mark>
 
 This distributed architecture offers several advantages, including enhanced modularity, scalability, and robustness, as the failure of a single agent does not necessarily cause a total system failure. The collaboration allows for a synergistic outcome where the collective performance of the multi-agent system surpasses the potential capabilities of any single agent within the ensemble.
 
-<mark>这种分布式架构具有多项优势，包括更强的模块化、可扩展性和鲁棒性，因为单个智能体的故障不一定会导致整个系统瘫痪。通过协作，多智能体系统能够发挥协同效应，其整体表现往往超越任何单个智能体的能力。</mark>
+<mark>这种分布式架构具有多项优势，包括更强的模块化、可扩展性和鲁棒性。因为单个智能体的故障不一定会导致整个系统瘫痪。更重要的是，通过协作，多智能体系统能够发挥协同效应，其整体表现往往超越任何单个智能体的能力上限。</mark>
 
 ---
 
@@ -18,7 +18,7 @@ This distributed architecture offers several advantages, including enhanced modu
 
 The Multi-Agent Collaboration pattern involves designing systems where multiple independent or semi-independent agents work together to achieve a common goal. Each agent typically has a defined role, specific goals aligned with the overall objective, and potentially access to different tools or knowledge bases. The power of this pattern lies in the interaction and synergy between these agents.
 
-<mark>多智能体协作模式是指设计由多个独立或半独立智能体组成的系统，它们协同工作以实现共同目标。每个智能体通常承担明确的角色，目标与整体目标保持一致，并可能使用不同的工具或知识库。其力量在于智能体之间的互动与协同，产生超越单体能力的协同效应。</mark>
+<mark>多智能体协作模式是指设计由多个独立或半独立智能体组成的系统，它们之间协同工作以实现共同目标。每个智能体通常承担明确的角色，拥有与整体目标一致的目标，并可以使用不同的工具或知识库。其强大之处在于智能体之间的互动与协同，能够产生超越单体能力的协同效应。</mark>
 
 Collaboration can take various forms:
 
@@ -34,11 +34,11 @@ Collaboration can take various forms:
 
 - **Debate and Consensus:** Multi-Agent Collaboration where Agents with varied perspectives and information sources engage in discussions to evaluate options, ultimately reaching a consensus or a more informed decision.
 
-   <mark><strong>辩论与共识：</strong> 在多智能体协作中，来自不同视角和信息来源的智能体通过讨论评估各种方案，最终形成共识或得出更加可靠的决策。</mark>
+   <mark><strong>辩论与共识：</strong> 在多智能体协作中，来自不同视角和信息来源的智能体通过讨论和评估各种方案，最终形成共识或得出更加可靠的决策。</mark>
 
 - **Hierarchical Structures:** A manager agent might delegate tasks to worker agents dynamically based on their tool access or plugin capabilities and synthesize their results. Each agent can also handle relevant groups of tools, rather than a single agent handling all the tools.
 
-   <mark><strong>层级结构：</strong> 管理型智能体可以根据各个执行型智能体的工具权限或插件能力，动态分配任务并汇总结果。每个智能体也可以负责一组相关工具，而不是由单个智能体承担所有工具调用。</mark>
+   <mark><strong>层级结构：</strong> 管理型智能体可以根据各个执行型智能体的工具权限或插件能力，动态分配任务并汇总结果。每个智能体也可以负责一组相关工具，而不是让单个智能体承担所有工具调用的责任。</mark>
 
 - **Expert Teams:** Agents with specialized knowledge in different domains (e.g., a researcher, a writer, an editor) collaborate to produce a complex output.
 
@@ -46,11 +46,11 @@ Collaboration can take various forms:
 
 - **Critic-Reviewer:** Agents create initial outputs such as plans, drafts, or answers. A second group of agents then critically assesses this output for adherence to policies, security, compliance, correctness, quality, and alignment with organizational objectives. The original creator or a final agent revises the output based on this feedback. This pattern is particularly effective for code generation, research writing, logic checking, and ensuring ethical alignment. The advantages of this approach include increased robustness, improved quality, and a reduced likelihood of hallucinations or errors.
 
-   <mark><strong>评审者模式：</strong> 一组智能体先生成初始输出（如计划、草稿或答案），另一组智能体随后严格评估该输出是否符合政策、安全性、合规性、正确性、质量要求以及组织目标。原始输出的智能体或最终智能体再据此反馈改进输出。这种模式对于代码生成、学术写作、逻辑检查以及确保伦理合规尤其有效，优势包括更强的稳定性、更高的质量，以及显著减少幻觉和其他错误的可能性。</mark>
+   <mark><strong>评审者模式：</strong> 一组智能体先生成初始输出（如计划、草稿或答案），另一组智能体随后严格评估该输出是否符合政策、安全性、合规性、正确性、质量要求以及组织目标。原始输出的智能体或最终智能体再据此反馈来改进输出。这种模式对于代码生成、学术写作、逻辑检查以及确保伦理合规方面尤其有效，其优势包括更强的稳定性、更高的质量，以及显著减少幻觉和其他错误的可能性。</mark>
 
 A multi-agent system (see Fig.1) fundamentally comprises the delineation of agent roles and responsibilities, the establishment of communication channels through which agents exchange information, and the formulation of a task flow or interaction protocol that directs their collaborative endeavors.
 
-<mark>多智能体系统（见图 1）主要由三部分组成：明确每个智能体的角色和职责、建立用于信息交换的通信通道，以及制定引导它们协作的任务流程或交互协议。</mark>
+<mark>多智能体系统（见图 1）的设计主要包括三个方面：明确每个智能体的角色和职责、建立用于信息交换的通信通道，以及制定引导它们协同工作的任务流程或交互协议。</mark>
 
 ![Multi-Agent System Example](/images/chapter07_fig1.png)
 
@@ -60,7 +60,7 @@ Fig.1: Example of multi-agent system
 
 Frameworks such as Crew AI and Google ADK are engineered to facilitate this paradigm by providing structures for the specification of agents, tasks, and their interactive procedures. This approach is particularly effective for challenges necessitating a variety of specialized knowledge, encompassing multiple discrete phases, or leveraging the advantages of concurrent processing and the corroboration of information across agents.
 
-<mark>Crew AI 和 Google ADK 等框架通过提供智能体、任务和交互流程的组件，实现这些协作模式。这种方法对于那些需要多种专业知识、包含多个独立阶段，或能从并行处理和不同智能体间信息相互验证中受益的场景特别有效。</mark>
+<mark>Crew AI 和 Google ADK 等框架通过提供智能体、任务和交互流程的组件，实现这些协作模式。这种方法对于那些需要多种专业知识、包含多个独立阶段，或者能从不同智能体间相互验证信息中受益的场景特别有效。</mark>
 
 ---
 
@@ -72,11 +72,11 @@ Multi-Agent Collaboration is a powerful pattern applicable across numerous domai
 
 - **Complex Research and Analysis:** A team of agents could collaborate on a research project. One agent might specialize in searching academic databases, another in summarizing findings, a third in identifying trends, and a fourth in synthesizing the information into a report. This mirrors how a human research team might operate.
 
-   <mark><strong>复杂研究与分析：</strong> 多个智能体可以协同完成一个研究项目。一个智能体负责搜索学术数据库，另一个负责整理和总结要点，第三个负责发现和归纳趋势，第四个将这些信息整合成最终报告。这种分工与人类研究团队的运作方式相似。</mark>
+   <mark><strong>复杂研究与分析：</strong> 多个智能体可以协同完成一个研究项目，采用和人类研究团队类似的分工形式。比如一个智能体负责搜索学术数据库，另一个负责整理和总结要点，第三个负责发现和归纳趋势，第四个将这些信息整合成最终报告。</mark>
 
 - **Software Development:** Imagine agents collaborating on building software. One agent could be a requirements analyst, another a code generator, a third a tester, and a fourth a documentation writer. They could pass outputs between each other to build and verify components.
 
-   <mark><strong>软件开发：</strong> 设想由多个专职智能体协同开发软件。需求分析智能体负责需求分析，开发智能体负责编写代码，测试智能体负责测试，文档智能体负责编写文档。它们的输出可以相互分享，协同开发和验证各个组件。</mark>
+   <mark><strong>软件开发：</strong> 设想由多个专职智能体协同开发软件的场景。需求分析智能体负责需求分析，开发智能体负责编写代码，测试智能体负责测试，文档智能体负责编写文档。它们的输出可以相互可见，协同开发和验证各个组件。</mark>
 
 - **Creative Content Generation:** Creating a marketing campaign could involve a market research agent, a copywriter agent, a graphic design agent (using image generation tools), and a social media scheduling agent, all working together.
 
@@ -88,19 +88,19 @@ Multi-Agent Collaboration is a powerful pattern applicable across numerous domai
 
 - **Customer Support Escalation:** A front-line support agent could handle initial queries, escalating complex issues to a specialist agent (e.g., a technical expert or a billing specialist) when needed, demonstrating a sequential handoff based on problem complexity.
 
-   <mark><strong>客户支持：</strong> 一线客户支持智能体可以处理用户的常见咨询，在遇到复杂或专业性强的问题时，会按问题复杂度将工单升级给相应的专业智能体（如技术专家或计费专家）。</mark>
+   <mark><strong>客户支持：</strong> 一线客户支持智能体可以处理用户的常见咨询，在遇到复杂或专业性强的问题时，会按问题复杂度将工单升级给相应的专业智能体（如技术专家智能体或计费专家智能体）。</mark>
 
 - **Supply Chain Optimization:** Agents could represent different nodes in a supply chain (suppliers, manufacturers, distributors) and collaborate to optimize inventory levels, logistics, and scheduling in response to changing demand or disruptions.
 
-   <mark><strong>供应链优化：</strong> 智能体可以代表供应链中的不同节点（如供应商、制造商、分销商），通过协作来优化库存水平、物流和排期，以应对不断变化的需求或突发的中断。</mark>
+   <mark><strong>供应链优化：</strong> 智能体可以代表供应链中的不同节点（如供应商、制造商、分销商），通过协作来优化库存、物流和排期，以应对不断变化的需求或其他突发的情况。</mark>
 
 - **Network Analysis & Remediation:** Autonomous operations benefit greatly from an agentic architecture, particularly in failure pinpointing. Multiple agents can collaborate to triage and remediate issues, suggesting optimal actions. These agents can also integrate with traditional machine learning models and tooling, leveraging existing systems while simultaneously offering the advantages of Generative AI.
 
-   <mark><strong>网络分析与故障修复：</strong> 在自主运维系统中，采用多智能体架构对故障定位和问题处理特别有用。多个专职智能体可以协同进行问题排查与修复，并提出最优处理建议。它们还可以与现有的机器学习模型和运维工具无缝集成，既利用现有系统，又能发挥生成式 AI 带来的附加价值。</mark>
+   <mark><strong>网络分析与故障修复：</strong> 在自主运维系统中，采用多智能体架构对故障定位和问题处理也特别有用。多个专职智能体可以协同进行问题排查与修复，并提出最优处理建议。它们还可以与现有的机器学习模型和运维工具无缝集成，既利用现有系统，又能发挥生成式 AI 带来的额外价值。</mark>
 
 The capacity to delineate specialized agents and meticulously orchestrate their interrelationships empowers developers to construct systems exhibiting enhanced modularity, scalability, and the ability to address complexities that would prove insurmountable for a singular, integrated agent.
 
-<mark>将任务拆分给多个专业智能体并精心协调它们的协作，可以让开发者构建更具模块化和可扩展性的系统，从而解决单个整体智能体无法应对的复杂问题。</mark>
+<mark>将任务拆分给多个专业智能体并精心协调它们的协作，可以让开发者构建出更具模块化和可扩展性的系统，从而解决单个整体智能体无法应对的复杂问题。这正是多智能体协作模式的核心价值所在。</mark>
 
 ---
 
@@ -114,9 +114,9 @@ Understanding the intricate ways in which agents interact and communicate is fun
 
 At the most basic level, a "Single Agent" operates autonomously without direct interaction or communication with other entities. While this model is straightforward to implement and manage, its capabilities are inherently limited by the individual agent's scope and resources. It is suitable for tasks that are decomposable into independent sub-problems, each solvable by a single, self-sufficient agent.
 
-<mark>在最基本的层面上，「单智能体」独立运行，不需要与其他实体进行直接交互或通信。虽然这种模型易于实现和管理，但其能力本质上受限于单个智能体的职责和资源。它适合那些能被分解为独立子问题的场景，其中每个子问题都可由单个自给自足的智能体来解决。</mark>
+<mark>在最基本的层面上，「单智能体」独立运行，不需要与其他智能体进行直接交互或通信。虽然这种模型易于实现和管理，但其能力本质上受限于单个智能体的职责和资源。它适合那些能被分解为独立子问题的场景，其中每个子问题都可以交给单个自给自足的智能体来解决。</mark>
 
-### 2. Network | <mark>网络</mark>
+### 2. Network | <mark>网络化</mark>
 
 The "Network" model represents a significant step towards collaboration, where multiple agents interact directly with each other in a decentralized fashion. Communication typically occurs peer-to-peer, allowing for the sharing of information, resources, and even tasks. This model fosters resilience, as the failure of one agent does not necessarily cripple the entire system. However, managing communication overhead and ensuring coherent decision-making in a large, unstructured network can be challenging.
 
@@ -126,13 +126,13 @@ The "Network" model represents a significant step towards collaboration, where m
 
 In the "Supervisor" model, a dedicated agent, the "supervisor," oversees and coordinates the activities of a group of subordinate agents. The supervisor acts as a central hub for communication, task allocation, and conflict resolution. This hierarchical structure offers clear lines of authority and can simplify management and control. However, it introduces a single point of failure (the supervisor) and can become a bottleneck if the supervisor is overwhelmed by a large number of subordinates or complex tasks.
 
-<mark>在「监督者」模型中，专门的「监督者」智能体负责监督和协调下级智能体的工作。监督者充当通信、任务分配和冲突解决的中心枢纽，能带来清晰的权责分工并简化管理与控制。然而，这种层级结构也会带来单点故障风险（即监督者本身），而且当下级智能体数量过多或任务非常复杂时，监督者可能成为整体系统的瓶颈。</mark>
+<mark>在「监督者」模型中，专门的「监督者」智能体负责监督和协调下级智能体的工作。监督者充当通信、任务分配和冲突解决的中心枢纽，能带来清晰的职责分工并简化管理和控制。然而，这种层级结构也会带来单点故障问题（即监督者本身），而且当下级智能体数量过多或任务非常复杂时，监督者可能成为整体系统的瓶颈。</mark>
 
 ### 4. Supervisor as a Tool | <mark>将监督者视为工具</mark>
 
 This model is a nuanced extension of the "Supervisor" concept, where the supervisor's role is less about direct command and control and more about providing resources, guidance, or analytical support to other agents. The supervisor might offer tools, data, or computational services that enable other agents to perform their tasks more effectively, without necessarily dictating their every action. This approach aims to leverage the supervisor's capabilities without imposing rigid top-down control.
 
-<mark>这种模型是「监督者」概念的细微扩展，监督者的角色不再直接指挥和控制，而是通过提供资源、指导或分析支持来辅助其他智能体。监督者可能提供工具、数据或计算服务，帮助其他智能体更高效地完成任务，而不是干预或支配它们的每一步行动。此方法旨在发挥监督者的能力，同时避免僵化的自上而下控制。</mark>
+<mark>这种模型是「监督者」概念的细微扩展，监督者的角色不再直接指挥和控制，而是通过提供资源、指导或分析来辅助其他智能体。监督者可能提供工具、数据或计算服务，帮助其他智能体更高效地完成任务，而不是干预或支配它们的每一步行动。此方法旨在发挥监督者的能力，同时避免僵化的自上而下的控制。</mark>
 
 ### 5. Hierarchical | <mark>层级</mark>
 
@@ -150,7 +150,7 @@ Fig. 2: Agents communicate and interact in various ways.
 
 The "Custom" model represents the ultimate flexibility in multi-agent system design. It allows for the creation of unique interrelationship and communication structures tailored precisely to the specific requirements of a given problem or application. This can involve hybrid approaches that combine elements from the previously mentioned models, or entirely novel designs that emerge from the unique constraints and opportunities of the environment. Custom models often arise from the need to optimize for specific performance metrics, handle highly dynamic environments, or incorporate domain-specific knowledge into the system's architecture. Designing and implementing custom models typically requires a deep understanding of multi-agent systems principles and careful consideration of communication protocols, coordination mechanisms, and emergent behaviors.
 
-<mark>「自定义」模型代表了多智能体系统设计的终极灵活性，允许为特定问题或应用精确定制相互关系和通信结构。它既可以是融合了已有模型特点的混合方案，也可以是针对环境独特约束与机会所产生的全新设计。自定义模型通常用于优化特定性能指标、处理高度动态环境或将领域特定知识纳入系统架构的场景。设计与实现这类模型通常要求对多智能体系统原理有深入理解，并需慎重规划通信协议、协调机制及可能出现的涌现行为。</mark>
+<mark>「自定义」模型代表了多智能体系统设计的终极灵活性，允许为特定问题或应用精确定制相互关系和通信结构。它既可以是融合了已有模型特点的混合方案，也可以是针对独特环境约束和机会时产生的全新设计。自定义模型通常用于优化特定性能指标、处理高度动态环境或将领域特定知识纳入系统架构的场景。设计与实现这类模型通常要求对多智能体系统原理有深入理解，并需慎重规划通信协议、协调机制及可能出现的涌现行为。</mark>
 
 In summary, the choice of interrelationship and communication model for a multi-agent system is a critical design decision. Each model offers distinct advantages and disadvantages, and the optimal choice depends on factors such as the complexity of the task, the number of agents, the desired level of autonomy, the need for robustness, and the acceptable communication overhead. Future advancements in multi-agent systems will likely continue to explore and refine these models, as well as develop new paradigms for collaborative intelligence.
 
