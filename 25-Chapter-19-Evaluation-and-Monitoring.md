@@ -4,7 +4,7 @@ This chapter examines methodologies that allow intelligent agents to systematica
 
 <mark>本章探讨了使智能体能够系统性地评估自身性能、监控目标进展并检测运行异常的方法论。虽然第 11 章概述了目标设定与监控，第 17 章讨论了推理机制，但本章聚焦于对智能体有效性、效率及需求合规性的持续性外部测量。这包括定义指标、建立反馈循环以及实施报告系统，以确保智能体性能在运行环境中符合预期（见图 1）。</mark>
 
-
+![Best practices for evaluation and monitoring](/images/chapter19_fig1.png)
 
 Fig:1. Best practices for evaluation and monitoring
 
@@ -382,7 +382,7 @@ Second is the pillar of a Dynamic Lifecycle of Negotiation and Feedback. The con
 <mark>第二是协商与反馈的动态生命周期 (Dynamic Lifecycle of Negotiation and Feedback) 的支柱。合约不是静态命令，而是对话的开始。承包商智能体可以分析初始条款并协商。例如，如果合约要求使用智能体无法访问的特定专有数据源，它可以返回反馈说："指定的 XYZ 数据库无法访问。请提供凭据或批准使用替代公共数据库，这可能会略微改变数据的粒度。"这个协商阶段还允许智能体标记模糊性或潜在风险，在执行开始之前解决误解，防止代价高昂的失败，并确保最终输出完全符合用户的实际意图。</mark>
 
 
-
+![Contract execution example among agents](/images/chapter19_fig2.png)
 Fig. 2: Contract execution example among agents
 
 <mark>图 2：智能体之间的合约执行示例</mark>
@@ -407,7 +407,7 @@ Before concluding, let's look at a concrete example of a framework that supports
 
 <mark>在结束之前，让我们看一个支持评估的框架的具体示例。使用 Google 的 ADK 进行智能体评估（见图 3）可以通过三种方法进行：基于 Web 的 UI (adk web) 用于交互式评估和数据集生成、使用 pytest 的程序化集成用于融入测试管道，以及直接命令行界面 (adk eval) 用于适合定期构建生成和验证过程的自动化评估。</mark>
 
-
+![Evaluation Support for Google ADK](/images/chapter19_fig3.png)
 
 Fig.3: Evaluation Support for Google ADK
 
@@ -440,6 +440,8 @@ The command-line interface facilitates automated evaluation by providing the age
 **Visual summary**
 
 <mark>**视觉摘要**</mark>
+
+![Evaluation and Monitoring design pattern](/images/chapter19_fig4.png)
 
 Fig.4: Evaluation and Monitoring design pattern
 
