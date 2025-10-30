@@ -2,17 +2,17 @@
 
 Effective memory management is crucial for intelligent agents to retain information. Agents require different types of memory, much like humans, to operate efficiently. This chapter delves into memory management, specifically addressing the immediate (short-term) and persistent (long-term) memory requirements of agents.
 
-<mark>有效的记忆管理对于智能体保留信息至关重要。与人类类似，智能体需要多种类型的记忆才能高效运行。本章将深入探讨记忆管理，重点聚焦于智能体的即时（短期）和持久（长期）记忆需求。</mark>
+<mark>有效的记忆管理是智能体保留信息的关键。与人类类似，智能体需要多种类型的记忆才能高效运行。本章将深入探讨记忆管理，重点聚焦于智能体的即时（短期）和持久（长期）记忆需求。</mark>
 
 In agent systems, memory refers to an agent's ability to retain and utilize information from past interactions, observations, and learning experiences. This capability allows agents to make informed decisions, maintain conversational context, and improve over time. Agent memory is generally categorized into two main types:
 
-<mark>在智能体系统中，<strong>记忆</strong> 是指智能体从过往交互、观察和学习经验中保留并利用信息的能力。这一能力使智能体能够做出明智决策、维持对话上下文，并持续改进。智能体记忆通常可分为两大主要类型：</mark>
+<mark>在智能体系统中，<strong>记忆</strong> 指智能体从过往交互、观察和学习经验中保留并利用信息的能力。这一能力使智能体能够做出明智决策、维持对话上下文，并持续改进。智能体记忆通常可分为两大主要类型：</mark>
 
 ● **Short-Term Memory (Contextual Memory)**: Similar to working memory, this holds information currently being processed or recently accessed. For agents using large language models (LLMs), short-term memory primarily exists within the context window. This window contains recent messages, agent replies, tool usage results, and agent reflections from the current interaction, all of which inform the LLM's subsequent responses and actions. The context window has a limited capacity, restricting the amount of recent information an agent can directly access. Efficient short-term memory management involves keeping the most relevant information within this limited space, possibly through techniques like summarizing older conversation segments or emphasizing key details. The advent of models with 'long context' windows simply expands the size of this short-term memory, allowing more information to be held within a single interaction. However, this context is still ephemeral and is lost once the session concludes, and it can be costly and inefficient to process every time. Consequently, agents require separate memory types to achieve true persistence, recall information from past interactions, and build a lasting knowledge base.
 
-● <mark><strong>短期记忆（上下文记忆）</strong>：类似于工作记忆，用于存储当前正在处理或近期访问的信息。</mark>
+● <mark><strong>短期记忆（上下文记忆）</strong>：类似于工作记忆，存储当前正在处理或近期访问的信息。</mark>
 
-<mark>对于基于大语言模型的智能体，短期记忆主要存在于上下文窗口内。该窗口包含最近的对话消息、智能体回复、工具调用结果以及当前交互中的反思内容，所有这些共同为智能体后续的响应和决策提供上下文支撑。</mark>
+<mark>对于基于大语言模型的智能体，短期记忆主要存在于上下文窗口内。该窗口包含最近的对话消息、智能体回复、工具调用结果以及当前交互中的反思内容，这些信息共同为后续的响应和决策提供上下文支撑。</mark>
 
 <mark>上下文窗口的容量有限，限制了智能体可直接访问的近期信息范围。高效的短期记忆管理需要在有限空间内选择性地保留最相关信息，可通过总结旧对话片段或强调关键细节等技术实现。</mark>
 
@@ -34,7 +34,7 @@ In agent systems, memory refers to an agent's ability to retain and utilize info
 
 Memory management is vital for agents to track information and perform intelligently over time. This is essential for agents to surpass basic question-answering capabilities. Applications include:
 
-<mark>记忆管理对于智能体至关重要，使其能够持续跟踪信息并在长时间运行中表现出智能行为。这一能力是智能体超越基础问答功能、实现更高级智能表现的关键。主要应用场景包括：</mark>
+<mark>记忆管理对于智能体至关重要，使其能够持续跟踪信息并在长时间运行中表现出智能行为。这一能力是智能体超越基础问答、展现高级智能的关键。主要应用场景包括：</mark>
 
 ● **Chatbots and Conversational AI**: Maintaining conversation flow relies on short-term memory. Chatbots require remembering prior user inputs to provide coherent responses. Long-term memory enables chatbots to recall user preferences, past issues, or prior discussions, offering personalized and continuous interactions.
 
@@ -685,13 +685,13 @@ Memory Bank offers seamless integration with the Google ADK, providing an immedi
 
 **What:** Agentic systems need to remember information from past interactions to perform complex tasks and provide coherent experiences. Without a memory mechanism, agents are stateless, unable to maintain conversational context, learn from experience, or personalize responses for users. This fundamentally limits them to simple, one-shot interactions, failing to handle multi-step processes or evolving user needs. The core problem is how to effectively manage both the immediate, temporary information of a single conversation and the vast, persistent knowledge gathered over time.
 
-<mark><strong>问题所在：</strong> 智能体系统需要记住过往交互信息为执行复杂任务提供连贯体验。如果没有记忆机制，智能体便处于无状态模式，无法维持对话上下文、从经验中学习或为用户个性化响应。这从根本上将它们限制在简单的一次性交互中，无法处理多步骤流程或不断变化的用户需求。核心问题是如何能有效管理单次对话的临时信息和随时间累积的大量持久知识。</mark>
+<mark><strong>问题所在：</strong> 智能体系统需要记住过往交互信息以执行复杂任务并提供连贯体验。若缺少记忆机制，智能体将处于无状态，无法维持对话上下文、从经验中学习或提供个性化响应。这从根本上将它们限制在简单的一次性交互中，无法处理多步骤流程或不断变化的用户需求。核心问题在于如何有效管理单次对话的即时信息与长期积累的持久知识。</mark>
 
 **Why:** The standardized solution is to implement a dual-component memory system that distinguishes between short-term and long-term storage. Short-term, contextual memory holds recent interaction data within the LLM's context window to maintain conversational flow. For information that must persist, long-term memory solutions use external databases, often vector stores, for efficient, semantic retrieval. Agentic frameworks like the Google ADK provide specific components to manage this, such as Session for the conversation thread and State for its temporary data. A dedicated MemoryService is used to interface with the long-term knowledge base, allowing the agent to retrieve and incorporate relevant past information into its current context.
 
-<mark><strong>解决之道：</strong> 标准化解决方案是实现双组件记忆系统，区分短期和长期存储。短期上下文记忆在大语言模型的上下文窗口内，保存最近的交互数据以维持对话流程。对于必须持久化的信息，长期记忆的解决方案是使用外部数据库（通常是向量存储），以进行高效的语义检索。</mark>
+<mark><strong>解决之道：</strong> 标准解决方案是实现区分短期与长期存储的双组件记忆系统。短期上下文记忆位于大语言模型的上下文窗口内，保存最近的交互数据以维持对话流程。对于必须持久化的信息，长期记忆解决方案采用外部数据库（通常是向量存储）进行高效的语义检索。</mark>
 
-<mark>智能体框架（如 Google ADK）提供内置的组件来管理记忆，例如 <code>Session</code>（对话线程）和 <code>State</code>（临时数据）。还有 <code>MemoryService</code> 组件用于与长期知识库交互，允许智能体检索相关历史信息并整合到当前上下文中。</mark>
+<mark>智能体框架（如 Google ADK）提供专门的组件来管理记忆，例如 <code>Session</code>（对话线程）和 <code>State</code>（临时数据）。专门的 <code>MemoryService</code> 组件用于与长期知识库交互，允许智能体检索相关历史信息并整合到当前上下文中。</mark>
 
 **Rule of thumb:** Use this pattern when an agent needs to do more than answer a single question. It is essential for agents that must maintain context throughout a conversation, track progress in multi-step tasks, or personalize interactions by recalling user preferences and history. Implement memory management whenever the agent is expected to learn or adapt based on past successes, failures, or newly acquired information.
 
@@ -767,9 +767,9 @@ To quickly recap the main points about memory management:
 
 This chapter dove into the really important job of memory management for agent systems, showing the difference between the short-lived context and the knowledge that sticks around for a long time. We talked about how these types of memory are set up and where you see them used in building smarter agents that can remember things. We took a detailed look at how Google ADK gives you specific pieces like Session, State, and MemoryService to handle this. Now that we've covered how agents can remember things, both short-term and long-term, we can move on to how they can learn and adapt. The next pattern "Learning and Adaptation" is about an agent changing how it thinks, acts, or what it knows, all based on new experiences or data.
 
-<mark>本章探讨了智能体系统中的记忆管理，阐明了临时上下文信息与长期持久化知识之间的区别。我们剖析了各类记忆机制的架构原理，并探讨了其在构建具备记忆能力的智能体系统中的应用。我们详细介绍了 Google ADK 框架如何通过 <code>Session</code>、<code>State</code> 和 <code>MemoryService</code> 等组件来实现记忆管理。</mark>
+<mark>本章深入探讨了智能体系统中记忆管理这一关键任务，阐明了临时上下文信息与长期持久化知识之间的本质区别。我们剖析了各类记忆机制的架构原理及其在构建智能体系统中的实际应用，并详细介绍了 Google ADK 框架如何通过 <code>Session</code>、<code>State</code> 和 <code>MemoryService</code> 等组件来实现记忆管理。</mark>
 
-<mark>在掌握了智能体短期与长期记忆技术的基础上，下一章将探索智能体如何实现学习和自适应。下一个核心模式「学习与适应」章节将讨论智能体如何基于新的经验和数据输入，动态调整其认知模式、行为策略和知识体系。</mark>
+<mark>在掌握了智能体短期与长期记忆技术的基础上，我们将继续探索智能体如何实现学习和自适应。下一个核心模式「学习与适应」将探讨智能体如何基于新的经验和数据输入，动态调整其认知模式、行为策略和知识体系。</mark>
 
 ---
 
@@ -777,12 +777,12 @@ This chapter dove into the really important job of memory management for agent s
 
 1. ADK Memory: <https://google.github.io/adk-docs/sessions/memory/>
 
-   <mark>ADK 的记忆：<https://google.github.io/adk-docs/sessions/memory/></mark>
+   <mark>ADK 的记忆管理：<https://google.github.io/adk-docs/sessions/memory/></mark>
 
 2. LangGraph Memory: <https://langchain-ai.github.io/langgraph/concepts/memory/>
 
-   <mark>LangGraph 的记忆：<https://langchain-ai.github.io/langgraph/concepts/memory/></mark>
+   <mark>LangGraph 的记忆管理：<https://langchain-ai.github.io/langgraph/concepts/memory/></mark>
 
 3. Vertex AI Agent Engine Memory Bank: <https://cloud.google.com/blog/products/ai-machine-learning/vertex-ai-memory-bank-in-public-preview>
 
-   <mark>Vertex AI Agent Engine 的 Memory Bank：<https://cloud.google.com/blog/products/ai-machine-learning/vertex-ai-memory-bank-in-public-preview></mark>
+   <mark>Vertex AI 智能体引擎的 Memory Bank：<https://cloud.google.com/blog/products/ai-machine-learning/vertex-ai-memory-bank-in-public-preview></mark>
