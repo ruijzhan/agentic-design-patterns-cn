@@ -2,17 +2,17 @@
 
 Effective memory management is crucial for intelligent agents to retain information. Agents require different types of memory, much like humans, to operate efficiently. This chapter delves into memory management, specifically addressing the immediate (short-term) and persistent (long-term) memory requirements of agents.
 
-<mark>记忆管理对于智能体保留信息至关重要。与人类类似，智能体需要多种类型的记忆才能高效运行。本章将深入探讨记忆管理，重点聚焦于智能体的即时（短期）和持久（长期）记忆需求。</mark>
+<mark>有效的记忆管理对于智能体保留信息至关重要。与人类类似，智能体需要多种类型的记忆才能高效运行。本章将深入探讨记忆管理，重点聚焦于智能体的即时（短期）和持久（长期）记忆需求。</mark>
 
 In agent systems, memory refers to an agent's ability to retain and utilize information from past interactions, observations, and learning experiences. This capability allows agents to make informed decisions, maintain conversational context, and improve over time. Agent memory is generally categorized into two main types:
 
-<mark>在智能体系统中，<strong>记忆</strong> 是指智能体从过往交互、观察和学习经验中保留并利用信息的能力。这一能力使智能体能够做出明智决策、维持对话上下文，并持续改进优化。智能体记忆通常可分为两大主要类型：</mark>
+<mark>在智能体系统中，<strong>记忆</strong> 是指智能体从过往交互、观察和学习经验中保留并利用信息的能力。这一能力使智能体能够做出明智决策、维持对话上下文，并持续改进。智能体记忆通常可分为两大主要类型：</mark>
 
 ● **Short-Term Memory (Contextual Memory)**: Similar to working memory, this holds information currently being processed or recently accessed. For agents using large language models (LLMs), short-term memory primarily exists within the context window. This window contains recent messages, agent replies, tool usage results, and agent reflections from the current interaction, all of which inform the LLM's subsequent responses and actions. The context window has a limited capacity, restricting the amount of recent information an agent can directly access. Efficient short-term memory management involves keeping the most relevant information within this limited space, possibly through techniques like summarizing older conversation segments or emphasizing key details. The advent of models with 'long context' windows simply expands the size of this short-term memory, allowing more information to be held within a single interaction. However, this context is still ephemeral and is lost once the session concludes, and it can be costly and inefficient to process every time. Consequently, agents require separate memory types to achieve true persistence, recall information from past interactions, and build a lasting knowledge base.
 
-● <mark><strong>短期记忆（上下文记忆）</strong>：类似于工作记忆，负责存储当前正在处理或近期访问的信息。</mark>
+● <mark><strong>短期记忆（上下文记忆）</strong>：类似于工作记忆，用于存储当前正在处理或近期访问的信息。</mark>
 
-<mark>对于基于大语言模型的智能体，短期记忆主要存在于上下文窗口内。该窗口包含最近的对话消息、智能体回复、工具调用结果以及当前交互中的反思内容，所有这些都为后续响应和行动提供上下文支持。</mark>
+<mark>对于基于大语言模型的智能体，短期记忆主要存在于上下文窗口内。该窗口包含最近的对话消息、智能体回复、工具调用结果以及当前交互中的反思内容，所有这些共同为智能体后续的响应和决策提供上下文支撑。</mark>
 
 <mark>上下文窗口的容量有限，限制了智能体可直接访问的近期信息范围。高效的短期记忆管理需要在有限空间内选择性地保留最相关信息，可通过总结旧对话片段或强调关键细节等技术实现。</mark>
 
@@ -22,9 +22,9 @@ In agent systems, memory refers to an agent's ability to retain and utilize info
 
 ● **Long-Term Memory (Persistent Memory)**: This acts as a repository for information agents need to retain across various interactions, tasks, or extended periods, akin to long-term knowledge bases. Data is typically stored outside the agent's immediate processing environment, often in databases, knowledge graphs, or vector databases. In vector databases, information is converted into numerical vectors and stored, enabling agents to retrieve data based on semantic similarity rather than exact keyword matches, a process known as semantic search. When an agent needs information from long-term memory, it queries the external storage, retrieves relevant data, and integrates it into the short-term context for immediate use, thus combining prior knowledge with the current interaction.
 
-● <mark><strong>长期记忆（持久记忆）</strong>：相当于一个长期知识库，用于存储智能体在各种交互、任务或长时间段内需要保留的信息。</mark>
+● <mark><strong>长期记忆（持久记忆）</strong>：充当一个长期知识库，用于存储智能体在各种交互场景、任务执行或长时间跨度内需要保留的信息。</mark>
 
-<mark>数据通常存储在智能体的实时执行环境之外，常见于数据库、知识图谱或向量数据库中。在向量数据库中，信息被转换为数值向量并存储，使智能体能够基于语义相似性而非精确关键词匹配来检索数据，这个过程被称为语义搜索。</mark>
+<mark>数据通常存储在智能体的运行时环境之外，常见于数据库、知识图谱或向量数据库中。在向量数据库中，信息被转换为数值向量并存储，使智能体能够基于语义相似性而非精确关键词匹配来检索数据，这个过程被称为语义搜索。</mark>
 
 <mark>当智能体需要长期记忆中的信息时，会查询外部存储、检索相关数据并将其整合到短期上下文中以便随时使用，从而将先验知识与当前交互信息相结合。</mark>
 
@@ -34,7 +34,7 @@ In agent systems, memory refers to an agent's ability to retain and utilize info
 
 Memory management is vital for agents to track information and perform intelligently over time. This is essential for agents to surpass basic question-answering capabilities. Applications include:
 
-<mark>记忆管理对于智能体至关重要，使其能够持续追踪信息并在长期运行中展现智能行为。这一能力是智能体超越基础问答功能、实现更高级智能表现的关键。典型应用场景包括：</mark>
+<mark>记忆管理对于智能体至关重要，使其能够持续跟踪信息并在长时间运行中表现出智能行为。这一能力是智能体超越基础问答功能、实现更高级智能表现的关键。主要应用场景包括：</mark>
 
 ● **Chatbots and Conversational AI**: Maintaining conversation flow relies on short-term memory. Chatbots require remembering prior user inputs to provide coherent responses. Long-term memory enables chatbots to recall user preferences, past issues, or prior discussions, offering personalized and continuous interactions.
 
@@ -42,7 +42,7 @@ Memory management is vital for agents to track information and perform intellige
 
 ● **Task-Oriented Agents**: Agents managing multi-step tasks need short-term memory to track previous steps, current progress, and overall goals. This information might reside in the task's context or temporary storage. Long-term memory is crucial for accessing specific user-related data not in the immediate context.
 
-● <mark><strong>任务导向型智能体：</strong> 处理多步骤任务的智能体需要借助短期记忆来追踪已完成步骤、当前进度状态及总体目标。这些信息通常存储在任务上下文或临时缓存中。长期记忆对于访问非即时上下文的用户特定数据至关重要。</mark>
+● <mark><strong>任务导向型智能体：</strong> 处理多步骤任务的智能体需要借助短期记忆来跟踪已完成步骤、当前进度状态及总体目标。这些信息通常存储在任务上下文或临时缓存中。长期记忆对于访问非即时上下文的用户特定数据至关重要。</mark>
 
 ● **Personalized Experiences**: Agents offering tailored interactions utilize long-term memory to store and retrieve user preferences, past behaviors, and personal information. This allows agents to adapt their responses and suggestions.
 
@@ -56,7 +56,7 @@ Memory management is vital for agents to track information and perform intellige
 
 ● <mark><strong>信息检索（RAG）：</strong> 为问答场景设计的智能体需要访问知识库（即长期记忆），这一功能通常在检索增强生成（RAG）框架中实现。智能体通过检索相关文档和数据资源来支撑其回答的准确性和完整性。</mark>
 
-●**Autonomous Systems**: Robots or self-driving cars require memory for maps, routes, object locations, and learned behaviors. This involves short-term memory for immediate surroundings and long-term memory for general environmental knowledge.
+● **Autonomous Systems**: Robots or self-driving cars require memory for maps, routes, object locations, and learned behaviors. This involves short-term memory for immediate surroundings and long-term memory for general environmental knowledge.
 
 ● <mark><strong>自主控制系统：</strong> 机器人或自动驾驶车辆需要记忆系统来存储地图信息、导航路线、物体位置以及学习获得的行为模式。这包括用于实时环境感知的短期记忆和用于通用环境知识存储的长期记忆。</mark>
 
@@ -106,17 +106,17 @@ Both the SessionService and MemoryService offer various configuration options, a
 
 A Session object in ADK is designed to track and manage individual chat threads. Upon initiation of a conversation with an agent, the SessionService generates a Session object, represented as `google.adk.sessions.Session`. This object encapsulates all data relevant to a specific conversation thread, including unique identifiers (id, app_name, user_id), a chronological record of events as Event objects, a storage area for session-specific temporary data known as state, and a timestamp indicating the last update (last_update_time). Developers typically interact with Session objects indirectly through the SessionService. The SessionService is responsible for managing the lifecycle of conversation sessions, which includes initiating new sessions, resuming previous sessions, recording session activity (including state updates), identifying active sessions, and managing the removal of session data. The ADK provides several SessionService implementations with varying storage mechanisms for session history and temporary data, such as the InMemorySessionService, which is suitable for testing but does not provide data persistence across application restarts.
 
-<mark>ADK 中的 <code>Session</code> 对象用于追踪和管理独立的聊天会话。</mark>
+<mark>ADK 中的 <code>Session</code> 对象用于跟踪和管理独立的聊天会话。</mark>
 
-<mark>当与智能体开始对话时，<code>SessionService</code> 会生成一个 <code>Session</code> 对象（<code>google.adk.sessions.Session</code>）。该对象封装特定对话线程的所有相关数据，包括唯一标识符（<code>id</code>、<code>app_name</code>、<code>user_id</code>）、按时间顺序记录的 <code>Event</code> 事件对象、用于会话临时数据（也称为状态）的存储区域，以及指示最后更新时间的时间戳（<code>last_update_time</code>）。</mark>
+<mark>当用户与智能体开始对话时，<code>SessionService</code> 会生成一个 <code>Session</code> 对象（<code>google.adk.sessions.Session</code>）。该对象封装特定对话线程的所有相关数据，包括唯一标识符（<code>id</code>、<code>app_name</code>、<code>user_id</code>）、按时间顺序记录的事件对象、用于会话临时数据（也称为状态）的存储区域，以及指示最后更新时间的时间戳（<code>last_update_time</code>）。</mark>
 
 <mark>开发者通常通过 <code>SessionService</code> 与 <code>Session</code> 对象交互。<code>SessionService</code> 负责管理对话会话的生命周期，包括启动新会话、恢复先前会话、记录会话活动（含状态更新）、识别活跃会话以及删除会话数据等。</mark>
 
-<mark>ADK 内置了多种 <code>SessionService</code> 实现，具有不同的会话历史和临时数据存储机制。例如 <code>InMemorySessionService</code> 可以适用于测试，因为它无法在应用重启后保持数据持久化。</mark>
+<mark>ADK 内置了多种 <code>SessionService</code> 实现，具有不同的会话历史和临时数据存储机制。例如 <code>InMemorySessionService</code> 适用于测试环境，因为它不会在应用重启后保持数据持久化。</mark>
 
 ```python
 # 示例：使用 InMemorySessionService
-# 应用重启后数据会丢失，仅适用于本地开发和测试。
+# 注意：数据不会持久化，应用重启后会丢失，仅适用于本地开发和测试环境。
 from google.adk.sessions import InMemorySessionService
 session_service = InMemorySessionService()
 ```
@@ -129,7 +129,7 @@ Then there's DatabaseSessionService if you want reliable saving to a database yo
 # 示例：使用 DatabaseSessionService
 # 这适用于需要持久存储的生产环境或开发环境。
 # 你需要配置数据库 URL（例如，用于 SQLite、PostgreSQL 等）。
-# 同时需要安装相关的依赖：pip install google-adk[sqlalchemy] 和数据库驱动（例如，PostgreSQL 的 psycopg2）
+# 安装依赖：pip install google-adk[sqlalchemy] 和数据库驱动（例如，PostgreSQL 的 psycopg2）
 from google.adk.sessions import DatabaseSessionService
 # 使用本地 SQLite 文件的示例：
 db_url = "sqlite:///./my_agent_data.db"
@@ -138,12 +138,12 @@ session_service = DatabaseSessionService(db_url=db_url)
 
 Besides, there's VertexAiSessionService which uses Vertex AI infrastructure for scalable production on Google Cloud.
 
-<mark>此外，还有 <code>VertexAiSessionService</code>，它使用 Google Cloud 上Vertex AI 的基础设施以支撑可扩展的生产部署要求。</mark>
+<mark>此外，还有 <code>VertexAiSessionService</code>，它使用 Google Cloud 上 Vertex AI 的基础设施以满足可扩展的生产部署要求。</mark>
 
 ```python
 # 示例：使用 VertexAiSessionService
 # 这适用于 Google Cloud Platform 上的可扩展要求的生产环境，利用 Vertex AI 基础设施进行会话管理。
-# 需要安装遗漏：pip install google-adk[vertexai] 以及 GCP 设置/身份验证
+# 安装依赖：pip install google-adk[vertexai] 以及 GCP 设置/身份验证
 from google.adk.sessions import VertexAiSessionService
 
 PROJECT_ID = "your-gcp-project-id" # 替换为你的 GCP 项目 ID
@@ -165,13 +165,13 @@ Choosing an appropriate SessionService is crucial as it determines how the agent
 
 Each message exchange involves a cyclical process: A message is received, the Runner retrieves or establishes a Session using the SessionService, the agent processes the message using the Session's context (state and historical interactions), the agent generates a response and may update the state, the Runner encapsulates this as an Event, and the session_service.append_event method records the new event and updates the state in storage. The Session then awaits the next message. Ideally, the delete_session method is employed to terminate the session when the interaction concludes. This process illustrates how the SessionService maintains continuity by managing the Session-specific history and temporary data.
 
-<mark>每次消息交换都遵循以下流程：一旦收到消息，<code>Runner</code> 就会使用 <code>SessionService</code> 检索或创建 <code>Session</code>，智能体使用 <code>Session</code> 的上下文（状态和历史交互）来处理消息，接着智能体生成响应并更新状态，<code>Runner</code> 将其封装为 <code>Event</code>，<code>session_service.append_event</code> 方法记录该事件并更新状态。然后 <code>Session</code> 继续等待下一条消息。理想情况下，在交互结束时应该使用 <code>delete_session</code> 方法终止会话。</mark>
+<mark>每次消息交换都遵循以下流程：接收消息后，<code>Runner</code> 通过 <code>SessionService</code> 检索或创建对应的 <code>Session</code>，智能体利用 <code>Session</code> 的上下文（包括状态和历史交互）来处理消息，接着智能体生成响应并更新状态，<code>Runner</code> 将其封装为 <code>Event</code> 事件，<code>session_service.append_event</code> 方法记录该事件并更新状态。然后 <code>Session</code> 继续等待下一条消息。理想情况下，在交互结束时应该使用 <code>delete_session</code> 方法终止会话。</mark>
 
 <mark>以上过程展示了 <code>SessionService</code> 如何通过管理 <code>Session</code> 特定的历史和临时数据来维持连续性。</mark>
 
 ---
 
-## State: The Session's Scratchpad | <mark>State：会话便笺</mark>
+## State: The Session's Scratchpad | <mark>State：会话暂存区</mark>
 
 In the ADK, each Session, representing a chat thread, includes a state component akin to an agent's temporary working memory for the duration of that specific conversation. While session.events logs the entire chat history, session.state stores and updates dynamic data points relevant to the active chat.
 
@@ -179,7 +179,7 @@ In the ADK, each Session, representing a chat thread, includes a state component
 
 Fundamentally, session.state operates as a dictionary, storing data as key-value pairs. Its core function is to enable the agent to retain and manage details essential for coherent dialogue, such as user preferences, task progress, incremental data collection, or conditional flags influencing subsequent agent actions.
 
-<mark>从本质上讲，<code>session.state</code> 是一个字典，通过键值对存储数据。其主要功能是帮助智能体保留和管理对话连贯性所需的关键信息，例如用户偏好、任务进展、增量信息收集，或影响后续智能体行为的条件标志。</mark>
+<mark><code>session.state</code> 本质上是一个字典（Dictionary），以键值对（Key-Value Pairs）形式存储数据。其主要功能是帮助智能体保留和管理对话连贯性所需的关键信息，例如用户偏好、任务进展、增量数据收集，或影响后续智能体行为的条件标志。</mark>
 
 The state's structure comprises string keys paired with values of serializable Python types, including strings, numbers, booleans, lists, and dictionaries containing these basic types. State is dynamic, evolving throughout the conversation. The permanence of these changes depends on the configured SessionService.
 
@@ -187,7 +187,7 @@ The state's structure comprises string keys paired with values of serializable P
 
 State organization can be achieved using key prefixes to define data scope and persistence. Keys without prefixes are session-specific.
 
-<mark>可以使用不同的前缀来管理数据范围和持久性，从而实现有效的状态组织。没有这些前缀的键是属于会话级别的。</mark>
+<mark>可以通过键前缀来管理数据范围和持久性，从而实现有效的状态组织。不带前缀的键属于会话级别的。</mark>
 
 ● The **user:** prefix associates data with a user ID across all sessions.
 
@@ -260,7 +260,7 @@ print(f"\nState after agent run: {updated_session.state}")
 
 Behind the scenes, the Runner sees your output_key and automatically creates the necessary actions with a state_delta when it calls append_event.
 
-<mark>在后台，<code>Runner</code> 会识别 <code>output_key</code>，并在调用 <code>append_event</code> 时自动创建带有 <code>state_delta</code> 的必要操作。</mark>
+<mark>在幕后，<code>Runner</code> 会识别 <code>output_key</code>，并在调用 <code>append_event</code> 时自动创建带有 <code>state_delta</code> 的必要操作。</mark>
 
 **2.The Standard Way: Using EventActions.state_delta (for More Complicated Updates):** For times when you need to do more complex things – like updating several keys at once, saving things that aren't just text, targeting specific scopes like user: or app:, or making updates that aren't tied to the agent's final text reply – you'll manually build a dictionary of your state changes (the state_delta) and include it within the EventActions of the Event you're appending. Let's look at one example:
 
@@ -382,14 +382,14 @@ The ADK offers several implementations for creating this long-term knowledge sto
 ```python
 # 示例：使用 VertexAiRagMemoryService
 # 这适用于 GCP 上的可扩展生产环境，利用 Vertex AI RAG 实现持久、可搜索的记忆。
-# 需要安装依赖：pip install google-adk[vertexai]、GCP 设置/身份验证，以及 Vertex AI RAG Corpus。
+# 需要安装依赖：pip install google-adk[vertexai]、GCP 设置/身份验证，以及 Vertex AI RAG 语料库。
 from google.adk.memory import VertexAiRagMemoryService
 
-# 你的 Vertex AI RAG Corpus 的资源名称
-RAG_CORPUS_RESOURCE_NAME = "projects/your-gcp-project-id/locations/us-central1/ragCorpora/your-corpus-id" # 替换为你的 Corpus 资源名称
+# 你的 Vertex AI RAG 语料库的资源名称
+RAG_CORPUS_RESOURCE_NAME = "projects/your-gcp-project-id/locations/us-central1/ragCorpora/your-corpus-id" # 替换为你的语料库资源名称
 
 # 检索的可选配置
-SIMILARITY_TOP_K = 5 # 要检索的顶部结果数量
+SIMILARITY_TOP_K = 5 # 要检索的 Top 结果数量
 VECTOR_DISTANCE_THRESHOLD = 0.7 # 向量相似性的阈值
 
 memory_service = VertexAiRagMemoryService(
@@ -397,7 +397,7 @@ memory_service = VertexAiRagMemoryService(
    similarity_top_k=SIMILARITY_TOP_K,
    vector_distance_threshold=VECTOR_DISTANCE_THRESHOLD
 )
-# 使用此服务时，add_session_to_memory 和 search_memory 等方法将与指定的 Vertex AI RAG Corpus 交互。
+# 使用此服务时，add_session_to_memory 和 search_memory 等方法将与指定的 Vertex AI RAG 语料库交互。
 ```
 
 ---
@@ -406,7 +406,7 @@ memory_service = VertexAiRagMemoryService(
 
 In LangChain and LangGraph, Memory is a critical component for creating intelligent and natural-feeling conversational applications. It allows an AI agent to remember information from past interactions, learn from feedback, and adapt to user preferences. LangChain's memory feature provides the foundation for this by referencing a stored history to enrich current prompts and then recording the latest exchange for future use. As agents handle more complex tasks, this capability becomes essential for both efficiency and user satisfaction.
 
-<mark>在 LangChain 和 LangGraph 中，记忆是创建智能、自然流畅的对话应用的关键组件。它使 AI 智能体能够记住历史交互信息、从反馈中学习并适应用户偏好。</mark>
+<mark>在 LangChain 和 LangGraph 中，记忆是创建智能、自然流畅的对话应用的关键组件。它使智能体能够记住历史交互信息、从反馈中学习并适应用户偏好。</mark>
 
 <mark>LangChain 的记忆功能通过引用存储的历史记录来丰富当前提示词，并记录最新的交互内容供将来使用。随着智能体处理更复杂的任务，这种能力对提升效率和用户满意度至关重要。</mark>
 
@@ -480,7 +480,7 @@ from langchain.memory import ConversationBufferMemory
 llm = OpenAI(temperature=0)
 template = """You are a helpful travel agent.
 
-Previous conversation：
+Previous conversation:
 {history}
 
 New question: {question}
@@ -557,7 +557,7 @@ print(response)
 
 ● **Procedural Memory: Remembering Rules:** This is the memory of how to perform tasks—the agent's core instructions and behaviors, often contained in its system prompt. It's common for agents to modify their own prompts to adapt and improve. An effective technique is "Reflection," where an agent is prompted with its current instructions and recent interactions, then asked to refine its own instructions.
 
-● <mark><strong>程序记忆：规则记忆</strong> 关于如何执行任务的记忆，包括智能体的核心指令和行为规范，通常体现在系统提示词中。常见做法是智能体通过修改自身提示词来实现自适应和改进。一种有效技术是「反思机制」，即向智能体呈现当前指令和近期交互记录，要求其自主优化指令内容。</mark>
+● <mark><strong>程序性记忆：规则记忆</strong> 关于如何执行任务的记忆，包括智能体的核心指令和行为规范，通常体现在系统提示词中。常见做法是智能体通过修改自身提示词来实现自适应和改进。一种有效技术是「反思机制」，即向智能体呈现当前指令和近期交互记录，要求其自主优化指令内容。</mark>
 
 Below is pseudo-code demonstrating how an agent might use reflection to update its procedural memory stored in a LangGraph BaseStore
 
@@ -715,7 +715,7 @@ To quickly recap the main points about memory management:
 
 ● Memory is super important for agents to keep track of things, learn, and personalize interactions.
 
-   <mark>记忆机制对于智能体的事件追踪、经验学习和个性化交互至关重要。</mark>
+   <mark>记忆机制对于智能体的事件跟踪、经验学习和个性化交互至关重要。</mark>
 
 ● Conversational AI relies on both short-term memory for immediate context within a single chat and long-term memory for persistent knowledge across multiple sessions.
 
