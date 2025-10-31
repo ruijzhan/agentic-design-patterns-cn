@@ -22,8 +22,11 @@ Use it for: <mark>用途：</mark>
 <mark>提取：从文本块中提取结构化数据（例如 JSON）。</mark>
 
 Python
-
-
+```python
+# A simple LCEL chain conceptually
+# (This is not runnable code, just illustrates the flow)
+chain = prompt | model | output_parse
+```
 
 ## LangGraph
 
@@ -66,6 +69,69 @@ Which One Should You Use? <mark>你应该使用哪一个？</mark>
 <mark>当您的应用程序需要进行推理、规划或循环操作时，请选择 LangGraph。如果您的智能体需要使用工具、反思结果，并可能尝试不同的方法，那么您就需要 LangGraph 的循环性和有状态特性。</mark>
 
 Python
+```python
+# Graph state
+class State(TypedDict):
+   topic: str
+   joke: str
+   story: str
+   poem: str
+   combined_output: str
+
+# Nodes
+def call_llm_1(state: State):
+   """First LLM call to generate initial joke"""
+
+   msg = llm.invoke(f"Write a joke about {state['topic']}")
+   return {"joke": msg.content}
+
+def call_llm_2(state: State):
+   """Second LLM call to generate story"""
+
+   msg = llm.invoke(f"Write a story about {state['topic']}")
+   return {"story": msg.content}
+
+def call_llm_3(state: State):
+   """Third LLM call to generate poem"""
+
+   msg = llm.invoke(f"Write a poem about {state['topic']}")
+   return {"poem": msg.content}
+
+def aggregator(state: State):
+   """Combine the joke and story into a single output"""
+
+   combined = f"Here's a story, joke, and poem about {state['topic']}!\n\n"
+   combined += f"STORY:\n{state['story']}\n\n"
+   combined += f"JOKE:\n{state['joke']}\n\n"
+   combined += f"POEM:\n{state['poem']}"
+   return {"combined_output": combined}
+
+# Build workflow
+parallel_builder = StateGraph(State)
+
+# Add nodes
+parallel_builder.add_node("call_llm_1", call_llm_1)
+parallel_builder.add_node("call_llm_2", call_llm_2)
+parallel_builder.add_node("call_llm_3", call_llm_3)
+parallel_builder.add_node("aggregator", aggregator)
+
+# Add edges to connect nodes
+parallel_builder.add_edge(START, "call_llm_1")
+parallel_builder.add_edge(START, "call_llm_2")
+parallel_builder.add_edge(START, "call_llm_3")
+parallel_builder.add_edge("call_llm_1", "aggregator")
+parallel_builder.add_edge("call_llm_2", "aggregator")
+parallel_builder.add_edge("call_llm_3", "aggregator")
+parallel_builder.add_edge("aggregator", END)
+parallel_workflow = parallel_builder.compile()
+
+# Show workflow
+display(Image(parallel_workflow.get_graph().draw_mermaid_png()))
+
+# Invoke
+state = parallel_workflow.invoke({"topic": "cats"})
+print(state["combined_output"])
+```
 
 
 ## Google's ADK
@@ -83,7 +149,18 @@ Google's ADK abstracts away much of this low-level graph construction. Instead o
 <mark>Google ADK 抽象化了许多底层图构建工作。它无需开发者定义每个节点和边，而是提供了预构建的多智能体交互架构模式。例如，ADK 内置了 SequentialAgent 或 ParallelAgent 等智能体类型，可以自动管理不同智能体之间的控制流。它的架构围绕着智能体“团队”的概念展开，通常由一个主智能体将任务委派给专门的子智能体。框架以更隐式的方式处理状态和会话管理，提供了一种比 LangGraph 的显式状态传递更统一但粒度更低的方法。因此，LangGraph 提供了设计单个机器人或团队复杂线路的详细工具，而 Google 的 ADK 则提供了一条工厂装配线，用于构建和管理一支已经知道如何协同工作的机器人集群。</mark>
 
 Python
+```python
+from google.adk.agents import LlmAgent
+from google.adk.tools import google_Search
 
+dice_agent = LlmAgent(
+   model="gemini-2.0-flash-exp", 
+   name="question_answer_agent",
+   description="A helpful assistant agent that can answer questions.",
+   instruction="""Respond to the query using google search""",
+   tools=[google_search],
+)
+```
 
 This code creates a search-augmented agent. When this agent receives a question, it will not just rely on its pre-existing knowledge. Instead, following its instructions, it will use the Google Search tool to find relevant, real-time information from the web and then use that information to construct its answer.
 
@@ -105,6 +182,17 @@ When compared to other frameworks, CrewAI occupies a distinct position. It moves
 <mark>与其他框架相比，CrewAI 占据着独特的地位。它摒弃了 LangGraph 那种底层、显式的状态管理和控制流——在 LangGraph 中，开发者需要将每个节点和条件边连接起来。CrewAI 的开发者无需构建状态机，而是设计团队章程。虽然 Google ADK 为整个智能体生命周期提供了一个全面、面向生产的平台，但 CrewAI 则专注于智能体协作逻辑以及专家团队的模拟。</mark>
 
 Python
+```python
+@crew
+def crew(self) -> Crew:
+   """Creates the research crew"""
+   return Crew(
+     agents=self.agents,
+     tasks=self.tasks,
+     process=Process.sequential,
+     verbose=True,
+   )
+```
 
 This code sets up a sequential workflow for a team of AI agents, where they tackle a list of tasks in a specific order, with detailed logging enabled to monitor their progress.
 
