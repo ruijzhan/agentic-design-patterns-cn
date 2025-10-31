@@ -48,15 +48,12 @@ Use it for: <mark>用途：</mark>
 
 <mark>人机交互：该图可以等待人工输入，然后再决定下一步要访问哪个节点。</mark>
 
-Feature	                   LangChain	                        LangGraph
-
-Core Abstraction	      Chain (using LCEL)	                 Graph of Nodes
-
-Workflow Type	      Linear (Directed Acyclic Graph)	     Cyclical (Graphs with loops)
-
-State Management	  Generally stateless per run	        Explicit and persistent state object
-
-Primary Use	      Simple, predictable sequences	      Complex, dynamic, stateful agents
+| Feature | LangChain | LangGraph |
+|---------|------|------|
+| Core Abstraction | Chain (using LCEL) | Graph of Nodes |
+| Workflow Type | Linear (Directed Acyclic Graph) | Cyclical (Graphs with loops) |
+| State Management | Generally stateless per run | Explicit and persistent state object |
+| Primary Use | Simple, predictable sequences | Complex, dynamic, stateful agents |
 
 Which One Should You Use? <mark>你应该使用哪一个？</mark>
 
