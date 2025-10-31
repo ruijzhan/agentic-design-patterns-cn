@@ -108,100 +108,49 @@ Python
 
 This code sets up a sequential workflow for a team of AI agents, where they tackle a list of tasks in a specific order, with detailed logging enabled to monitor their progress.
 
+<mark>这段代码为一组 AI 代理设置了一个顺序工作流程，它们按特定顺序处理一系列任务，并启用了详细的日志记录来监控它们的进度。</mark>
 
+## Other agent development framework
 
+Microsoft AutoGen: AutoGen is a framework centered on orchestrating multiple agents that solve tasks through conversation. Its architecture enables agents with distinct capabilities to interact, allowing for complex problem decomposition and collaborative resolution. The primary advantage of AutoGen is its flexible, conversation-driven approach that supports dynamic and complex multi-agent interactions. However, this conversational paradigm can lead to less predictable execution paths and may require sophisticated prompt engineering to ensure tasks converge efficiently.
 
-<mark>该平台支持创建和部署专门的人工智能体，这些智能体可以执行复杂任务并实现流程自动化。这些智能体不仅仅是聊天机器人；它们可以自主推理、规划和执行多步骤操作。例如，智能体可以研究某个主题，编写包含引文的报告，甚至生成音频摘要。</mark>
+<mark>微软 AutoGen：AutoGen 是一个以协调多个智能体通过对话解决任务为核心的框架。其架构允许具有不同能力的智能体进行交互，从而实现复杂问题的分解和协作解决。AutoGen 的主要优势在于其灵活的、对话驱动的方法，支持动态且复杂的多智能体交互。然而，这种对话模式可能会导致执行路径难以预测，并且可能需要复杂的提示工程来确保任务高效收敛。</mark>
 
-To achieve this, AgentSpace constructs an enterprise knowledge graph, mapping the relationships between people, documents, and data. This allows the AI to understand context and deliver more relevant and personalized results. The platform also includes a no-code interface called Agent Designer for creating custom agents without requiring deep technical expertise.
+LlamaIndex: LlamaIndex is fundamentally a data framework designed to connect large language models with external and private data sources. It excels at creating sophisticated data ingestion and retrieval pipelines, which are essential for building knowledgeable agents that can perform RAG. While its data indexing and querying capabilities are exceptionally powerful for creating context-aware agents, its native tools for complex agentic control flow and multi-agent orchestration are less developed compared to agent-first frameworks. LlamaIndex is optimal when the core technical challenge is data retrieval and synthesis.
 
-<mark>为了实现这一点，AgentSpace 构建了一个企业知识图谱，映射了人员、文档和数据之间的关系。这使得人工智能够理解上下文并提供更相关、更个性化的结果。该平台还包含一个名为 Agent Designer 的无代码界面，无需深厚的技术专业知识即可创建自定义智能体。</mark>
+<mark>LlamaIndex：LlamaIndex本质上是一个数据框架，旨在连接大型语言模型与外部和私有数据源。它擅长构建复杂的数据摄取和检索管道，这对于构建能够执行RAG（红、红、绿）任务的知识型智能体至关重要。虽然其数据索引和查询功能对于创建上下文感知智能体来说非常强大，但与以智能体为先导的框架相比，其用于复杂智能体控制流和多智能体编排的原生工具尚不完善。当核心技术挑战在于数据检索和合成时，LlamaIndex是最佳选择。</mark>
 
-Furthermore, AgentSpace supports a multi-agent system where different AI agents can communicate and collaborate through an open protocol known as the Agent2Agent (A2A) Protocol. This interoperability allows for more complex and orchestrated workflows. Security is a foundational component, with features like role-based access controls and data encryption to protect sensitive enterprise information. Ultimately, AgentSpace aims to enhance productivity and decision-making by embedding intelligent, autonomous systems directly into an organization's operational fabric.
+Haystack: Haystack is an open-source framework engineered for building scalable and production-ready search systems powered by language models. Its architecture is composed of modular, interoperable nodes that form pipelines for document retrieval, question answering, and summarization. The main strength of Haystack is its focus on performance and scalability for large-scale information retrieval tasks, making it suitable for enterprise-grade applications. A potential trade-off is that its design, optimized for search pipelines, can be more rigid for implementing highly dynamic and creative agentic behaviors.
 
-<mark>此外，AgentSpace 支持多智能体系统，不同的 AI 智能体可以通过Agent2Agent (A2A) 协议的开放协议进行通信和协作。这种互操作性支持更复杂、更协调的工作流程。安全性是其基础组件，它还提供基于角色的访问控制和数据加密等功能来保护敏感的企业信息。AgentSpace 的最终目标是通过将智能自主系统直接嵌入到组织的运营结构中来提高生产力和决策能力。</mark>
+<mark>Haystack：Haystack 是一个开源框架，专为构建可扩展且可用于生产环境的、基于语言模型的搜索系统而设计。其架构由模块化、可互操作的节点组成，这些节点构成文档检索、问答和摘要的管道。Haystack 的主要优势在于其专注于大规模信息检索任务的性能和可扩展性，使其适用于企业级应用。但其潜在的不足之处在于，其针对搜索管道优化的设计可能较为僵化，难以实现高度动态和创造性的智能体行为。</mark>
 
-How to build an Agent with AgentSpace UI
+MetaGPT: MetaGPT implements a multi-agent system by assigning roles and tasks based on a predefined set of Standard Operating Procedures (SOPs). This framework structures agent collaboration to mimic a software development company, with agents taking on roles like product managers or engineers to complete complex tasks. This SOP-driven approach results in highly structured and coherent outputs, which is a significant advantage for specialized domains like code generation. The framework's primary limitation is its high degree of specialization, making it less adaptable for general-purpose agentic tasks outside of its core design.
 
-<mark>如何使用 AgentSpace UI 构建智能体</mark>
+<mark>MetaGPT：MetaGPT 通过基于预定义标准操作程序 (SOP) 分配角色和任务来实现多智能体系统。该框架构建智能体协作机制，模拟软件开发公司，智能体扮演产品经理或工程师等角色来完成复杂任务。这种基于 SOP 的方法能够生成高度结构化且连贯的输出，这对于代码生成等专业领域而言是一项显著优势。该框架的主要局限在于其高度专业化，使其难以适应核心设计之外的通用智能体任务。</mark>
 
-Figure 1 illustrates how to access AgentSpace by selecting AI Applications from the Google Cloud Console.
+SuperAGI: SuperAGI is an open-source framework designed to provide a complete lifecycle management system for autonomous agents. It includes features for agent provisioning, monitoring, and a graphical interface, aiming to enhance the reliability of agent execution. The key benefit is its focus on production-readiness, with built-in mechanisms to handle common failure modes like looping and to provide observability into agent performance. A potential drawback is that its comprehensive platform approach can introduce more complexity and overhead than a more lightweight, library-based framework.
 
-<mark>图 1 展示了如何通过从 Google Cloud Console 选择“AI Appcalition”来访问 AgentSpace。</mark>
+<mark>SuperAGI：SuperAGI 是一个开源框架，旨在为自主代理提供完整的生命周期管理系统。它包含代理配置、监控和图形界面等功能，旨在提高代理执行的可靠性。其主要优势在于专注于生产就绪性，内置机制可以处理常见的故障模式（例如循环），并提供代理性能的可观测性。潜在的缺点是，与更轻量级的基于库的框架相比，其全面的平台方法可能会引入更多的复杂性和开销。</mark>
 
-![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140597818-455d7428-484f-4bf5-858f-7495fd418bbd.png)
+Semantic Kernel: Developed by Microsoft, Semantic Kernel is an SDK that integrates large language models with conventional programming code through a system of "plugins" and "planners." It allows an LLM to invoke native functions and orchestrate workflows, effectively treating the model as a reasoning engine within a larger software application. Its primary strength is its seamless integration with existing enterprise codebases, particularly in .NET and Python environments. The conceptual overhead of its plugin and planner architecture can present a steeper learning curve compared to more straightforward agent frameworks.
 
-Fig. 1:  How to use Google Cloud Console to access AgentSpace
+<mark>Semantic Kernel：由微软开发的语义内核是一个软件开发工具包 (SDK)，它通过“插件”和“规划器”系统将大型语言模型与传统编程代码集成。它允许大型语言模型调用原生函数并协调工作流，从而有效地将模型视为大型软件应用程序中的推理引擎。其主要优势在于能够与现有企业代码库无缝集成，尤其是在 .NET 和 Python 环境中。与更直接的代理框架相比，其插件和规划器架构的概念性开销可能导致更陡峭的学习曲线。</mark>
 
-<mark>图 1：如何使用 Google Cloud Console 访问 AgentSpace</mark>
+Strands Agents: An AWS lightweight and flexible SDK that uses a model-driven approach for building and running AI agents. It is designed to be simple and scalable, supporting everything from basic conversational assistants to complex multi-agent autonomous systems. The framework is model-agnostic, offering broad support for various LLM providers, and includes native integration with the MCP for easy access to external tools. Its core advantage is its simplicity and flexibility, with a customizable agent loop that is easy to get started with. A potential trade-off is that its lightweight design means developers may need to build out more of the surrounding operational infrastructure, such as advanced monitoring or lifecycle management systems, which more comprehensive frameworks might provide out-of-the-box.
 
-Your agent can be connected to various services, including Calendar, Google Mail, Workaday, Jira, Outlook, and Service Now (see Fig. 2).
+<mark>Strands Agents：一款轻量级且灵活的 AWS SDK，采用模型驱动方法构建和运行 AI 代理。它设计简洁且可扩展，支持从基础对话助手到复杂的多代理自主系统等各种应用。该框架与模型无关，广泛支持各种生命周期管理 (LLM) 提供商，并与 MCP 原生集成，方便访问外部工具。其核心优势在于简洁性和灵活性，可自定义的代理循环易于上手。潜在的不足之处在于，其轻量级设计意味着开发人员可能需要构建更多周边运维基础设施，例如高级监控或生命周期管理系统，而更全面的框架可能提供这些开箱即用的功能。</mark>
 
-<mark>您的智能体可以连接到各种服务，包括日历、Google Mail、Workaday、Jira、Outlook 和 Service Now（见图 2）。</mark>
-
-![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140597872-5c91627d-6ad6-4f13-a72e-82888c0b0eee.png)
-
-Fig. 2: Integrate with diverse services, including Google and third-party platforms.
-
-<mark>图 2：与包括 Google 和第三方平台在内的各种服务集成。</mark>
-
-The Agent can then utilize its own prompt, chosen from a gallery of pre-made prompts provided by Google, as illustrated in Fig. 3.
-
-<mark>然后，智能体可以使用自己的提示，这些提示可以从 Google 提供的预制提示库中选择，如图 3 所示。</mark>
-
-![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140598084-0db2871e-1251-44d1-8bcd-ab4c9b13d6f1.png)
-
-Fig.3: Google's Gallery of Pre-assembled  prompts
-
-<mark>图 3：Google 预置提示库</mark>
-
-In alternative you can create your own prompt as in Fig.4, which will be then used by your agent
-
-<mark>或者，您可以像图 4 所示那样创建自己的提示，供您的智能体使用</mark>
-
-![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140598048-09bf9f3c-c8bd-4ff9-9514-fc76840344c5.png)
-
-Fig.4: Customizing the Agent's Prompt
-
-<mark>图 4：自定义智能体提示</mark>
-
-AgentSpace offers a number of advanced features such as integration with datastores to store your own data, integration with Google Knowledge Graph or with your private Knowledge Graph, Web interface for exposing your agent to the Web, and Analytics to monitor usage, and more (see Fig. 5) 
-
-<mark>AgentSpace 提供许多高级功能，例如与数据存储集成以存储您自己的数据、与 Google 知识图谱或您的私有知识图谱集成、用于将您的智能体公开到Web界面以及用于监控使用情况的 Analytics 等等（参见图 5）。</mark>
-
-![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140598223-8f7249bf-931c-42c2-8f33-a916c0a4bdcb.png)
-
-Fig. 5: AgentSpace advanced capabilities 
-
-<mark>图 5：AgentSpace 高级功能</mark>
-
-Upon completion, the AgentSpace chat interface (Fig. 6) will be accessible.
-
-<mark>完成后，即可访问 AgentSpace 聊天界面（图 6）。</mark>
-
-![](https://cdn.nlark.com/yuque/0/2025/png/57829142/1761140598253-264347cb-f46d-468c-abcc-a87eb21ef909.png)
-
-Fig. 6: The AgentSpace User Interface for initiating a chat with your Agent.
-
-<mark>图 6：用于与您的智能体发起聊天的 AgentSpace 用户界面。</mark>
 
 ## Conclusion | <mark>结语</mark>
 
-In conclusion, AgentSpace provides a functional framework for developing and deploying AI agents within an organization's existing digital infrastructure. The system's architecture links complex backend processes, such as autonomous reasoning and enterprise knowledge graph mapping, to a graphical user interface for agent construction. Through this interface, users can configure agents by integrating various data services and defining their operational parameters via prompts, resulting in customized, context-aware automated systems.
+The landscape of agentic frameworks offers a diverse spectrum of tools, from low-level libraries for defining agent logic to high-level platforms for orchestrating multi-agent collaboration. At the foundational level, LangChain enables simple, linear workflows, while LangGraph introduces stateful, cyclical graphs for more complex reasoning. Higher-level frameworks like CrewAI and Google's ADK shift the focus to orchestrating teams of agents with predefined roles, while others like LlamaIndex specialize in data-intensive applications. This variety presents developers with a core trade-off between the granular control of graph-based systems and the streamlined development of more opinionated platforms. Consequently, selecting the right framework hinges on whether the application requires a simple sequence, a dynamic reasoning loop, or a managed team of specialists. Ultimately, this evolving ecosystem empowers developers to build increasingly sophisticated AI systems by choosing the precise level of abstraction their project demands.
 
-<mark>总而言之，AgentSpace 提供用于在组织现有的数字基础架构内开发和部署AI智能体的功能框架。该系统的架构将复杂的后端流程（例如自主推理和企业知识图谱映射）链接到用于构建智能体的图形用户界面。通过该界面，用户可以通过集成各种数据服务并通过提示定义其操作参数来配置智能体，从而构建定制的、情境感知的自动化系统。</mark>
-
-This approach abstracts the underlying technical complexity, enabling the construction of specialized multi-agent systems without requiring deep programming expertise. The primary objective is to embed automated analytical and operational capabilities directly into workflows, thereby increasing process efficiency and enhancing data-driven analysis. For practical instruction, hands-on learning modules are available, such as the "Build a Gen AI Agent with Agentspace" lab on Google Cloud Skills Boost, which provides a structured environment for skill acquisition.
-
-<mark>这种方法抽象了底层的技术复杂性，无需深厚的编程专业知识即可构建专用的多智能体系统。其主要目标是将自动化分析和操作功能直接嵌入到工作流中，从而提高流程效率并增强数据驱动的分析能力。在实践教学方面，我们提供动手学习模块，例如 Google Cloud Skills Boost 上的“Build a Gen AI Agent with Agentspace”实验，它为技能学习提供结构化的环境。</mark>
+<mark>智能体框架领域提供了种类繁多的工具，从用于定义智能体逻辑的底层库到用于协调多智能体协作的高级平台，应有尽有。在基础层面，LangChain 支持简单的线性工作流，而 LangGraph 则引入了有状态的循环图，用于更复杂的推理。像 CrewAI 和 Google 的 ADK 这样的高级框架则专注于协调具有预定义角色的智能体团队，而像 LlamaIndex 这样的框架则专注于数据密集型应用。这种多样性给开发者带来了一个核心的权衡：一方面是基于图的系统进行精细控制，另一方面是更规范的平台带来的简化开发体验。因此，选择合适的框架取决于应用程序需要的是简单的序列、动态的推理循环，还是一个由专家组成的团队。最终，这个不断发展的生态系统使开发者能够通过选择项目所需的精确抽象级别，构建日益复杂的 AI 系统。</mark>
 
 ## References | <mark>参考文献</mark>
+1. LangChain, https://www.langchain.com/ 
+2. LangGraph, https://www.langchain.com/langgraph 
+3. Google's ADK, https://google.github.io/adk-docs/ 
+4. Crew.AI, https://docs.crewai.com/en/introduction 
 
-1. Create a no-code agent with Agent Designer, [https://cloud.google.com/agentspace/agentspace-enterprise/docs/agent-designer](https://cloud.google.com/agentspace/agentspace-enterprise/docs/agent-designer)
-
-     <mark>使用 Agent Designer 创建无代码智能体，[https://cloud.google.com/agentspace/agentspace-enterprise/docs/agent-designer](https://cloud.google.com/agentspace/agentspace-enterprise/docs/agent-designer)
-
-2. Google Cloud Skills Boost,[https://www.cloudskillsboost.google/](https://www.cloudskillsboost.google/)
-
-      <mark>Google Cloud Skills Boost,[https://www.cloudskillsboost.google/](https://www.cloudskillsboost.google/)</mark>
 
