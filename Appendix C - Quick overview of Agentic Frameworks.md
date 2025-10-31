@@ -1,6 +1,5 @@
-# Appendix D - Building an Agent with AgentSpace** | <mark>附录D: 基于AgentSpace构建智能体</mark>
+# Appendix C - Quick overview of Agentic Frameworks | <mark>附录C: 智能体框架快速概览</mark>
 
-**Agentspace现已更名为Gemini Enterprise;考虑与原文保持一致的原则，本译文仍继续采用AgentSpace名称。
 
 ## Overview | <mark>概览</mark>
 
