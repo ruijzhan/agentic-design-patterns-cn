@@ -19,7 +19,7 @@ Use it for: <mark>用途：</mark>
 
 ●  Extraction: Extract structured data (like JSON) from a block of text.
 
-<mark>提取：从文本块中提取结构化数据（例如 JSON）。</mark>
+<mark>提取：从文本块中提取结构化数据（例如JSON）。</mark>
 
 Python
 ```python
@@ -32,7 +32,7 @@ chain = prompt | model | output_parse
 
 LangGraph is a library built on top of LangChain to handle more advanced agentic systems. It allows you to define your workflow as a graph with nodes (functions or LCEL chains) and edges (conditional logic). Its main advantage is the ability to create cycles, allowing the application to loop, retry, or call tools in a flexible order until a task is complete. It explicitly manages the application state, which is passed between nodes and updated throughout the process.
 
-<mark>LangGraph 是基于LangChain构建的库，用于处理更高级的智能体系统。它允许您将工作流定义为图，该图由节点（函数或LCEL链）和边（条件逻辑）组成。其主要优势在于能够创建循环，从而允许应用程序以灵活的顺序循环、重试或调用工具，直到任务完成。它显式地管理应用程序状态，该状态在节点之间传递并在整个过程中更新。</mark>
+<mark>LangGraph是基于LangChain构建的库，用于处理更高级的智能体系统。它允许您将工作流定义为图，该图由节点（函数或LCEL链）和边（条件逻辑）组成。其主要优势在于能够创建循环，从而允许应用程序以灵活的顺序循环、重试或调用工具，直到任务完成。它显式地管理应用程序状态，该状态在节点之间传递并在整个过程中更新。</mark>
 
 Use it for: <mark>用途：</mark>
 
@@ -138,15 +138,15 @@ print(state["combined_output"])
 
 Google's Agent Development Kit, or ADK, provides a high-level, structured framework for building and deploying applications composed of multiple, interacting AI agents. It contrasts with LangChain and LangGraph by offering a more opinionated and production-oriented system for orchestrating agent collaboration, rather than providing the fundamental building blocks for an agent's internal logic.
 
-<mark>谷歌智能体开发工具包（ADK）提供了高级的结构化框架，用于构建和部署由多个交互的AI智能体组成的应用程序。与LangChain和LangGraph不同，ADK提供了一个更具规范性和面向生产环境的系统来协调智能体之间的协作，而不是提供智能体内部逻辑的基本构建模块。</mark>
+<mark>谷歌智能体开发工具包（ADK）提供了高级的结构化框架，用于构建和部署由多个交互AI智能体组成的应用程序。与LangChain和LangGraph不同，ADK提供了更具规范性和面向生产环境的系统来协调智能体之间的协作，而不是提供智能体内部逻辑的基本构建模块。</mark>
 
 LangChain operates at the most foundational level, offering the components and standardized interfaces to create sequences of operations, such as calling a model and parsing its output. LangGraph extends this by introducing a more flexible and powerful control flow; it treats an agent's workflow as a stateful graph. Using LangGraph, a developer explicitly defines nodes, which are functions or tools, and edges, which dictate the path of execution. This graph structure allows for complex, cyclical reasoning where the system can loop, retry tasks, and make decisions based on an explicitly managed state object that is passed between nodes. It gives the developer fine-grained control over a single agent's thought process or the ability to construct a multi-agent system from first principles.
 
-<mark>LangChain 在最基础的层面上运行，提供创建操作序列所需的组件和标准化接口，例如调用模型并解析其输出。LangGraph在此基础上扩展了功能，引入了更灵活、更强大的控制流；它将智能体的工作流程视为一个有状态图。使用LangGraph，开发者可以显式地定义节点（即函数或工具）和边（即执行路径）。这种图结构支持复杂的循环推理，系统可以循环执行、重试任务，并基于在节点之间传递的显式管理的状态对象做出决策。它使开发者能够对单个智能体的思维过程进行细粒度控制，或者从零开始构建多智能体系统。</mark>
+<mark>LangChain在最基础的层面上运行，提供创建操作序列所需的组件和标准化接口，例如调用模型并解析其输出。LangGraph在此基础上扩展了功能，引入了更灵活、更强大的控制流；它将智能体的工作流程视为有状态图。使用LangGraph，开发者可以显式地定义节点（即函数或工具）和边（即执行路径）。这种图结构支持复杂的循环推理，系统可以循环执行、重试任务，并基于在节点之间传递的显式管理的状态对象做出决策。它使开发者能够对单个智能体的思维过程进行细粒度控制，或者从零开始构建多智能体系统。</mark>
 
 Google's ADK abstracts away much of this low-level graph construction. Instead of asking the developer to define every node and edge, it provides pre-built architectural patterns for multi-agent interaction. For instance, ADK has built-in agent types like SequentialAgent or ParallelAgent, which manage the flow of control between different agents automatically. It is architected around the concept of a "team" of agents, often with a primary agent delegating tasks to specialized sub-agents. State and session management are handled more implicitly by the framework, providing a more cohesive but less granular approach than LangGraph's explicit state passing. Therefore, while LangGraph gives you the detailed tools to design the intricate wiring of a single robot or a team, Google's ADK gives you a factory assembly line designed to build and manage a fleet of robots that already know how to work together.
 
-<mark>Google ADK抽象化了许多底层图构建工作。它无需开发者定义每个节点和边，而是提供了预构建的多智能体交互架构模式。例如，ADK 内置了SequentialAgent或ParallelAgent等智能体类型，可以自动管理不同智能体之间的控制流。它的架构围绕着智能体“团队”的概念展开，通常由一个主智能体将任务委派给专门的子智能体。框架以更隐式的方式处理状态和会话管理，提供了一种比 LangGraph 的显式状态传递更统一但粒度更低的方法。因此，LangGraph 提供了设计单个机器人或团队复杂线路的详细工具，而 Google ADK 则提供了一条工厂装配线，用于构建和管理一支已经知道如何协同工作的机器人集群。</mark>
+<mark>Google ADK抽象化了许多底层图构建工作。它无需开发者定义每个节点和边，而是提供了预构建的多智能体交互架构模式。例如，ADK内置了SequentialAgent或ParallelAgent等智能体类型，可以自动管理不同智能体之间的控制流。它的架构围绕着智能体“团队”的概念展开，通常由一个主智能体将任务委派给专门的子智能体。框架以更隐式的方式处理状态和会话管理，提供了一种比LangGraph的显式状态传递更统一但粒度更低的方法。因此，LangGraph提供了设计单个机器人或团队复杂线路的详细工具，而Google ADK 则提供了一条工厂装配线，用于构建和管理一支已经知道如何协同工作的机器人集群。</mark>
 
 Python
 ```python
@@ -161,11 +161,9 @@ dice_agent = LlmAgent(
    tools=[google_search],
 )
 ```
-
 This code creates a search-augmented agent. When this agent receives a question, it will not just rely on its pre-existing knowledge. Instead, following its instructions, it will use the Google Search tool to find relevant, real-time information from the web and then use that information to construct its answer.
 
 <mark>这段代码创建了搜索增强型智能体。当该智能体接收到问题时，它不会仅仅依赖其已有的知识。相反，它会按照指令，使用谷歌搜索工具从网络上查找相关的实时信息，然后利用这些信息构建答案。</mark>
-
 
 ## Crew.AI
 
@@ -202,15 +200,15 @@ This code sets up a sequential workflow for a team of AI agents, where they tack
 
 Microsoft AutoGen: AutoGen is a framework centered on orchestrating multiple agents that solve tasks through conversation. Its architecture enables agents with distinct capabilities to interact, allowing for complex problem decomposition and collaborative resolution. The primary advantage of AutoGen is its flexible, conversation-driven approach that supports dynamic and complex multi-agent interactions. However, this conversational paradigm can lead to less predictable execution paths and may require sophisticated prompt engineering to ensure tasks converge efficiently.
 
-<mark>微软 AutoGen：AutoGen是以协调多个智能体通过对话解决任务为核心的框架。其架构允许具有不同能力的智能体进行交互，从而实现复杂问题的分解和协作解决。AutoGen的主要优势在于其灵活的、对话驱动的方法，支持动态且复杂的多智能体交互。然而，这种对话模式可能会导致执行路径难以预测，并且可能需要复杂的提示工程来确保任务高效收敛。</mark>
+<mark>Microsoft AutoGen：AutoGen是以协调多个智能体通过对话解决任务为核心的框架。其架构允许具有不同能力的智能体进行交互，从而实现复杂问题的分解和协作解决。AutoGen的主要优势在于其灵活的、对话驱动的方法，支持动态且复杂的多智能体交互。然而，这种对话模式可能会导致执行路径难以预测，并且可能需要复杂的提示工程来确保任务高效收敛。</mark>
 
 LlamaIndex: LlamaIndex is fundamentally a data framework designed to connect large language models with external and private data sources. It excels at creating sophisticated data ingestion and retrieval pipelines, which are essential for building knowledgeable agents that can perform RAG. While its data indexing and querying capabilities are exceptionally powerful for creating context-aware agents, its native tools for complex agentic control flow and multi-agent orchestration are less developed compared to agent-first frameworks. LlamaIndex is optimal when the core technical challenge is data retrieval and synthesis.
 
-<mark>LlamaIndex：LlamaIndex本质上是一个数据框架，旨在连接大型语言模型与外部和私有数据源。它擅长构建复杂的数据摄取和检索管道，这对于构建能够执行RAG（红、红、绿）任务的知识型智能体至关重要。虽然其数据索引和查询功能对于创建上下文感知智能体来说非常强大，但与以智能体为先导的框架相比，其用于复杂智能体控制流和多智能体编排的原生工具尚不完善。当核心技术挑战在于数据检索和合成时，LlamaIndex是最佳选择。</mark>
+<mark>LlamaIndex：LlamaIndex本质上是一个旨在连接大型语言模型与外部和私有数据源的数据框架。它擅长构建复杂的数据摄取和检索管道，这对于构建能够执行RAG（红、红、绿）任务的知识型智能体至关重要。虽然其数据索引和查询功能对于创建上下文感知智能体来说非常强大，但与以智能体为先导的框架相比，其用于复杂智能体控制流和多智能体编排的原生工具尚不完善。当核心技术挑战在于数据检索和合成时，LlamaIndex是最佳选择。</mark>
 
 Haystack: Haystack is an open-source framework engineered for building scalable and production-ready search systems powered by language models. Its architecture is composed of modular, interoperable nodes that form pipelines for document retrieval, question answering, and summarization. The main strength of Haystack is its focus on performance and scalability for large-scale information retrieval tasks, making it suitable for enterprise-grade applications. A potential trade-off is that its design, optimized for search pipelines, can be more rigid for implementing highly dynamic and creative agentic behaviors.
 
-<mark>Haystack：Haystack是开源框架，专为构建可扩展且可用于生产环境的、基于语言模型的搜索系统而设计。其架构由模块化、可互操作的节点组成，这些节点构成文档检索、问答和摘要的管道。Haystack 的主要优势在于其专注于大规模信息检索任务的性能和可扩展性，使其适用于企业级应用。但其潜在的不足之处在于，其针对搜索管道优化的设计可能较为僵化，难以实现高度动态和创造性的智能体行为。</mark>
+<mark>Haystack：Haystack是专为构建可扩展且可用于生产环境的、基于语言模型的搜索系统而设计的开源框架。其架构由模块化、可互操作的节点组成，这些节点构成文档检索、问答和摘要的管道。Haystack 的主要优势在于其专注于大规模信息检索任务的性能和可扩展性，使其适用于企业级应用。但其潜在的不足之处在于，其针对搜索管道优化的设计可能较为僵化，难以实现高度动态和创造性的智能体行为。</mark>
 
 MetaGPT: MetaGPT implements a multi-agent system by assigning roles and tasks based on a predefined set of Standard Operating Procedures (SOPs). This framework structures agent collaboration to mimic a software development company, with agents taking on roles like product managers or engineers to complete complex tasks. This SOP-driven approach results in highly structured and coherent outputs, which is a significant advantage for specialized domains like code generation. The framework's primary limitation is its high degree of specialization, making it less adaptable for general-purpose agentic tasks outside of its core design.
 
@@ -233,7 +231,7 @@ Strands Agents: An AWS lightweight and flexible SDK that uses a model-driven app
 
 The landscape of agentic frameworks offers a diverse spectrum of tools, from low-level libraries for defining agent logic to high-level platforms for orchestrating multi-agent collaboration. At the foundational level, LangChain enables simple, linear workflows, while LangGraph introduces stateful, cyclical graphs for more complex reasoning. Higher-level frameworks like CrewAI and Google's ADK shift the focus to orchestrating teams of agents with predefined roles, while others like LlamaIndex specialize in data-intensive applications. This variety presents developers with a core trade-off between the granular control of graph-based systems and the streamlined development of more opinionated platforms. Consequently, selecting the right framework hinges on whether the application requires a simple sequence, a dynamic reasoning loop, or a managed team of specialists. Ultimately, this evolving ecosystem empowers developers to build increasingly sophisticated AI systems by choosing the precise level of abstraction their project demands.
 
-<mark>智能体框架领域提供了种类繁多的工具，从用于定义智能体逻辑的底层库到用于协调多智能体协作的高级平台，应有尽有。在基础层面，LangChain 支持简单的线性工作流，而 LangGraph 则引入了有状态的循环图，用于更复杂的推理。像 CrewAI 和 Google 的 ADK 这样的高级框架则专注于协调具有预定义角色的智能体团队，而像 LlamaIndex 这样的框架则专注于数据密集型应用。这种多样性给开发者带来了一个核心的权衡：一方面是基于图的系统进行精细控制，另一方面是更规范的平台带来的简化开发体验。因此，选择合适的框架取决于应用程序需要的是简单的序列、动态的推理循环，还是一个由专家组成的团队。最终，这个不断发展的生态系统使开发者能够通过选择项目所需的精确抽象级别，构建日益复杂的 AI 系统。</mark>
+<mark>智能体框架领域提供了种类繁多的工具，从用于定义智能体逻辑的底层库到用于协调多智能体协作的高级平台，应有尽有。在基础层面，LangChain 支持简单的线性工作流，而 LangGraph 则引入了有状态的循环图，用于更复杂的推理。像 CrewAI 和 Google ADK 高级框架则专注于协调具有预定义角色的智能体团队，而像 LlamaIndex 这样的框架则专注于数据密集型应用。这种多样性给开发者带来了一个核心的权衡：一方面是基于图的系统进行精细控制，另一方面是更规范的平台带来的简化开发体验。因此，选择合适的框架取决于应用程序需要的是简单的序列、动态的推理循环，还是一个由专家组成的团队。最终，这个不断发展的生态系统使开发者能够通过选择项目所需的精确抽象级别，构建日益复杂的 AI 系统。</mark>
 
 ## References | <mark>参考文献</mark>
 1. LangChain, https://www.langchain.com/ 
