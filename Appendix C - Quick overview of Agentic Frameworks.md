@@ -110,7 +110,7 @@ This code sets up a sequential workflow for a team of AI agents, where they tack
 
 <mark>这段代码为一组 AI 代理设置了一个顺序工作流程，它们按特定顺序处理一系列任务，并启用了详细的日志记录来监控它们的进度。</mark>
 
-## Other agent development framework
+## Other agent development framework | <mark>其他智能体开发框架</mark>
 
 Microsoft AutoGen: AutoGen is a framework centered on orchestrating multiple agents that solve tasks through conversation. Its architecture enables agents with distinct capabilities to interact, allowing for complex problem decomposition and collaborative resolution. The primary advantage of AutoGen is its flexible, conversation-driven approach that supports dynamic and complex multi-agent interactions. However, this conversational paradigm can lead to less predictable execution paths and may require sophisticated prompt engineering to ensure tasks converge efficiently.
 
