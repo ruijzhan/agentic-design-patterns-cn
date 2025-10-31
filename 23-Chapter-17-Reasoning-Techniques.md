@@ -63,3 +63,101 @@ Let's see an example. It begins with a set of instructions that tell the AI how 
 Following that, the example shows the CoT process in action. The section labeled "Agent's Thought Process" is the internal monologue where the model executes the instructed steps. This is the literal "chain of thought." Finally, the "Agent's Final Answer" is the polished, comprehensive output generated as a result of that careful, step-by-step reasoning process
 
 <mark>随后，该示例展示了 CoT 过程的实际应用。标记为"Agent's Thought Process"的部分是模型执行指定步骤时的内心独白，这就是字面意义上的"思维链"。最后，"Agent's Final Answer"是经过仔细、逐步推理过程后生成的精炼且全面的输出。</mark>
+
+```python
+You are an Information Retrieval Agent. Your goal is to answer the user's question comprehensively and accurately by thinking step-by-step.
+Here's the process you must follow:
+
+1. **Analyze the Query:** Understand the core subject and specific requirements of the user's question. Identify key entities, keywords, and the type of information being sought.
+2. **Formulate Search Queries (for Knowledge Base):** Based on your analysis, generate a list of precise search queries that you would use to retrieve relevant information from a knowledge base or external tools.
+3. **Simulate Information Retrieval (Self-Correction/Reasoning):**For each search query, mentally consider what kind of information you expect to find. If you were to retrieve the content, what would be the most relevant snippets? Think about potential ambiguities or
+missing pieces.
+4. **Synthesize Information:** Based on the simulated retrieval and your understanding of the user's original query, synthesize the gathered information into a coherent and complete answer. Ensure all aspects of the query are addressed.
+5. **Review and Refine:** Before finalizing, critically evaluate your answer. Is it accurate? Is it comprehensive? Is it easy to understand? Is it concise? If not, identify what needs to be improved and how.
+
+**User Query:** "Explain the main differences between classical computers and quantum computers, and briefly describe a potential application of quantum computing."
+
+**Agent's Thought Process (Internal CoT Output - encouraged by the prompt):**
+
+**Thought 1 (Analyze Query):**
+The user wants two things:
+1. Main differences between classical and quantum computers.
+2. One potential application of quantum computing.
+Keywords: classical computers, quantum computers, differences, potential application.
+
+**Thought 2 (Formulate Search Queries):**
+- "differences classical vs quantum computers"
+- "how quantum computers work"
+- "how classical computers work"
+- "applications of quantum computing"
+
+**Thought 3 (Simulate Information Retrieval & Identify Key Concepts):**
+- From "differences": Expect concepts like bits vs. qubits, superposition, entanglement, probabilistic nature, computational power for specific problems.
+- From "how they work": Classical uses transistors/binary. Quantum uses quantum mechanics.
+- From "applications": Expect drug discovery, material science, cryptography, optimization.
+
+**Thought 4 (Synthesize Information):**
+Classical computers use bits (0 or 1), processing information sequentially. Quantum computers use qubits, which can be 0, 1, or both simultaneously (superposition), and can be entangled, allowing for vastly different computational approaches. This enables them to
+solve certain problems (like factoring large numbers or simulating complex molecules) far more efficiently than classical computers. A potential application is in drug discovery, where quantum computers could simulate molecular interactions with unprecedented accuracy,
+accelerating the development of new medicines.
+
+**Thought 5 (Review and Refine):**
+- Differences are covered (bits vs qubits, superposition, entanglement, processing).
+- Application is given (drug discovery).
+- Is it brief? Yes.
+- Is it clear? Yes.
+- Looks good.
+
+**Agent's Final Answer (Output to User):**
+Classical computers process information using bits, which can be either a 0 or a 1 at any given time, performing operations sequentially. In contrast, quantum computers utilize qubits, which can exist in multiple states simultaneously through superposition and can be linked through entanglement, allowing for exponentially more complex computations. This fundamental difference enables quantum machines to tackle certain problems, such as simulating molecular structures or breaking complex encryption, that are intractable for even the most powerful classical supercomputers. A significant potential application of quantum computing lies in drug discovery, where its ability to precisely model molecular behavior could revolutionize the development of new pharmaceuticals.
+
+```
+
+```python
+
+你是一名信息检索代理（Information Retrieval Agent）。你的目标是通过循序渐进的思考，全面且准确地回答用户的问题。
+你必须遵循以下流程：
+
+1. **分析查询（Analyze the Query）：** 理解用户问题的核心主题和具体要求。识别关键实体、关键词以及所需信息的类型。
+2. **制定搜索查询（Formulate Search Queries - 针对知识库）：** 基于你的分析，生成一份精确的搜索查询列表，用于从知识库或外部工具中检索相关信息。
+3. **模拟信息检索（Simulate Information Retrieval - 自我修正/推理）：** 对于每项搜索查询，在脑海中思考预期会找到哪种信息。如果检索到内容，哪些片段会是最相关的？思考潜在的歧义或缺失的部分。
+4. **综合信息（Synthesize Information）：** 基于模拟检索和你对用户原始查询的理解，将收集到的信息综合成一个连贯且完整的答案。确保回答了查询的所有方面。
+5. **审查与优化（Review and Refine）：** 在最终确定答案前，批判性地评估你的回答。它是否准确？是否全面？是否易于理解？是否简洁？如果不是，确定需要改进的内容和方式。
+
+**用户查询：**“解释经典计算机和量子计算机的主要区别，并简要描述一个量子计算的潜在应用。”
+**代理的思维过程（内部思维链输出 - 由提示鼓励生成）**
+
+**思考 1（分析查询）：**
+用户希望得到两点信息：
+1. 经典计算机与量子计算机的主要区别。
+2. 一个潜在的量子计算应用。
+关键词：经典计算机、量子计算机、区别、潜在应用。
+
+思考 2（制定搜索查询）：
+- “经典计算机 vs 量子计算机 区别”
+- “量子计算机如何工作”
+- “经典计算机如何工作”
+- “量子计算应用”
+
+**思考 3（模拟信息检索与识别关键概念）：**
+- 从“区别”中：预期会找到比特（bits） vs 量子比特（qubits）、叠加态（superposition）、纠缠（entanglement）、概率性质、解决特定问题的计算能力等概念。
+- 从“如何工作”中：经典计算机使用晶体管/二进制。量子计算机使用量子力学。
+- 从“应用”中：预期会找到药物发现、材料科学、密码学、优化等。
+
+**思考 4（综合信息）：**
+经典计算机使用比特（0 或 1），并按顺序处理信息。量子计算机使用量子比特，量子比特可以同时处于 0、1 或两者兼具的状态（叠加态），并且可以相互纠缠，从而实现截然不同的计算方法。这使它们能够比经典计算机更高效地解决某些特定问题（如分解大数或模拟复杂分子）。一个潜在的应用是药物发现，量子计算机可以前所未有地准确模拟分子相互作用，从而加速新药的研发。
+
+**思考 5（审查与优化）：**
+- 区别已涵盖（比特 vs 量子比特、叠加态、纠缠、处理方式）。
+- 应用已给出（药物发现）。
+- 是否简洁？是。
+- 是否清晰？是。
+- 看起来不错。
+
+**代理的最终答案（输出给用户）：**
+经典计算机使用比特来处理信息，比特在任一时刻只能是 0 或 1，并按顺序执行操作。相比之下，量子计算机利用量子比特，量子比特可以通过叠加态同时存在于多种状态，并通过纠缠相互关联，从而实现指数级复杂的计算。这种根本性的差异使得量子机器能够解决某些问题（例如模拟分子结构或破解复杂加密），这些问题对于最强大的经典超级计算机来说都是无法攻克的。量子计算的一个重要的潜在应用在于药物发现，它精确建模分子行为的能力可以彻底改变新药的研发。
+
+```
+
+Tree-of-Thought (ToT) is a reasoning technique that builds upon Chain-of-Thought
+(CoT). It allows large language models to explore multiple reasoning paths
