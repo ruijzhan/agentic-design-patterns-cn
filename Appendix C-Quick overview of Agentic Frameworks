@@ -1,3 +1,28 @@
+# Appendix D-Building an Agent with AgentSpace** | <mark>附录D: 基于AgentSpace构建智能体</mark>
+
+**Agentspace现已更名为Gemini Enterprise;考虑与原文保持一致的原则，本译文仍继续采用AgentSpace名称。
+
+## Overview | <mark>概览</mark>
+
+AgentSpace is a platform designed to facilitate an "agent-driven enterprise" by integrating artificial intelligence into daily workflows. At its core, it provides a unified search capability across an organization's entire digital footprint, including documents, emails, and databases. This system utilizes advanced AI models, like Google's Gemini, to comprehend and synthesize information from these varied sources.
+
+<mark>AgentSpace 是一个旨在通过将人工智能融入日常工作流程来促进“智能体驱动型企业”发展的平台。其核心是提供统一的搜索功能，涵盖组织的全部数字足迹，包括文档、电子邮件和数据库。该系统利用先进的人工智能模型（例如 Google Gemini）来理解和整合来自不同来源的信息。</mark>
+
+The platform enables the creation and deployment of specialized AI "agents" that can perform complex tasks and automate processes. These agents are not merely chatbots; they can reason, plan, and execute multi-step actions autonomously. For instance, an agent could research a topic, compile a report with citations, and even generate an audio summary.
+
+<mark>该平台支持创建和部署专门的人工智能体，这些智能体可以执行复杂任务并实现流程自动化。这些智能体不仅仅是聊天机器人；它们可以自主推理、规划和执行多步骤操作。例如，智能体可以研究某个主题，编写包含引文的报告，甚至生成音频摘要。</mark>
+
+To achieve this, AgentSpace constructs an enterprise knowledge graph, mapping the relationships between people, documents, and data. This allows the AI to understand context and deliver more relevant and personalized results. The platform also includes a no-code interface called Agent Designer for creating custom agents without requiring deep technical expertise.
+
+<mark>为了实现这一点，AgentSpace 构建了一个企业知识图谱，映射了人员、文档和数据之间的关系。这使得人工智能够理解上下文并提供更相关、更个性化的结果。该平台还包含一个名为 Agent Designer 的无代码界面，无需深厚的技术专业知识即可创建自定义智能体。</mark>
+
+Furthermore, AgentSpace supports a multi-agent system where different AI agents can communicate and collaborate through an open protocol known as the Agent2Agent (A2A) Protocol. This interoperability allows for more complex and orchestrated workflows. Security is a foundational component, with features like role-based access controls and data encryption to protect sensitive enterprise information. Ultimately, AgentSpace aims to enhance productivity and decision-making by embedding intelligent, autonomous systems directly into an organization's operational fabric.
+
+<mark>此外，AgentSpace 支持多智能体系统，不同的 AI 智能体可以通过Agent2Agent (A2A) 协议的开放协议进行通信和协作。这种互操作性支持更复杂、更协调的工作流程。安全性是其基础组件，它还提供基于角色的访问控制和数据加密等功能来保护敏感的企业信息。AgentSpace 的最终目标是通过将智能自主系统直接嵌入到组织的运营结构中来提高生产力和决策能力。</mark>
+
+How to build an Agent with AgentSpace UI
+
+<mark>如何使用 AgentSpace UI 构建智能体</mark>
 
 <mark><strong>我的文本</strong></mark>
 
