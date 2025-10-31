@@ -1,6 +1,11 @@
-Appendix C - Quick overview of Agentic Frameworks
-LangChain 
+# Appendix C - Quick overview of Agentic Frameworks | <mark>附录C: 智能体框架快速概览</mark>
+
+## LangChain | <mark>LangChain</mark>
+
 LangChain is a framework for developing applications powered by LLMs. Its core strength lies in its LangChain Expression Language (LCEL), which allows you to "pipe" components together into a chain. This creates a clear, linear sequence where the output of one step becomes the input for the next. It's built for workflows that are Directed Acyclic Graphs (DAGs), meaning the process flows in one direction without loops.
+
+<mark>LangChain 是一个用于开发基于大语言模型 (LLM) 的应用程序开发框架。它的核心优势在于其 LangChain 表达式语言 (LCEL)，该语言允许您将组件“串联”成一个链。这创建了一个清晰的线性序列，其中一步的输出成为下一步的输入。它专为有向无环图 (DAG) 工作流而设计，这意味着流程沿一个方向流动，没有循环。</mark>
+
 Use it for:
 ●	Simple RAG: Retrieve a document, create a prompt, get an answer from an LLM.
 ●	Summarization: Take user text, feed it to a summarization prompt, and return the output.
