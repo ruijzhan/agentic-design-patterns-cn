@@ -159,5 +159,137 @@ Classical computers process information using bits, which can be either a 0 or a
 
 ```
 
-Tree-of-Thought (ToT) is a reasoning technique that builds upon Chain-of-Thought
-(CoT). It allows large language models to explore multiple reasoning paths
+**Tree-of-Thought (ToT)** is a reasoning technique that builds upon Chain-of-Thought(CoT). It allows large language models to explore multiple reasoning paths by branching into different intermediate steps, forming a tree structure (see Fig. 2) This approach supports complex problem-solving by enabling backtracking,self-correction, and exploration of alternative solutions. Maintaining a tree of possibilities allows the model to evaluate various reasoning trajectories before finalizing an answer. This iterative process enhances the model's ability to handle challenging tasks that require strategic planning and decision-making.
+<mark>**思维树（ToT）** 是一种建立在思维链（Chain-of-Thought, CoT）基础上的推理技巧。它允许大型语言模型通过分支到不同的中间步骤，探索多条推理路径，从而形成一个树状结构（参见图 2）。这种方法通过支持回溯、自我修正和探索替代解决方案，来支持复杂的解题过程。维护一棵可能性之树，使得模型能够在最终确定答案之前评估各种推理轨迹。这种迭代过程增强了模型处理需要战略规划和决策制定的挑战性任务的能力。</mark>
+
+Fig.2: Example of Tree of Thoughts
+图 2：思维树示例
+
+**Self-correction**, also known as self-refinement, is a crucial aspect of an agent's reasoning process, particularly within Chain-of-Thought prompting. It involves the agent's internal evaluation of its generated content and intermediate thought processes. This critical review enables the agent to identify ambiguities, information gaps, or inaccuracies in its understanding or solutions. This iterative cycle of reviewing and refining allows the agent to adjust its approach, improve response quality, and ensure accuracy and thoroughness before delivering a final output. This internal critique enhances the agent's capacity to produce reliable and high-quality results, as demonstrated in examples within the dedicated Chapter 4.
+
+<mark>**自我修正（Self-correction）**，也称为自我精炼（self-refinement），是代理推理过程的关键方面，尤其是在思维链提示中。它涉及代理对其生成的内容和中间思维过程进行内部评估。这种批判性审查使代理能够识别其理解或解决方案中的歧义、信息空白或不准确之处。这种审查和精炼的迭代循环允许代理调整其方法、提高响应质量，并确保在交付最终输出前的准确性和彻底性。这种内部批判增强了代理生成可靠和高质量结果的能力，正如专门的第 4 章示例所示。</mark>
+
+
+This example demonstrates a systematic process of self-correction, crucial for refining AI-generated content. It involves an iterative loop of drafting, reviewing against original requirements, and implementing specific improvements. The illustration begins by outlining the AI's function as a "Self-Correction Agent" with a67defined five-step analytical and revision workflow. Following this, a subpar "InitialDraft" of a social media post is presented. The "Self-Correction Agent's Thought Process" forms the core of the demonstration. Here, the Agent critically evaluates the draft according to its instructions, pinpointing weaknesses such as low engagement and a vague call to action. It then suggests concrete enhancements, including the use of more impactful verbs and emojis. The process concludes with the "Final Revised Content," a polished and notably improved version that integrates the self-identified adjustments.
+
+<mark>这个示例展示了一个系统化的自我修正过程，这对于精炼 AI 生成的内容至关重要。它涉及一个起草、对照原始要求进行审查，以及实施具体改进的迭代循环。该示例首先概述了 AI 作为“自我修正代理”（Self-Correction Agent）的功能，并定义了一个明确的五步分析和修订工作流。随后，呈现了一份质量欠佳的社交媒体帖子“初始草稿”（Initial Draft）。“自我修正代理的思维过程”（Self-Correction Agent's Thought Process）构成了演示的核心。在这个环节，代理根据指令批判性地评估草稿，指出了诸如参与度低和行动号召模糊等弱点。然后，它提出了具体的改进建议，包括使用更具影响力的动词和表情符号。整个过程最终以“最终修订内容”（Final Revised Content）收尾，这是一个整合了自我识别调整后的、更精炼且显著改善的版本。</mark>
+
+```python
+You are a highly critical and detail-oriented Self-Correction Agent.
+Your task is to review a previously generated piece of content against its original requirements and identify areas for improvement.
+Your goal is to refine the content to be more accurate, comprehensive, engaging, and aligned with the prompt.
+
+Here's the process you must follow for self-correction:
+
+1. **Understand Original Requirements:** Review the initial prompt/requirements that led to the content's creation. What was the *original intent*? What were the key constraints or goals?
+2. **Analyze Current Content:** Read the provided content carefully.
+3. **Identify Discrepancies/Weaknesses:** Compare the current content against the original requirements. Look for:
+* **Accuracy Issues:** Are there any factual errors or misleading statements?
+* **Completeness Gaps:** Does it fully address all aspects of the original prompt? Is anything missing?
+* **Clarity & Coherence:** Is the language clear, concise, and easy to understand? Does it flow logically?
+* **Tone & Style:** Does it match the desired tone and style (e.g., professional, engaging, concise)?
+* **Engagement:** Is it captivating? Does it hold the reader's attention?
+* **Redundancy/Verbosity:** Can any parts be condensed or removed without losing meaning?
+4. **Propose Specific Improvements:** For each identified weakness, suggest concrete and actionable changes. Do not just state the problem; propose a solution.
+5. **Generate Revised Content:** Based on your proposed improvements, rewrite the original content to incorporate all the necessary changes. Ensure the revised content is polished and ready for final use.
+
+**Original Prompt/Requirements:** "Write a short, engaging social media post (max 150 characters) announcing a new eco-friendly product line: 'GreenTech Gadgets'."
+
+**Initial Draft (Content to be corrected):**
+
+"We have new products. They are green and techy. Buy GreenTech Gadgets now!"
+
+**Self-Correction Agent's Thought Process (Internal CoT Output - encouraged by the prompt):**
+
+**Thought 1 (Understand Original Requirements):**
+- Short, engaging social media post.
+- Max 150 characters.
+- Announce "GreenTech Gadgets" - a new eco-friendly product line.
+
+**Thought 2 (Analyze Current Content):**
+"We have new products. They are green and techy. Buy GreenTech Gadgets now!" (64 characters)
+
+**Thought 3 (Identify Discrepancies/Weaknesses):**
+- **Engaging:** Not very engaging. Sounds generic.
+- **Eco-friendly:** Implied by "green," but not explicitly highlighted as a benefit.
+- **Call to Action:** "Buy now!" is okay, but could be more compelling.
+- **Conciseness:** It's short, but could use stronger verbs/phrasing.
+- **Impact:** Lacks excitement for a new product launch.
+
+**Thought 4 (Propose Specific Improvements):**
+- Make it more dynamic and exciting.
+- Emphasize "eco-friendly" and "innovation."
+- Use stronger verbs and more active voice.
+- Add a clear, engaging call to action.
+- Ensure it stays under 150 characters.
+
+**Thought 5 (Generate Revised Content):**
+Original: "We have new products. They are green and techy. Buy GreenTech Gadgets now!"
+Revised idea 1: "🌱 Discover GreenTech Gadgets! Our new eco-friendly line blends innovation with sustainability. Go green, go smart! Shop now! #EcoFriendly #GreenTech" (148 characters)
+This revision directly addresses eco-friendliness, uses emojis for engagement, adds a stronger call to action, and includes relevant hashtags while staying within the character limit.
+
+**Self-Correction Agent's Final Revised Content (Output to User):**
+
+🌱 Discover GreenTech Gadgets! Our new eco-friendly line blends innovation with sustainability. Go green, go smart! Shop now! #EcoFriendly #GreenTech
+
+```
+
+```python
+
+自我修正代理（Self-Correction Agent）工作流程示例
+你是一名高度批判性且注重细节的自我修正代理（Self-Correction Agent）。
+
+你的任务是根据原始要求审查一段先前生成的内容，并识别出需要改进的区域。你的目标是精炼内容，使其更准确、更全面、更具吸引力，并与提示（Prompt）保持一致。
+
+你必须遵循以下自我修正流程：
+
+1. **理解原始要求（Understand Original Requirements）： **审查生成该内容的初始提示/要求。原始意图是什么？关键的约束或目标是什么？
+2. **分析现有内容（Analyze Current Content）：** 仔细阅读提供的内容。
+3. **识别差异/弱点（Identify Discrepancies/Weaknesses）：** 将现有内容与原始要求进行比较。查找以下问题：
+* **准确性问题：** 是否存在任何事实错误或误导性陈述？
+* **完整性缺失：** 是否充分解决了原始提示的所有方面？是否遗漏了任何内容？
+* **清晰度与连贯性：** 语言是否清晰、简洁、易于理解？逻辑流程是否顺畅？
+* **语气与风格：** 是否与所需的语气和风格（例如，专业、引人入胜、简洁）匹配？
+* **参与度：** 是否引人注目？能否吸引读者的注意力？
+* **冗余/啰嗦：** 是否可以在不失原意的情况下，对某些部分进行精简或删除？
+4. **提出具体改进建议（Propose Specific Improvements）：** 对于识别出的每个弱点，提出具体且可操作的更改。不要只陈述问题，还要提出解决方案。
+5. **生成修订内容（Generate Revised Content）：** 基于你提出的改进建议，重写原始内容以纳入所有必要的更改。确保修订后的内容经过润饰，可供最终使用。
+
+原始提示/要求： “撰写一篇简短、引人入胜的社交媒体帖子（最多 150 个字符），宣布新的环保产品线：‘GreenTech Gadgets’。”
+
+**（初始草稿 - 待修正的内容）：**
+
+“我们有新产品。它们是绿色的，科技感十足。现在就购买 GreenTech Gadgets 吧！”
+
+**自我修正代理的思维过程（内部思维链输出 - 由提示鼓励生成）：**
+
+**思考 1（理解原始要求）：**
+简短、引人入胜的社交媒体帖子。
+最多 150 个字符。
+宣布“GreenTech Gadgets”——一条新的环保产品线。
+
+**思考 2（分析现有内容）：**
+“我们有新产品。它们是绿色的，科技感十足。现在就购买 GreenTech Gadgets 吧！”（64 个字符）
+
+**思考 3（识别差异/弱点）：**
+参与度： 不够吸引人。听起来很普通。
+环保性： 由“绿色”（green）暗示，但没有明确强调其益处。
+行动号召： “现在就购买！”尚可，但可以更有说服力。
+简洁性： 虽然短，但可以使用更强有力的动词/措辞。
+影响力： 缺乏新产品发布应有的兴奋感。
+
+**思考 4（提出具体改进建议）：**
+使其更具活力和兴奋感。
+强调**“环保”和“创新”**。
+使用更强有力的动词和更主动的语态。
+添加一个清晰、引人入胜的行动号召。
+确保字符数保持在 150 以内。
+
+**思考 5（生成修订内容）：**
+原稿：“我们有新产品。它们是绿色的，科技感十足。现在就购买 GreenTech Gadgets 吧！”
+修订思路 1：“🌱 探索 GreenTech Gadgets！ 我们的新环保系列融合了创新与可持续性。选择绿色，选择智慧！立即购买！ #EcoFriendly #GreenTech”（148 个字符）
+这次修订直接强调了环保性，使用了表情符号来增加参与度，添加了更强有力的行动号召，并包含了相关标签，同时保持在字符限制内。
+
+**自我修正代理的最终修订内容（输出给用户）：**
+🌱 探索 GreenTech Gadgets！ 我们的新环保系列融合了创新与可持续性。选择绿色，选择智慧！立即购买！ #EcoFriendly #GreenTech
+```
