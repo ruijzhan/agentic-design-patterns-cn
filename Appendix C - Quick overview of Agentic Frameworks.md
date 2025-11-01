@@ -5,13 +5,13 @@
 
 LangChain is a framework for developing applications powered by LLMs. Its core strength lies in its LangChain Expression Language (LCEL), which allows you to "pipe" components together into a chain. This creates a clear, linear sequence where the output of one step becomes the input for the next. It's built for workflows that are Directed Acyclic Graphs (DAGs), meaning the process flows in one direction without loops.
 
-<mark>LangChain是用于开发基于大语言模型 (LLM) 的应用程序框架。它的核心优势在于其LangChain表达式语言 (LCEL)，该语言允许您将组件“串联”成链。这创建了清晰的线性序列，其中上一步的输出成为下一步的输入。它专为有向无环图 (DAG) 工作流而设计，这意味着流程沿一个方向流动，没有循环。</mark>
+<mark>LangChain是用于开发基于大语言模型(LLM)的应用程序框架。它的核心优势在于其LangChain表达式语言(LCEL)，该语言允许您将组件“串联”成链。这创建了清晰的线性序列，其中上一步的输出成为下一步的输入。它专为有向无环图(DAG)工作流而设计，这意味着流程沿一个方向流动，没有循环。</mark>
 
 Use it for: <mark>用途：</mark>
 
 ●  Simple RAG: Retrieve a document, create a prompt, get an answer from an LLM.
 
-<mark>简单 RAG：检索文档，创建提示，从 LLM 获取答案。</mark>
+<mark>简单 RAG：检索文档，创建提示，从LLM获取答案。</mark>
 
 ●  Summarization: Take user text, feed it to a summarization prompt, and return the output.
 
@@ -59,7 +59,7 @@ Which One Should You Use? <mark>你应该使用哪一个？</mark>
 
 ●  Choose LangChain when your application has a clear, predictable, and linear flow of steps. If you can define the process from A to B to C without needing to loop back, LangChain with LCEL is the perfect tool.
 
-<mark>如果您的应用流程清晰、可预测且呈线性发展，那么LangChain是您的理想之选。如果您可以定义从 A 到 B 到 C 的完整流程而无需循环，那么LangChain与LCEL结合使用将是您的完美选择。</mark>
+<mark>如果您的应用流程清晰、可预测且呈线性发展，那么LangChain是您的理想之选。如果您可以定义从A到B、再到C的完整流程而无需循环，那么LangChain与LCEL结合使用将是您的完美选择。</mark>
 
 ●  Choose LangGraph when you need your application to reason, plan, or operate in a loop. If your agent needs to use tools, reflect on the results, and potentially try again with a different approach, you need the cyclical and stateful nature of LangGraph.
 
@@ -174,7 +174,7 @@ The core components of this framework are Agents, Tasks, and the Crew. An Agent 
 
 When compared to other frameworks, CrewAI occupies a distinct position. It moves away from the low-level, explicit state management and control flow of LangGraph, where a developer wires together every node and conditional edge. Instead of building a state machine, the developer designs a team charter. While Googlés ADK provides a comprehensive, production-oriented platform for the entire agent lifecycle, CrewAI concentrates specifically on the logic of agent collaboration and for simulating a team of specialists.
 
-<mark>与其他框架相比，CrewAI占据着独特的地位。它摒弃了 LangGraph 那种底层、显式的状态管理和控制流——在LangGraph中，开发者需要将每个节点和条件边连接起来。CrewAI的开发者无需构建状态机，而是设计团队章程。虽然 Google ADK 为整个智能体生命周期提供了一个全面、面向生产的平台，但 CrewAI 则专注于智能体协作逻辑以及专家团队的模拟。</mark>
+<mark>与其他框架相比，CrewAI占据着独特的地位。它摒弃了LangGraph那种底层、显式的状态管理和控制流；在LangGraph中，开发者需要将每个节点和条件边连接起来。CrewAI的开发者无需构建状态机，而是设计团队章程。虽然Google ADK 为整个智能体生命周期提供了一个全面、面向生产的平台，但CrewAI则专注于智能体协作逻辑以及专家团队的模拟。</mark>
 
 Python
 ```python
@@ -205,11 +205,11 @@ LlamaIndex: LlamaIndex is fundamentally a data framework designed to connect lar
 
 Haystack: Haystack is an open-source framework engineered for building scalable and production-ready search systems powered by language models. Its architecture is composed of modular, interoperable nodes that form pipelines for document retrieval, question answering, and summarization. The main strength of Haystack is its focus on performance and scalability for large-scale information retrieval tasks, making it suitable for enterprise-grade applications. A potential trade-off is that its design, optimized for search pipelines, can be more rigid for implementing highly dynamic and creative agentic behaviors.
 
-<mark>Haystack：Haystack是专为构建可扩展且可用于生产环境的、基于语言模型的搜索系统而设计的开源框架。其架构由模块化、可互操作的节点组成，这些节点构成文档检索、问答和摘要的管道。Haystack 的主要优势在于其专注于大规模信息检索任务的性能和可扩展性，使其适用于企业级应用。但其潜在的不足之处在于，其针对搜索管道优化的设计可能较为僵化，难以实现高度动态和创造性的智能体行为。</mark>
+<mark>Haystack：Haystack是专为构建可扩展且可用于生产环境的、基于语言模型的搜索系统而设计的开源框架。其架构由模块化、可互操作的节点组成，这些节点构成文档检索、问答和摘要的管道。Haystack的主要优势在于其专注于大规模信息检索任务的性能和可扩展性，使其适用于企业级应用。但其潜在的不足之处在于，其针对搜索管道优化的设计可能较为僵化，难以实现高度动态和创造性的智能体行为。</mark>
 
 MetaGPT: MetaGPT implements a multi-agent system by assigning roles and tasks based on a predefined set of Standard Operating Procedures (SOPs). This framework structures agent collaboration to mimic a software development company, with agents taking on roles like product managers or engineers to complete complex tasks. This SOP-driven approach results in highly structured and coherent outputs, which is a significant advantage for specialized domains like code generation. The framework's primary limitation is its high degree of specialization, making it less adaptable for general-purpose agentic tasks outside of its core design.
 
-<mark>MetaGPT：MetaGPT通过基于预定义标准操作程序 (SOP) 分配角色和任务来实现多智能体系统。该框架构建智能体协作机制，模拟软件开发公司，智能体扮演产品经理或工程师等角色来完成复杂任务。这种基于 SOP 的方法能够生成高度结构化且连贯的输出，这对于代码生成等专业领域而言是一项显著优势。该框架的主要局限在于其高度专业化，使其难以适应核心设计之外的通用智能体任务。</mark>
+<mark>MetaGPT：MetaGPT通过基于预定义标准操作程序 (SOP) 分配角色和任务来实现多智能体系统。该框架构建智能体协作机制，模拟软件开发公司，智能体扮演产品经理或工程师等角色来完成复杂任务。这种基于SOP的方法能够生成高度结构化且连贯的输出，这对于代码生成等专业领域而言是一项显著优势。该框架的主要局限在于其高度专业化，使其难以适应核心设计之外的通用智能体任务。</mark>
 
 SuperAGI: SuperAGI is an open-source framework designed to provide a complete lifecycle management system for autonomous agents. It includes features for agent provisioning, monitoring, and a graphical interface, aiming to enhance the reliability of agent execution. The key benefit is its focus on production-readiness, with built-in mechanisms to handle common failure modes like looping and to provide observability into agent performance. A potential drawback is that its comprehensive platform approach can introduce more complexity and overhead than a more lightweight, library-based framework.
 
@@ -221,14 +221,14 @@ Semantic Kernel: Developed by Microsoft, Semantic Kernel is an SDK that integrat
 
 Strands Agents: An AWS lightweight and flexible SDK that uses a model-driven approach for building and running AI agents. It is designed to be simple and scalable, supporting everything from basic conversational assistants to complex multi-agent autonomous systems. The framework is model-agnostic, offering broad support for various LLM providers, and includes native integration with the MCP for easy access to external tools. Its core advantage is its simplicity and flexibility, with a customizable agent loop that is easy to get started with. A potential trade-off is that its lightweight design means developers may need to build out more of the surrounding operational infrastructure, such as advanced monitoring or lifecycle management systems, which more comprehensive frameworks might provide out-of-the-box.
 
-<mark>Strands Agents：一款轻量级且灵活的 AWS SDK，采用模型驱动方法构建和运行 AI 智能体。它设计简洁且可扩展，支持从基础对话助手到复杂的多智能体自主系统等各种应用。该框架与模型无关，广泛支持各种生命周期管理 (LLM) 提供商，并与 MCP 原生集成，方便访问外部工具。其核心优势在于简洁性和灵活性，可自定义的智能体循环易于上手。潜在的不足之处在于，其轻量级设计意味着开发人员可能需要构建更多周边运维基础设施，例如高级监控或生命周期管理系统，而更全面的框架可能提供这些开箱即用的功能。</mark>
+<mark>Strands Agents：一款轻量级且灵活的 AWS SDK，采用模型驱动方法构建和运行 AI 智能体。它设计简洁且可扩展，支持从基础对话助手到复杂的多智能体自主系统等各种应用。该框架与模型无关，广泛支持各种大语言模型 (LLM) 提供商，并与 MCP 原生集成，方便访问外部工具。其核心优势在于简洁性和灵活性，可自定义的智能体循环易于上手。潜在的不足之处在于，其轻量级设计意味着开发人员可能需要构建更多周边运维基础设施，例如高级监控或生命周期管理系统，而更全面的框架可能提供这些开箱即用的功能。</mark>
 
 
 ## Conclusion | <mark>结语</mark>
 
 The landscape of agentic frameworks offers a diverse spectrum of tools, from low-level libraries for defining agent logic to high-level platforms for orchestrating multi-agent collaboration. At the foundational level, LangChain enables simple, linear workflows, while LangGraph introduces stateful, cyclical graphs for more complex reasoning. Higher-level frameworks like CrewAI and Google's ADK shift the focus to orchestrating teams of agents with predefined roles, while others like LlamaIndex specialize in data-intensive applications. This variety presents developers with a core trade-off between the granular control of graph-based systems and the streamlined development of more opinionated platforms. Consequently, selecting the right framework hinges on whether the application requires a simple sequence, a dynamic reasoning loop, or a managed team of specialists. Ultimately, this evolving ecosystem empowers developers to build increasingly sophisticated AI systems by choosing the precise level of abstraction their project demands.
 
-<mark>智能体框架领域提供了种类繁多的工具，从用于定义智能体逻辑的底层库到用于协调多智能体协作的高级平台，应有尽有。在基础层面，LangChain 支持简单的线性工作流，而 LangGraph 则引入了有状态的循环图，用于更复杂的推理。像 CrewAI 和 Google ADK 高级框架则专注于协调具有预定义角色的智能体团队，而像 LlamaIndex 这样的框架则专注于数据密集型应用。这种多样性给开发者带来了一个核心的权衡：一方面是基于图的系统进行精细控制，另一方面是更规范的平台带来的简化开发体验。因此，选择合适的框架取决于应用程序需要的是简单的序列、动态的推理循环，还是一个由专家组成的团队。最终，这个不断发展的生态系统使开发者能够通过选择项目所需的精确抽象级别，构建日益复杂的 AI 系统。</mark>
+<mark>智能体框架领域提供了种类繁多的工具，从用于定义智能体逻辑的底层库到用于协调多智能体协作的高级平台，应有尽有。在基础层面，LangChain支持简单的线性工作流，而LangGraph则引入了有状态的循环图，用于更复杂的推理。像CrewAI和Google ADK高级框架则专注于协调具有预定义角色的智能体团队，而像LlamaIndex这样的框架则专注于数据密集型应用。这种多样性给开发者带来了一个核心的权衡：一方面是基于图的系统进行精细控制，另一方面是更规范的平台带来的简化开发体验。因此，选择合适的框架取决于应用程序需要的是简单的序列、动态的推理循环，还是一个由专家组成的团队。最终，这个不断发展的生态系统使开发者能够通过选择项目所需的精确抽象级别，构建日益复杂的AI系统。</mark>
 
 ## References | <mark>参考文献</mark>
 1. LangChain, https://www.langchain.com/ 
