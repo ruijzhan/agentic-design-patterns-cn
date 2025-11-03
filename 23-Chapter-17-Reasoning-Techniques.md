@@ -161,7 +161,7 @@ Classical computers process information using bits, which can be either a 0 or a
 
 **Tree-of-Thought (ToT)** is a reasoning technique that builds upon Chain-of-Thought(CoT). It allows large language models to explore multiple reasoning paths by branching into different intermediate steps, forming a tree structure (see Fig. 2) This approach supports complex problem-solving by enabling backtracking,self-correction, and exploration of alternative solutions. Maintaining a tree of possibilities allows the model to evaluate various reasoning trajectories before finalizing an answer. This iterative process enhances the model's ability to handle challenging tasks that require strategic planning and decision-making.
 <mark>**思维树（ToT）** 是一种建立在思维链（Chain-of-Thought, CoT）基础上的推理技巧。它允许大型语言模型通过分支到不同的中间步骤，探索多条推理路径，从而形成一个树状结构（参见图 2）。这种方法通过支持回溯、自我修正和探索替代解决方案，来支持复杂的解题过程。维护一棵可能性之树，使得模型能够在最终确定答案之前评估各种推理轨迹。这种迭代过程增强了模型处理需要战略规划和决策制定的挑战性任务的能力。</mark>
-
+<img width="2048" height="1445" alt="image" src="https://github.com/user-attachments/assets/c0bb1ace-e01e-4231-b730-7f166ec7478d" />
 Fig.2: Example of Tree of Thoughts
 图 2：思维树示例
 
