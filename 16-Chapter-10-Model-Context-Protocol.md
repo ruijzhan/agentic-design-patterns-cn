@@ -2,7 +2,7 @@
 
 To enable LLMs to function effectively as agents, their capabilities must extend beyond multimodal generation. Interaction with the external environment is necessary, including access to current data, utilization of external software, and execution of specific operational tasks. The Model Context Protocol (MCP) addresses this need by providing a standardized interface for LLMs to interface with external resources. This protocol serves as a key mechanism to facilitate consistent and predictable integration.
 
-<mark>要让大语言模型（LLM）成为高效的智能体，仅具备多模态生成能力是不够的。智能体还需要与外部环境交互——获取实时数据、调用外部软件、执行具体操作。模型上下文协议（Model Context Protocol，MCP）正是为此而生，它为 LLM 与外部资源的交互提供了标准化接口，是实现一致、可预测集成的关键机制。</mark>
+<mark>要让大语言模型（LLM）成为高效的智能体，仅具备多模态生成能力是不够的。智能体还需要与外部环境交互，比如获取实时数据、调用外部软件、执行具体操作。模型上下文协议（Model Context Protocol，MCP）正是为此而生，它为 LLM 与外部资源的交互提供了标准化接口，是实现一致、可预测集成的关键机制。</mark>
 
 ------
 
@@ -10,25 +10,23 @@ To enable LLMs to function effectively as agents, their capabilities must extend
 
 Imagine a universal adapter that allows any LLM to plug into any external system, database, or tool without a custom integration for each one. That's essentially what the Model Context Protocol (MCP) is. It's an open standard designed to standardize how LLMs like Gemini, OpenAI's GPT models, Mixtral, and Claude communicate with external applications, data sources, and tools. Think of it as a universal connection mechanism that simplifies how LLMs obtain context, execute actions, and interact with various systems.
 
-<mark>想象一个通用适配器，能让任何大语言模型（LLM）轻松接入各种外部系统、数据库或工具，而无需为每个系统单独开发定制方案。这正是模型上下文协议（MCP）的核心价值。</mark>
-
-<mark>MCP 是一个开放标准，统一规范了 Gemini、OpenAI GPT、Mixtral 和 Claude 等主流 LLM 与外部应用、数据源、工具之间的通信方式。可以将它理解为通用连接机制，极大简化了 LLM 获取上下文、执行操作、与系统交互的过程。</mark>
+<mark>想象一个通用适配器，能让任何大语言模型（LLM）轻松接入各种外部系统、数据库或工具，而无需为每个系统单独开发定制方案，这正是 MCP 的核心价值。MCP 是一个开放标准，统一规范了 Gemini、OpenAI GPT、Mixtral 和 Claude 等主流大语言模型与外部应用、数据源、工具之间的通信方式。可以将它理解为通用连接机制，极大简化了大语言模型获取上下文、执行操作、与系统交互的过程。</mark>
 
 MCP operates on a client-server architecture. It defines how different elements—data (referred to as resources), interactive templates (which are essentially prompts), and actionable functions (known as tools)—are exposed by an MCP server. These are then consumed by an MCP client, which could be an LLM host application or an AI agent itself. This standardized approach dramatically reduces the complexity of integrating LLMs into diverse operational environments.
 
-<mark>MCP 基于客户端 - 服务器架构运行。协议明确定义了 MCP 服务器如何对外提供三类核心元素：数据（称为资源）、交互模板（本质上是提示词）、可执行功能（称为工具）。MCP 客户端使用这些元素——客户端可以是承载 LLM 的应用程序，也可以是 AI 智能体本身。这种标准化架构极大简化了将 LLM 集成到不同操作环境的复杂度。</mark>
+<mark>MCP 基于「客户端 - 服务器」架构运行。协议明确定义了 MCP 服务器如何对外提供三类核心元素：数据（称为资源）、交互模板（本质上是提示词）、可执行功能（称为工具）。MCP 客户端会使用这些元素，这里的客户端可以是 LLM 应用，也可以是 AI 智能体本身。这种标准化架构极大简化了将 LLM 集成到不同操作环境的复杂度。</mark>
 
 However, MCP is a contract for an "agentic interface," and its effectiveness depends heavily on the design of the underlying APIs it exposes. There is a risk that developers simply wrap pre-existing, legacy APIs without modification, which can be suboptimal for an agent. For example, if a ticketing system's API only allows retrieving full ticket details one by one, an agent asked to summarize high-priority tickets will be slow and inaccurate at high volumes. To be truly effective, the underlying API should be improved with deterministic features like filtering and sorting to help the non-deterministic agent work efficiently. This highlights that agents do not magically replace deterministic workflows; they often require stronger deterministic support to succeed.
 
 <mark>不过需要认识到，MCP 本质上是一个「智能体接口」的协议规范，其实际效果很大程度上取决于底层 API 的设计质量。这里存在一个潜在风险：开发者可能只是简单地将现有的老旧 API 套上 MCP 外壳，而没有针对智能体的特殊需求进行优化。举个例子，假如某个票务系统的 API 只支持逐个查询工单详情，那么当智能体需要汇总大量高优先级工单时，就会因为频繁调用而变得缓慢且不准确。</mark>
 
-<mark>要让智能体真正发挥效能，底层 API 需要针对性改进，增加过滤、排序等精确可控的功能，帮助 AI 智能体（其行为本身具有不确定性）更高效工作。这说明了一个重要原则：AI 智能体无法神奇地取代传统的精确流程，反而往往需要更强大的精确基础设施支持才能成功。</mark>
+<mark>要让智能体真正发挥效能，底层 API 需要针对性改进，增加过滤、排序等精确可控的功能，帮助 AI 智能体（其行为本身具有不确定性）更高效工作。这说明了一个重要原则：AI 智能体无法神奇地取代传统的精确流程，反而往往需要更强大的精确的支持才能成功。</mark>
 
 Furthermore, MCP can wrap an API whose input or output is still not inherently understandable by the agent. An API is only useful if its data format is agent-friendly, a guarantee that MCP itself does not enforce. For instance, creating an MCP server for a document store that returns files as PDFs is mostly useless if the consuming agent cannot parse PDF content. The better approach would be to first create an API that returns a textual version of the document, such as Markdown, which the agent can actually read and process. This demonstrates that developers must consider not just the connection, but the nature of the data being exchanged to ensure true compatibility.
 
-<mark>还需要注意，MCP 虽然能够封装各种 API，但这些 API 的输入输出格式未必是智能体能够理解的。一个 API 要真正有用，其数据格式必须对智能体友好——这一点 MCP 协议本身无法强制保证。</mark>
+<mark>还需要注意，MCP 虽然能够封装各种 API，但这些 API 的输入输出格式未必是智能体能够理解的。一个 API 要真正有用，其数据格式必须对智能体友好，而这一点 MCP 协议本身无法强制保证。</mark>
 
-<mark>举个例子：若为文档存储系统创建的 MCP 服务器只返回 PDF 文件，而智能体无法解析 PDF 内容，这样的设计基本失去意义。更好的做法是先构建能返回文本版本（如 Markdown 格式）的 API，让智能体能真正读取和处理内容。这揭示了一个重要原则：设计 MCP 集成时，不能只关注连接机制，更要深入考虑数据交换的本质，才能确保真正的兼容性和实用性。</mark>
+<mark>举个例子：若为文档存储系统创建的 MCP 服务器只返回 PDF 文件，而智能体无法解析 PDF 内容，那么这样的设计没有什么实际意义。更好的做法是先构建能返回文本版本（如 Markdown 格式）的 API，让智能体能真正读取和处理内容。这揭示了一个重要原则：设计 MCP 集成时，不能只关注连接机制，更要深入考虑数据交换的本质，才能确保真正的兼容性和实用性。</mark>
 
 ------
 
@@ -46,7 +44,7 @@ Tool function calling can be thought of as a direct request from an LLM to a spe
 
 In contrast, the Model Context Protocol (MCP) operates as a standardized interface for LLMs to discover, communicate with, and utilize external capabilities. It functions as an open protocol that facilitates interaction with a wide range of tools and systems, aiming to establish an ecosystem where any compliant tool can be accessed by any compliant LLM. This fosters interoperability, composability and reusability across different systems and implementations. By adopting a federated model, we significantly improve interoperability and unlock the value of existing assets. This strategy allows us to bring disparate and legacy services into a modern ecosystem simply by wrapping them in an MCP-compliant interface. These services continue to operate independently, but can now be composed into new applications and workflows, with their collaboration orchestrated by LLMs. This fosters agility and reusability without requiring costly rewrites of foundational systems.
 
-<mark>相比之下，模型上下文协议（MCP）是 LLM 发现、通信和利用外部能力的标准化接口。作为开放协议，它促进了 LLM 与广泛工具、系统的交互，旨在建立一个开放生态——任何兼容工具都可被任何兼容 LLM 访问。这使得不同系统可以相互连接、灵活组合、反复利用。</mark>
+<mark>相比之下，MCP 是用于大语言模型发现、通信和利用外部能力的标准化接口。作为开放协议，它促进了 LLM 与广泛工具、系统的交互，旨在建立一个开放生态，让任何兼容工具都可被任何兼容 LLM 访问。这使得不同系统可以相互连接、灵活组合、反复利用。</mark>
 
 <mark>通过采用分布式架构，MCP 显著提高了系统互通性，让既有服务焕发新价值。这一策略的优势在于：只需为老旧或异构服务包装一层 MCP 兼容接口，就能将它们接入现代 AI 生态。这些服务继续独立运行，但现在可以组合成新的应用和工作流，由 LLM 统一调度。这种方式无需昂贵的系统重写，就能提升整体灵活性和可重用性。</mark>
 
@@ -66,13 +64,13 @@ Here's a breakdown of the fundamental distinctions between MCP and tool function
 | :---------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | <mark>标准化程度</mark> | <mark>厂商专有实现，不同 LLM 提供商采用各自的格式和实现方案。</mark> | <mark>开放的标准化协议，推动不同 LLM 与工具间的互操作能力。</mark> |
 | <mark>功能范围</mark>   | <mark>LLM 直接调用执行特定预定义功能的机制。</mark>           | <mark>构建 LLM 与外部工具发现和通信的完整框架体系。</mark>     |
-| <mark>系统架构</mark>   | <mark>LLM 与应用工具处理逻辑间的点对点直接交互。</mark>       | <mark>基于客户端 - 服务器架构，支持 LLM 应用连接多种 MCP 服务端。</mark> |
+| <mark>系统架构</mark>   | <mark>LLM 与应用工具处理逻辑间的点对点直接交互。</mark>       | <mark>基于「客户端 - 服务器」架构，支持 LLM 应用连接多种 MCP 服务器。</mark> |
 | <mark>发现机制</mark>   | <mark>在会话上下文中静态配置可用工具列表。</mark>            | <mark>支持工具能力的动态发现和查询机制。</mark>              |
-| <mark>可复用性</mark>   | <mark>工具集成与特定应用和 LLM 平台深度绑定。</mark>           | <mark>推动可独立部署的 MCP 服务端开发，支持跨平台复用。</mark> |
+| <mark>可复用性</mark>   | <mark>工具集成与特定应用和 LLM 平台深度绑定。</mark>           | <mark>推动可独立部署的 MCP 服务器开发，支持跨平台复用。</mark> |
 
 Think of tool function calling as giving an AI a specific set of custom-built tools, like a particular wrench and screwdriver. This is efficient for a workshop with a fixed set of tasks. MCP (Model Context Protocol), on the other hand, is like creating a universal, standardized power outlet system. It doesn't provide the tools itself, but it allows any compliant tool from any manufacturer to plug in and work, enabling a dynamic and ever-expanding workshop.
 
-<mark>可以将工具函数调用类比为一套为 AI 专门定制的工具，比如特定的扳手和螺丝刀。这种方案对执行固定任务集合的工作环境十分高效。相比之下，模型上下文协议（MCP）则类似于建立一套通用化、标准化的电源接口系统。MCP 本身不直接提供具体工具，而是构建开放的基础设施——允许任何厂商生产的兼容设备都能接入并正常工作，从而打造一个能够动态扩展、持续演进的工作生态。</mark>
+<mark>可以将工具函数调用类比为一套为 AI 专门定制的工具，比如特定的扳手和螺丝刀。这种方案对执行固定任务集合的工作环境十分高效。相比之下，MCP 则类似于建立一套通用化、标准化的电源接口系统。MCP 本身不直接提供具体工具，而是构建开放的基础设施，允许任何厂商生产的兼容设备都能接入并正常工作，从而打造一个能够动态扩展、持续演进的工作生态。</mark>
 
 In short, function calling provides direct access to a few specific functions, while MCP is the standardized communication framework that lets LLMs discover and use a vast range of external resources. For simple applications, specific tools are enough; for complex, interconnected AI systems that need to adapt, a universal standard like MCP is essential.
 
@@ -89,25 +87,40 @@ While MCP presents a powerful framework, a thorough evaluation requires consider
 <mark>虽然 MCP 框架提供了强大的功能，但要在特定场景中充分评估其适用性，我们还需要考虑几个关键因素。让我们来详细了解一下这些方面：</mark>
 
 - **Tool vs. Resource vs. Prompt:** It's important to understand the specific roles of these components. A resource is static data (e.g., a PDF file, a database record). A tool is an executable function that performs an action (e.g., sending an email, querying an API). A prompt is a template that guides the LLM in how to interact with a resource or tool, ensuring the interaction is structured and effective.
-- <mark><strong>工具 vs. 资源 vs. 提示词：</strong>理解这些组件各自的角色很关键。资源指的是静态数据（比如 PDF 文件或数据库记录），工具则是可以执行操作的功能（比如发送邮件或调用 API），而提示词就像是指导 LLM 如何与资源或工具进行交互的模板，确保整个交互过程既规范又高效。</mark>
+
+   <mark><strong>工具 vs. 资源 vs. 提示词：</strong>理解这些组件各自的角色很关键。资源指的是静态数据（比如 PDF 文件或数据库记录），工具则是可以执行操作的功能（比如发送邮件或调用 API），而提示词就像是指导 LLM 如何与资源或工具进行交互的模板，确保整个交互过程既规范又高效。</mark>
+
 - **Discoverability:** A key advantage of MCP is that an MCP client can dynamically query a server to learn what tools and resources it offers. This "just-in-time" discovery mechanism is powerful for agents that need to adapt to new capabilities without being redeployed.
-- <mark><strong>可发现性：</strong>MCP 的一大优势是，客户端能够实时查询服务器，动态获取可用的工具和资源列表。这种「用时发现」的机制特别适合需要灵活适应新功能而无需重新部署的智能体。</mark>
+
+   <mark><strong>可发现性：</strong>MCP 的一大优势是，客户端能够实时查询服务器，动态获取可用的工具和资源列表。这种「用时发现」的机制特别适合需要灵活适应新功能而无需重新部署的智能体。</mark>
+
 - **Security:** Exposing tools and data via any protocol requires robust security measures. An MCP implementation must include authentication and authorization to control which clients can access which servers and what specific actions they are permitted to perform.
-- <mark><strong>安全性：</strong>无论通过什么协议开放工具和数据，都需要完善的安全保障。MCP 的实现必须包含身份验证和权限控制，确保只有授权客户端才能访问指定服务器，并限定其可执行的操作范围。</mark>
+
+   <mark><strong>安全性：</strong>无论通过什么协议开放工具和数据，都需要完善的安全保障。MCP 的实现必须包含身份验证和权限控制，确保只有授权客户端才能访问指定服务器，并限定其可执行的操作范围。</mark>
+
 - **Implementation:** While MCP is an open standard, its implementation can be complex. However, providers are beginning to simplify this process. For example, some model providers like Anthropic or FastMCP offer SDKs that abstract away much of the boilerplate code, making it easier for developers to create and connect MCP clients and servers.
-- <mark><strong>实现：</strong>尽管 MCP 是开放标准，但实际落地可能较为复杂。好在一些厂商正在简化这个过程，比如 Anthropic 和 FastMCP 等模型提供商推出的 SDK，帮开发者处理了大量模板代码，让创建和连接 MCP 客户端与服务器变得更轻松。</mark>
+
+   <mark><strong>实现：</strong>尽管 MCP 是开放标准，但实际落地可能较为复杂。好在一些厂商正在简化这个过程，比如 Anthropic 和 FastMCP 等模型提供商推出的 SDK，帮开发者处理了大量模板代码，让创建和连接 MCP 客户端与服务器变得更轻松。</mark>
+
 - **Error Handling:** A comprehensive error-handling strategy is critical. The protocol must define how errors (e.g., tool execution failure, unavailable server, invalid request) are communicated back to the LLM so it can understand the failure and potentially try an alternative approach.
-- <mark><strong>错误处理：</strong>一套完善的错误处理机制非常重要。协议需要明确规定如何将各种错误情况（比如工具执行失败、服务器无法连接或者请求格式有误）清晰地反馈给 LLM，这样它才能理解问题所在，并尝试其他的解决方案。</mark>
+
+   <mark><strong>错误处理：</strong>一套完善的错误处理机制非常重要。协议需要明确规定如何将各种错误情况（比如工具执行失败、服务器无法连接或者请求格式有误）清晰地反馈给 LLM，这样它才能理解问题所在，并尝试其他的解决方案。</mark>
+
 - **Local vs. Remote Server:** MCP servers can be deployed locally on the same machine as the agent or remotely on a different server. A local server might be chosen for speed and security with sensitive data, while a remote server architecture allows for shared, scalable access to common tools across an organization.
-- <mark><strong>本地 vs. 远程服务器：</strong>MCP 服务器既可以部署在智能体所在的本地机器上，也可以放在远程服务器中。本地部署通常用于追求更快响应速度和更好保护敏感数据；远程架构则更适合需要在组织内共享工具资源、支持灵活扩展的场景。</mark>
+
+   <mark><strong>本地 vs. 远程服务器：</strong>MCP 服务器既可以部署在智能体所在的本地机器上，也可以放在远程服务器中。本地部署通常用于追求更快响应速度和更好保护敏感数据；远程架构则更适合需要在组织内共享工具资源、支持灵活扩展的场景。</mark>
+
 - **On-demand vs. Batch:** MCP can support both on-demand, interactive sessions and larger-scale batch processing. The choice depends on the application, from a real-time conversational agent needing immediate tool access to a data analysis pipeline that processes records in batches.
-- <mark><strong>按需 vs. 批处理：</strong>MCP 既支持实时交互的按需调用，也能应对大规模的批量处理。具体选择哪种方式要看实际应用需求——可能是需要即时反馈的对话型智能体，也可能是对数据记录进行批处理的分析流程。</mark>
+
+   <mark><strong>按需 vs. 批处理：</strong>MCP 既支持实时交互的按需调用，也能应对大规模的批量处理。具体选择哪种方式要看实际应用需求，可能是需要即时反馈的对话型智能体，也可能是对数据记录进行批处理的分析流程。</mark>
+
 - **Transportation Mechanism:** The protocol also defines the underlying transport layers for communication. For local interactions, it uses JSON-RPC over STDIO (standard input/output) for efficient inter-process communication. For remote connections, it leverages web-friendly protocols like Streamable HTTP and Server-Sent Events (SSE) to enable persistent and efficient client-server communication.
-- <mark><strong>传输机制：</strong>协议还定义了底层的通信传输层。对于本地交互，使用 JSON-RPC over STDIO（标准输入/输出）来实现高效的进程间通信。对于远程连接，则采用 Streamable HTTP 和服务器发送事件（SSE）等 Web 友好协议，以实现持久、高效的客户端 - 服务器通信。</mark>
+
+   <mark><strong>传输机制：</strong>协议还定义了底层的通信传输层。对于本地交互，可以使用基于 JSON-RPC 的标准输入/输出来实现高效的进程间通信。对于远程连接，则采用 Streamable HTTP 和服务器发送事件（SSE）等 Web 友好协议，以实现持久、高效的「客户端 - 服务器」通信。</mark>
 
 The Model Context Protocol uses a client-server model to standardize information flow. Understanding component interaction is key to MCP's advanced agentic behavior:
 
-<mark>模型上下文协议采用客户端 - 服务器模型来标准化信息流。理解各组件如何交互，是掌握 MCP 高级智能体行为的关键：</mark>
+<mark>另外，MCP 采用「客户端 - 服务器」模型来标准化信息流。理解各组件如何交互，是掌握 MCP 高级智能体行为的关键：</mark>
 
 1. **Large Language Model (LLM):** The core intelligence. It processes user requests, formulates plans, and decides when it needs to access external information or perform an action.
 
@@ -115,7 +128,7 @@ The Model Context Protocol uses a client-server model to standardize information
 
 2. **MCP Client:** This is an application or wrapper around the LLM. It acts as the intermediary, translating the LLM's intent into a formal request that conforms to the MCP standard. It is responsible for discovering, connecting to, and communicating with MCP Servers.
 
-   <mark><strong>MCP 客户端：</strong>这是一个包装了 LLM 的应用程序，扮演中间人角色——将 LLM 的意图转化为符合 MCP 标准的请求。它的主要职责是发现可用的 MCP 服务器、建立连接并维护通信。</mark>
+   <mark><strong>MCP 客户端：</strong>这是一个包装了 LLM 的应用程序，扮演中间人角色，将 LLM 的意图转化为符合 MCP 标准的请求。它的主要职责是发现可用的 MCP 服务器、建立连接并维护通信。</mark>
 
 3. **MCP Server:** This is the gateway to the external world. It exposes a set of tools, resources, and prompts to any authorized MCP Client. Each server is typically responsible for a specific domain, such as a connection to a company's internal database, an email service, or a public API.
 
@@ -123,11 +136,11 @@ The Model Context Protocol uses a client-server model to standardize information
 
 4. **Optional Third-Party (3P) Service:** This represents the actual external tool, application, or data source that the MCP Server manages and exposes. It is the ultimate endpoint that performs the requested action, such as querying a proprietary database, interacting with a SaaS platform, or calling a public weather API.
 
-   <mark><strong>可选第三方（3P）服务：</strong>这些是 MCP 服务器实际管理和对接的外部工具、应用或数据源，也是最终执行具体操作的终端。无论是查询专有数据库、与 SaaS 平台进行交互，还是调用天气 API 获取实时数据，都是通过这些第三方服务来完成的。</mark>
+   <mark><strong>可选的第三方服务：</strong>这些是 MCP 服务器实际管理和对接的外部工具、应用或数据源，也是最终执行具体操作的终端。无论是查询专有数据库、与 SaaS 平台进行交互，还是调用天气 API 获取实时数据，都是通过这些第三方服务来完成的。</mark>
 
 The interaction flows as follows:
 
-<mark>交互流程如下：</mark>
+<mark>核心交互流程如下：</mark>
 
 1. **Discovery:** The MCP Client, on behalf of the LLM, queries an MCP Server to ask what capabilities it offers. The server responds with a manifest listing its available tools (e.g., send_email), resources (e.g., customer_database), and prompts.
 
@@ -151,34 +164,51 @@ The interaction flows as follows:
 
 ------
 
-## Practical Applications & Use Cases | <mark>实际应用与案例</mark>
+## Practical Applications & Use Cases | <mark>实际应用场景</mark>
 
 MCP significantly broadens AI/LLM capabilities, making them more versatile and powerful. Here are nine key use cases:
 
 <mark>MCP 极大地拓展了 AI 和大语言模型的应用范围，使其更加灵活强大。以下是九个典型应用场景：</mark>
 
 - **Database Integration:** MCP allows LLMs and agents to seamlessly access and interact with structured data in databases. For instance, using the MCP Toolbox for Databases, an agent can query Google BigQuery datasets to retrieve real-time information, generate reports, or update records, all driven by natural language commands.
-- <mark><strong>数据库集成：</strong>通过 MCP，LLM 和智能体能够轻松对接数据库中的结构化数据并进行交互。比如借助 MCP 数据库工具箱，智能体可以直接用自然语言指令来查询 Google BigQuery 数据集，实时获取信息、生成报表或者更新记录。</mark>
+
+   <mark><strong>数据库集成：</strong>通过 MCP，LLM 和智能体能够轻松对接数据库中的结构化数据并进行交互。比如借助 MCP 数据库工具箱，智能体可以直接用自然语言指令来查询 Google BigQuery 数据集，实时获取信息、生成报表或者更新记录。</mark>
+
 - **Generative Media Orchestration:** MCP enables agents to integrate with advanced generative media services. Through MCP Tools for Genmedia Services, an agent can orchestrate workflows involving Google's Imagen for image generation, Google's Veo for video creation, Google's Chirp 3 HD for realistic voices, or Google's Lyria for music composition, allowing for dynamic content creation within AI applications.
-- <mark><strong>生成式媒体编排：</strong>MCP 让智能体能够整合各类先进的生成式媒体服务。通过 MCP 媒体生成工具，智能体可以调用 Google Imagen 生成图片、使用 Google Veo 制作视频、通过 Google Chirp 3 HD 合成语音、或利用 Google Lyria 创作音乐，为 AI 应用提供动态内容创作能力。</mark>
+
+   <mark><strong>生成式媒体编排：</strong>MCP 让智能体能够整合各类先进的生成式媒体服务。通过 MCP 媒体生成工具，智能体可以调用 Google Imagen 生成图片、使用 Google Veo 制作视频、通过 Google Chirp 3 HD 合成语音、或利用 Google Lyria 创作音乐，为 AI 应用提供动态内容创作能力。</mark>
+
 - **External API Interaction:** MCP provides a standardized way for LLMs to call and receive responses from any external API. This means an agent can fetch live weather data, pull stock prices, send emails, or interact with CRM systems, extending its capabilities far beyond its core language model.
-- <mark><strong>外部 API 交互：</strong>MCP 为 LLM 提供了标准化的外部 API 调用方式。智能体可以获取实时天气、查询股价、发送邮件，还能与 CRM 系统等业务平台对接，大幅拓展语言模型的应用范围。</mark>
+
+   <mark><strong>外部 API 交互：</strong>MCP 为 LLM 提供了标准化的外部 API 调用方式。智能体可以获取实时天气、查询股价、发送邮件，还能与 CRM 系统等业务平台对接，大幅拓展语言模型的应用范围。</mark>
+
 - **Reasoning-Based Information Extraction:** Leveraging an LLM's strong reasoning skills, MCP facilitates effective, query-dependent information extraction that surpasses conventional search and retrieval systems. Instead of a traditional search tool returning an entire document, an agent can analyze the text and extract the precise clause, figure, or statement that directly answers a user's complex question.
-- <mark><strong>基于推理的信息提取：</strong>借助 LLM 强大的推理能力，MCP 实现了比传统搜索更高效的信息提取。传统搜索只能返回整篇文档，而智能体能深入分析文本，精准提取出直接回答用户问题的具体条款、数据或关键陈述。</mark>
+
+   <mark><strong>基于推理的信息提取：</strong>借助 LLM 强大的推理能力，MCP 实现了比传统搜索更高效的信息提取。传统搜索只能返回整篇文档，而智能体能深入分析文本，精准提取出直接回答用户问题的具体条款、数据或关键陈述。</mark>
+
 - **Custom Tool Development:** Developers can build custom tools and expose them via an MCP server (e.g., using FastMCP). This allows specialized internal functions or proprietary systems to be made available to LLMs and other agents in a standardized, easily consumable format, without needing to modify the LLM directly.
-- <mark><strong>自定义工具开发：</strong> 开发者可以基于实际需求构建专属工具，并通过 MCP 服务器（比如使用 FastMCP）对外开放。这样就能把企业内部的专业功能或私有系统以标准化、易用的方式提供给 LLM 和各种智能体，无需对 LLM 本身进行任何修改。</mark>
+
+   <mark><strong>自定义工具开发：</strong> 开发者可以基于实际需求构建专属工具，并通过 MCP 服务器（比如使用 FastMCP）对外开放。这样就能把企业内部的专业功能或私有系统以标准化、易用的方式提供给 LLM 和各种智能体，无需对 LLM 本身进行任何修改。</mark>
+
 - **Standardized LLM-to-Application Communication:** MCP ensures a consistent communication layer between LLMs and the applications they interact with. This reduces integration overhead, promotes interoperability between different LLM providers and host applications, and simplifies the development of complex agentic systems.
-- <mark><strong>标准化通信桥梁：</strong>MCP 在 LLM 和应用程序之间建立了一个统一的通信层，不仅降低了系统集成的复杂度，还促进了不同 LLM 提供商和应用平台之间的互操作性，让开发复杂的智能体系统变得更加简单高效。</mark>
+
+   <mark><strong>标准化通信桥梁：</strong>MCP 在 LLM 和应用程序之间建立了一个统一的通信层，不仅降低了系统集成的复杂度，还促进了不同 LLM 提供商和应用平台之间的互操作性，让开发复杂的智能体系统变得更加简单高效。</mark>
+
 - **Complex Workflow Orchestration:** By combining various MCP-exposed tools and data sources, agents can orchestrate highly complex, multi-step workflows. An agent could, for example, retrieve customer data from a database, generate a personalized marketing image, draft a tailored email, and then send it, all by interacting with different MCP services.
-- <mark><strong>复杂工作流编排：</strong>通过整合多个 MCP 开放的工具和数据源，智能体能够协调执行高度复杂的多步骤工作流程。例如，它可以从数据库提取客户信息，自动生成个性化的营销图片，撰写定制化的邮件内容，最后完成发送——整个过程通过调用不同的 MCP 服务来实现。</mark>
+
+   <mark><strong>复杂工作流编排：</strong>通过整合多个 MCP 开放的工具和数据源，智能体能够协调执行高度复杂的多步骤工作流程。例如，它可以从数据库提取客户信息，自动生成个性化的营销图片，撰写定制化的邮件内容，最后完成发送，整个过程都是通过调用不同的 MCP 服务来实现。</mark>
+
 - **IoT Device Control:** MCP can facilitate LLM interaction with Internet of Things (IoT) devices. An agent could use MCP to send commands to smart home appliances, industrial sensors, or robotics, enabling natural language control and automation of physical systems.
-- <mark><strong>物联网设备控制：</strong> MCP 还可以帮助 LLM 与物联网设备进行交互。智能体能够通过 MCP 向智能家居设备、工业传感器或机器人发送控制指令，实现对物理系统的自然语言控制和自动化管理。</mark>
+
+   <mark><strong>物联网设备控制：</strong> MCP 还可以帮助 LLM 与物联网设备进行交互。智能体能够通过 MCP 向智能家居设备、工业传感器或机器人发送控制指令，实现对物理系统的自然语言控制和自动化管理。</mark>
+
 - **Financial Services Automation:** In financial services, MCP could enable LLMs to interact with various financial data sources, trading platforms, or compliance systems. An agent might analyze market data, execute trades, generate personalized financial advice, or automate regulatory reporting, all while maintaining secure and standardized communication.
-- <mark><strong>金融服务自动化：</strong>在金融领域，MCP 让 LLM 能够对接各种金融数据源、交易平台和合规系统。智能体可以分析市场行情、执行交易指令、提供个性化的理财建议，或者自动完成监管报表，同时确保所有通信都符合安全标准和规范要求。</mark>
+
+   <mark><strong>金融服务自动化：</strong>在金融领域，MCP 让 LLM 能够对接各种金融数据源、交易平台和合规系统。智能体可以分析市场行情、执行交易指令、提供个性化的理财建议，或者自动完成监管报表，同时确保所有通信都符合安全标准和规范要求。</mark>
 
 In short, the Model Context Protocol (MCP) enables agents to access real-time information from databases, APIs, and web resources. It also allows agents to perform actions like sending emails, updating records, controlling devices, and executing complex tasks by integrating and processing data from various sources. Additionally, MCP supports media generation tools for AI applications.
 
-<mark>简而言之，模型上下文协议（MCP）让智能体能够实时获取来自数据库、API 和网络资源的信息，还能够通过整合处理多方数据来执行发送邮件、更新记录、控制设备、完成复杂任务等操作。此外，MCP 还支持各类媒体生成工具，为 AI 应用提供更丰富的能力支撑。</mark>
+<mark>简而言之，MCP 让智能体能够实时获取来自数据库、API 和网络资源的信息，还能够通过整合处理多方数据来执行发送邮件、更新记录、控制设备、完成复杂任务等操作。此外，MCP 还支持各类媒体生成工具，为 AI 应用提供更丰富的能力。</mark>
 
 ------
 
