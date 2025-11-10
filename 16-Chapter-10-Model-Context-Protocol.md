@@ -20,7 +20,7 @@ However, MCP is a contract for an "agentic interface," and its effectiveness dep
 
 <mark>不过需要认识到，MCP 本质上是一个「智能体接口」的协议规范，其实际效果很大程度上取决于底层 API 的设计质量。这里存在一个潜在风险：开发者可能只是简单地将现有的老旧 API 套上 MCP 外壳，而没有针对智能体的特殊需求进行优化。举个例子，假如某个票务系统的 API 只支持逐个查询工单详情，那么当智能体需要汇总大量高优先级工单时，就会因为频繁调用而变得缓慢且不准确。</mark>
 
-<mark>要让智能体真正发挥效能，底层 API 需要针对性改进，增加过滤、排序等精确可控的功能，帮助 AI 智能体（其行为本身具有不确定性）更高效工作。这说明了一个重要原则：AI 智能体无法神奇地取代传统的精确流程，反而往往需要更强大的精确的支持才能成功。</mark>
+<mark>要让智能体真正发挥效能，底层 API 需要针对性改进，增加过滤、排序等确定性功能，帮助非确定性的 AI 智能体更高效工作。这说明了一个重要原则：AI 智能体无法神奇地取代传统的确定性工作流程，反而往往需要更强大的确定性支持才能成功。</mark>
 
 Furthermore, MCP can wrap an API whose input or output is still not inherently understandable by the agent. An API is only useful if its data format is agent-friendly, a guarantee that MCP itself does not enforce. For instance, creating an MCP server for a document store that returns files as PDFs is mostly useless if the consuming agent cannot parse PDF content. The better approach would be to first create an API that returns a textual version of the document, such as Markdown, which the agent can actually read and process. This demonstrates that developers must consider not just the connection, but the nature of the data being exchanged to ensure true compatibility.
 
@@ -46,7 +46,7 @@ In contrast, the Model Context Protocol (MCP) operates as a standardized interfa
 
 <mark>相比之下，MCP 是用于大语言模型发现、通信和利用外部能力的标准化接口。作为开放协议，它促进了 LLM 与广泛工具、系统的交互，旨在建立一个开放生态，让任何兼容工具都可被任何兼容 LLM 访问。这使得不同系统可以相互连接、灵活组合、反复利用。</mark>
 
-<mark>通过采用分布式架构，MCP 显著提高了系统互通性，让既有服务焕发新价值。这一策略的优势在于：只需为老旧或异构服务包装一层 MCP 兼容接口，就能将它们接入现代 AI 生态。这些服务继续独立运行，但现在可以组合成新的应用和工作流，由 LLM 统一调度。这种方式无需昂贵的系统重写，就能提升整体灵活性和可重用性。</mark>
+<mark>通过采用这种去中心化的协作模式，MCP 显著提高了系统互通性，让既有服务焕发新价值。这一策略的优势在于：只需为老旧或异构服务包装一层 MCP 兼容接口，就能将它们接入现代 AI 生态。这些服务继续独立运行，但现在可以组合成新的应用和工作流，由 LLM 统一调度。这种方式无需昂贵的系统重写，就能提升整体灵活性和可重用性。</mark>
 
 Here's a breakdown of the fundamental distinctions between MCP and tool function calling:
 
@@ -70,7 +70,7 @@ Here's a breakdown of the fundamental distinctions between MCP and tool function
 
 Think of tool function calling as giving an AI a specific set of custom-built tools, like a particular wrench and screwdriver. This is efficient for a workshop with a fixed set of tasks. MCP (Model Context Protocol), on the other hand, is like creating a universal, standardized power outlet system. It doesn't provide the tools itself, but it allows any compliant tool from any manufacturer to plug in and work, enabling a dynamic and ever-expanding workshop.
 
-<mark>可以将工具函数调用类比为一套为 AI 专门定制的工具，比如特定的扳手和螺丝刀。这种方案对执行固定任务集合的工作环境十分高效。相比之下，MCP 则类似于建立一套通用化、标准化的电源接口系统。MCP 本身不直接提供具体工具，而是构建开放的基础设施，允许任何厂商生产的兼容设备都能接入并正常工作，从而打造一个能够动态扩展、持续演进的工作生态。</mark>
+<mark>可以将工具函数调用类比为一套为 AI 专门定制的工具，比如特定的扳手和螺丝刀。这种方案对执行固定任务集合的工作环境十分高效。相比之下，MCP 则类似于建立一套通用化、标准化的电源接口系统。MCP 本身不直接提供具体工具，而是构建开放的基础设施，允许任何厂商生产的兼容设备都能接入并正常工作，从而打造一个能够动态扩展、持续演进的工具生态系统。</mark>
 
 In short, function calling provides direct access to a few specific functions, while MCP is the standardized communication framework that lets LLMs discover and use a vast range of external resources. For simple applications, specific tools are enough; for complex, interconnected AI systems that need to adapt, a universal standard like MCP is essential.
 
@@ -92,7 +92,7 @@ While MCP presents a powerful framework, a thorough evaluation requires consider
 
 - **Discoverability:** A key advantage of MCP is that an MCP client can dynamically query a server to learn what tools and resources it offers. This "just-in-time" discovery mechanism is powerful for agents that need to adapt to new capabilities without being redeployed.
 
-   <mark><strong>可发现性：</strong>MCP 的一大优势是，客户端能够实时查询服务器，动态获取可用的工具和资源列表。这种「用时发现」的机制特别适合需要灵活适应新功能而无需重新部署的智能体。</mark>
+   <mark><strong>可发现性：</strong>MCP 的一大优势是，客户端能够实时查询服务器，动态获取可用的工具和资源列表。这种「即时发现」的机制特别适合需要灵活适应新功能而无需重新部署的智能体。</mark>
 
 - **Security:** Exposing tools and data via any protocol requires robust security measures. An MCP implementation must include authentication and authorization to control which clients can access which servers and what specific actions they are permitted to perform.
 
@@ -100,7 +100,7 @@ While MCP presents a powerful framework, a thorough evaluation requires consider
 
 - **Implementation:** While MCP is an open standard, its implementation can be complex. However, providers are beginning to simplify this process. For example, some model providers like Anthropic or FastMCP offer SDKs that abstract away much of the boilerplate code, making it easier for developers to create and connect MCP clients and servers.
 
-   <mark><strong>实现：</strong>尽管 MCP 是开放标准，但实际落地可能较为复杂。好在一些厂商正在简化这个过程，比如 Anthropic 和 FastMCP 等模型提供商推出的 SDK，帮开发者处理了大量模板代码，让创建和连接 MCP 客户端与服务器变得更轻松。</mark>
+   <mark><strong>实现：</strong>尽管 MCP 是开放标准，但实际落地可能较为复杂。好在一些厂商正在简化这个过程，比如 Anthropic 和 FastMCP 等模型提供商推出的 SDK，帮助开发者处理了大量模板代码，让创建和连接 MCP 客户端与服务器变得更轻松。</mark>
 
 - **Error Handling:** A comprehensive error-handling strategy is critical. The protocol must define how errors (e.g., tool execution failure, unavailable server, invalid request) are communicated back to the LLM so it can understand the failure and potentially try an alternative approach.
 
@@ -120,7 +120,7 @@ While MCP presents a powerful framework, a thorough evaluation requires consider
 
 The Model Context Protocol uses a client-server model to standardize information flow. Understanding component interaction is key to MCP's advanced agentic behavior:
 
-<mark>另外，MCP 采用「客户端 - 服务器」模型来标准化信息流。理解各组件如何交互，是掌握 MCP 高级智能体行为的关键：</mark>
+<mark>MCP 采用「客户端 - 服务器」模型来标准化信息流。理解各组件如何交互，是掌握 MCP 高级智能体行为的关键：</mark>
 
 1. **Large Language Model (LLM):** The core intelligence. It processes user requests, formulates plans, and decides when it needs to access external information or perform an action.
 
@@ -273,7 +273,7 @@ root_agent = LlmAgent(
 
 `npx` (Node Package Execute), bundled with npm (Node Package Manager) versions 5.2.0 and later, is a utility that enables direct execution of Node.js packages from the npm registry. This eliminates the need for global installation. In essence, `npx` serves as an npm package runner, and it is commonly used to run many community MCP servers, which are distributed as Node.js packages.
 
-<mark><code>npx</code>（Node Package Execute）是随着 npm（Node Package Manager）5.2.0 及更高版本一起提供的实用工具，能够直接运行 npm registry 里的 Node.js 包，省去了全局安装的麻烦。本质上，<code>npx</code> 就是一个 npm 包运行器，现在很多社区开发的 MCP 服务器都以 Node.js 包的形式发布。</mark>
+<mark><code>npx</code>（Node Package Execute）是 npm 5.2.0 及更高版本内置的工具，能够直接运行 npm registry 中的 Node.js 包，无需全局安装。它本质上是一个 npm 包运行器，常用于运行以 Node.js 包形式发布的社区 MCP 服务器。</mark>
 
 Creating an **init**.py file is necessary to ensure the agent.py file is recognized as part of a discoverable Python package for the Agent Development Kit (ADK). This file should reside in the same directory as agent.py.
 
@@ -303,7 +303,7 @@ connection_params = StdioConnectionParams(
 
 UVX, in the context of Python, refers to a command-line tool that utilizes uv to execute commands in a temporary, isolated Python environment. Essentially, it allows you to run Python tools and packages without needing to install them globally or within your project's environment. You can run it via the MCP server.
 
-<mark>在 Python 上下文中，UVX 是一个很实用的命令行工具，它借助 uv 这个工具来创建临时的、隔离的 Python 环境并执行命令。本质上，你可以在不进行全局安装或者污染项目环境的情况下，直接运行各种 Python 工具和第三方包。而且你可以通过 MCP 服务器来调用它。</mark>
+<mark>在 Python 上下文中，UVX 是基于 uv 的命令行工具，用于在临时隔离的 Python 环境中执行命令。它允许直接运行 Python 工具和包，无需全局安装或影响项目环境，并可通过 MCP 服务器调用。</mark>
 
 ```python
 connection_params = StdioConnectionParams(
