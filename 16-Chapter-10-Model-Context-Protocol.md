@@ -212,20 +212,20 @@ In short, the Model Context Protocol (MCP) enables agents to access real-time in
 
 ------
 
-## Hands-On Code Example with ADK | <mark>使用 ADK 的实战代码示例</mark>
+## Hands-On Code Example with ADK | <mark>实战示例：使用 Google ADK</mark>
 
 This section outlines how to connect to a local MCP server that provides file system operations, enabling an ADK agent to interact with the local file system.
 
-<mark>本节内容概述了如何连接到提供文件系统操作的本地 MCP 服务器，让 ADK 智能体能够和本地文件系统进行交互。</mark>
+<mark>本节内容将演示智能体如何连接到提供文件系统操作的本地 MCP 服务器，使其能够与本地文件系统进行交互。</mark>
 
-### Agent Setup with MCPToolset | <mark>使用 MCPToolset 设置智能体</mark>
+### Agent Setup with MCPToolset | <mark>智能体设置：使用 MCPToolset</mark>
 
 To configure an agent for file system interaction, an `agent.py` file must be created (e.g., at `./adk_agent_samples/mcp_agent/agent.py`). The `MCPToolset` is instantiated within the `tools` list of the `LlmAgent` object. It is crucial to replace `"/path/to/your/folder"` in the `args` list with the absolute path to a directory on the local system that the MCP server can access. This directory will be the root for the file system operations performed by the agent.
 
-<mark>想要让智能体具备文件系统交互能力，需要先创建一个 <code>agent.py</code> 文件（例如在 <code>./adk_agent_samples/mcp_agent/agent.py</code>）。<code>MCPToolset</code> 在 <code>LlmAgent</code> 对象的 <code>tools</code> 列表中实例化。这里有个特别需要注意的地方：记得把 <code>args</code> 列表里的 <code>"/path/to/your/folder"</code> 替换成你本地系统上一个真实存在的目录绝对路径，而且要确保 MCP 服务器有权限访问这个目录。这个目录会作为智能体进行文件操作时的根目录。</mark>
+<mark>想要让智能体具备文件系统交互能力，需要先创建一个 <code>agent.py</code> 文件（例如放在 <code>./adk_agent_samples/mcp_agent/agent.py</code> 目录下）。<code>MCPToolset</code> 在 <code>LlmAgent</code> 对象的 <code>tools</code> 列表中实例化。这里有个特别需要注意的地方：记得把 <code>args</code> 列表里的 <code>"/path/to/your/folder"</code> 替换成你本地系统上一个真实存在的目录绝对路径，而且要确保 MCP 服务器有权限访问这个目录。这个目录会作为智能体进行文件操作时的根目录。</mark>
 
-```
-pythonimport os
+```python
+import os
 from google.adk.agents import LlmAgent
 from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, StdioServerParameters
 
@@ -233,9 +233,13 @@ from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, StdioServerParamet
 # within the same directory as this agent script.
 # This ensures the agent works out-of-the-box for demonstration.
 # For production, you would point this to a more persistent and secure location.
+# 创建一个可靠的绝对路径，指向与这个 agent 脚本同目录下的 'mcp_managed_files' 文件夹。
+# 这样确保 agent 能够直接工作，无需修改路径配置。
+# 在生产环境中，应该指向一个更持久和安全的存储位置。
 TARGET_FOLDER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mcp_managed_files")
 
 # Ensure the target directory exists before the agent needs it.
+# 确保目标目录在 agent 需要使用之前就存在。
 os.makedirs(TARGET_FOLDER_PATH, exist_ok=True)
 
 root_agent = LlmAgent(
@@ -259,6 +263,9 @@ root_agent = LlmAgent(
            # Optional: You can filter which tools from the MCP server are exposed.
            # For example, to only allow reading:
            # tool_filter=['list_directory', 'read_file']
+           # 可选：你可以过滤 MCP 服务器暴露的工具。
+           # 例如，只允许读取文件：
+           # tool_filter=['list_directory', 'read_file']
        )
    ],
 )
@@ -270,10 +277,10 @@ root_agent = LlmAgent(
 
 Creating an **init**.py file is necessary to ensure the agent.py file is recognized as part of a discoverable Python package for the Agent Development Kit (ADK). This file should reside in the same directory as agent.py.
 
-<mark>为了让智能体开发套件（ADK）能够正确识别 <code>agent.py</code> 文件作为可发现的 Python 包，我们需要创建一个 <code>__init__.py</code> 文件。这个文件需要和 <code>agent.py</code>  放在同一个目录下。</mark>
+<mark>为了让智能体开发套件（ADK）能够正确识别 <code>agent.py</code> 文件作为可发现的 Python 包，我们需要创建一个 <code>__init__.py</code> 文件。这个文件需要和 <code>agent.py</code> 放在同一个目录下。</mark>
 
-```
-python# ./adk_agent_samples/mcp_agent/__init__.py
+```python
+# ./adk_agent_samples/mcp_agent/__init__.py
 from . import agent
 ```
 
@@ -281,8 +288,8 @@ Certainly, other supported commands are available for use. For example, connecti
 
 <mark>当然，还有其他支持的命令可供使用。例如，可以按如下方式连接到 <code>python3</code>：</mark>
 
-```
-pythonconnection_params = StdioConnectionParams(
+```python
+connection_params = StdioConnectionParams(
  server_params={
      "command": "python3",
      "args": ["./agent/mcp_server.py"],
@@ -298,8 +305,8 @@ UVX, in the context of Python, refers to a command-line tool that utilizes uv to
 
 <mark>在 Python 上下文中，UVX 是一个很实用的命令行工具，它借助 uv 这个工具来创建临时的、隔离的 Python 环境并执行命令。本质上，你可以在不进行全局安装或者污染项目环境的情况下，直接运行各种 Python 工具和第三方包。而且你可以通过 MCP 服务器来调用它。</mark>
 
-```
-pythonconnection_params = StdioConnectionParams(
+```python
+connection_params = StdioConnectionParams(
  server_params={
    "command": "uvx",
    "args": ["mcp-google-sheets@latest"],
@@ -313,7 +320,7 @@ pythonconnection_params = StdioConnectionParams(
 
 Once the MCP Server is created, the next step is to connect to it.
 
-<mark>MCP 服务器搭建完成之后，下一步就是建立连接了。</mark>
+<mark>现在 MCP 服务器已经搭建完成，下一步就是建立连接了。</mark>
 
 ### Connecting the MCP Server with ADK Web | <mark>使用 ADK Web 连接 MCP 服务器</mark>
 
@@ -321,8 +328,8 @@ To begin, execute 'adk web'. Navigate to the parent directory of mcp_agent (e.g.
 
 <mark>首先，执行「adk web」。在终端中导航到 <code>mcp_agent</code> 的父目录（例如 <code>adk_agent_samples</code>）并运行：</mark>
 
-```
-bashcd ./adk_agent_samples # Or your equivalent parent directory
+```bash
+cd ./adk_agent_samples # Or your equivalent parent directory
 adk web
 ```
 
@@ -333,6 +340,7 @@ Once the ADK Web UI has loaded in your browser, select the `filesystem_assistant
 - "Show me the contents of this folder."
 - "Read the `sample.txt` file." (This assumes `sample.txt` is located at `TARGET_FOLDER_PATH`.)
 - "What's in `another_file.md`?"
+
 - <mark>「显示此文件夹的内容。」</mark>
 - <mark>「读取 <code>sample.txt</code> 文件。」（假设 <code>sample.txt</code> 位于 <code>TARGET_FOLDER_PATH</code>。）</mark>
 - <mark>「<code>another_file.md</code> 里有什么？」</mark>
@@ -347,7 +355,7 @@ FastMCP is a high-level Python framework designed to streamline the development 
 
 The library enables rapid definition of tools, resources, and prompts using simple Python decorators. A significant advantage is its automatic schema generation, which intelligently interprets Python function signatures, type hints, and documentation strings to construct necessary AI model interface specifications. This automation minimizes manual configuration and reduces human error.
 
-<mark>这个库最大的特点是可以用简单的 Python 装饰器来快速定义工具、资源和提示模板。特别值得一提的是它的自动模式生成功能——它会智能地解析 Python 函数的签名、类型注解和文档字符串，自动生成 AI 模型所需的接口规范。这种自动化机制大大减少了手动配置的工作量，也降低了出错的可能性。</mark>
+<mark>这个库最大的特点是可以用简单的 Python 装饰器来快速定义工具、资源和提示模板。特别值得一提的是它的模式自动生成功能，它会智能地解析 Python 函数的签名、类型注解和文档字符串，自动生成 AI 模型所需的接口规范，这种自动化机制大大减少了手动配置的工作量，也降低了出错的可能性。</mark>
 
 Beyond basic tool creation, FastMCP facilitates advanced architectural patterns like server composition and proxying. This enables modular development of complex, multi-component systems and seamless integration of existing services into an AI-accessible framework. Additionally, FastMCP includes optimizations for efficient, distributed, and scalable AI-driven applications.
 
@@ -359,21 +367,28 @@ To illustrate, consider a basic "greet" tool provided by the server. ADK agents 
 
 <mark>举个简单的例子，假设服务器提供了一个基础的「问候」功能。等服务器启动运行后，ADK 智能体和其他 MCP 客户端就能通过 HTTP 协议来调用这个功能了。</mark>
 
-```
-python# fastmcp_server.py
+```python
+# fastmcp_server.py
 # This script demonstrates how to create a simple MCP server using FastMCP.
 # It exposes a single tool that generates a greeting.
+# 这个脚本演示了如何使用 FastMCP 创建一个简单的 MCP 服务器。
+# 它暴露了一个名为 'greet' 的工具，用于生成个性化问候语。
 
 # 1. Make sure you have FastMCP installed:
+# pip install fastmcp
+# 确保你已经安装了 FastMCP：
 # pip install fastmcp
 from fastmcp import FastMCP, Client
 
 # Initialize the FastMCP server.
+# 初始化 FastMCP 服务器。
 mcp_server = FastMCP()
 
 # Define a simple tool function.
 # The `@mcp_server.tool` decorator registers this Python function as an MCP tool.
 # The docstring becomes the tool's description for the LLM.
+# 这个装饰器将 greet 函数注册为 MCP 工具。
+# 函数的注释将成为 LLM 看到的工具描述。
 @mcp_server.tool
 def greet(name: str) -> str:
     """
@@ -388,6 +403,7 @@ def greet(name: str) -> str:
     return f"Hello, {name}! Nice to meet you."
 
 # Or if you want to run it from the script:
+# 或者如果你想从脚本运行它：
 if __name__ == "__main__":
     mcp_server.run(
         transport="http",
@@ -398,7 +414,7 @@ if __name__ == "__main__":
 
 This Python script defines a single function called greet, which takes a person's name and returns a personalized greeting. The @tool() decorator above this function automatically registers it as a tool that an AI or another program can use. The function's documentation string and type hints are used by FastMCP to tell the Agent how the tool works, what inputs it needs, and what it will return.
 
-<mark>这个 Python 脚本定义了一个名为 <code>greet</code> 的函数，根据人名生成个性化问候语。函数上方的 <code>@tool()</code> 装饰器会自动将其注册为 AI 或其他程序可调用的工具。FastMCP 利用函数的文档字符串和类型注解，自动告知智能体工具的使用方法、所需参数和返回结果。</mark>
+<mark>这个 Python 脚本定义了一个名为 <code>greet</code> 的函数，根据人名生成个性化问候语。函数上方的 <code>@tool()</code> 装饰器会自动将其注册为 AI 或其他程序可调用的工具。FastMCP 利用函数的注释以及类型注解，自动告知智能体工具的使用方法、所需参数和返回结果。</mark>
 
 When the script is executed, it starts the FastMCP server, which listens for requests on localhost:8000. This makes the greet function available as a network service. An agent could then be configured to connect to this server and use the greet tool to generate greetings as part of a larger task. The server runs continuously until it is manually stopped.
 
@@ -408,7 +424,7 @@ When the script is executed, it starts the FastMCP server, which listens for req
 
 An ADK agent can be set up as an MCP client to use a running FastMCP server. This requires configuring HttpServerParameters with the FastMCP server's network address, which is usually [http://localhost:8000](http://localhost:8000/).
 
-<mark>可以将 ADK 智能体配置为 MCP 客户端，使其能够使用正在运行的 FastMCP 服务器。具体做法是用 FastMCP 服务器的网络地址（通常是 [http://localhost:8000](http://localhost:8000/)）来配置 <code>HttpServerParameters</code>。</mark>
+<mark>可以将 ADK 智能体配置为 MCP 客户端，使其能够使用正在运行的 FastMCP 服务器。具体做法是用 FastMCP 服务器的网络地址（通常是 <code>http://localhost:8000</code>）来配置 <code>HttpServerParameters</code>。</mark>
 
 A tool_filter parameter can be included to restrict the agent's tool usage to specific tools offered by the server, such as 'greet'. When prompted with a request like "Greet John Doe," the agent's embedded LLM identifies the 'greet' tool available via MCP, invokes it with the argument "John Doe," and returns the server's response. This process demonstrates the integration of user-defined tools exposed through MCP with an ADK agent.
 
@@ -418,14 +434,16 @@ To establish this configuration, an agent file (e.g., agent.py located in ./adk_
 
 <mark>要实现这样的配置，我们需要准备一个智能体配置文件（比如放在 <code>./adk_agent_samples/fastmcp_client_agent/</code> 目录下的  <code>agent.py</code>）。这个文件会创建一个 ADK 智能体实例，并通过 <code>HttpServerParameters</code> 来和正在运行的 FastMCP 服务器建立连接。</mark>
 
-```
-python# ./adk_agent_samples/fastmcp_client_agent/agent.py
+```python
+# ./adk_agent_samples/fastmcp_client_agent/agent.py
 import os
 from google.adk.agents import LlmAgent
 from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, HttpServerParameters
 
 # Define the FastMCP server's address.
 # Make sure your fastmcp_server.py (defined previously) is running on this port.
+# 定义 FastMCP 服务器的地址。
+# 确保 fastmcp_server.py（前面定义的）正在这个端口上运行。
 FASTMCP_SERVER_URL = "http://localhost:8000"
 
 root_agent = LlmAgent(
@@ -439,6 +457,9 @@ root_agent = LlmAgent(
            ),
            # Optional: Filter which tools from the MCP server are exposed
            # For this example, we're expecting only 'greet'
+           # 可选：过滤 MCP 服务器暴露的工具。
+           # 例如，只允许读取文件：
+           # tool_filter=['list_directory', 'read_file']
            tool_filter=['greet']
        )
    ],
@@ -447,7 +468,7 @@ root_agent = LlmAgent(
 
 The script defines an Agent named fastmcp_greeter_agent that uses a Gemini language model. It's given a specific instruction to act as a friendly assistant whose purpose is to greet people. Crucially, the code equips this agent with a tool to perform its task. It configures an MCPToolset to connect to a separate server running on localhost:8000, which is expected to be the FastMCP server from the previous example. The agent is specifically granted access to the greet tool hosted on that server. In essence, this code sets up the client side of the system, creating an intelligent agent that understands its goal is to greet people and knows exactly which external tool to use to accomplish it.
 
-<mark>该脚本定义了一个名为 <code>fastmcp_greeter_agent</code> 的智能体，基于 Gemini 语言模型。智能体被设定为友好助手，专门负责问候用户。代码为其配备了执行任务所需的工具——配置 <code>MCPToolset</code> 连接到运行在 localhost:8000 的独立服务器，即前面示例中的 FastMCP 服务器。智能体被授权使用该服务器上的 <code>greet</code> 问候工具。这段代码搭建了系统的客户端部分，创建了一个明确任务目标并知晓所需外部工具的智能体。</mark>
+<mark>该脚本定义了一个名为 <code>fastmcp_greeter_agent</code> 的智能体，基于 Gemini 模型。智能体被设定为友好助手，专门负责问候用户。代码为其配备了执行任务所需的工具——配置 <code>MCPToolset</code> 连接到运行在 <code>localhost:8000</code> 的独立服务器，即前面示例中的 FastMCP 服务器。智能体被授权使用该服务器上的 <code>greet</code> 问候工具。这段代码搭建了系统的客户端部分，创建了一个明确任务目标并知晓所需外部工具的智能体。</mark>
 
 Creating an **init**.py file within the fastmcp_client_agent directory is necessary. This ensures the agent is recognized as a discoverable Python package for the ADK.
 
@@ -463,11 +484,11 @@ To begin, open a new terminal and run `python fastmcp_server.py` to start the Fa
 
 **What:** To function as effective agents, LLMs must move beyond simple text generation. They require the ability to interact with the external environment to access current data and utilize external software. Without a standardized communication method, each integration between an LLM and an external tool or data source becomes a custom, complex, and non-reusable effort. This ad-hoc approach hinders scalability and makes building complex, interconnected AI systems difficult and inefficient.
 
-<mark><strong>问题所在：</strong>要让大语言模型真正成为有效的智能体，它们不能只停留在文本生成层面，还需要具备与外部环境交互的能力——既能获取实时数据，又能调用外部软件。如果没有统一的通信标准，每次把大语言模型和外部工具或数据源对接都要从头定制开发，既复杂又难以复用。这种临时凑合的做法严重限制了系统的扩展性，也让构建复杂互联的 AI 系统变得异常困难和低效。</mark>
+<mark><strong>问题所在：</strong>要让大语言模型真正成为有效的智能体，它们不能只停留在文本生成层面，还需要具备与外部环境交互的能力，既能获取实时数据，又能调用外部软件。如果没有统一的通信标准，每次把大语言模型和外部工具或数据源对接都要从头定制开发，既复杂又难以复用。这种临时凑合的做法严重限制了系统的扩展性，也让构建复杂互联的 AI 系统变得异常困难和低效。</mark>
 
 **Why:** The Model Context Protocol (MCP) offers a standardized solution by acting as a universal interface between LLMs and external systems. It establishes an open, standardized protocol that defines how external capabilities are discovered and used. Operating on a client-server model, MCP allows servers to expose tools, data resources, and interactive prompts to any compliant client. LLM-powered applications act as these clients, dynamically discovering and interacting with available resources in a predictable manner. This standardized approach fosters an ecosystem of interoperable and reusable components, dramatically simplifying the development of complex agentic workflows.
 
-<mark><strong>解决之道：</strong>模型上下文协议（MCP）提供了一个标准化的解决方案，它就像是大语言模型和外部系统之间的通用接口。这个开放的标准化协议明确定义了如何发现和使用外部能力。MCP 采用客户端 - 服务器架构，让服务器能够向所有兼容的客户端提供工具、数据资源和交互提示。由大语言模型驱动的应用作为客户端，可以按需发现并使用这些资源，整个过程都是可预测的。这种标准化方式促成了一个可互操作、可复用组件的生态系统，大大简化了复杂智能体工作流的开发难度。</mark>
+<mark><strong>解决之道：</strong>模型上下文协议（MCP）提供了一个标准化的解决方案，它就像是大语言模型和外部系统之间的通用接口。这个开放的标准化协议明确定义了如何发现和使用外部能力。MCP 采用「客户端 - 服务器」架构，让服务器能够向所有兼容的客户端提供工具、数据资源和交互提示。由大语言模型驱动的应用作为客户端，可以按需发现并使用这些资源，整个过程都是可预测的。这种标准化方式促成了一个可互操作、可复用组件的生态系统，大大简化了复杂智能体工作流的开发难度。</mark>
 
 **Rule of thumb:** Use the Model Context Protocol (MCP) when building complex, scalable, or enterprise-grade agentic systems that need to interact with a diverse and evolving set of external tools, data sources, and APIs. It is ideal when interoperability between different LLMs and tools is a priority, and when agents require the ability to dynamically discover new capabilities without being redeployed. For simpler applications with a fixed and limited number of predefined functions, direct tool function calling may be sufficient.
 
@@ -475,7 +496,7 @@ To begin, open a new terminal and run `python fastmcp_server.py` to start the Fa
 
 **Visual summary** | <mark><strong>可视化总结</strong></mark>
 
-![image-20251021100220540](C:\Users\TAO\AppData\Roaming\Typora\typora-user-images\image-20251021100220540.png)
+![Model Context protocol](/images/chapter10_fig1.png)
 
 Fig.1: Model Context protocol
 
@@ -490,17 +511,28 @@ These are the key takeaways:
 <mark>以下是核心要点：</mark>
 
 - The Model Context Protocol (MCP) is an open standard facilitating standardized communication between LLMs and external applications, data sources, and tools.
-- <mark>模型上下文协议（MCP）是一个开放标准，它为大语言模型和外部应用、数据源、工具之间的通信提供了统一的规范。</mark>
+
+   <mark>模型上下文协议（MCP）是一个开放标准，它为大语言模型和外部应用、数据源、工具之间的通信提供了统一的规范。</mark>
+
 - It employs a client-server architecture, defining the methods for exposing and consuming resources, prompts, and tools.
-- <mark>这个协议采用客户端 - 服务器架构，明确定义了如何对外提供和使用各种资源、提示模板和工具。</mark>
+
+   <mark>这个协议采用「客户端 - 服务器」架构，明确定义了如何对外提供和使用各种资源、提示模板和工具。</mark>
+
 - The Agent Development Kit (ADK) supports both utilizing existing MCP servers and exposing ADK tools via an MCP server.
-- <mark>智能体开发套件（ADK）既支持连接现有的 MCP 服务器，也支持把 ADK 里的工具通过 MCP 服务器对外提供。</mark>
+
+   <mark>智能体开发套件（ADK）既支持连接现有的 MCP 服务器，也支持把 ADK 里的工具通过 MCP 服务器对外提供。</mark>
+
 - FastMCP simplifies the development and management of MCP servers, particularly for exposing tools implemented in Python.
-- <mark>FastMCP 这个框架让 MCP 服务器的开发和管理变得更简单，特别适合把用 Python 写的工具封装成服务。</mark>
+
+   <mark>FastMCP 这个框架让 MCP 服务器的开发和管理变得更简单，特别适合把用 Python 写的工具封装成服务。</mark>
+
 - MCP Tools for Genmedia Services allows agents to integrate with Google Cloud's generative media capabilities (Imagen, Veo, Chirp 3 HD, Lyria).
-- <mark>通过 MCP Tools for Genmedia Services，智能体可以很方便地调用 Google Cloud 的各种生成式媒体能力，比如 Imagen、Veo、Chirp 3 HD 和 Lyria。</mark>
+
+   <mark>通过媒体生成服务 MCP 工具，智能体可以很方便地调用 Google Cloud 的各种生成式媒体能力，比如 Imagen、Veo、Chirp 3 HD 和 Lyria。</mark>
+
 - MCP enables LLMs and agents to interact with real-world systems, access dynamic information, and perform actions beyond text generation.
-- <mark>MCP 让大语言模型和智能体不再局限于文本生成，而是能够真正与现实世界系统交互，获取动态信息，执行具体操作。</mark>
+
+   <mark>MCP 让大语言模型和智能体不再局限于文本生成，而是能够真正与现实世界系统交互，获取动态信息，执行具体操作。</mark>
 
 ------
 
@@ -508,24 +540,24 @@ These are the key takeaways:
 
 The Model Context Protocol (MCP) is an open standard that facilitates communication between Large Language Models (LLMs) and external systems. It employs a client-server architecture, enabling LLMs to access resources, utilize prompts, and execute actions through standardized tools. MCP allows LLMs to interact with databases, manage generative media workflows, control IoT devices, and automate financial services. Practical examples demonstrate setting up agents to communicate with MCP servers, including filesystem servers and servers built with FastMCP, illustrating its integration with the Agent Development Kit (ADK). MCP is a key component for developing interactive AI agents that extend beyond basic language capabilities.
 
-<mark>模型上下文协议（MCP）是一个开放标准，它为大语言模型和外部系统之间的通信提供了一套通用规范。这个协议采用客户端 - 服务器架构，使 LLM 能够通过标准化工具访问资源、利用提示词并执行操作。MCP 允许 LLM 与数据库交互、管理生成式媒体工作流、控制物联网设备以及自动化金融服务。实际示例演示了设置智能体与 MCP 服务器通信，包括文件系统服务器和使用 FastMCP 构建的服务器，说明了其与智能体开发套件（ADK）的集成。MCP 是开发扩展到基本语言能力之外的交互式 AI 智能体的关键组件。</mark>
+<mark>模型上下文协议（MCP）是一个开放标准，它为大语言模型和外部系统之间的通信提供了一套通用规范。这个协议采用「客户端 - 服务器」架构，使 LLM 能够通过标准化工具访问资源、利用提示词并执行操作。MCP 允许 LLM 与数据库交互、管理生成式媒体工作流、控制物联网设备以及自动化金融服务。实际示例演示了设置智能体与 MCP 服务器通信，包括文件系统服务器和使用 FastMCP 构建的服务器，说明了其与智能体开发套件（ADK）的集成。MCP 是开发扩展到基本语言能力之外的交互式 AI 智能体的关键组件。</mark>
 
 ------
 
 ## References | <mark>参考文献</mark>
 
-1. Model Context Protocol (MCP) Documentation. (Latest). Model Context Protocol (MCP). https://google.github.io/adk-docs/mcp/
+1. Model Context Protocol (MCP) Documentation. (Latest). Model Context Protocol (MCP). [https://google.github.io/adk-docs/mcp/](https://google.github.io/adk-docs/mcp/)
 
-<mark>1. 模型上下文协议（MCP）文档（最新）。模型上下文协议（MCP）。https://google.github.io/adk-docs/mcp/</mark>
+   <mark>1. 模型上下文协议（MCP）文档（最新版本）。[https://google.github.io/adk-docs/mcp/](https://google.github.io/adk-docs/mcp/)</mark>
 
-1. FastMCP Documentation. FastMCP. https://github.com/jlowin/fastmcp
+2. FastMCP Documentation. FastMCP. [https://github.com/jlowin/fastmcp](https://github.com/jlowin/fastmcp)
 
-<mark>2. FastMCP 文档。FastMCP。https://github.com/jlowin/fastmcp</mark>
+   <mark>2. FastMCP 文档。[https://github.com/jlowin/fastmcp](https://github.com/jlowin/fastmcp)</mark>
 
-1. MCP Tools for Genmedia Services. MCP Tools for Genmedia Services. https://google.github.io/adk-docs/mcp/#mcp-servers-for-google-cloud-genmedia
+3. MCP Tools for Genmedia Services. MCP Tools for Genmedia Services. [https://google.github.io/adk-docs/mcp/#mcp-servers-for-google-cloud-genmedia](https://google.github.io/adk-docs/mcp/#mcp-servers-for-google-cloud-genmedia)
 
-<mark>3. MCP Tools for Genmedia Services. MCP Tools for Genmedia Services. https://google.github.io/adk-docs/mcp/#mcp-servers-for-google-cloud-genmedia</mark>
+   <mark>3. 媒体生成服务 MCP 工具。[https://google.github.io/adk-docs/mcp/#mcp-servers-for-google-cloud-genmedia](https://google.github.io/adk-docs/mcp/#mcp-servers-for-google-cloud-genmedia)</mark>
 
-1. MCP Toolbox for Databases Documentation. (Latest). MCP Toolbox for Databases. https://google.github.io/adk-docs/mcp/databases/
+4. MCP Toolbox for Databases Documentation. (Latest). MCP Toolbox for Databases. [https://google.github.io/adk-docs/mcp/databases/](https://google.github.io/adk-docs/mcp/databases/)
 
-<mark>4. MCP Toolbox for Databases 文档。（最新）。MCP Toolbox for Databases。https://google.github.io/adk-docs/mcp/databases/</mark>
+   <mark>4. 数据库 MCP 工具文档。（最新版本）[https://google.github.io/adk-docs/mcp/databases/](https://google.github.io/adk-docs/mcp/databases/)</mark>
