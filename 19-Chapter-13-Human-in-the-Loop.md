@@ -92,7 +92,7 @@ This pattern exemplifies a practical method for AI implementation. It harnesses 
 
 To demonstrate the Human-in-the-Loop pattern, an ADK agent can identify scenarios requiring human review and initiate an escalation process . This allows for human intervention in situations where the agent's autonomous decision-making capabilities are limited or when complex judgments are required. This is not an isolated feature; other popular frameworks have adopted similar capabilities. LangChain, for instance, also provides tools to implement these types of interactions.
 
-<mark>为了演示人机协同模式，ADK 智能体（agent）可以识别需要人工审查的场景并发起上报流程。这允许在智能体的自主决策能力有限或需要复杂判断的情况下进行人工干预。这不是一个孤立的功能；其他流行的框架也采用了类似的功能。例如，LangChain 也提供了实现此类交互的工具。</mark>
+<mark>为了演示人机协同模式，ADK 智能体可以识别需要人工审查的场景并发起上报流程。这允许在智能体的自主决策能力有限或需要复杂判断的情况下进行人工干预。这不是一个孤立的功能；其他流行的框架也采用了类似的功能。例如，LangChain 也提供了实现此类交互的工具。</mark>
 
 ```python
 from google.adk.agents import Agent 
@@ -103,6 +103,7 @@ from google.genai import types
 from typing import Optional 
 
 # Placeholder for tools (replace with actual implementations if needed) 
+# 占位符，用于替换实际的工具实现
 def troubleshoot_issue(issue: str) -> dict:
    return {"status": "success", "report": f"Troubleshooting steps for {issue}."} 
 
@@ -111,6 +112,7 @@ def create_ticket(issue_type: str, details: str) -> dict:
 
 def escalate_to_human(issue_type: str) -> dict:
    # This would typically transfer to a human queue in a real system
+   # 模拟转交给专家处理
    return {"status": "success", "message": f"Escalated {issue_type} to a human specialist."} 
 
 technical_support_agent = Agent(
@@ -125,6 +127,7 @@ def personalization_callback(
 ) -> Optional[LlmRequest]:
    """Adds personalization information to the LLM request."""
    # Get customer info from state
+   # 获取客户信息
    customer_info = callback_context.state.get("customer_info")
    if customer_info:
       customer_name = customer_info.get("name", "valued customer")
@@ -150,25 +153,25 @@ def personalization_callback(
 
 This code offers a blueprint for creating a technical support agent using Google's ADK, designed around a HITL framework. The agent acts as an intelligent first line of support, configured with specific instructions and equipped with tools like `troubleshoot_issue`, `create_ticket`, and `escalate_to_human` to manage a complete support workflow. The escalation tool is a core part of the HITL design, ensuring complex or sensitive cases are passed to human specialists.
 
-<mark>此代码提供了使用 Google 的 ADK 创建技术支持智能体的蓝图，该智能体围绕人机协同框架设计。该智能体作为智能的第一道防线，配置了具体指令，并配备了像 <code>troubleshoot_issue</code>、<code>create_ticket</code> 和 <code>escalate_to_human</code> 这样的工具来管理完整的支持工作流。上报工具是人机协同设计的核心部分，确保复杂或敏感的案例被转交给人类专家。</mark>
+<mark>此代码提供了使用 Google 的 ADK 框架来创建一个围绕人机协同框架设计的技术支持智能体。该智能体作为智能的第一道防线，配置了具体指令，并配备了像 <code>troubleshoot_issue</code>、<code>create_ticket</code> 和 <code>escalate_to_human</code> 这样的工具来管理完整的支持工作流。上报工具是人机协同设计的核心部分，确保复杂或敏感的案例被转交给人类专家。</mark>
 
 A key feature of this architecture is its capacity for deep personalization, achieved through a dedicated callback function. Before contacting the LLM, this function dynamically retrieves customer-specific data—such as their name, tier, and purchase history—from the agent's state. This context is then injected into the prompt as a system message, enabling the agent to provide highly tailored and informed responses that reference the user's history. By combining a structured workflow with essential human oversight and dynamic personalization, this code serves as a practical example of how the ADK facilitates the development of sophisticated and robust AI support solutions.
 
-<mark>该架构的一个关键特性是通过专用回调函数实现的深度个性化能力。在联系大语言模型（LLM）之前，该函数会从智能体的状态中动态检索客户特定数据，例如他们的姓名、等级和购买历史。然后，此上下文作为系统消息被注入到提示中，使智能体能够提供高度定制化和信息充分的、并引用用户历史的回复。通过将结构化工作流与必要的人类监督和动态个性化相结合，此代码提供了一个 ADK 如何促进开发复杂且强大的 AI 支持解决方案的实践范例。</mark>
+<mark>该架构的一个关键特性是通过专用回调函数实现的深度个性化能力。在使用大语言模型之前，该函数会从智能体的状态中动态检索客户特定数据，例如他们的姓名、等级和购买历史。然后，此上下文作为系统消息被注入到提示中，使智能体能够提供高度定制化和信息充分的、并引用用户历史的回复。通过将结构化工作流与必要的人类监督和动态个性化相结合，此代码提供了一个 ADK 如何开发复杂且强大的 AI 赋能的实践范例。</mark>
 
 ## At a Glance | <mark>要点速览</mark>
 
 **What**: AI systems, including advanced LLMs, often struggle with tasks that require nuanced judgment, ethical reasoning, or a deep understanding of complex, ambiguous contexts. Deploying fully autonomous AI in high-stakes environments carries significant risks, as errors can lead to severe safety, financial, or ethical consequences. These systems lack the inherent creativity and common-sense reasoning that humans possess. Consequently, relying solely on automation in critical decision-making processes is often imprudent and can undermine the system's overall effectiveness and trustworthiness.
 
-<mark><strong>现状挑战：</strong>AI 系统，包括先进的大语言模型（LLM），在处理需要细致入微的判断、伦理推理或对复杂模糊上下文有深刻理解的任务时往往力不从心。在事关重大的环境中部署完全自主的 AI 会带来巨大风险，因为错误可能导致严重的安全、财务或伦理后果。这些系统缺乏人类所拥有的内在创造力和常识性推理能力。因此，在关键决策过程中完全依赖自动化通常是不明智的，并且可能损害系统的整体有效性和可信度。</mark>
+<mark><strong>问题所在：</strong>AI 系统，包括先进的大语言模型，在处理需要细致入微的判断、伦理推理或对复杂模糊上下文有深刻理解的任务时往往力不从心。在事关重大的场景使用完全自主的 AI 会带来巨大风险，因为错误可能导致严重的安全、财务或伦理后果。这些系统缺乏人类所拥有的内在创造力和常识性推理能力。因此，在关键决策过程中完全依赖自动化通常是不明智的，并且可能损害系统的整体有效性和可信度。</mark>
 
 **Why**: The Human-in-the-Loop (HITL) pattern provides a standardized solution by strategically integrating human oversight into AI workflows. This agentic approach creates a symbiotic partnership where AI handles computational heavy-lifting and data processing, while humans provide critical validation, feedback, and intervention. By doing so, HITL ensures that AI actions align with human values and safety protocols. This collaborative framework not only mitigates the risks of full automation but also enhances the system's capabilities through continuous learning from human input. Ultimately, this leads to more robust, accurate, and ethical outcomes that neither human nor AI could achieve alone.
 
-<mark><strong>模式价值：</strong>人机协同（HITL）模式通过将人类监督战略性地整合到 AI 工作流中，提供了一种标准化的解决方案。这种智能体式（agentic）方法创建了一种共生伙伴关系，其中 AI 处理计算密集型任务和数据处理，而人类则提供关键的验证、反馈和干预。通过这样做，人机协同模式确保 AI 的行动与人类价值观和安全协议保持一致。这种协作框架不仅降低了完全自动化的风险，而且通过不断从人类输入中学习来增强系统的能力。最终，这会带来更稳健、准确和合乎伦理的结果，这是人类或 AI 任何一方都无法单独实现的。</mark>
+<mark><strong>解决之道：</strong>人机协同（HITL）模式通过将人类监督战略性地整合到 AI 工作流中，提供了一种标准化的解决方案。这种自主式方法创建了一种共生伙伴关系，其中 AI 处理计算密集型任务和数据处理，而人类则提供关键的验证、反馈和干预。通过这样做，人机协同模式确保 AI 的行动与人类价值观和安全协议保持一致。这种协作框架不仅降低了完全自动化的风险，而且通过不断从人类输入中学习来增强系统的能力。最终，这会带来更稳健、准确和合乎伦理的结果，这是人类或 AI 任何一方都无法单独实现的。</mark>
 
 **Rule of thumb**: Use this pattern when deploying AI in domains where errors have significant safety, ethical, or financial consequences, such as in healthcare, finance, or autonomous systems. It is essential for tasks involving ambiguity and nuance that LLMs cannot reliably handle, like content moderation or complex customer support escalations. Employ HITL when the goal is to continuously improve an AI model with high-quality, human-labeled data or to refine generative AI outputs to meet specific quality standards.
 
-<mark><strong>经验法则：</strong>当在医疗、金融或自动驾驶系统等错误会带来严重安全、伦理或财务后果的领域部署 AI 时，请使用此模式。对于涉及大语言模型（LLM）无法可靠处理的模糊性和细微差别的任务（如内容审核或复杂的客户支持上报），该模式至关重要。当目标是利用高质量、人工标注的数据持续改进 AI 模型，或优化生成式 AI 的输出以满足特定质量标准时，也应采用人机协同模式。</mark>
+<mark><strong>经验法则：</strong>当在医疗、金融或自动驾驶系统等错误会带来严重安全、伦理或财务后果的领域使用 AI 时，请使用此模式。对于涉及大语言模型（LLM）无法可靠处理的模糊性和细微差别的任务（如内容审核或复杂的客户支持上报），该模式至关重要。另外，当目标是利用高质量、人工标注的数据持续改进 AI 模型，或优化生成式 AI 的输出以满足特定质量标准时，也应采用人机协同模式。</mark>
 
 **Visual summary** | <mark>**可视化总结：**</mark>
 
@@ -176,7 +179,7 @@ A key feature of this architecture is its capacity for deep personalization, ach
 
 Fig.1: Human in the loop design pattern
 
-<mark><strong>图 1：</strong>人机协同设计模式</mark>
+<mark>图 1：人机协同设计模式</mark>
 
 ## Key Takeaways | <mark>核心要点</mark>
 
@@ -185,40 +188,41 @@ Key takeaways include:
 <mark>核心要点包括：</mark>
 
 - Human-in-the-Loop (HITL) integrates human intelligence and judgment into AI workflows.
-- <mark>人机协同（HITL）将人类的智能和判断力整合到 AI 工作流中。</mark>
+
+   <mark>人机协同（HITL）将人类的智能和判断力整合到 AI 工作流中。</mark>
 
 - It's crucial for safety, ethics, and effectiveness in complex or high-stakes scenarios.
 
-- <mark>它对于复杂或高风险场景下的安全性、伦理性和有效性至关重要。</mark>
+   <mark>它对于复杂或高风险场景下的安全性、伦理性和有效性至关重要。</mark>
 
 - Key aspects include human oversight, intervention, feedback for learning, and decision augmentation.
 
-- <mark>关键方面包括人类监督、干预、用于学习的反馈以及决策增强。</mark>
+   <mark>关键方面包括人类监督、干预、用于学习的反馈以及决策增强。</mark>
 
 - Escalation policies are essential for agents to know when to hand off to a human.
 
-- <mark>上报策略对于智能体了解何时应转交给人类至关重要。</mark>
+   <mark>上报策略对于智能体了解何时应转交给人类至关重要。</mark>
 
 - HITL allows for responsible AI deployment and continuous improvement.
 
-- <mark>人机协同模式允许负责任的 AI 部署和持续改进。</mark>
+   <mark>人机协同模式实现了负责任的 AI 部署并持续改进。</mark>
 
 - The primary drawbacks of Human-in-the-Loop are its inherent lack of scalability, creating a trade-off between accuracy and volume, and its dependence on highly skilled domain experts for effective intervention.
 
-- <mark>人机协同模式的主要缺点是其固有的可扩展性不足（在准确性和处理量之间造成了权衡）以及它对高技能领域专家进行有效干预的依赖。</mark>
+   <mark>人机协同模式的主要缺点是其固有的可扩展性不足（在准确性和处理量之间造成了权衡）以及它对高技能领域专家进行有效干预的依赖。</mark>
 
 - Its implementation presents operational challenges, including the need to train human operators for data generation and to address privacy concerns by anonymizing sensitive information.
 
-- <mark>其实施带来了运营上的挑战，包括需要培训人类操作员以生成数据，以及需要通过匿名化敏感信息来解决隐私问题。</mark>
+   <mark>其实施带来了运营上的挑战，包括需要培训人类操作员以生成数据，以及需要通过匿名化敏感信息来解决隐私问题。</mark>
 
 ## Conclusion | <mark>结语</mark>
 
 This chapter explored the vital Human-in-the-Loop (HITL) pattern, emphasizing its role in creating robust, safe, and ethical AI systems. We discussed how integrating human oversight, intervention, and feedback into agent workflows can significantly enhance their performance and trustworthiness, especially in complex and sensitive domains. The practical applications demonstrated HITL's widespread utility, from content moderation and medical diagnosis to autonomous driving and customer support. The conceptual code example provided a glimpse into how ADK can facilitate these human-agent interactions through escalation mechanisms. As AI capabilities continue to advance, HITL remains a cornerstone for responsible AI development, ensuring that human values and expertise remain central to intelligent system design.
 
-<mark>本章探讨了至关重要的人机协同（HITL）模式，强调了其在创建稳健、安全和合乎伦理的 AI 系统中的作用。我们讨论了将人类监督、干预和反馈整合到智能体工作流中如何能显著提高其性能和可信度，尤其是在复杂和敏感的领域。实际应用展示了人机协同模式的广泛效用，从内容审核、医疗诊断到自动驾驶和客户支持。概念性代码示例让我们得以一窥 ADK 如何通过上报机制促进这些人机交互。随着 AI 能力的不断进步，人机协同模式仍然是负责任 AI 发展的基石，确保人类价值观和专业知识始终处于智能系统设计的核心。</mark>
+<mark>本章探讨了至关重要的人机协同（HITL）模式，强调了其在创建稳健、安全和合乎伦理的 AI 系统中的作用。我们讨论了将人类监督、干预和反馈整合到智能体工作流中如何能显著提高其性能和可信度，尤其是在复杂和敏感的领域。实际应用展示了人机协同模式的广泛效用，从内容审核、医疗诊断到自动驾驶和客户支持。实战代码让我们了解 ADK 如何通过上报机制促进这些人机交互。随着 AI 能力的不断进步，人机协同模式仍然是负责任 AI 发展的基石，确保人类价值观和专业知识始终处于智能系统设计的核心。</mark>
 
 ## References | <mark>参考文献</mark>
 
-1. A Survey of Human-in-the-loop for Machine Learning, Xingjiao Wu, Luwei Xiao, Yixuan Sun, Junhang Zhang, Tianlong Ma, Liang He, [https://arxiv.org/abs/2108.00941](https://www.google.com/url?sa=E&source=gmail&q=https://www.google.com/url?q=https://arxiv.org/abs/2108.00941%26sa=D%26source=editors%26ust=1756864731918335%26usg=AOvVaw0XRBn59HRW6umv_AnRBmM0)
+1. A Survey of Human-in-the-loop for Machine Learning, Xingjiao Wu, Luwei Xiao, Yixuan Sun, Junhang Zhang, Tianlong Ma, Liang He, [https://arxiv.org/abs/2108.00941](https://arxiv.org/abs/2108.00941)
 
-1. <mark>《机器学习中的人机协同综述》，Xingjiao Wu, Luwei Xiao, Yixuan Sun, Junhang Zhang, Tianlong Ma, Liang He, [https://arxiv.org/abs/2108.00941](https://arxiv.org/abs/2108.00941)</mark>
+  <mark>《机器学习中的人机协同综述》，Xingjiao Wu, Luwei Xiao, Yixuan Sun, Junhang Zhang, Tianlong Ma, Liang He, [https://arxiv.org/abs/2108.00941](https://arxiv.org/abs/2108.00941)</mark>
