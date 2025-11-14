@@ -50,13 +50,7 @@ Collaboration can take various forms:
 
 A multi-agent system (see Fig.1) fundamentally comprises the delineation of agent roles and responsibilities, the establishment of communication channels through which agents exchange information, and the formulation of a task flow or interaction protocol that directs their collaborative endeavors.
 
-<mark>多智能体系统（见图 1）的设计主要包括三个方面：</mark>
-
-<mark>1. **明确角色与职责** - 定义每个智能体的具体任务</mark>
-
-<mark>2. **建立通信通道** - 实现智能体之间的信息交换</mark>
-
-<mark>3. **制定交互协议** - 设计引导协同工作的任务流程</mark>
+<mark>多智能体系统（见图 1）的设计主要包括三个方面：明确每个智能体的角色和职责、建立用于信息交换的通信通道，以及制定引导它们协同工作的任务流程或交互协议。</mark>
 
 ![Multi-Agent System Example](/images/chapter07_fig1.png)
 

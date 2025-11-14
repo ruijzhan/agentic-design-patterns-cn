@@ -50,7 +50,7 @@ Memory management is vital for agents to track information and perform intellige
 
 ● **Learning and Improvement**: Agents can refine their performance by learning from past interactions. Successful strategies, mistakes, and new information are stored in long-term memory, facilitating future adaptations. Reinforcement learning agents store learned strategies or knowledge in this way.
 
-● <mark><strong>学习与性能优化：</strong> 智能体通过从历史交互中学习来持续改进它的性能表现。成功的策略方案、错误经验以及新获取的知识都被存储在长期记忆中，为未来的自适应优化提供支持。强化学习智能体正是通过这种方式保存习得的策略和知识体系。</mark>
+● <mark><strong>学习与性能优化：</strong> 智能体通过从历史交互中学习来持续改进自身的性能表现。成功的策略方案、错误经验以及新获取的知识都被存储在长期记忆中，为未来的自适应优化提供支持。强化学习智能体正是通过这种方式保存习得的策略和知识体系。</mark>
 
 ● **Information Retrieval (RAG)**: Agents designed for answering questions access a knowledge base, their long-term memory, often implemented within Retrieval Augmented Generation (RAG). The agent retrieves relevant documents or data to inform its responses.
 
@@ -66,7 +66,7 @@ Memory enables agents to maintain history, learn, personalize interactions, and 
 
 ---
 
-## Hands-On Code: Memory Management in Google Agent Developer Kit (ADK) | <mark>实战代码：使用 Google ADK</mark>
+## Hands-On Code: Memory Management in Google Agent Developer Kit (ADK) | <mark>实战代码：Google ADK 中的记忆管理</mark>
 
 The Google Agent Developer Kit (ADK) offers a structured method for managing context and memory, including components for practical application. A solid grasp of ADK's Session, State, and Memory is vital for building agents that need to retain information.
 
@@ -142,7 +142,7 @@ Besides, there's VertexAiSessionService which uses Vertex AI infrastructure for 
 
 ```python
 # 示例：使用 VertexAiSessionService
-# 这适用于 Google Cloud Platform 上的可扩展要求的生产环境，利用 Vertex AI 基础设施进行会话管理。
+# 这适用于 Google Cloud Platform 上需要可扩展性的生产环境，利用 Vertex AI 基础设施进行会话管理。
 # 安装依赖：pip install google-adk[vertexai] 以及 GCP 设置/身份验证
 from google.adk.sessions import VertexAiSessionService
 
@@ -179,7 +179,7 @@ In the ADK, each Session, representing a chat thread, includes a state component
 
 Fundamentally, session.state operates as a dictionary, storing data as key-value pairs. Its core function is to enable the agent to retain and manage details essential for coherent dialogue, such as user preferences, task progress, incremental data collection, or conditional flags influencing subsequent agent actions.
 
-<mark><code>session.state</code> 本质上是一个字典（Dictionary），以键值对（Key-Value Pairs）形式存储数据。其主要功能是帮助智能体保留和管理对话连贯性所需的关键信息，例如用户偏好、任务进展、增量数据收集，或影响后续智能体行为的条件标志。</mark>
+<mark><code>session.state</code> 本质上是一个字典，以键值对形式存储数据。其主要功能是帮助智能体保留和管理对话连贯性所需的关键信息，例如用户偏好、任务进展、增量数据收集，或影响后续智能体行为的条件标志。</mark>
 
 The state's structure comprises string keys paired with values of serializable Python types, including strings, numbers, booleans, lists, and dictionaries containing these basic types. State is dynamic, evolving throughout the conversation. The permanence of these changes depends on the configured SessionService.
 
@@ -187,11 +187,11 @@ The state's structure comprises string keys paired with values of serializable P
 
 State organization can be achieved using key prefixes to define data scope and persistence. Keys without prefixes are session-specific.
 
-<mark>可以通过键前缀来管理数据范围和持久性，从而实现有效的状态组织。不带前缀的键属于会话级别的。</mark>
+<mark>可以通过键前缀来管理数据范围和持久性，从而实现有效的状态组织。不带前缀的键属于会话级别的数据。</mark>
 
 ● The **user:** prefix associates data with a user ID across all sessions.
 
-● <mark><strong>user:</strong> 该前缀的数据为用户级别，和用户 ID 关联，可以跨多个会话使用。</mark>
+● <mark><strong>user:</strong> 该前缀的数据为用户级别，与用户 ID 关联，可以跨多个会话使用。</mark>
 
 ● The **app:** prefix designates data shared among all users of the application.
 
@@ -199,15 +199,15 @@ State organization can be achieved using key prefixes to define data scope and p
 
 ● The **temp:** prefix indicates data valid only for the current processing turn and is not persistently stored.
 
-● <mark><strong>temp:</strong> 该前缀的数据为临时数据，仅在当前处理轮次内有效，不会被持久化。</mark>
+● <mark><strong>temp:</strong> 该前缀标识临时数据，仅在当前处理轮次内有效，不会被持久化。</mark>
 
 The agent accesses all state data through a single session.state dictionary. The SessionService handles data retrieval, merging, and persistence. State should be updated upon adding an Event to the session history via session_service.append_event(). This ensures accurate tracking, proper saving in persistent services, and safe handling of state changes.
 
-<mark>智能体通过统一的 <code>session.state</code> 字典访问所有状态数据。<code>SessionService</code> 负责处理数据的检索、合并和持久化。状态更新应该通过 <code>session_service.append_event()</code> 向会话历史添加事件来实现。这样可以确保跟踪的完整性，持久化服务中的正确保存以及安全的状态变更。</mark>
+<mark>智能体通过统一的 <code>session.state</code> 字典访问所有状态数据。<code>SessionService</code> 负责处理数据的检索、合并和持久化。状态更新应该通过 <code>session_service.append_event()</code> 向会话历史添加事件来实现。这样可以确保跟踪的完整性、在持久化服务中的正确保存以及安全的状态变更。</mark>
 
 **1.The Simple Way: Using output_key (for Agent Text Replies):** This is the easiest method if you just want to save your agent's final text response directly into the state. When you set up your LlmAgent, just tell it the output_key you want to use. The Runner sees this and automatically creates the necessary actions to save the response to the state when it appends the event. Let's look at a code example demonstrating state update via output_key.
 
-<mark><strong>1. 简单方法：使用 output_key（用于智能体输出的文本）</strong> 如果只需将智能体的最终响应直接保存到状态中，这是最简单的方法。定义 <code>LlmAgent</code> 时，只需指定要使用的 <code>output_key</code> 属性。<code>Runner</code> 会识别此参数设置，并创建必要的操作来将响应保存到状态中。我们来看一个通过 <code>output_key</code> 实现状态更新的代码示例。</mark>
+<mark><strong>1. 简单方法：使用 output_key（用于智能体的文本输出）</strong> 如果只需将智能体的最终响应直接保存到状态中，这是最简单的方法。定义 <code>LlmAgent</code> 时，只需指定要使用的 <code>output_key</code> 属性。<code>Runner</code> 会识别此参数设置，并创建必要的操作来将响应保存到状态中。我们来看一个通过 <code>output_key</code> 实现状态更新的代码示例。</mark>
 
 ```python
 # 从 Google ADK 导入必要的类
@@ -347,7 +347,7 @@ The demonstration part of the code simulates how this tool would be used. It set
 
 Note that direct modification of the `session.state` dictionary after retrieving a session is strongly discouraged as it bypasses the standard event processing mechanism. Such direct changes will not be recorded in the session's event history, may not be persisted by the selected `SessionService`, could lead to concurrency issues, and will not update essential metadata such as timestamps. The recommended methods for updating the session state are using the `output_key` parameter on an `LlmAgent` (specifically for the agent's final text responses) or including state changes within `EventActions.state_delta` when appending an event via `session_service.append_event()`. The `session.state` should primarily be used for reading existing data.
 
-<mark>**⚠️ 重要警告**：严禁在检索会话后直接修改 <code>session.state</code> 字典，因为这会绕过标准的事件处理机制。此类更改不会被记录在会话的事件历史中，可能导致 <code>SessionService</code> 未持久化，引起并发问题，并且不会更新时间戳等关键元数据。更新会话状态的推荐方法包括：在 <code>LlmAgent</code> 上使用 <code>output_key</code> 参数（专门用于智能体的最终文本输出），或在通过 <code>session_service.append_event()</code> 添加事件时，在 <code>EventActions.state_delta</code> 中包含状态变更的内容。<code>session.state</code> 主要用于读取现有数据。</mark>
+<mark><strong>⚠️ 重要警告</strong>：严禁在检索会话后直接修改 <code>session.state</code> 字典，因为这会绕过标准的事件处理机制。此类更改不会被记录在会话的事件历史中，可能无法被 <code>SessionService</code> 持久化，引起并发问题，并且不会更新时间戳等关键元数据。更新会话状态的推荐方法包括：在 <code>LlmAgent</code> 上使用 <code>output_key</code> 参数（专门用于智能体的最终文本输出），或在通过 <code>session_service.append_event()</code> 添加事件时，在 <code>EventActions.state_delta</code> 中包含状态变更的内容。<code>session.state</code> 主要用于读取现有数据。</mark>
 
 To recap, when designing your state, keep it simple, use basic data types, give your keys clear names and use prefixes correctly, avoid deep nesting, and always update state using the append_event process.
 
@@ -363,7 +363,7 @@ In agent systems, the Session component maintains a record of the current chat h
 
 ```python
 # 示例：使用 InMemoryMemoryService
-# 这适用于本地开发和测试，不需要跨应用重启使还保持数据持久化的场景。
+# 这适用于本地开发和测试，不需要在应用重启后保持数据持久化的场景。
 # 因为应用停止时记忆内容会丢失。
 from google.adk.memory import InMemoryMemoryService
 memory_service = InMemoryMemoryService()
