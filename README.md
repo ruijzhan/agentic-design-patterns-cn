@@ -42,10 +42,10 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 | 章节 | 概述 | 负责人 | AI 翻译 | 人工评审 | 交叉评审 |
 |------|------|--------|---------|----------|----------|
-| [献辞](01-Dedication.md) | 作者的献辞与致敬 | @ginobefun | ✅ | ✅ | ⏳ |
-| [致谢](02-Acknowledgment.md) | 致谢与感谢名单 | @ginobefun | ✅ | ✅ | ⏳ |
-| [序言](03-Foreword.md) | 本书的序言与背景介绍 | @ginobefun | ✅ | ✅ | ⏳ |
-| [思想领袖的洞见](04-Thought-Leader.md) | 权力与责任的深度思考 | @ginobefun | ✅ | ✅ | ⏳ |
+| [献辞](01-Dedication.md) | 作者的献辞与致敬 | @ginobefun | ✅ | ✅ | ✅ |
+| [致谢](02-Acknowledgment.md) | 致谢与感谢名单 | @ginobefun | ✅ | ✅ | ✅ |
+| [序言](03-Foreword.md) | 本书的序言与背景介绍 | @ginobefun | ✅ | ✅ | ✅ |
+| [思想领袖的洞见](04-Thought-Leader.md) | 权力与责任的深度思考 | @ginobefun | ✅ | ✅ | ✅ |
 | [介绍](05-Introduction.md) | 全书引言与核心概念 | @ginobefun | ✅ | ✅ | ⏳ |
 | [什么是"智能体"？](06-What-Makes-Agent.md) | 定义 AI 系统的"智能体"特征 | @ginobefun | ✅ | ✅ | ⏳ |
 
@@ -53,19 +53,19 @@ This project is a **bilingual Chinese-English translation** of "Agentic Design P
 
 | 章节 | 设计模式概述 | 负责人 | AI 翻译 | 人工评审 | 交叉评审 |
 |------|-------------|--------|---------|----------|----------|
-| [第 1 章：提示链](07-Chapter-01-Prompt-Chaining.md) | 分而治之的任务分解模式，将复杂任务分解为处理流水线 | @ginobefun | ✅ | ✅ | ⏳ |
-| [第 2 章：路由](08-Chapter-02-Routing.md) | 智能决策与动态分发，根据情境选择最佳行动路径 | @ginobefun | ✅ | ✅ | ⏳ |
-| [第 3 章：并行化](09-Chapter-03-Parallelization.md) | 并发执行与性能提升，同时执行多个独立任务 | @ginobefun | ✅ | ✅ | ⏳ |
-| [第 4 章：反思](10-Chapter-04-Reflection.md) | 自我评估和迭代改进，通过反馈循环优化输出质量 | @ginobefun | ✅ | ✅ | ⏳ |
-| [第 5 章：工具使用](11-Chapter-05-Tool-Use.md) | 外部工具与 API 集成，扩展智能体能力边界 | @ginobefun | ✅ | ✅ | ⏳ |
-| [第 6 章：规划](12-Chapter-06-Planning.md) | 多步骤计划制定与执行，实现复杂目标分解 | @ginobefun | ✅ | ✅ | ⏳ |
-| [第 7 章：多智能体协作](13-Chapter-07-Multi-Agent-Collaboration.md) | 协同工作架构，多个智能体配合完成任务 | @ginobefun | ✅  | ✅ | ⏳ |
+| [第 1 章：提示链](07-Chapter-01-Prompt-Chaining.md) | 分而治之的任务分解模式，将复杂任务分解为处理流水线 | @ginobefun | ✅ | ✅ | ✅ |
+| [第 2 章：路由](08-Chapter-02-Routing.md) | 智能决策与动态分发，根据情境选择最佳行动路径 | @ginobefun | ✅ | ✅ | ✅ |
+| [第 3 章：并行化](09-Chapter-03-Parallelization.md) | 并发执行与性能提升，同时执行多个独立任务 | @ginobefun | ✅ | ✅ | ✅ |
+| [第 4 章：反思](10-Chapter-04-Reflection.md) | 自我评估和迭代改进，通过反馈循环优化输出质量 | @ginobefun | ✅ | ✅ | ✅ |
+| [第 5 章：工具使用](11-Chapter-05-Tool-Use.md) | 外部工具与 API 集成，扩展智能体能力边界 | @ginobefun | ✅ | ✅ | ✅ |
+| [第 6 章：规划](12-Chapter-06-Planning.md) | 多步骤计划制定与执行，实现复杂目标分解 | @ginobefun | ✅ | ✅ | ✅ |
+| [第 7 章：多智能体协作](13-Chapter-07-Multi-Agent-Collaboration.md) | 协同工作架构，多个智能体配合完成任务 | @ginobefun | ✅  | ✅ | ✅ |
 
 ### 第二部分：高级设计模式 | Part Two: Advanced Patterns (61 页)
 
 | 章节 | 设计模式概述 | 负责人 | AI 翻译 | 人工评审 | 交叉评审 |
 |------|-------------|--------|---------|----------|----------|
-| [第 8 章：记忆管理](14-Chapter-08-Memory-Management.md) | 短期和长期记忆管理，维持上下文连续性 | @郑涛 | ✅ | ✅ | ❌ |
+| [第 8 章：记忆管理](14-Chapter-08-Memory-Management.md) | 短期和长期记忆管理，维持上下文连续性 | @郑涛 | ✅ | ✅ | ✅ |
 | [第 9 章：学习与适应](15-Chapter-09-Learning-and-Adaptation.md) | 从经验中学习，持续优化智能体行为 | @陈诗中 | ⏳ | ❌ | ❌ |
 | [第 10 章：模型上下文协议](16-Chapter-10-Model-Context-Protocol.md) | 标准化交互协议，规范智能体通信方式 | @郑涛 | ⏳ | ❌ | ❌ |
 | [第 11 章：目标设定与监控](17-Chapter-11-Goal-Setting-and-Monitoring.md) | 动态目标管理，实时追踪任务进展 | [@李浪溪](https://github.com/seabornlee) | ✅ | ✅ | ⏳ |
