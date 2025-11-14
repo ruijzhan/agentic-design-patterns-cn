@@ -4,7 +4,7 @@
 
 So far, we've discussed agentic patterns that primarily involve orchestrating interactions between language models and managing the flow of information within the agent's internal workflow (Chaining, Routing, Parallelization, Reflection). However, for agents to be truly useful and interact with the real world or external systems, they need the ability to use Tools.
 
-<mark>到目前为止，我们讨论的智能体模式侧重于在大语言模型间协调交互和管理智能体内部的信息流（如提示链、路由、并行化和反思模式）。但如果要让智能体真正有用、能与现实世界或外部系统交互，就必须赋予它们使用工具的能力。</mark>
+<mark>到目前为止，我们讨论的智能体模式侧重于在大语言模型之间协调交互和管理智能体内部的信息流（如提示链、路由、并行化和反思模式）。但如果要让智能体真正有用、能与现实世界或外部系统交互，就必须赋予它们使用工具的能力。</mark>
 
 The Tool Use pattern, often implemented through a mechanism called Function Calling, enables an agent to interact with external APIs, databases, services, or even execute code. It allows the LLM at the core of the agent to decide when and how to use a specific external function based on the user's request or the current state of the task.
 

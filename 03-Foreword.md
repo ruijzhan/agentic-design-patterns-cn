@@ -2,7 +2,7 @@
 
 The field of artificial intelligence is at a fascinating inflection point. We are moving beyond building models that can simply process information to creating intelligent systems that can reason, plan, and act to achieve complex goals with ambiguous tasks. These "agentic" systems, as this book so aptly describes them, represent the next frontier in AI, and their development is a challenge that excites and inspires us at Google.
 
-<mark>人工智能领域正处在一个激动人心的转折点。我们正在从构建仅能处理信息的模型，迈向创造能够推理、规划和行动，以便在任务模糊的情况下达成复杂目标的智能系统。正如本书所精准描述的，这些「智能体」系统代表了 AI 的下一个前沿，其研发工作是一项挑战，也正是这份挑战在激励和鼓舞着我们谷歌的每一个人。</mark>
+<mark>人工智能领域正处在一个激动人心的转折点。我们正在从构建仅能处理信息的模型，迈向创造能够推理、规划和行动，以完成模糊的复杂任务的智能系统。正如本书所精准描述的，这些「智能体」系统代表了 AI 的下一个前沿，其研发工作是一项挑战，也正是这份挑战在激励和鼓舞着 Google 的每一位成员。</mark>
 
 "Agentic Design Patterns: A Hands-On Guide to Building Intelligent Systems" arrives at the perfect moment to guide us on this journey. The book rightly points out that the power of large language models, the cognitive engines of these agents, must be harnessed with structure and thoughtful design. Just as design patterns revolutionized software engineering by providing a common language and reusable solutions to common problems, the agentic patterns in this book will be foundational for building robust, scalable, and reliable intelligent systems.
 

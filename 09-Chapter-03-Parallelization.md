@@ -390,7 +390,13 @@ In summary, the history of space exploration is a rich tapestry woven from human
 
 The provided Python code implements a LangChain application designed for processing a given topic efficiently by leveraging parallel execution. Note that asyncio provides concurrency, not parallelism. It achieves this on a single thread by using an event loop that intelligently switches between tasks when one is idle (e.g., waiting for a network request). This creates the effect of multiple tasks progressing at once, but the code itself is still being executed by only one thread, constrained by Python's Global Interpreter Lock (GIL).
 
-<mark>上述 Python 示例实现了一个基于 LangChain 的应用，通过并发执行来更高效地处理指定话题。需要说明的是，asyncio 实现的是并发（Concurrency），不是多线程或多核的真正并行（Parallelism）。它在单个线程中运行，通过事件循环在任务等待（如等待网络响应）时切换执行，从而让多个任务看起来同时执行。但底层代码仍在同一线程上运行，这是受 Python 全局解释器锁（GIL）的限制。</mark>
+<mark>上述 Python 示例实现了一个基于 LangChain 的应用，通过并发执行来更高效地处理指定话题。需要说明的是，asyncio 实现的是**并发（Concurrency）**，而非真正的**并行（Parallelism）**：</mark>
+
+<mark>• **单线程运行** - 通过事件循环在任务等待时切换执行</mark>
+
+<mark>• **GIL 限制** - 受 Python 全局解释器锁约束，代码仍在同一线程执行</mark>
+
+<mark>• **表象并行** - 多个任务看似同时进行，实际是快速切换</mark>
 
 The code begins by importing essential modules from langchain_openai and langchain_core, including components for language models, prompts, output parsing, and runnable structures. The code attempts to initialize a ChatOpenAI instance, specifically using the "gpt-4o-mini" model, with a specified temperature for controlling creativity. A try-except block is used for robustness during the language model initialization. Three independent LangChain "chains" are then defined, each designed to perform a distinct task on the input topic. The first chain is for summarizing the topic concisely, using a system message and a user message containing the topic placeholder. The second chain is configured to generate three interesting questions related to the topic. The third chain is set up to identify between 5 and 10 key terms from the input topic, requesting them to be comma-separated. Each of these independent chains consists of a ChatPromptTemplate tailored to its specific task, followed by the initialized language model and a StrOutputParser to format the output as a string.
 

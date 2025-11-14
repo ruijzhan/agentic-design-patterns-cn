@@ -46,7 +46,7 @@ The core component of the Routing pattern is a mechanism that performs the evalu
 
 **LLM-based Routing:** The language model itself can be prompted to analyze the input and output a specific identifier or instruction that indicates the next step or destination. For example, a prompt might ask the LLM to "Analyze the following user query and output only the category: 'Order Status', 'Product Info', 'Technical Support', or 'Other'." The agentic system then reads this output and directs the workflow accordingly.
 
-<mark><strong>大模型路由（LLM-based Routing）：</strong>通过提示词引导语言模型分析输入并输出特定的分类标识或指令，以指示下一步的执行目标。例如，提示词可以要求模型「分析以下用户查询并仅输出类别：订单状态、产品信息、技术支持或其他」。智能体系统读取该输出后，据此将工作流导向相应的处理路径。</mark>
+<mark><strong>基于大语言模型的路由（LLM-based Routing）：</strong>通过提示词引导语言模型分析输入并输出特定的分类标识或指令，以指示下一步的执行目标。例如，提示词可以要求模型「分析以下用户查询并仅输出类别：订单状态、产品信息、技术支持或其他」。智能体系统读取该输出后，据此将工作流导向相应的处理路径。</mark>
 
 **Embedding-based Routing:** The input query can be converted into a vector embedding (see RAG, Chapter 14). This embedding is then compared to embeddings representing different routes or capabilities. The query is routed to the route whose embedding is most similar. This is useful for semantic routing, where the decision is based on the meaning of the input rather than just keywords.
 

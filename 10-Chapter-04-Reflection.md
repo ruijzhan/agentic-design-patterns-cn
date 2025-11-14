@@ -12,7 +12,13 @@ The Reflection pattern involves an agent evaluating its own work, output, or int
 
 Unlike a simple sequential chain where output is passed directly to the next step, or routing which chooses a path, reflection introduces a feedback loop. The agent doesn't just produce an output; it then examines that output (or the process that generated it), identifies potential issues or areas for improvement, and uses those insights to generate a better version or modify its future actions.
 
-<mark>反思模式与简单顺序链或路由模式有着本质区别。前者只是将输出直接传给下一步，或是在不同路径中做出选择；而反思模式则引入了反馈循环。在这种模式下，智能体并非简单地产出结果就结束了。它会回过头来审视自己的输出（或其生成过程），找出潜在的问题和改进空间，并依据这些洞察生成更优的版本，或是修正其后续的行动策略。</mark>
+<mark>反思模式与简单顺序链或路由模式有本质区别：</mark>
+
+<mark>• **顺序链/路由** - 输出直接传递或选择路径</mark>
+
+<mark>• **反思模式** - 引入反馈循环，审视输出并持续改进</mark>
+
+<mark>具体来说，智能体不只是产出结果，还会审视输出及其生成过程，找出潜在问题，并据此生成更优版本或调整后续策略。</mark>
 
 The process typically involves:
 
